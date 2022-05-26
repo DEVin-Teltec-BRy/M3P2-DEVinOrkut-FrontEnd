@@ -1,7 +1,11 @@
-export const InitialProject = ()=>{
-    return (
-        <div>
-            Inicio do projeto
-        </div>
-    )
-}
+import Header from "./../../Components/Header";
+import Content from "./../../Components/Content";
+
+export const InitialProject = () => {
+  return (
+    <>
+      <Header />
+      <Content />
+    </>
+  );
+};
