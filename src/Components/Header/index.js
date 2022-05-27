@@ -21,9 +21,9 @@ const Header = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Col md={8}>
             <Nav className="me-auto">
-              <Link link="#perfil" icon={<FaUserCircle />} name="Perfil" />
-              <Link link="#amigos" icon={<FaUserFriends />} name="Amigos" />
-              <Link link="#comunidade" icon={<FaThLarge />} name="Comunidade" />
+              <Link to="/" icon={<FaUserCircle />} name="Perfil" />
+              <Link to="/friends" icon={<FaUserFriends />} name="Amigos" />
+              <Link to="/communities" icon={<FaThLarge />} name="Comunidade" />
             </Nav>
           </Col>
           <Col md={4}>
