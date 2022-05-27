@@ -24,4 +24,20 @@ export const CardContainer = styled(Card)`
     gap:5px;
     flex-wrap:wrap;
   }
+  .card-footer{
+    background:var(--white) ;
+    border-top:0px;
+    padding: 5px 10px ;
+    text-align:end ;
+    a{
+      color: var(--pink);
+    }
+  }
+  .active >.page-link {
+    background:var(--pink) ;
+    border: var(--pink);
+  }
+  .pagination {
+    justify-content:flex-end;
+  }
 `;
