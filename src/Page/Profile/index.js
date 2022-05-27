@@ -1,11 +1,8 @@
-import Header from "./../../Components/Header";
-import Content from "./../../Components/Content";
 
-export const InitialProject = () => {
+import { UserLayout } from "../../Layout/User";
+
+export const ProfilePage = () => {
   return (
-    <>
-      <Header />
-      <Content />
-    </>
+    <UserLayout/>
   );
 };
