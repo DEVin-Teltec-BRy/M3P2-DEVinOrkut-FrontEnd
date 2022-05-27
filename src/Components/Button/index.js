@@ -1,8 +1,8 @@
 import * as S from "./style";
 
-const Navlink = ({ link, icon, name }) => {
+const Navlink = ({ to, icon, name }) => {
   return (
-    <S.Navlink href={link}>
+    <S.Navlink to={`${to}`}>
       <span>{icon}</span>
       {name}
     </S.Navlink>
