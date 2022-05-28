@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { UserLayout } from "./Layout/User";
+import { CommunityPage } from "./Page/Communities";
 import { FriendPage } from "./Page/Friends";
 import { ProfilePage } from "./Page/Profile";
 
@@ -9,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<ProfilePage />} />
         <Route path="friends" element={<FriendPage />} />
-        <Route path="communities" element={<UserLayout />} />
+        <Route path="communities" element={<CommunityPage />} />
         {/*  
         <Route path="login" element={} />    
         <Route path="register" element={} />    
