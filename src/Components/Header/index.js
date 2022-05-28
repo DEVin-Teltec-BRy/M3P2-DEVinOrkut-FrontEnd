@@ -23,7 +23,7 @@ const Header = () => {
             <Nav className="me-auto">
               <Link to="/" icon={<FaUserCircle />} name="Perfil" />
               <Link to="/friends" icon={<FaUserFriends />} name="Amigos" />
-              <Link to="/communities" icon={<FaThLarge />} name="Comunidade" />
+              <Link to="/communities" icon={<FaThLarge />} name="Comunidades" />
             </Nav>
           </Col>
           <Col md={4}>
