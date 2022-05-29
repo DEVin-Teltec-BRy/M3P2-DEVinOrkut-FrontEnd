@@ -1,39 +1,44 @@
-import { Container, Navbar, Nav, Col } from "react-bootstrap";
+import { Dropdown, DropdownButton, ButtonGroup, Col } from "react-bootstrap";
 import { FaUserCircle, FaUserFriends, FaThLarge } from "react-icons/fa";
-import {NewButtonLink} from "./../Button";
+import { useNavigate } from "react-router-dom";
+import { InputSearch } from "../InputSearch";
+import { NewButtonLink } from "./../Button";
+import Logo from '../../Assets/images/Title.svg'
 import * as S from "./style";
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <S.NavbarContainer collapseOnSelect expand="lg">
-      <Container>
-        <Col md={3}>
-          <Navbar.Brand href="#">
-            <img
-              src="assets/images/devinorkut.png"
-              alt="DEVinOrkut"
-              width="150"
-            />
-          </Navbar.Brand>
-        </Col>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Col md={2}>
+        <img src={Logo} alt="DEVinOrkut" width="150" />
+      </Col>
 
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Col md={8}>
-            <Nav className="me-auto">
-              <NewButtonLink to="/" icon={<FaUserCircle />} name="Perfil" />
-              <NewButtonLink to="/friends" icon={<FaUserFriends />} name="Amigos" />
-              <NewButtonLink to="/communities" icon={<FaThLarge />} name="Comunidades" />
-            </Nav>
-          </Col>
-          <Col md={4}>
-            <Nav className="signin">
-              <Nav.Link href="#">elon.musk@devinorkut.com</Nav.Link>
-              <Nav.Link href="#">Sair</Nav.Link>
-            </Nav>
-          </Col>
-        </Navbar.Collapse>
-      </Container>
+      <Col md={5}>
+        <NewButtonLink to="/" icon={<FaUserCircle />} name="Perfil" />
+        <NewButtonLink to="/friends" icon={<FaUserFriends />} name="Amigos" />
+        <NewButtonLink
+          to="/communities"
+          icon={<FaThLarge />}
+          name="Comunidades"
+        />
+      </Col>
+      <Col md={3}>
+        <InputSearch />
+      </Col>
+      <Col md={2}>
+        <DropdownButton
+          as={ButtonGroup}
+          align="end"
+          className='menu'
+          title="elon.musk@devinorkut.com"
+        >
+          <Dropdown.Item onClick={() => navigate("/")}>
+            Meu perfil
+          </Dropdown.Item>
+          <Dropdown.Item>Sair</Dropdown.Item>
+        </DropdownButton>
+      </Col>
     </S.NavbarContainer>
   );
 };
