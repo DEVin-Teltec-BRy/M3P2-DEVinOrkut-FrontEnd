@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { CardContainer } from "../CardMain/cardMain.styled";
 
 export const CardContainerSecondary = styled(CardContainer)`
-  width: ${({size})=> size === 'md'?'7.5rem;':'6.6rem;'};
-  height: ${({size})=> size === 'md'?'8.5rem;':'8.5rem;'};
+  max-width: ${({size})=> size === 'md'?'7.5rem;':'6.6rem;'};
+  max-height: ${({size})=> size === 'md'?'8.5rem;':'8.5rem;'};
 border:none;
   padding: 10px ;
   text-align:center;
@@ -14,5 +14,10 @@ border:none;
       height: ${({size})=> size === 'md'?'5rem;':'5.40rem;'};
       margin-bottom: 10px ;
   }
-
+  div{
+    overflow: hidden;
+    font-size:15px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 `;

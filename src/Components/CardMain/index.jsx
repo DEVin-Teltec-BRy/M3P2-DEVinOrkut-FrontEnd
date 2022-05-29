@@ -5,7 +5,7 @@ import { CardContainer } from "./cardMain.styled";
 export const CardMain = ({ children, title, count, bg, toAll,pagination }) => {
   return (
     <CardContainer bg={bg}>
-      {title && count && (
+      {title && (
         <Card.Header>
           {title}
           <Badge pill>{count}</Badge>
