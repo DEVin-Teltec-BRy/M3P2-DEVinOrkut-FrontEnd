@@ -1,6 +1,6 @@
 import { Container, Navbar, Nav, Col } from "react-bootstrap";
 import { FaUserCircle, FaUserFriends, FaThLarge } from "react-icons/fa";
-import Link from "./../Button";
+import {NewButtonLink} from "./../Button";
 import * as S from "./style";
 
 const Header = () => {
@@ -21,9 +21,9 @@ const Header = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Col md={8}>
             <Nav className="me-auto">
-              <Link to="/" icon={<FaUserCircle />} name="Perfil" />
-              <Link to="/friends" icon={<FaUserFriends />} name="Amigos" />
-              <Link to="/communities" icon={<FaThLarge />} name="Comunidades" />
+              <NewButtonLink to="/" icon={<FaUserCircle />} name="Perfil" />
+              <NewButtonLink to="/friends" icon={<FaUserFriends />} name="Amigos" />
+              <NewButtonLink to="/communities" icon={<FaThLarge />} name="Comunidades" />
             </Nav>
           </Col>
           <Col md={4}>
