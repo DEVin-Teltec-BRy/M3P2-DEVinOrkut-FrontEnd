@@ -11,7 +11,7 @@ export const CommunityPage = () => {
         {[...Array(20)].map((_, key) => (
           <CardSecondary
             key={key}
-            round
+            size="md"
             text="Full Bugs"
             src="https://thumbs.dreamstime.com/b/o-homem-irado-na-camisa-vermelha-rasga-folha-de-papel-6582601.jpg"
           />
@@ -27,7 +27,7 @@ export const Lateral = () => {
     <CardMain title="Amigos" count={2000} toAll="friends">
       {[...Array(8)].map((_, key) => (
         <CardSecondary
-          size="md"
+          round
           key={key}
           text="Bill Gates"
           src="https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
