@@ -3,7 +3,7 @@ import Header from "../../Components/Header";
 import Profile from "../../Components/Profile";
 import * as S from "./style";
 
-export const UserLayout = ({ children, lateral }) => {
+export const UserLayout = ({ children, lateral,centerCol = 6 }) => {
   return (
     <>
       <Header />
@@ -12,7 +12,7 @@ export const UserLayout = ({ children, lateral }) => {
           <Col md={3}>
             <Profile />
           </Col>
-          <Col md={6}>{children}</Col>
+          <Col md={centerCol}>{children}</Col>
           <Col md={3}>{lateral}</Col>
         </S.Container>
       </S.MainContainer>
