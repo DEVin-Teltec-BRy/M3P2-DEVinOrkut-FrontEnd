@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import { UserLayout } from "./Layout/User";
 import { CommunityPage } from "./Page/Communities";
 import { FriendPage } from "./Page/Friends";
 import { ProfilePage } from "./Page/Profile";
