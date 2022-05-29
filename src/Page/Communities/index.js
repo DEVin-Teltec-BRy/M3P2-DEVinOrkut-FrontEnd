@@ -1,5 +1,6 @@
 import { CardMain } from "../../Components/CardMain";
 import { CardSecondary } from "../../Components/CardSecondary";
+import { ModalComponent } from "../../Components/Modal";
 import { Pagination } from "../../Components/Pagination";
 import { UserLayout } from "../../Layout/User";
 
@@ -15,6 +16,7 @@ export const CommunityPage = () => {
             src="https://thumbs.dreamstime.com/b/o-homem-irado-na-camisa-vermelha-rasga-folha-de-papel-6582601.jpg"
           />
         ))}
+        <ModalComponent />
       </CardMain>
     </UserLayout>
   );
