@@ -1,5 +1,5 @@
 import { Container, Navbar, Nav, Col } from "react-bootstrap";
-import { FaUserCircle, FaUserFriends, FaThLarge } from "react-icons/fa";
+import { FaUserCircle, FaUserFriends, FaThLarge,FaKey } from "react-icons/fa";
 import Link from "./../Button";
 import * as S from "./style";
 
@@ -24,6 +24,7 @@ const Header = () => {
               <Link to="/" icon={<FaUserCircle />} name="Perfil" />
               <Link to="/friends" icon={<FaUserFriends />} name="Amigos" />
               <Link to="/communities" icon={<FaThLarge />} name="Comunidades" />
+              <Link to="/resetpassword" icon={<FaKey />} name="Trocar senha" />
             </Nav>
           </Col>
           <Col md={4}>

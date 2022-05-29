@@ -17,6 +17,7 @@ const Profile = () => {
         <Link link="#perfil" icon={<FaUserCircle />} name="Perfil" />
         <Link link="#amigos" icon={<FaUserFriends />} name="Amigos" />
         <Link link="#comunidade" icon={<FaThLarge />} name="Comunidade" />
+        
       </Nav>
       <div className="edit-profile">
         <a href="#">Editar Perfil</a>
