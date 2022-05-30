@@ -1,6 +1,6 @@
 import { FaUserCircle, FaUserFriends, FaThLarge } from "react-icons/fa";
 import { Nav } from "react-bootstrap";
-import {NewButtonLink} from "../Button";
+import { NewButtonLink } from "../Button";
 import * as S from "./style";
 
 const Profile = () => {
@@ -16,9 +16,14 @@ const Profile = () => {
       <Nav className="menu-links">
         <NewButtonLink link="#perfil" icon={<FaUserCircle />} name="Perfil" />
         <NewButtonLink link="#amigos" icon={<FaUserFriends />} name="Amigos" />
-        <NewButtonLink link="#comunidade" icon={<FaThLarge />} name="Comunidade" />
+        <NewButtonLink
+          link="#comunidade"
+          icon={<FaThLarge />}
+          name="Comunidade"
+        />
       </Nav>
       <div className="edit-profile">
+        {/* eslint-disable-next-line */}
         <a href="#">Editar Perfil</a>
       </div>
     </S.ProfileContainer>
