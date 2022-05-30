@@ -2,7 +2,7 @@
 name: Build and Deploy to Netlify
 on:
   push:
-    branches: [development]
+    branches: [ development ]
 jobs:
   build:
     runs-on: ubuntu-18.04
@@ -14,8 +14,8 @@ jobs:
       - name: Netlify Actions
         uses: nwtgck/actions-netlify@v1.2.3
         with:
-          publish-dir: "./build"
-          production-branch: development
+          publish-dir: "build"
+          production-branch: "development"
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy from GitHub Actions"
           enable-pull-request-comment: false
