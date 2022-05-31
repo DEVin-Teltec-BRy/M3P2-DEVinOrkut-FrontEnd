@@ -1,12 +1,18 @@
 import styled from "styled-components";
-import {  Row } from "react-bootstrap";
-
+import { Row } from "react-bootstrap";
 
 export const MainContainer = styled.main`
-  margin: 2rem 0;
+  max-width: 85rem;
+  margin: 20px auto;
 `;
 
 export const Container = styled(Row)`
-width: 90%;
-margin:auto;
-`
+  width: 100%;
+  margin: auto;
+  @media (min-width: 768px) {
+    .col-md-2 {
+      flex: 0 0 auto;
+      width: 18%;
+    }
+  }
+`;

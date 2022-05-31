@@ -5,10 +5,16 @@ import { ProfilePage } from "./Page/Profile";
 import ResetPassword from "./Page/ResetPassword";
 import { SearchPage } from "./Page/Search";
 import SendResetPassEmail from './Page/SendResetPassEmail'
+import styled from "styled-components";
+
+const ContainerApp = styled.div`
+  margin:auto;
+`;
+
 
 function App() {
   return (
-    <div>
+    <ContainerApp>
       <Routes>
         <Route path="/" element={<ProfilePage />} />
         <Route path="friends" element={<FriendPage />} />
@@ -24,7 +30,7 @@ function App() {
         <Route path="profile" element={} />     
         */}
       </Routes>
-    </div>
+    </ContainerApp>
   );
 }
 
