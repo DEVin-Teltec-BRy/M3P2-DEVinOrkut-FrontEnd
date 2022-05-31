@@ -1,8 +1,15 @@
 import { Badge, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { CardContainer } from "./cardMain.styled";
+import { CardContainer,CardBody } from "./cardMain.styled";
 
-export const CardMain = ({ children, title, count, bg, toAll,pagination }) => {
+export const CardMain = ({
+  children,
+  title,
+  count,
+  bg,
+  toAll,
+  pagination, center=true
+}) => {
   return (
     <CardContainer bg={bg}>
       {title && (
@@ -12,16 +19,14 @@ export const CardMain = ({ children, title, count, bg, toAll,pagination }) => {
         </Card.Header>
       )}
 
-      <Card.Body>{children}</Card.Body>
+      <CardBody center={center ? "true" : ""}>{children}</CardBody>
       {toAll && (
         <Card.Footer>
           <Link to={`/${toAll}`}>Ver todos</Link>
         </Card.Footer>
       )}
       {pagination && (
-        <Card.Footer className="paginations">
-         {pagination}
-        </Card.Footer>
+        <Card.Footer className="paginations">{pagination}</Card.Footer>
       )}
     </CardContainer>
   );
