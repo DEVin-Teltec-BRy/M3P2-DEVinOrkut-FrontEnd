@@ -19,25 +19,26 @@ export const CardContainer = styled(Card)`
       background-color: var(--pink) !important;
     }
   }
-  .card-body{
+  .card-body {
     display: flex;
-    gap:5px;
-    flex-wrap:wrap;
+    justify-content: center;
+    gap: 5px;
+    flex-wrap: wrap;
   }
-  .card-footer{
-    background:var(--white) ;
-    border-top:0px;
-    padding: 5px 10px ;
-    text-align:end ;
-    a{
+  .card-footer {
+    background: var(--white);
+    border-top: 0px;
+    padding: 5px 10px;
+    text-align: end;
+    a {
       color: var(--pink);
     }
   }
-  .active >.page-link {
-    background:var(--pink) ;
+  .active > .page-link {
+    background: var(--pink);
     border: var(--pink);
   }
   .pagination {
-    justify-content:flex-end;
+    justify-content: flex-end;
   }
 `;
