@@ -3,6 +3,7 @@ import { AiOutlineCamera,AiOutlineInbox } from "react-icons/ai";
 import { BsChatLeft } from "react-icons/bs";
 import { NewButtonLink } from "../Button";
 import * as S from "./style";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   return (
@@ -37,7 +38,7 @@ const Profile = () => {
 
       <div className="edit-profile">
         {/* eslint-disable-next-line */}
-        <a href="#">Editar Perfil</a>
+        <Link to='/'>Editar Perfil</Link>
       </div>
     </S.ProfileContainer>
   );
