@@ -1,4 +1,4 @@
-import { FaUserCircle, FaUserFriends, FaThLarge } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineCamera,AiOutlineInbox } from "react-icons/ai";
 import { BsChatLeft } from "react-icons/bs";
 import { NewButtonLink } from "../Button";
