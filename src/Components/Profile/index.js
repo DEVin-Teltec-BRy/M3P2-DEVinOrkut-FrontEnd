@@ -1,6 +1,7 @@
 import { FaUserCircle, FaUserFriends, FaThLarge } from "react-icons/fa";
-import { Nav } from "react-bootstrap";
-import {NewButtonLink} from "../Button";
+import { AiOutlineCamera,AiOutlineInbox } from "react-icons/ai";
+import { BsChatLeft } from "react-icons/bs";
+import { NewButtonLink } from "../Button";
 import * as S from "./style";
 
 const Profile = () => {
@@ -13,11 +14,27 @@ const Profile = () => {
         <li>Casado(a), Pretória</li>
         <li>África do Sul</li>
       </ul>
-      <Nav className="menu-links">
+
+      <S.MenuOptions>
         <NewButtonLink link="#perfil" icon={<FaUserCircle />} name="Perfil" />
-        <NewButtonLink link="#amigos" icon={<FaUserFriends />} name="Amigos" />
-        <NewButtonLink link="#comunidade" icon={<FaThLarge />} name="Comunidade" />
-      </Nav>
+
+        <NewButtonLink
+          to="/"
+          icon={<AiOutlineCamera />}
+          name="Fotos"
+        />
+        <NewButtonLink
+          to="/"
+          icon={<BsChatLeft />}
+          name="Recados"
+        />
+        <NewButtonLink
+          to="/"
+          icon={<AiOutlineInbox />}
+          name="Depoimentos"
+        />
+      </S.MenuOptions>
+
       <div className="edit-profile">
         <a href="#">Editar Perfil</a>
       </div>

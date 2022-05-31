@@ -1,3 +1,4 @@
+import { Card } from "react-bootstrap";
 import styled from "styled-components";
 
 export const ProfileContainer = styled.section`
@@ -9,7 +10,7 @@ export const ProfileContainer = styled.section`
   padding: 1rem;
   gap: 1rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-
+  width: 14rem ;
   & h1 {
     font-size: 1rem;
   }
@@ -19,8 +20,10 @@ export const ProfileContainer = styled.section`
   }
 
   & img {
-    width: 100%;
-    border-radius: 50%;
+   width:  160px;
+   height: 160px;
+   border-radius: 50%;
+   filter: drop-shadow(4px 4px 16px rgba(0, 0, 0, 0.25));
   }
 
   & .menu-links {
@@ -44,3 +47,14 @@ export const ProfileContainer = styled.section`
     text-decoration: none;
   }
 `;
+
+export const MenuOptions = styled.div`
+display: flex;
+flex-direction: column;
+gap:10px;
+width: 100% ;
+
+>a{
+  background:var(--card) ;
+}
+`

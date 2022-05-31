@@ -25,7 +25,7 @@ export const SearchPage = () => {
 
   return (
     <UserLayout centerCol={9} >
-      <CardMain title={`Resultado para ${param}: `} count={listResult?.length} pagination={<Pagination/>}>
+      <CardMain title={`Resultado para ${param}: `} count={listResult?.length} pagination={<Pagination/>} center={false}>
         {listResult &&
           listResult.map(({ __typename, fullName, name,logo }, key) => (
             <CardSecondary
