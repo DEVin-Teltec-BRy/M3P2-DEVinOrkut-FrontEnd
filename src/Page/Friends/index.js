@@ -1,10 +1,10 @@
 import { CardMain } from "../../Components/CardMain";
 import { CardSecondary } from "../../Components/CardSecondary";
 import { Pagination } from "../../Components/Pagination";
-import { UserLayout } from "../../Layout/User";
+import Layout from "../../Layout";
 export const FriendPage = () => {
   return (
-    <UserLayout lateral={<Lateral />}>
+    <Layout lateral={<Lateral />}>
       <CardMain title="Amigos" count={2000} pagination={<Pagination />}>
         {[...Array(20)].map((_, key) => (
           <CardSecondary
@@ -15,7 +15,7 @@ export const FriendPage = () => {
           />
         ))}
       </CardMain>
-    </UserLayout>
+    </Layout>
   );
 };
 

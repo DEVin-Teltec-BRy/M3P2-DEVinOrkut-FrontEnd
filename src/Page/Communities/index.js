@@ -2,11 +2,11 @@ import { CardMain } from "../../Components/CardMain";
 import { CardSecondary } from "../../Components/CardSecondary";
 import { ModalComponent } from "../../Components/Modal";
 import { Pagination } from "../../Components/Pagination";
-import { UserLayout } from "../../Layout/User";
+import Layout from "../../Layout";
 
 export const CommunityPage = () => {
   return (
-    <UserLayout lateral={<Lateral />}>
+    <Layout lateral={<Lateral />}>
       <CardMain title="Comunidades" count={1000} pagination={<Pagination />}>
         {[...Array(20)].map((_, key) => (
           <CardSecondary
@@ -18,7 +18,7 @@ export const CommunityPage = () => {
         ))}
         <ModalComponent />
       </CardMain>
-    </UserLayout>
+    </Layout>
   );
 };
 

@@ -33,6 +33,10 @@ const Header = () => {
           className='menu'
           title="elon.musk@devinorkut.com"
         >
+        <Dropdown.Item onClick={() => navigate("/solicitacoes")}>
+            <S.BadgeNoty pill>10</S.BadgeNoty>
+            Solicitações de amizade
+          </Dropdown.Item>
           <Dropdown.Item onClick={() => navigate("/")}>
             Meu perfil
           </Dropdown.Item>
