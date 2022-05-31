@@ -18,7 +18,6 @@ export const SearchPage = () => {
   useEffect(() => {
     if (data) {
       const { searchParam } = data;
-      console.log(searchParam);
       setListResult(searchParam);
     }
   }, [data]);

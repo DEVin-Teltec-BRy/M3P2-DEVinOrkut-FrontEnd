@@ -9,11 +9,11 @@ import * as S from "./style";
 const Header = () => {
   const navigate = useNavigate();
   return (
+    <S.MainContainer>
     <S.NavbarContainer collapseOnSelect expand="lg">
       <Col md={2}>
         <img src={Logo} alt="DEVinOrkut" width="150" />
       </Col>
-
       <Col md={5}>
         <NewButtonLink to="/" icon={<FaUserCircle />} name="Perfil" />
         <NewButtonLink to="/friends" icon={<FaUserFriends />} name="Amigos" />
@@ -23,10 +23,10 @@ const Header = () => {
           name="Comunidades"
         />
       </Col>
-      <Col md={3}>
+      <Col md={4} >
         <InputSearch />
       </Col>
-      <Col md={2}>
+      <Col >
         <DropdownButton
           as={ButtonGroup}
           align="end"
@@ -44,6 +44,7 @@ const Header = () => {
         </DropdownButton>
       </Col>
     </S.NavbarContainer>
+    </S.MainContainer>
   );
 };
 

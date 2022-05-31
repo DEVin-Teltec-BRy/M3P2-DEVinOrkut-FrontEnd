@@ -9,11 +9,11 @@ const Layout = ({ children, lateral,centerCol = 6 }) => {
       <Header />
       <S.MainContainer>
         <S.Container>
-          <Col md={3}>
+          <Col md={2} >
             <Profile />
           </Col>
           <Col md={centerCol}>{children}</Col>
-          <Col md={3}>{lateral}</Col>
+          <Col >{lateral}</Col>
         </S.Container>
       </S.MainContainer>
     </>
