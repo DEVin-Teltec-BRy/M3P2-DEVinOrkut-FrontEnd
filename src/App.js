@@ -3,10 +3,15 @@ import { CommunityPage } from "./Page/Communities";
 import { FriendPage } from "./Page/Friends";
 import { ProfilePage } from "./Page/Profile";
 import { SearchPage } from "./Page/Search";
+import styled from "styled-components";
+
+const ContainerApp = styled.div`
+  margin:auto;
+`;
 
 function App() {
   return (
-    <div>
+    <ContainerApp>
       <Routes>
         <Route path="/" element={<ProfilePage />} />
         <Route path="friends" element={<FriendPage />} />
@@ -18,7 +23,7 @@ function App() {
         <Route path="profile" element={} />     
         */}
       </Routes>
-    </div>
+    </ContainerApp>
   );
 }
 

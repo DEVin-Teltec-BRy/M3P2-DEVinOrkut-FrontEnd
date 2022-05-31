@@ -18,18 +18,14 @@ export const SearchPage = () => {
   useEffect(() => {
     if (data) {
       const { searchParam } = data;
-      console.log(searchParam);
       setListResult(searchParam);
     }
   }, [data]);
 
   return (
-    <UserLayout centerCol={9}>
-      <CardMain
-        title={`Resultado para ${param}: `}
-        count={listResult?.length}
-        pagination={<Pagination />}
-      >
+
+    <UserLayout centerCol={9} >
+      <CardMain title={`Resultado para ${param}: `} count={listResult?.length} pagination={<Pagination/>} center={false}>
         {listResult &&
           listResult.map(({ __typename, fullName, name, logo }, key) => (
             <CardSecondary

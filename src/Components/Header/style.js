@@ -2,11 +2,9 @@ import { Row } from "react-bootstrap";
 import styled from "styled-components";
 
 export const NavbarContainer = styled(Row)`
-  background-color: var(--blue-header);
-
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px -3px,
-    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
   padding: 10px;
+  max-width: 85rem;
+  margin: auto;
 
   > div:nth-child(2) {
     padding: 0;
@@ -18,7 +16,7 @@ export const NavbarContainer = styled(Row)`
   }
   > div:nth-child(4) {
     height: 100%;
-
+    width: 1.5rem;
     button {
       font-size: 15px;
       padding: 0;
@@ -28,7 +26,10 @@ export const NavbarContainer = styled(Row)`
     .show > .btn-primary.dropdown-toggle {
       background: none;
     }
-   
   }
-  
+`;
+export const MainContainer = styled.div`
+  background-color: var(--blue-header);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 `;
