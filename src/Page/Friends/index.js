@@ -1,13 +1,8 @@
-import { useQuery } from "@apollo/client";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { CardMain } from "../../Components/CardMain";
 import { CardSecondary } from "../../Components/CardSecondary";
 import { Pagination } from "../../Components/Pagination";
 import { UserLayout } from "../../Layout/User";
 export const FriendPage = () => {
-
-
   return (
     <UserLayout lateral={<Lateral />}>
       <CardMain title="Amigos" count={2000} pagination={<Pagination />}>
