@@ -13,7 +13,6 @@ const Header = () => {
       <Col md={2}>
         <img src={Logo} alt="DEVinOrkut" width="150" />
       </Col>
-
       <Col md={5}>
         <NewButtonLink to="/" icon={<FaUserCircle />} name="Perfil" />
         <NewButtonLink to="/resetpass" icon={<FaKey />} name="Resetar Senha" />

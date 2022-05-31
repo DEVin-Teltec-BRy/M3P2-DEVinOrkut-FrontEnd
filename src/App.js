@@ -2,8 +2,9 @@ import { Routes, Route } from "react-router-dom";
 import { CommunityPage } from "./Page/Communities";
 import { FriendPage } from "./Page/Friends";
 import { ProfilePage } from "./Page/Profile";
+import ResetPassword from "./Page/ResetPassword";
 import { SearchPage } from "./Page/Search";
-import ResetPassword from './Page/ResetPassword'
+import SendResetPassEmail from './Page/SendResetPassEmail'
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
         <Route path="friends" element={<FriendPage />} />
         <Route path="communities" element={<CommunityPage />} />
         <Route path="search/:param" element={<SearchPage />} />
-        <Route path="resetpass/:id" element={<ResetPassword />} />
+        <Route path="sendresetpassemail" element={<SendResetPassEmail />} />
+        <Route path="resetpass/:token" element={<ResetPassword />} />
 
 
         {/*  

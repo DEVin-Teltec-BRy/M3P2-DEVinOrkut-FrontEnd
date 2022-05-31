@@ -6,3 +6,8 @@ mutation SendEmailresetPassword($user: UserPassword) {
   sendEmailresetPassword(user: $user)
 }
 `; 
+export const RESET_PASS = gql`
+mutation ChangePassword($user: NewPassword) {
+  changePassword(user: $user)
+}
+`
