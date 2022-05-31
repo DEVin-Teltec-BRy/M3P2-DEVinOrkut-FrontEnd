@@ -74,7 +74,7 @@ export default function ResetPassword() {
             value={values.newPass}
             name="newPass"
             placeholder="Nova senha"
-            type="text"
+            type="password"
           />
           {touched.newPass && errors.newPass ? <p>{errors.newPass}</p> : null}
         </div>
@@ -86,7 +86,7 @@ export default function ResetPassword() {
             value={values.confirmPass}
             name="confirmPass"
             placeholder="Confirmar senha"
-            type="text"
+            type="password"
           />
           {touched.confirmPass && errors.confirmPass ? (
             <p>{errors.confirmPass}</p>

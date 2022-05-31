@@ -15,7 +15,6 @@ const Header = () => {
       </Col>
       <Col md={5}>
         <NewButtonLink to="/" icon={<FaUserCircle />} name="Perfil" />
-        <NewButtonLink to="/resetpass" icon={<FaKey />} name="Resetar Senha" />
         <NewButtonLink to="/friends" icon={<FaUserFriends />} name="Amigos" />
         <NewButtonLink
           to="/communities"
