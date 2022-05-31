@@ -22,6 +22,7 @@ export const CardContainer = styled(Card)`
   .card-body{
     display: flex;
     gap:5px;
+    justify-content:center;
     flex-wrap:wrap;
   }
   .card-footer{
