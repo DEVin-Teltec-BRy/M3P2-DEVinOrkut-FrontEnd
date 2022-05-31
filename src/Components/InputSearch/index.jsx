@@ -1,4 +1,3 @@
-import { Formik } from "formik";
 import { Form } from "react-bootstrap";
 import { NewButtom } from "../Button";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -12,9 +11,9 @@ export const InputSearch = () => {
 
   const searchResult = (event) => {
     event.preventDefault();
-    const param = refSearch.current.value
-    navigate(`/search/${param}`)
-    refSearch.current.value = ''
+    const param = refSearch.current.value;
+    navigate(`/search/${param}`);
+    refSearch.current.value = "";
   };
   return (
     <FormSearch onSubmit={searchResult}>

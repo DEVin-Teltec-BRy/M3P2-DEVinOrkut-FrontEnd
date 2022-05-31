@@ -17,7 +17,6 @@ const Profile = () => {
 
       <S.MenuOptions>
         <NewButtonLink link="#perfil" icon={<FaUserCircle />} name="Perfil" />
-
         <NewButtonLink
           to="/"
           icon={<AiOutlineCamera />}
@@ -35,7 +34,9 @@ const Profile = () => {
         />
       </S.MenuOptions>
 
+
       <div className="edit-profile">
+        {/* eslint-disable-next-line */}
         <a href="#">Editar Perfil</a>
       </div>
     </S.ProfileContainer>
