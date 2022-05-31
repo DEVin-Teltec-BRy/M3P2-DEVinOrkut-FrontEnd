@@ -1,5 +1,5 @@
 import { Dropdown, DropdownButton, ButtonGroup, Col } from "react-bootstrap";
-import { FaUserCircle, FaUserFriends, FaThLarge } from "react-icons/fa";
+import { FaUserCircle, FaUserFriends, FaThLarge, FaKey } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { InputSearch } from "../InputSearch";
 import { NewButtonLink } from "./../Button";
@@ -16,6 +16,7 @@ const Header = () => {
 
       <Col md={5}>
         <NewButtonLink to="/" icon={<FaUserCircle />} name="Perfil" />
+        <NewButtonLink to="/resetpass" icon={<FaKey />} name="Resetar Senha" />
         <NewButtonLink to="/friends" icon={<FaUserFriends />} name="Amigos" />
         <NewButtonLink
           to="/communities"

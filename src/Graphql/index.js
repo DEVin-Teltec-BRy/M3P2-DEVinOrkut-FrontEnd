@@ -5,8 +5,5 @@ const token = process.env.REACT_APP_TOKEN_AUTH;
 
 export const clientGraphQl = new ApolloClient({
   uri: uriGraphql,
-  headers: {
-    authorization: token,
-  },
   cache: new InMemoryCache(),
 });
