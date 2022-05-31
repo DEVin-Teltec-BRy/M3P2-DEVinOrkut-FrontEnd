@@ -22,3 +22,16 @@ export const SEARCH_USER_OR_COMMUNITIES = gql`
     }
   }
 `;
+
+export const GET_ALL_COMMUNITIES = gql`
+  query Communities {
+    communities {
+      id
+      logo
+      name
+      category
+      description
+      creation_date
+    }
+  }
+`;
