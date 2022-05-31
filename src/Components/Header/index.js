@@ -14,8 +14,7 @@ const Header = () => {
       <Col md={2}>
         <img src={Logo} alt="DEVinOrkut" width="150" />
       </Col>
-
-      <Col md={4}>
+      <Col md={5}>
         <NewButtonLink to="/" icon={<FaUserCircle />} name="Perfil" />
         <NewButtonLink to="/friends" icon={<FaUserFriends />} name="Amigos" />
         <NewButtonLink
