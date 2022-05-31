@@ -1,9 +1,9 @@
 import { Col } from "react-bootstrap";
-import Header from "../../Components/Header";
-import Profile from "../../Components/Profile";
+import Header from "../Components/Header";
+import Profile from "../Components/Profile";
 import * as S from "./style";
 
-export const UserLayout = ({ children, lateral,centerCol = 6 }) => {
+const Layout = ({ children, lateral,centerCol = 6 }) => {
   return (
     <>
       <Header />
@@ -19,3 +19,4 @@ export const UserLayout = ({ children, lateral,centerCol = 6 }) => {
     </>
   );
 };
+export default Layout

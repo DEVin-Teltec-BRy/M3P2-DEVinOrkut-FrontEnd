@@ -5,7 +5,7 @@ import { CardMain } from "../../Components/CardMain";
 import { Pagination } from "../../Components/Pagination";
 import FriendshipRequest  from '../../Components/FriendshipRequest';
 import { GET_FRIENDSHIP_REQUEST } from "../../Graphql/Querys/FriendshipResquest";
-import { UserLayout } from "../../Layout/User";
+import Layout from "../../Layout";
 import { Lateral } from "../Communities"
 
 export const FriendshipRequestPage = () => {
@@ -23,7 +23,7 @@ export const FriendshipRequestPage = () => {
     }
     }, [data]);
   return (
-    <UserLayout lateral={<Lateral />}>
+    <Layout lateral={<Lateral />}>
     {loading && <p>Loading...</p>}
     {error && <p>Erro ao carregar as solicitações :(</p>}
       <CardMain title="Solicitações Pendentes" count={total} pagination={<Pagination />}>
@@ -37,6 +37,6 @@ export const FriendshipRequestPage = () => {
                 src="https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg" />
         ))}
       </CardMain>
-    </UserLayout>
+    </Layout>
   );
 };

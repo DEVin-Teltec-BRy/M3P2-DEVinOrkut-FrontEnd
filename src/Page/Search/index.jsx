@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
-import { UserLayout } from "../../Layout/User";
+import Layout from "../../Layout";
 import { CardMain } from "../../Components/CardMain";
 import { CardSecondary } from "../../Components/CardSecondary";
 import { SEARCH_USER_OR_COMMUNITIES } from "../../Graphql/Querys";
@@ -24,7 +24,7 @@ export const SearchPage = () => {
   }, [data]);
 
   return (
-    <UserLayout centerCol={9}>
+    <Layout centerCol={9}>
       <CardMain
         title={`Resultado para ${param}: `}
         count={listResult?.length}
@@ -45,6 +45,6 @@ export const SearchPage = () => {
             />
           ))}
       </CardMain>
-    </UserLayout>
+    </Layout>
   );
 };

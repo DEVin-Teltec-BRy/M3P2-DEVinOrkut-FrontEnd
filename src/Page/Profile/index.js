@@ -1,8 +1,11 @@
 
-import { UserLayout } from "../../Layout/User";
+import Layout from '../../Layout'
+
 
 export const ProfilePage = () => {
   return (
-    <UserLayout/>
+    <Layout >
+      
+    </Layout>
   );
 };
