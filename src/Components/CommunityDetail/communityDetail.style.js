@@ -83,6 +83,7 @@ export const DivForum = styled.div`
         flex-wrap: wrap;
         align-content: center;
         justify-content: space-between;
+        align-items: center;
         span{
             font-weight: bold;
         }
