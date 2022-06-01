@@ -1,7 +1,7 @@
-import { Col } from "react-bootstrap";
-import Header from "../../Components/Header";
-import Profile from "../../Components/Profile";
-import * as S from "./style";
+import { Col } from 'react-bootstrap';
+import Header from '../../Components/Header';
+import ProfileAside from '../../Components/ProfileAside';
+import * as S from './style';
 
 export const UserLayout = ({ children, lateral }) => {
   return (
@@ -10,7 +10,7 @@ export const UserLayout = ({ children, lateral }) => {
       <S.MainContainer>
         <S.Container>
           <Col md={3}>
-            <Profile />
+            <ProfileAside />
           </Col>
           <Col md={6}>{children}</Col>
           <Col md={3}>{lateral}</Col>
