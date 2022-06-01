@@ -1,11 +1,11 @@
-
-import Layout from '../../Layout'
-
+import { url } from '../../api';
+import Upload from '../../Components/Cloudinary';
+import Layout from '../../Layout';
 
 export const ProfilePage = () => {
   return (
-    <Layout >
-      
+    <Layout>
+      <Upload url={url.uploadImageUser} />
     </Layout>
   );
 };
