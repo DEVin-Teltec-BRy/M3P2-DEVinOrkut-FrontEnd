@@ -9,7 +9,7 @@ import Layout from "../../Layout";
 import { Lateral } from "../Communities"
 
 export const FriendshipRequestPage = () => {
-    const [friendshipRequests, setFriendshipRequests] = useState([]);
+    const [friendRequest, setFriendRequest] = useState([]);
     const [total, setTotal] = useState(0);
     const { loading, error, data } = useQuery(GET_FRIENDSHIP_REQUEST, {
       variables: { userId: process.env.REACT_APP_USER_ID },
@@ -19,7 +19,7 @@ export const FriendshipRequestPage = () => {
       if (data) {
         const { user: { friendRequest } } = data;
         setTotal(friendRequest.length);
-        setFriendshipRequests(friendRequest);
+        setFriendRequest(friendRequest);
     }
     }, [data]);
   return (
@@ -27,7 +27,7 @@ export const FriendshipRequestPage = () => {
     {loading && <p>Loading...</p>}
     {error && <p>Erro ao carregar as solicitações :(</p>}
       <CardMain title="Solicitações Pendentes" count={total} pagination={<Pagination />}>
-        {friendshipRequests && friendshipRequests.map(({ id, fullName }, key) => (
+        {friendRequest && friendRequest.map(({ id, fullName }, key) => (
             <FriendshipRequest
                 key={key}
                 round={true}
