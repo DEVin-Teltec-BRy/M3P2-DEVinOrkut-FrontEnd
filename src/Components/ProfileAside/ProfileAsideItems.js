@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaUserCircle, FaArchive, FaCamera, FaComment } from 'react-icons/fa';
 import { Nav } from 'react-bootstrap';
-import Button from '../Button';
+import { NewButtonLink } from '../Button';
 
 const ProfileAsideItems = ({
   name,
@@ -20,13 +20,13 @@ const ProfileAsideItems = ({
         <li>{local}</li>
       </ul>
       <Nav className="menu-links">
-        <Button to="/" icon={<FaUserCircle />} name="Perfil" />
-        <Button to="/friends" icon={<FaComment />} name="Recados" />
-        <Button to="/communities" icon={<FaCamera />} name="Fotos" />
-        <Button to="/" icon={<FaArchive />} name="Depoimentos" />
+        <NewButtonLink to="/" icon={<FaUserCircle />} name="Perfil" />
+        <NewButtonLink to="/friends" icon={<FaComment />} name="Recados" />
+        <NewButtonLink to="/communities" icon={<FaCamera />} name="Fotos" />
+        <NewButtonLink to="/" icon={<FaArchive />} name="Depoimentos" />
       </Nav>
       <div className="edit-profile">
-        <a href="#">Editar Perfil</a>
+        <a href="/">Editar Perfil</a>
       </div>
     </>
   );
