@@ -14,11 +14,10 @@ import { useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
 
 export default function ResetPassword() {
-  const [ChangePassword, { data, loading, erro }] = useMutation(RESET_PASS);
+  const [ChangePassword, { data, loading }] = useMutation(RESET_PASS);
   const match = useParams();
   const token = match.token;
   
-  console.log(data)
   const { handleSubmit, handleChange, values, touched, errors, handleBlur } =
     useFormik({
       initialValues: {
