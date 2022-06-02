@@ -1,31 +1,31 @@
-import React from "react";
+import React from 'react';
 import {
   StyledBackground,
   StyledFormCard,
   StyledInput,
-} from "../SendResetPassEmail/style";
-import Logo from "../../Assets/images/Title.svg";
-import { LOGIN } from "../../Graphql/Mutations";
-import { Col } from "react-bootstrap";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { useMutation } from "@apollo/client";
-import { useNavigate } from "react-router-dom";
+} from '../SendResetPassEmail/style';
+import Logo from '../../Assets/images/Title.svg';
+import { LOGIN_MUTATION } from '../../Graphql/Mutations/index';
+import { Col } from 'react-bootstrap';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { useMutation } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
 export default function Login() {
   const navigate = useNavigate();
-  let [Login, { data, loading, error }] = useMutation(LOGIN);
+  let [Login, { data, loading, error }] = useMutation(LOGIN_MUTATION);
 
   const { handleSubmit, handleChange, values, touched, errors, handleBlur } =
     useFormik({
       initialValues: {
-        email: "",
-        password: "",
+        email: '',
+        password: '',
       },
       validationSchema: Yup.object({
         email: Yup.string()
-          .email("Formato de email inválido")
-          .required("Email é obrigatório"),
-        password: Yup.string().required("Senha é obrigatória"),
+          .email('Formato de email inválido')
+          .required('Email é obrigatório'),
+        password: Yup.string().required('Senha é obrigatória'),
       }),
       onSubmit: async ({ email, password }) => {
         try {
@@ -54,9 +54,9 @@ export default function Login() {
     );
   if (data)
     return (
-      localStorage.setItem("Token", data.login.token),
+      localStorage.setItem('Token', data.login.token),
       setTimeout(() => {
-        navigate("/");
+        navigate('/');
       }, 2000),
       (
         <StyledBackground>
@@ -104,9 +104,9 @@ export default function Login() {
             <p>{errors.password}</p>
           ) : null}
         </div>
-        <StyledInput value="Enviar" type={"submit"} />
+        <StyledInput value="Enviar" type={'submit'} />
         {error ? (
-          <p style={{ color: "yellow", fontWeight: "bold" }}>
+          <p style={{ color: 'yellow', fontWeight: 'bold' }}>
             Credenciais inválidas
           </p>
         ) : null}
