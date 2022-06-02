@@ -1,5 +1,4 @@
 import { useMutation } from "@apollo/client";
-import { useEffect } from "react";
 import { useData } from "../../Context/dataContext";
 import { ACCEPT_FRIENDSHIP_REQUEST, REJECT_FRIENDSHIP_REQUEST } from "../../Graphql/Mutations/FriendshipMutations";
 import * as S from "./cardFrienshipRequest.style";
@@ -8,11 +7,6 @@ const FriendshipRequest = ({ requesterId, text, src }) => {
   const { user } = useData()
   const [ACCEPTREQUEST] = useMutation(ACCEPT_FRIENDSHIP_REQUEST)
   const [REFUSEFRIENDSHIP] = useMutation( REJECT_FRIENDSHIP_REQUEST)
-  useEffect(() => {
-    if (user) {
-      return;
-    }
-  }, [user])
   return (
     <S.CardFrienshipRequest>
       <S.FriendPresenter>

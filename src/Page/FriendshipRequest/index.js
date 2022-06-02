@@ -24,10 +24,10 @@ export const FriendshipRequestPage = () => {
 
   return (
     <Layout lateral={<Lateral />}>
-      <CardMain title="Solicitações Pendentes" count={friendRequest.length} pagination={<Pagination />}>
+      <CardMain title="Solicitações Pendentes" count={friendRequest.length} pagination={<Pagination nro={friendRequest.length === 0 ? 1: friendRequest.length}/>}>
         {loading && <p>Carregando...</p>}
         {error && <p>Erro ao carregar solicitações</p>}
-        {friendRequest.length > 0  && friendRequest.map(({ id, fullName }, key) => (
+        {friendRequest.length > 0 ? friendRequest.map(({ id, fullName }, key) => (
           <FriendshipRequest
               key={key}
               round={true}
@@ -35,7 +35,7 @@ export const FriendshipRequestPage = () => {
               text={fullName}
               requesterId={id}
               src="https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg" />
-        ))}
+        )) : (<p>Nenhuma solicitação pendente</p>)}
       </CardMain>
     </Layout>
   );
