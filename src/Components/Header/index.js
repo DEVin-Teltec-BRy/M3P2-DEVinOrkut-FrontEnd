@@ -3,7 +3,7 @@ import { FaUserCircle, FaUserFriends, FaThLarge } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { InputSearch } from "../InputSearch";
 import { NewButtonLink } from "./../Button";
-import Logo from '../../Assets/images/Title.svg'
+import Logo from "../../Assets/images/Title.svg";
 import * as S from "./style";
 import { useData } from "../../Context/dataContext";
 import { useEffect, useState } from "react";
