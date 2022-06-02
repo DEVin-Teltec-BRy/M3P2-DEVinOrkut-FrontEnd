@@ -46,7 +46,7 @@ const DataProvider = ({ children }) => {
   };
   useEffect(() => {
     setUser({ ...user, id: process.env.REACT_APP_USER_ID });
-  }, []);
+  }, [user, setUser]);
   const data = {
     user,
     updateUser,

@@ -8,6 +8,11 @@ const FriendshipRequest = ({ requesterId, text, src }) => {
   const { user } = useData()
   const [ACCEPTREQUEST] = useMutation(ACCEPT_FRIENDSHIP_REQUEST)
   const [REFUSEFRIENDSHIP] = useMutation( REJECT_FRIENDSHIP_REQUEST)
+  useEffect(() => {
+    if (user) {
+      return;
+    }
+  }, [user])
   return (
     <S.CardFrienshipRequest>
       <S.FriendPresenter>

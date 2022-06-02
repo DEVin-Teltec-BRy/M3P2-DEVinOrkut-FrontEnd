@@ -20,7 +20,7 @@ export const FriendshipRequestPage = () => {
       const { user: { friendRequest } } = data;
       updateUser({ friendRequest });
   }
-  }, [data]);
+  }, [data, updateUser]);
 
   return (
     <Layout lateral={<Lateral />}>
