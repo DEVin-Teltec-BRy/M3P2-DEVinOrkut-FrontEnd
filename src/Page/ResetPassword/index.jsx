@@ -1,6 +1,7 @@
 import React from "react";
 import {
   StyledBackground,
+  StyledErrorMessage,
   StyledFormCard,
   StyledInput,
 } from "../SendResetPassEmail/style";
@@ -13,10 +14,11 @@ import { useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
 
 export default function ResetPassword() {
-    const [ChangePassword, { data, loading, erro }] = useMutation(RESET_PASS);
-    const match = useParams()
-    const token = match.token
-   
+  const [ChangePassword, { data, loading, erro }] = useMutation(RESET_PASS);
+  const match = useParams();
+  const token = match.token;
+  
+  console.log(data)
   const { handleSubmit, handleChange, values, touched, errors, handleBlur } =
     useFormik({
       initialValues: {
@@ -25,40 +27,44 @@ export default function ResetPassword() {
       },
       validationSchema: Yup.object({
         newPass: Yup.string()
-          .min(8,"Mínimo 8 caracteres")
+          .min(8, "Mínimo 8 caracteres")
+          .matches(/^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+          'Senha deve ter ao menos uma letra maiúscula, uma minúscula, um número e um caracter especial')
           .required("Nova senha é obrigatório"),
         confirmPass: Yup.string()
           .min(8, "Mínimo 8 caracteres.")
-          .required("Confirmação é obrigatória"),
+          .required("Confirmação é obrigatória")
+          .oneOf([Yup.ref('newPass'),null],"Os campos devem ser iguais"),
       }),
       onSubmit: async ({ newPass, confirmPass }) => {
-      
-          ChangePassword({variables:{user:{
-            token:token,  
-            newPassword:newPass,
-            confirmPassword:confirmPass
-        }
-    }
-})
-        
+        ChangePassword({
+          variables: {
+            user: {
+              token: token,
+              newPassword: newPass,
+              confirmPassword: confirmPass,
+            },
+          },
+        });
       },
     });
 
- 
-  
   if (loading) return <h1>Loading</h1>;
+  
   if (data)
+    if(Object.hasOwn(data,'changePassword'))
     return (
+      
       <StyledBackground>
         <StyledFormCard>
           <Col md={6}>
             <img src={Logo} alt="DEVinOrkut" width="150" />
           </Col>
-          <h3>{data.changePassword}</h3>
+          <h4>{data.changePassword}</h4>
         </StyledFormCard>
       </StyledBackground>
     );
-  if (erro) return <h1>{erro}</h1>;
+
   return (
     <StyledBackground>
       <StyledFormCard onSubmit={handleSubmit}>
@@ -76,8 +82,8 @@ export default function ResetPassword() {
             placeholder="Nova senha"
             type="password"
           />
-          {touched.newPass && errors.newPass ? <p>{errors.newPass}</p> : null}
         </div>
+          {touched.newPass && errors.newPass ? <StyledErrorMessage>{errors.newPass}</StyledErrorMessage> : null}
         <div>
           <label htmlFor="email">Confirmar senha</label>
           <StyledInput
@@ -89,7 +95,7 @@ export default function ResetPassword() {
             type="password"
           />
           {touched.confirmPass && errors.confirmPass ? (
-            <p>{errors.confirmPass}</p>
+            <StyledErrorMessage>{errors.confirmPass}</StyledErrorMessage>
           ) : null}
         </div>
         <StyledInput value="Enviar" type={"submit"} />
