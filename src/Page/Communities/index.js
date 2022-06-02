@@ -1,21 +1,15 @@
 import { CardMain } from "../../Components/CardMain";
 import { CardSecondary } from "../../Components/CardSecondary";
-import { ModalComponent } from "../../Components/Modal";
 import { Pagination } from "../../Components/Pagination";
+import CommunitiesList from "../../Components/Modal/GetCommunity";
+import ModalComponent from "../../Components/Modal/CreateCommunity";
 import Layout from "../../Layout";
 
 export const CommunityPage = () => {
   return (
     <Layout lateral={<Lateral />}>
       <CardMain title="Comunidades" count={1000} pagination={<Pagination />}>
-        {[...Array(20)].map((_, key) => (
-          <CardSecondary
-            key={key}
-            size="md"
-            text="Full Bugs"
-            src="https://thumbs.dreamstime.com/b/o-homem-irado-na-camisa-vermelha-rasga-folha-de-papel-6582601.jpg"
-          />
-        ))}
+        <CommunitiesList />
         <ModalComponent />
       </CardMain>
     </Layout>
