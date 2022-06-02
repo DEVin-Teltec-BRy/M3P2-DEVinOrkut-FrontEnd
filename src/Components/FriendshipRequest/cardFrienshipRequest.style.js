@@ -35,4 +35,8 @@ export const Actions = styled.div`
 export const ButtonRequest = styled(Button)`
     background-color: ${({variant})=> variant === 'success'?'#00C851':'#D32F2F'};
     color: blue;
+    &:hover{
+        background-color: #FFF;
+        color: blue;
+    }
 `
