@@ -1,11 +1,5 @@
-
-import Layout from '../../Layout'
-
+import Layout from '../../Layout';
 
 export const ProfilePage = () => {
-  return (
-    <Layout >
-      
-    </Layout>
-  );
+  return <Layout>Perfil</Layout>;
 };
