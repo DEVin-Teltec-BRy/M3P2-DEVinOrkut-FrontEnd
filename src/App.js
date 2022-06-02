@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import Upload from './Components/Cloudinary';
 import { CommunityDetailPage } from "./Page/CommunityDetail";
 import Login from './Page/Login';
+import { UserPage } from './Page/User';
 
 
 const ContainerApp = styled.div`
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={<ProfilePage />} />
         <Route path="friends" element={<FriendPage />} />
         <Route path="communities" element={<CommunityPage />} />
+        <Route path="user/:id" element={<UserPage />} />
         <Route path="search/:param" element={<SearchPage />} />
         <Route path="solicitacoes" element={<FriendshipRequestPage />} />
         <Route path="sendresetpassemail" element={<SendResetPassEmail />} />
