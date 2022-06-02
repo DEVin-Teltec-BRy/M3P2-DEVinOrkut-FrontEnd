@@ -9,6 +9,7 @@ import SendResetPassEmail from './Page/SendResetPassEmail';
 import styled from 'styled-components';
 import Upload from './Components/Cloudinary';
 import { CommunityDetailPage } from "./Page/CommunityDetail";
+import Login from './Page/Login';
 
 
 const ContainerApp = styled.div`
@@ -28,6 +29,7 @@ function App() {
         <Route path="resetpass/:token" element={<ResetPassword />} />
         <Route path="upload" element={<Upload />} />
         <Route path="communities/:communityid" element={<CommunityDetailPage />} />
+        <Route path="login" element={<Login />} />
 
         {/*  
         <Route path="login" element={} />    

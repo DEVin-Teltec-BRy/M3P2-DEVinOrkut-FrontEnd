@@ -40,7 +40,7 @@ const Header = () => {
           <Dropdown.Item onClick={() => navigate("/")}>
             Meu perfil
           </Dropdown.Item>
-          <Dropdown.Item>Sair</Dropdown.Item>
+          <Dropdown.Item onClick={()=> navigate("/login")}>Sair</Dropdown.Item>
         </DropdownButton>
       </Col>
     </S.NavbarContainer>
