@@ -33,3 +33,10 @@ export const StyledInput = styled.input`
     }
 
 `
+
+export const StyledErrorMessage = styled.p`
+    color:yellow;
+    padding-left:15px;
+    padding-right:15px;
+    font-size:12px;
+`
