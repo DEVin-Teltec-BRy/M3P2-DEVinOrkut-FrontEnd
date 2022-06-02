@@ -1,9 +1,9 @@
-import { Form } from "react-bootstrap";
-import { NewButtom } from "../Button";
-import { AiOutlineSearch } from "react-icons/ai";
-import { FormSearch } from "./inputSearh.styled";
-import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
+import { Form } from 'react-bootstrap';
+import { NewButton } from '../Button';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { FormSearch } from './inputSearh.styled';
+import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 
 export const InputSearch = () => {
   const navigate = useNavigate();
@@ -13,14 +13,14 @@ export const InputSearch = () => {
     event.preventDefault();
     const param = refSearch.current.value;
     navigate(`/search/${param}`);
-    refSearch.current.value = "";
+    refSearch.current.value = '';
   };
   return (
     <FormSearch onSubmit={searchResult}>
       <Form.Control type="text" name="param" ref={refSearch} />
-      <NewButtom type="submit">
+      <NewButton type="submit">
         <AiOutlineSearch />
-      </NewButtom>
+      </NewButton>
     </FormSearch>
   );
 };
