@@ -5,12 +5,22 @@ import { InputSearch } from "../InputSearch";
 import { NewButtonLink } from "./../Button";
 import Logo from '../../Assets/images/Title.svg'
 import * as S from "./style";
+import { useData } from "../../Context/dataContext";
+import { useEffect, useState } from "react";
 
 const Header = () => {
+  const { user } = useData()
+  const [ totalRequest, setTotalRequest ] = useState(0)
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user.friendRequest) {
+      setTotalRequest(user.friendRequest.length)
+      }
+    }, [user.friendRequest])
   return (
     <S.MainContainer>
-    <S.NavbarContainer collapseOnSelect expand="lg">
+    <S.NavbarContainer collapseonselect="true" expand="lg">
       <Col md={2}>
         <img src={Logo} alt="DEVinOrkut" width="150" />
       </Col>
@@ -34,7 +44,7 @@ const Header = () => {
           title="elon.musk@devinorkut.com"
         >
         <Dropdown.Item onClick={() => navigate("/solicitacoes")}>
-            <S.BadgeNoty pill>10</S.BadgeNoty>
+            {totalRequest > 0 && <S.BadgeNoty pill>{totalRequest}</S.BadgeNoty>}
             Solicitações de amizade
           </Dropdown.Item>
           <Dropdown.Item onClick={() => navigate("/")}>
