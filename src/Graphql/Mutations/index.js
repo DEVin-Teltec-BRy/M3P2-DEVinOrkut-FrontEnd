@@ -18,7 +18,9 @@ export const LOGIN_MUTATION = gql`
       user {
         id
         fullName
-        emailfrindRequests {
+        email
+        friendRequest {
+          id
           fullName
         }
         communities

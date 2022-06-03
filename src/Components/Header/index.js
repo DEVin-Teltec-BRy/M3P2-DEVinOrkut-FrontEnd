@@ -10,7 +10,7 @@ import { useData } from "../../Context/dataContext";
 import { useEffect, useState } from "react";
 
 const Header = () => {
-  const { user } = useData()
+  const { user, handleLogout } = useData()
   const [ totalRequest, setTotalRequest ] = useState(0)
   const navigate = useNavigate();
 
@@ -55,7 +55,10 @@ const Header = () => {
           <Dropdown.Item onClick={() => navigate("/")}>
             Meu perfil
           </Dropdown.Item>
-          <Dropdown.Item onClick={()=> navigate("/login")}>Sair</Dropdown.Item>
+          <Dropdown.Item onClick={()=> {
+                handleLogout()
+                navigate("/")
+          }}>Sair</Dropdown.Item>
         </DropdownButton>
       </Col>
     </S.NavbarContainer>
