@@ -17,7 +17,7 @@ export const SearchPage = () => {
   });
 
   const { listUser, listComunities } = listResult;
-  const [getResults, { data, loading, error }] = useLazyQuery(
+  const [getResults, { data }] = useLazyQuery(
     SEARCH_USER_OR_COMMUNITIES
   );
 
