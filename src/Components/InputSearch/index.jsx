@@ -2,18 +2,16 @@ import { Form } from "react-bootstrap";
 import { NewButtom } from "../Button";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FormSearch } from "./inputSearh.styled";
-import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
 
-export const InputSearch = () => {
-  const navigate = useNavigate();
+export const InputSearch = ({setParam}) => {
   const refSearch = useRef(null);
 
   const searchResult = (event) => {
     event.preventDefault();
     const param = refSearch.current.value;
-    navigate(`/search/${param}`);
-    refSearch.current.value = "";
+    setParam(param)
+    refSearch.current.value =''
   };
   return (
     <FormSearch onSubmit={searchResult}>
