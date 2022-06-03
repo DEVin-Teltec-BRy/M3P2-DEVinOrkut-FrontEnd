@@ -1,14 +1,10 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useState } from "react";
 
 const DataContex = createContext();
 
 const initUser = {
   id: "",
+  token: "",
   fullName: "",
   email: "",
   cpf: "",
@@ -44,11 +40,15 @@ const DataProvider = ({ children }) => {
   const updateUser = (newData) => {
     setUser({ ...user, ...newData });
   };
+  const handleLogin = (newData) => {
+    console.log(newData);
+    setUser({ ...user, ...newData });
+  };
 
-  
   const data = {
     user,
     updateUser,
+    handleLogin,
   };
   return <DataContex.Provider value={data}>{children}</DataContex.Provider>;
 };

@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { CommunityPage } from '../Page/Communities';
 import { FriendPage } from '../Page/Friends';
 import { FriendshipRequestPage } from '../Page/FriendshipRequest';
@@ -11,6 +11,7 @@ import { CommunityDetailPage } from "../Page/CommunityDetail";
 import Login from '../Page/Login';
 import PrivateRoute from "./PrivateRoute";
 import CreateUser from "../Page/CreateUser";
+import { UserPage } from "../Page/User";
 
 const AppRoutes = () => (
     <BrowserRouter>
@@ -46,6 +47,14 @@ const AppRoutes = () => (
             <Route path="register"
                     element={<PrivateRoute redirectTo='/login'>
                                 <CreateUser />
+                            </PrivateRoute>} />
+            <Route path="perfil"
+                    element={<PrivateRoute redirectTo='/login'>
+                                <CreateUser />
+                            </PrivateRoute>} />
+            <Route path="user/:id" 
+                    element={<PrivateRoute redirectTo='/login'>
+                                <UserPage />
                             </PrivateRoute>} />
             <Route path="resetpass/:token" element={<ResetPassword />} />
             <Route path="sendresetpassemail" element={<SendResetPassEmail />} />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   StyledBackground,
   StyledFormCard,
@@ -11,9 +11,18 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
+import { useData } from '../../Context/dataContext';
+
 export default function Login() {
+  const { user, handleLogin } = useData()
   const navigate = useNavigate();
   let [Login, { data, loading, error }] = useMutation(LOGIN_MUTATION);
+
+  useEffect(() => {
+    if (user.token) {
+      localStorage.setItem('Token', user.token);
+    }
+  }, [user.token])
 
   const { handleSubmit, handleChange, values, touched, errors, handleBlur } =
     useFormik({
@@ -29,12 +38,16 @@ export default function Login() {
       }),
       onSubmit: async ({ email, password }) => {
         try {
-          await Login({
+          const response = await Login({
             variables: {
               email: email,
               password: password,
             },
           });
+          const { data } = response;
+          const { token, user } = data.login;
+          user.token = token
+          handleLogin(user)
         } catch (error) {
           console.log(error);
         }
