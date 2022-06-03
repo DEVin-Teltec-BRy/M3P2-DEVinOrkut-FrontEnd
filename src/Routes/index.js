@@ -10,6 +10,7 @@ import Upload from '../Components/Cloudinary';
 import { CommunityDetailPage } from "../Page/CommunityDetail";
 import Login from '../Page/Login';
 import PrivateRoute from "./PrivateRoute";
+import CreateUser from "../Page/CreateUser";
 
 const AppRoutes = () => (
     <BrowserRouter>
@@ -41,6 +42,10 @@ const AppRoutes = () => (
             <Route path="communities/:communityid" 
                     element={<PrivateRoute redirectTo='/login'>
                                 <CommunityDetailPage />
+                            </PrivateRoute>} />
+            <Route path="register"
+                    element={<PrivateRoute redirectTo='/login'>
+                                <CreateUser />
                             </PrivateRoute>} />
             <Route path="resetpass/:token" element={<ResetPassword />} />
             <Route path="sendresetpassemail" element={<SendResetPassEmail />} />
