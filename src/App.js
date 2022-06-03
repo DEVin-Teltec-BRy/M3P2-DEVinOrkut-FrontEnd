@@ -1,3 +1,4 @@
+
 import { Routes, Route } from 'react-router-dom';
 import { CommunityPage } from './Page/Communities';
 import { FriendPage } from './Page/Friends';
@@ -13,6 +14,11 @@ import CreateUser from './Page/CreateUser';
 import Login from './Page/Login';
 
 
+import styled from 'styled-components';
+import AppRoutes from './Routes';
+
+
+
 const ContainerApp = styled.div`
   margin: auto;
 `;
@@ -20,6 +26,7 @@ const ContainerApp = styled.div`
 function App() {
   return (
     <ContainerApp>
+    
       <Routes>
         <Route path="/" element={<ProfilePage />} />
         <Route path="friends" element={<FriendPage />} />
@@ -44,6 +51,9 @@ function App() {
         <Route path="profile" element={} />     
         */}
       </Routes>
+
+      <AppRoutes/>
+
     </ContainerApp>
   );
 }

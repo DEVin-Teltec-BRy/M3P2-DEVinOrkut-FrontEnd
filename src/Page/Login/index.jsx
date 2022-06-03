@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   StyledBackground,
   StyledFormCard,
@@ -11,6 +11,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
+
 import { BootstrapCarousel } from '../../Components/Carousel/Carousel';
 export default function Login() {
   
@@ -21,6 +22,21 @@ export default function Login() {
     "A mais nostálgica rede social da década está de volta",
     " Tudo para que você possa se conectar com os seus amigos"]
   
+
+import { useData } from '../../Context/dataContext';
+
+export default function Login() {
+  const { user, handleLogin } = useData()
+  const navigate = useNavigate();
+  let [Login, { data, loading, error }] = useMutation(LOGIN_MUTATION);
+
+  useEffect(() => {
+    if (user.token) {
+      localStorage.setItem('Token', user.token);
+    }
+  }, [user.token])
+
+
   const { handleSubmit, handleChange, values, touched, errors, handleBlur } =
     useFormik({
       initialValues: {
@@ -34,16 +50,16 @@ export default function Login() {
         password: Yup.string().required('Senha é obrigatória'),
       }),
       onSubmit: async ({ email, password }) => {
-        try {
-          await Login({
+          const response = await Login({
             variables: {
               email: email,
               password: password,
             },
           });
-        } catch (error) {
-          console.log(error);
-        }
+          const { data } = response;
+          const { token, user } = data.login;
+          user.token = token
+          handleLogin(user)
       },
     });
 
@@ -116,8 +132,8 @@ export default function Login() {
         </div>
         <StyledInput value="Enviar" type={'submit'} />
         {error ? (
-          <p style={{ color: 'yellow', fontWeight: 'bold' }}>
-            Credenciais inválidas
+          <p style={{ color: 'yellow', fontWeight: 'bold', textAlign: 'center' }}>
+            {error.message}
           </p>
           ) : null}
           

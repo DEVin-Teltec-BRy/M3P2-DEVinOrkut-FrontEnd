@@ -8,7 +8,7 @@ export const CardMain = ({
   count,
   bg,
   toAll,
-  pagination, center=true
+  pagination, center=true, column
 }) => {
   return (
     <CardContainer bg={bg}>
@@ -19,7 +19,7 @@ export const CardMain = ({
         </Card.Header>
       )}
 
-      <CardBody center={center ? "true" : ""}>{children}</CardBody>
+      <CardBody column={column ? 'true':''} center={center ? "true" : ""}>{children}</CardBody>
       {toAll && (
         <Card.Footer>
           <Link to={`/${toAll}`}>Ver todos</Link>
