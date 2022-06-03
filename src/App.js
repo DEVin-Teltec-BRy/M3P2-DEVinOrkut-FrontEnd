@@ -25,7 +25,7 @@ function App() {
         <Route path="friends" element={<FriendPage />} />
         <Route path="communities" element={<CommunityPage />} />
         <Route path="user/:id" element={<UserPage />} />
-        <Route path="search/:param" element={<SearchPage />} />
+        <Route path="search/" element={<SearchPage />} />
         <Route path="solicitacoes" element={<FriendshipRequestPage />} />
         <Route path="sendresetpassemail" element={<SendResetPassEmail />} />
         <Route path="resetpass/:token" element={<ResetPassword />} />
