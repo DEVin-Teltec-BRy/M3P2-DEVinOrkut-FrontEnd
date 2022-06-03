@@ -10,7 +10,6 @@ import styled from 'styled-components';
 import Upload from './Components/Cloudinary';
 import { CommunityDetailPage } from './Page/CommunityDetail';
 import CreateUser from './Page/CreateUser';
-
 import Login from './Page/Login';
 
 
@@ -35,7 +34,8 @@ function App() {
           element={<CommunityDetailPage />}
         />
         <Route path="register" element={<CreateUser />} />
-        <Route path="login" element={<Login />} />
+        <Route path="login" element={<Login/> } />
+        
 
 
         {/*  
