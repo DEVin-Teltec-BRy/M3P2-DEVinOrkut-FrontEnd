@@ -1,8 +1,10 @@
+
 import { Form } from "react-bootstrap";
 import { NewButtom } from "../Button";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FormSearch } from "./inputSearh.styled";
 import { useRef } from "react";
+
 
 export const InputSearch = ({setParam}) => {
   const refSearch = useRef(null);
@@ -16,9 +18,9 @@ export const InputSearch = ({setParam}) => {
   return (
     <FormSearch onSubmit={searchResult}>
       <Form.Control type="text" name="param" ref={refSearch} />
-      <NewButtom type="submit">
+      <NewButton type="submit">
         <AiOutlineSearch />
-      </NewButtom>
+      </NewButton>
     </FormSearch>
   );
 };

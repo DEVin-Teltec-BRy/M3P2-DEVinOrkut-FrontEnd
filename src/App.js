@@ -8,7 +8,9 @@ import { SearchPage } from './Page/Search';
 import SendResetPassEmail from './Page/SendResetPassEmail';
 import styled from 'styled-components';
 import Upload from './Components/Cloudinary';
-import { CommunityDetailPage } from "./Page/CommunityDetail";
+import { CommunityDetailPage } from './Page/CommunityDetail';
+import CreateUser from './Page/CreateUser';
+
 import Login from './Page/Login';
 import { UserPage } from './Page/User';
 
@@ -30,8 +32,13 @@ function App() {
         <Route path="sendresetpassemail" element={<SendResetPassEmail />} />
         <Route path="resetpass/:token" element={<ResetPassword />} />
         <Route path="upload" element={<Upload />} />
-        <Route path="communities/:communityid" element={<CommunityDetailPage />} />
+        <Route
+          path="communities/:communityid"
+          element={<CommunityDetailPage />}
+        />
+        <Route path="register" element={<CreateUser />} />
         <Route path="login" element={<Login />} />
+
 
         {/*  
         <Route path="login" element={} />    

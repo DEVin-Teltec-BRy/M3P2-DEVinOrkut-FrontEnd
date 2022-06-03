@@ -1,5 +1,11 @@
 import React from 'react';
-import { FaUserCircle, FaArchive, FaCamera, FaComment } from 'react-icons/fa';
+import {
+  FaUserCircle,
+  FaArchive,
+  FaCamera,
+  FaComment,
+  FaRegEdit,
+} from 'react-icons/fa';
 import { Nav } from 'react-bootstrap';
 import { NewButtonLink } from '../Button';
 
@@ -26,7 +32,9 @@ const ProfileAsideItems = ({
         <NewButtonLink to="/" icon={<FaArchive />} name="Depoimentos" />
       </Nav>
       <div className="edit-profile">
-        <a href="/">Editar Perfil</a>
+        <a href="/">
+          <FaRegEdit />
+        </a>
       </div>
     </>
   );
