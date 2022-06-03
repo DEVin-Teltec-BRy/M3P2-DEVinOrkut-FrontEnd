@@ -1,29 +1,45 @@
 import { BoxContainer } from "../../Components/Box";
 import Layout from "../../Layout";
-import { ContentInfo, ProfileContent } from "./profile.style";
-import { AiOutlineCamera } from "react-icons/ai";
+import { ContentInfo, ProfileContent } from "../Profile/profile.style";
+import {
+  AiOutlineCamera,
+  AiOutlineCheckSquare,
+  AiOutlineUserAdd,
+} from "react-icons/ai";
 import { BsChatLeft } from "react-icons/bs";
 import { FiUsers } from "react-icons/fi";
-import { LateralProfile } from "./Lateral";
+import { LateralProfile } from "../Profile/Lateral";
 import { CarrucelFotos, ItemCarrucel } from "../../Components/CarrucelFotos";
+import { NewButton } from "../../Components/Button";
 import { GetStart } from "../../Components/Stars";
 
-export const ProfilePage = () => {
+export const UserPage = () => {
+  const isConected = false;
+
   return (
     <Layout lateral={<LateralProfile />}>
       <ProfileContent>
         <h1>Elon Musk</h1>
 
+        <NewButton bg="secondary" size="sm">
+          {isConected ? (
+            <AiOutlineCheckSquare size={20} />
+          ) : (
+            <AiOutlineUserAdd size={20} />
+          )}
+          {isConected ? " Conectados" : " Conectar"}
+        </NewButton>
+
         <ContentInfo border>
           <BoxContainer title="Recados">
-            <BsChatLeft size={20} /> 1.1 M
+            <BsChatLeft /> 1.1 M
           </BoxContainer>
 
           <BoxContainer title="Fotos">
-            <AiOutlineCamera size={20} /> 104
+            <AiOutlineCamera /> 104
           </BoxContainer>
           <BoxContainer title="Fãs ">
-            <FiUsers size={20} /> 201 M
+            <FiUsers /> 201 M
           </BoxContainer>
           <BoxContainer title="Confiavel">
             <GetStart type="Bom" />

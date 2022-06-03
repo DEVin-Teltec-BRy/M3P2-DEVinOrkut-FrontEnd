@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
     :root {
@@ -7,6 +7,7 @@ export const GlobalStyles = createGlobalStyle`
         --pink: #e01989;
         --white: #ffffff;
         --black: #000000;
+        --lemon: #DDD92A;
         --button: #c9d8eb;
         --button-hover: #f8fafd;
         --border-button: #6a6969;

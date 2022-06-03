@@ -1,7 +1,7 @@
-import { Button } from "react-bootstrap";
-import * as S from "./style";
+import { Button } from 'react-bootstrap';
+import * as S from './style';
 
-const NewButtonLink = ({ to, icon, name }) => {
+export const NewButtonLink = ({ to, icon, name }) => {
   return (
     <S.Navlink to={`${to}`}>
       <span>{icon}</span>
@@ -10,10 +10,8 @@ const NewButtonLink = ({ to, icon, name }) => {
   );
 };
 
-const NewButtom = ({ children, bg, size, type }) => (
-  <Button variant={bg} size={size} type={type ? type : "button"}>
+export const NewButton = ({ children, bg, size, type }) => (
+  <Button variant={bg} size={size} type={type ? type : 'button'}>
     {children}
   </Button>
 );
-
-export { NewButtom, NewButtonLink };
