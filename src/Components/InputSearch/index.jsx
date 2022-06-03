@@ -1,6 +1,6 @@
 
 import { Form } from "react-bootstrap";
-import { NewButtom } from "../Button";
+import { NewButton } from "../Button";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FormSearch } from "./inputSearh.styled";
 import { useRef } from "react";

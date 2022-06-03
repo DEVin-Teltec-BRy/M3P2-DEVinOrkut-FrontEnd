@@ -10,7 +10,7 @@ import { BsChatLeft } from "react-icons/bs";
 import { FiUsers } from "react-icons/fi";
 import { LateralProfile } from "../Profile/Lateral";
 import { CarrucelFotos, ItemCarrucel } from "../../Components/CarrucelFotos";
-import { NewButtom } from "../../Components/Button";
+import { NewButton } from "../../Components/Button";
 import { GetStart } from "../../Components/Stars";
 
 export const UserPage = () => {
@@ -21,14 +21,14 @@ export const UserPage = () => {
       <ProfileContent>
         <h1>Elon Musk</h1>
 
-        <NewButtom bg="secondary" size="sm">
+        <NewButton bg="secondary" size="sm">
           {isConected ? (
             <AiOutlineCheckSquare size={20} />
           ) : (
             <AiOutlineUserAdd size={20} />
           )}
           {isConected ? " Conectados" : " Conectar"}
-        </NewButtom>
+        </NewButton>
 
         <ContentInfo border>
           <BoxContainer title="Recados">
