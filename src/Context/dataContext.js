@@ -41,14 +41,18 @@ const DataProvider = ({ children }) => {
     setUser({ ...user, ...newData });
   };
   const handleLogin = (newData) => {
-    console.log(newData);
     setUser({ ...user, ...newData });
   };
+  const handleLogout = () => {
+    setUser(initUser);
+    localStorage.removeItem("Token");
+  }
 
   const data = {
     user,
     updateUser,
     handleLogin,
+    handleLogout,
   };
   return <DataContex.Provider value={data}>{children}</DataContex.Provider>;
 };

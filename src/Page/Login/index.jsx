@@ -37,7 +37,6 @@ export default function Login() {
         password: Yup.string().required('Senha é obrigatória'),
       }),
       onSubmit: async ({ email, password }) => {
-        try {
           const response = await Login({
             variables: {
               email: email,
@@ -48,9 +47,6 @@ export default function Login() {
           const { token, user } = data.login;
           user.token = token
           handleLogin(user)
-        } catch (error) {
-          console.log(error);
-        }
       },
     });
 
@@ -119,8 +115,8 @@ export default function Login() {
         </div>
         <StyledInput value="Enviar" type={'submit'} />
         {error ? (
-          <p style={{ color: 'yellow', fontWeight: 'bold' }}>
-            Credenciais inválidas
+          <p style={{ color: 'yellow', fontWeight: 'bold', textAlign: 'center' }}>
+            {error.message}
           </p>
         ) : null}
       </StyledFormCard>
