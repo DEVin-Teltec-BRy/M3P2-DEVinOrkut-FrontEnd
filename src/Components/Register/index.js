@@ -1,6 +1,7 @@
 import React from 'react';
 import CustomButton from '../UI/CustomButton';
 import { ButtonGroup } from '../UI/CustomButton/style';
+
 import StepFour from './Forms/StepFour';
 import StepOne from './Forms/StepOne';
 import StepThree from './Forms/StepThree';
