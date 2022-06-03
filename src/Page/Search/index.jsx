@@ -1,49 +1,87 @@
-import { useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
+import { useEffect, useState } from "react";
 
 import Layout from "../../Layout";
-import { CardMain } from "../../Components/CardMain";
+
 import { CardSecondary } from "../../Components/CardSecondary";
 import { SEARCH_USER_OR_COMMUNITIES } from "../../Graphql/Querys";
-import { useEffect, useState } from "react";
 import { Pagination } from "../../Components/Pagination";
+import { InputSearch } from "../../Components/InputSearch";
+import { LateralProfile } from "../Profile/Lateral";
+import { BoxSearch, Search } from "./search.styled";
 
 export const SearchPage = () => {
-  const { param } = useParams();
-  const { data } = useQuery(SEARCH_USER_OR_COMMUNITIES, {
-    variables: { param },
+  const [listResult, setListResult] = useState({
+    listUser: [],
+    listComunities: [],
   });
-  const [listResult, setListResult] = useState([]);
 
+  const { listUser, listComunities } = listResult;
+  const [getResults, { data }] = useLazyQuery(
+    SEARCH_USER_OR_COMMUNITIES
+  );
+
+  const refreshResult = (paramValue) => {
+    getResults({ variables: { param: paramValue } });
+    setListResult((prev) => ({ ...prev, param: paramValue }));
+  };
   useEffect(() => {
-    if (data) {
+    if (data?.searchParam) {
       const { searchParam } = data;
-      setListResult(searchParam);
+      let listUser = [];
+      let listComunities = [];
+      searchParam.forEach((item, i) => {
+        item.__typename === "User"
+          ? listUser.push(item)
+          : listComunities.push(item);
+      });
+      setListResult({ listUser, listComunities });
     }
   }, [data]);
 
   return (
-    <Layout centerCol={9}>
-      <CardMain
-        title={`Resultado para ${param}: `}
-        count={listResult?.length}
-        pagination={<Pagination />}
-      >
-        {listResult &&
-          listResult.map(({ __typename, fullName, name, logo }, key) => (
-            <CardSecondary
-              key={key}
-              round={__typename === "Community" ? null : true}
-              size={__typename === "Community" ? "md" : null}
-              text={__typename === "Community" ? name : fullName}
-              src={
-                logo
-                  ? logo
-                  : "https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
-              }
-            />
-          ))}
-      </CardMain>
+    <Layout lateral={<LateralProfile />}>
+      <Search count={listResult?.length} pagination={<Pagination />} column>
+        <div>
+          <h4>Buscar</h4>
+          <InputSearch setParam={refreshResult} />
+        </div>
+        <BoxSearch>
+          <h5>Perssoas</h5>
+          <div>
+            {listUser &&
+              listUser.map(({ fullName, logo }, key) => (
+                <CardSecondary
+                  key={key}
+                  text={fullName}
+                  src={
+                    logo
+                      ? logo
+                      : "https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
+                  }
+                />
+              ))}
+          </div>
+        </BoxSearch>
+        <BoxSearch>
+          <h5>Comunidades</h5>
+          <div>
+            {listComunities &&
+              listComunities.map(({ name, logo }, key) => (
+                <CardSecondary
+                  key={key}
+                  size="md"
+                  text={name}
+                  src={
+                    logo
+                      ? logo
+                      : "https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
+                  }
+                />
+              ))}
+          </div>
+        </BoxSearch>
+      </Search>
     </Layout>
   );
 };

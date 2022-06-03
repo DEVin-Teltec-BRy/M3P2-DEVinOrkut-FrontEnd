@@ -1,7 +1,8 @@
 import { Dropdown, DropdownButton, ButtonGroup, Col } from "react-bootstrap";
 import { FaUserCircle, FaUserFriends, FaThLarge } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { InputSearch } from "../InputSearch";
+// import { InputSearch } from "../InputSearch";
+import {AiOutlineSearch} from 'react-icons/ai'
 import { NewButtonLink } from "./../Button";
 import Logo from "../../Assets/images/Title.svg";
 import * as S from "./style";
@@ -24,7 +25,7 @@ const Header = () => {
       <Col md={2}>
         <img src={Logo} alt="DEVinOrkut" width="150" />
       </Col>
-      <Col md={5}>
+      <Col md={6}>
         <NewButtonLink to="/" icon={<FaUserCircle />} name="Perfil" />
         <NewButtonLink to="/friends" icon={<FaUserFriends />} name="Amigos" />
         <NewButtonLink
@@ -32,10 +33,14 @@ const Header = () => {
           icon={<FaThLarge />}
           name="Comunidades"
         />
+         
       </Col>
-      <Col md={4} >
-        <InputSearch />
-      </Col>
+     <Col md={2}>
+     <NewButtonLink
+          to="/search"
+          icon={<AiOutlineSearch size={20} />}
+        />
+     </Col>
       <Col >
         <DropdownButton
           as={ButtonGroup}

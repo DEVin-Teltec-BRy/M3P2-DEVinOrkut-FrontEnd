@@ -12,6 +12,7 @@ import { CommunityDetailPage } from './Page/CommunityDetail';
 import CreateUser from './Page/CreateUser';
 
 import Login from './Page/Login';
+import { UserPage } from './Page/User';
 
 
 const ContainerApp = styled.div`
@@ -25,7 +26,8 @@ function App() {
         <Route path="/" element={<ProfilePage />} />
         <Route path="friends" element={<FriendPage />} />
         <Route path="communities" element={<CommunityPage />} />
-        <Route path="search/:param" element={<SearchPage />} />
+        <Route path="user/:id" element={<UserPage />} />
+        <Route path="search/" element={<SearchPage />} />
         <Route path="solicitacoes" element={<FriendshipRequestPage />} />
         <Route path="sendresetpassemail" element={<SendResetPassEmail />} />
         <Route path="resetpass/:token" element={<ResetPassword />} />
