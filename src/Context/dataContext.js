@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 
 const DataContex = createContext();
 
@@ -42,10 +42,6 @@ const DataProvider = ({ children }) => {
   const updateUser = (newData) => {
     setUser({ ...user, ...newData });
   };
-
-  useEffect(() => {
-    // setUser({ ...user, id: process.env.REACT_APP_USER_ID });
-  }, [user, setUser]);
 
   const handleLogin = (newData) => {
     setUser({ ...user, ...newData });
