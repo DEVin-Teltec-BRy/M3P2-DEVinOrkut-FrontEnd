@@ -19,9 +19,14 @@ export const LOGIN_MUTATION = gql`
         id
         fullName
         email
+        profilePicture
+        imageUrl
+        gender
         friendRequest {
           id
           fullName
+          gender
+          profilePicture
         }
         communities {
           id
@@ -32,6 +37,9 @@ export const LOGIN_MUTATION = gql`
         friends {
           id
           fullName
+          profilePicture
+          gender
+          profilePicture
           imageUrl
         }
       }

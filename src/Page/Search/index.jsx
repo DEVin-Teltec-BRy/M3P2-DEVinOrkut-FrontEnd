@@ -47,7 +47,7 @@ export const SearchPage = () => {
           <InputSearch setParam={refreshResult} />
         </div>
         <BoxSearch>
-          <h5>Perssoas</h5>
+          <h5>Pessoas</h5>
           <div>
             {listUser &&
               listUser.map(({ fullName, logo }, key) => (

@@ -2,29 +2,32 @@ import { CardMain } from "../../../Components/CardMain";
 import { CardSecondary } from "../../../Components/CardSecondary";
 import { useData } from "../../../Context/dataContext";
 import { ContentLateral } from "./lateral.styled";
+import profileDefaultM from "../../../Assets/images/default-m.png";
+import profileDefaultF from "../../../Assets/images/default-f.png";
 
 export const LateralProfile = () => {
   const { user: { friends, communities } } = useData();
-
   return (
     <ContentLateral>
       <CardMain title="Amigos" count={friends.length} toAll='friends'>
-        {friends.map((_, key) => (
+        {friends.map((friend, key) => (
           <CardSecondary
+            friend={friend}
             key={key}
             round
-            text="Bill Gates"
-            src="https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
+            text={friend.fullName}
+            src={friend.profilePicture[friend.profilePicture.length -1 ] || friend.gender.substr(1) === 'M' ? profileDefaultM : profileDefaultF}
           />
         ))}
       </CardMain>
       <CardMain title="Comunidades" count={communities.length} toAll='communities'>
-        {communities.map((_, idx) => (
+        {communities.map((communitie, idx) => (
           <CardSecondary
+            communitie={communitie}
             size="md"
             key={idx}
-            text="Full Bugs"
-            src="https://thumbs.dreamstime.com/b/o-homem-irado-na-camisa-vermelha-rasga-folha-de-papel-6582601.jpg"
+            text={communitie.name}
+            src={communitie.logo}
           />
         ))}
       </CardMain>
