@@ -11,12 +11,12 @@ export const FriendPage = () => {
 
   return (
     <Layout lateral={<Lateral content={communities} title="Comunidades"/>}>
-      <CardMain title="Amigos" count={2000} pagination={<Pagination />}>
-        {friends.map((_, key) => (
+      <CardMain title="Amigos" count={friends.length} pagination={<Pagination />}>
+        {friends.map(({fullName}, key) => (
           <CardSecondary
             key={key}
             round
-            text="Bill Gates"
+            text={fullName}
             src="https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
           />
         ))}

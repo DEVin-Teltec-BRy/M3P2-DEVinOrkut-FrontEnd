@@ -4,11 +4,11 @@ import { CardSecondary } from "../CardSecondary";
 export const Lateral = ({content, title}) => {
     return (
       <CardMain title={title} count={content.length} toAll="friends">
-        {content.map((_, key) => (
+        {content.map(({fullName}, key) => (
           <CardSecondary
             round
             key={key}
-            text="Bill Gates"
+            text={fullName}
             src="https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
           />
         ))}
