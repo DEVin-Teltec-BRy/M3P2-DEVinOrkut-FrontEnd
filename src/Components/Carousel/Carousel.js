@@ -11,7 +11,7 @@ function BootstrapCarousel({ arrayString }) {
 
                     
 <Carousel.Item key={text}>
-    <h1>{ text }</h1>   
+    <h4>{ text }</h4>   
 </Carousel.Item>
   
   ))}

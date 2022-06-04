@@ -13,6 +13,7 @@ import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { BootstrapCarousel } from '../../Components/Carousel/Carousel';
 import { useData } from '../../Context/dataContext';
+import { LabLogo, PinkCard, LabLogoDiv } from './style';
 
 export default function Login() {
   const { user, handleLogin } = useData()
@@ -94,9 +95,7 @@ export default function Login() {
       
       <StyledFormCard onSubmit={handleSubmit}>
       
-        <Col md={6}>
-          <img src={Logo} alt="DEVinOrkut" width="150" />
-        </Col>
+      
         <h3>Fazer o Login</h3>
         <div>
           <label htmlFor="email">Email</label>
@@ -132,7 +131,14 @@ export default function Login() {
           ) : null}
           
       </StyledFormCard>
-      <BootstrapCarousel arrayString={ arrayString}/>
+     <PinkCard>
+      <LabLogoDiv> <LabLogo></LabLogo></LabLogoDiv>
+     
+          <img src={Logo} alt="DEVinOrkut" width="250" style={{marginBottom:"22%"}} />
+       
+     <BootstrapCarousel
+      arrayString={ arrayString}/>
+     </PinkCard>
     </StyledBackground>
     
   );

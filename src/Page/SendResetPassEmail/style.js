@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledBackground = styled.div`
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     width:100vw;
     height:100vh;
     justify-content:center;
@@ -10,17 +10,15 @@ export const StyledBackground = styled.div`
 
 `
 export const StyledFormCard = styled.form`
-    width:300px;
-    height:400px;
+    width:40vw;
+    height:100vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
     gap:10px;
-    background-color:var(--blue-header);
-    border-radius:8px;
-    box-shadow:0px 0px 15px 5px black;
-`
+    background-color:white;
+    `
 export const StyledInput = styled.input`
     width:200px;
     height:25px;
