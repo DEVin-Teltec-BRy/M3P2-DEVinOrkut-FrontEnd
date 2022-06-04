@@ -1,12 +1,9 @@
-
 import styled from 'styled-components';
 import AppRoutes from './Routes';
-
 
 const ContainerApp = styled.div`
   margin: auto;
 `;
-
 function App() {
   return (
     <ContainerApp>
@@ -14,5 +11,4 @@ function App() {
     </ContainerApp>
   );
 }
-
 export default App;

@@ -11,6 +11,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
+import { BootstrapCarousel } from '../../Components/Carousel/Carousel';
 import { useData } from '../../Context/dataContext';
 
 export default function Login() {
@@ -18,11 +19,17 @@ export default function Login() {
   const navigate = useNavigate();
   let [Login, { data, loading, error }] = useMutation(LOGIN_MUTATION);
 
+  const arrayString = ["Encontre seus velhos amigos!",
+  "A mais nostálgica rede social da década está de volta",
+  " Tudo para que você possa se conectar com os seus amigos"]
+
+
   useEffect(() => {
     if (user.token) {
       localStorage.setItem('Token', user.token);
     }
   }, [user.token])
+
 
   const { handleSubmit, handleChange, values, touched, errors, handleBlur } =
     useFormik({
@@ -77,12 +84,16 @@ export default function Login() {
             <h4>{data.login.user.fullName}</h4>
           </StyledFormCard>
         </StyledBackground>
+
       )
     );
 
   return (
+    
     <StyledBackground>
+      
       <StyledFormCard onSubmit={handleSubmit}>
+      
         <Col md={6}>
           <img src={Logo} alt="DEVinOrkut" width="150" />
         </Col>
@@ -118,8 +129,11 @@ export default function Login() {
           <p style={{ color: 'yellow', fontWeight: 'bold', textAlign: 'center' }}>
             {error.message}
           </p>
-        ) : null}
+          ) : null}
+          
       </StyledFormCard>
+      <BootstrapCarousel arrayString={ arrayString}/>
     </StyledBackground>
+    
   );
 }
