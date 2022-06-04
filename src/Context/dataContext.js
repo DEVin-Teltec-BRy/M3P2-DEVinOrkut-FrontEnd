@@ -42,7 +42,6 @@ const DataProvider = ({ children }) => {
   const updateUser = (newData) => {
     setUser({ ...user, ...newData });
   };
-
   const handleLogin = (newData) => {
     setUser({ ...user, ...newData });
   };
@@ -59,7 +58,6 @@ const DataProvider = ({ children }) => {
     category,
     setCategory,
   };
-
   return <DataContex.Provider value={data}>{children}</DataContex.Provider>;
 };
 const useData = () => {
