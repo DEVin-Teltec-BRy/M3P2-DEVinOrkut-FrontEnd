@@ -11,24 +11,18 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
-
 import { BootstrapCarousel } from '../../Components/Carousel/Carousel';
-export default function Login() {
-  
-  const navigate = useNavigate();
-  let [Login, { data, loading, error }] = useMutation(LOGIN_MUTATION);
-
-  const arrayString = ["Encontre seus velhos amigos!",
-    "A mais nostálgica rede social da década está de volta",
-    " Tudo para que você possa se conectar com os seus amigos"]
-  
-
 import { useData } from '../../Context/dataContext';
 
 export default function Login() {
   const { user, handleLogin } = useData()
   const navigate = useNavigate();
   let [Login, { data, loading, error }] = useMutation(LOGIN_MUTATION);
+
+  const arrayString = ["Encontre seus velhos amigos!",
+  "A mais nostálgica rede social da década está de volta",
+  " Tudo para que você possa se conectar com os seus amigos"]
+
 
   useEffect(() => {
     if (user.token) {

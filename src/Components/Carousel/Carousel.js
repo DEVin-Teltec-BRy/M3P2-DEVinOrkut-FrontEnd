@@ -10,7 +10,7 @@ function BootstrapCarousel({ arrayString }) {
                 { arrayString && arrayString.map((text) => ( 
 
                     
-<Carousel.Item>
+<Carousel.Item key={text}>
     <h1>{ text }</h1>   
 </Carousel.Item>
   
