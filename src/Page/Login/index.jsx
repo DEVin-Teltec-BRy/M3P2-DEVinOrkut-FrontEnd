@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import {
+  LoginBackground,
   StyledBackground,
   StyledFormCard,
   StyledInput,
+  StyledSubmit,
 } from '../SendResetPassEmail/style';
 import Logo from '../../Assets/images/Title.svg';
 import { LOGIN_MUTATION } from '../../Graphql/Mutations/index';
@@ -13,7 +15,8 @@ import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { BootstrapCarousel } from '../../Components/Carousel/Carousel';
 import { useData } from '../../Context/dataContext';
-import { LabLogo, PinkCard, LabLogoDiv } from './style';
+import { LabLogo, PinkCard, LabLogoDiv,LoginText,
+   LoginDescription,ForgotPass, SubmitDiv, LastLine, SendEmailModal, SendEmailForm } from './style';
 
 export default function Login() {
   const { user, handleLogin } = useData()
@@ -92,13 +95,18 @@ export default function Login() {
   return (
     
     <StyledBackground>
-      
-      <StyledFormCard onSubmit={handleSubmit}>
-      
-      
-        <h3>Fazer o Login</h3>
+    <LoginBackground>
+        <LoginText>Login</LoginText>
+        <LoginDescription>Bem-Vindo ao Orkut, por favor forneça suas credenciais nos campos abaixo para ter acesso a rede social.</LoginDescription>
+    <StyledFormCard onSubmit={handleSubmit}>
+  
         <div>
-          <label htmlFor="email">Email</label>
+        {error ? (
+          <p style={{ color: 'yellow', fontWeight: 'bold', textAlign: 'center' }}>
+            {error.message}
+          </p> 
+          ) : null}
+          <label htmlFor="email">E-mail</label>
           <StyledInput
             onBlur={handleBlur}
             onChange={handleChange}
@@ -110,7 +118,7 @@ export default function Login() {
           {touched.email && errors.email ? <p>{errors.email}</p> : null}
         </div>
         <div>
-          <label htmlFor="password">Confirmar senha</label>
+          <label htmlFor="password">Senha</label>
           <StyledInput
             onBlur={handleBlur}
             onChange={handleChange}
@@ -123,18 +131,24 @@ export default function Login() {
             <p>{errors.password}</p>
           ) : null}
         </div>
-        <StyledInput value="Enviar" type={'submit'} />
-        {error ? (
-          <p style={{ color: 'yellow', fontWeight: 'bold', textAlign: 'center' }}>
-            {error.message}
-          </p>
-          ) : null}
-          
+          <ForgotPass>esqueceu sua senha?</ForgotPass>
+       <SubmitDiv><span>  <input type="radio" name="remember" id="remeber" value="Lembre de mim"/><label htmlFor="remember">Lembre de mim</label></span> <StyledSubmit value="Entrar" type={'submit'} /></SubmitDiv>
+        
       </StyledFormCard>
+          <LastLine> <p>Não possui uma conta?   </p> <ForgotPass> Criar conta</ForgotPass> </LastLine>
+      <SendEmailModal>
+        <SendEmailForm>
+            <h2>Resetar senha</h2>
+            <p>Digite um e-mail válido associado a sua conta e nós iremos enviar um e-mail com instruções de como resetar a sua senha</p>
+            <label htmlFor="email">E-mail</label>
+          
+        </SendEmailForm>
+      </SendEmailModal>
+    </LoginBackground>
      <PinkCard>
       <LabLogoDiv> <LabLogo></LabLogo></LabLogoDiv>
      
-          <img src={Logo} alt="DEVinOrkut" width="250" style={{marginBottom:"22%"}} />
+          <img src={Logo} alt="DEVinOrkut" width="350" style={{marginBottom:"22%"}} />
        
      <BootstrapCarousel
       arrayString={ arrayString}/>
@@ -143,3 +157,7 @@ export default function Login() {
     
   );
 }
+
+
+
+
