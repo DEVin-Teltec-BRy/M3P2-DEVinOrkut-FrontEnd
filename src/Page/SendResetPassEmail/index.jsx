@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledInput, StyledLeave, StyledSubmitInput } from "./style";
+import { StyledInput,  StyledSubmitInput } from "./style";
 import { SEND_EMAIL } from "../../Graphql/Mutations";
 import { useFormik } from "formik";
 import * as Yup from "yup";
