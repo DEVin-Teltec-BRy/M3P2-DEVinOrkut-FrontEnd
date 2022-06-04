@@ -1,25 +1,17 @@
 import ProfileAsideItems from './ProfileAsideItems';
 import * as S from './style';
 import { useData } from '../../Context/dataContext';
+import profileDefaultF from '../../Assets/images/default-f.png';
+import profileDefaultM from '../../Assets/images/default-m.png';
 
 const Profile = () => {
   const { user } = useData();
-
-  const DUMMY = {
-    id: 'A1',
-    name: 'Elon Musk',
-    pictureProfile: '/assets/images/elon-musk.webp',
-    genre: 'Masculino',
-    relationship: 'Ex da Grimer',
-    local: 'Starbase, TX',
-  };
-
   return (
     <S.ProfileContainer>
       <ProfileAsideItems
         key={user.id}
         name={user.fullName}
-        pictureProfile={user.pictureProfile || DUMMY.pictureProfile}
+        pictureProfile={user.pictureProfile ? user.pictureProfile[0] : user.gender.substr(1).toUpperCase() === 'F' ? profileDefaultF : profileDefaultM}
         relationship={user.relationship}
         local={user.local}
       />

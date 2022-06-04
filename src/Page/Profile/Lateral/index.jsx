@@ -16,7 +16,7 @@ export const LateralProfile = () => {
             key={key}
             round
             text={friend.fullName}
-            src={friend.profilePicture[friend.profilePicture.length -1 ] || friend.gender.substr(1) === 'M' ? profileDefaultM : profileDefaultF}
+            src={friend.profilePicture[0] || friend.gender.substr(1).toUpperCase() === 'F' ? profileDefaultF : profileDefaultM}
           />
         ))}
       </CardMain>

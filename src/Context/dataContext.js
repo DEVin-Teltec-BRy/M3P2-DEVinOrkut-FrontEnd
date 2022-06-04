@@ -95,8 +95,7 @@ const DataProvider = ({ children }) => {
     handleLogin,
     handleLogout,
     category,
-    setCategory,
-    handleToken,
+    setCategory
   };
   return <DataContex.Provider value={data}>{children}</DataContex.Provider>;
 };

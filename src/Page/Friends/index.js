@@ -4,6 +4,9 @@ import { Lateral } from "../../Components/Lateral";
 import { Pagination } from "../../Components/Pagination";
 import { useData } from "../../Context/dataContext";
 import Layout from "../../Layout";
+import profileDefaultM from "../../Assets/images/default-m.png";
+import profileDefaultF from "../../Assets/images/default-f.png";
+
 
 
 export const FriendPage = () => {
@@ -12,12 +15,13 @@ export const FriendPage = () => {
   return (
     <Layout lateral={<Lateral content={communities} title="Comunidades"/>}>
       <CardMain title="Amigos" count={friends.length} pagination={<Pagination />}>
-        {friends.map(({fullName}, key) => (
+        {friends.map((friend, key) => (
           <CardSecondary
+            friend={friend}
             key={key}
             round
-            text={fullName}
-            src="https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
+            text={friend.fullName}
+            src={friend.profilePicture[0] || friend.gender.substr(1).toUpperCase() === 'F' ? profileDefaultF : profileDefaultM}
           />
         ))}
       </CardMain>
