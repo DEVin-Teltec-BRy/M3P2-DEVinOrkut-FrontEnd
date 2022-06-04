@@ -40,12 +40,9 @@ const DataProvider = ({ children }) => {
   const [category, setCategory] = useState("");
 
   const updateUser = (newData) => {
+    console.log(newData)
     setUser({ ...user, ...newData });
   };
-
-  useEffect(() => {
-    // setUser({ ...user, id: process.env.REACT_APP_USER_ID });
-  }, [user, setUser]);
 
   const handleLogin = (newData) => {
     setUser({ ...user, ...newData });

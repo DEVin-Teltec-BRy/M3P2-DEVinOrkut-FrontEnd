@@ -46,7 +46,7 @@ const Header = () => {
           as={ButtonGroup}
           align="end"
           className='menu'
-          title="elon.musk@devinorkut.com"
+          title={user.email}
         >
         <Dropdown.Item onClick={() => navigate("/solicitacoes")}>
             {totalRequest > 0 && <S.BadgeNoty pill>{totalRequest}</S.BadgeNoty>}
