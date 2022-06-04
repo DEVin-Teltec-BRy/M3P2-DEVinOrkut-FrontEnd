@@ -85,6 +85,16 @@ export const SendEmailForm = styled.form`
   flex-direction: column;
   gap: 20px;
   background-color: white;
+  >button {
+    background: var(--pink);
+    border: 1px solid var(--pink);
+    min-width: 5rem;
+    :hover {
+      background: var(--pink);
+      opacity: 0.7;
+      border: 1px solid var(--pink);
+    }
+  }
 `;
 export const ModalStripe = styled.div`
   padding: 20px;

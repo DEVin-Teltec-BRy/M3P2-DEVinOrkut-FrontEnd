@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { useMutation } from "@apollo/client";
 import { SendEmailForm } from "../Login/style";
 import { NewInputForm } from "../../Components/Input";
+import { NewButton } from "../../Components/Button";
 export default function SendResetPassEmail() {
   const { handleSubmit, handleChange, values, touched, errors, handleBlur } =
     useFormik({
@@ -48,7 +49,9 @@ export default function SendResetPassEmail() {
         isValid={touched.email && !errors.email}
         error={errors.email}
       />
-      <StyledSubmitInput value="Enviar instruções" type={"submit"} />
+      <NewButton type="submit">
+      Enviar instruções
+      </NewButton>
     </SendEmailForm>
   );
 }

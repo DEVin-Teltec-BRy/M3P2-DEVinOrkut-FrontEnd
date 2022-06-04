@@ -58,8 +58,6 @@ export const StyledSubmitInput = styled.input`
   color: white;
   font-weight: bold;
   :hover {
-    background-color: white;
-    color: #e01989;
     border: 1px solid #e01989;
   }
 `;
@@ -76,8 +74,7 @@ export const StyledLeave = styled.button`
 
   font-weight: bold;
   :hover {
-    background-color: #e01989;
-    color: white;
+    opacity: 0.7;
   }
 `;
 export const StyledSubmit = styled.input`
