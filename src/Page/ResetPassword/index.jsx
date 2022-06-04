@@ -2,7 +2,6 @@ import React from "react";
 import {
   LoginBackground,
   StyledBackground,
-  StyledErrorMessage,
   StyledFormCard,
   StyledInput,
 } from "../SendResetPassEmail/style";

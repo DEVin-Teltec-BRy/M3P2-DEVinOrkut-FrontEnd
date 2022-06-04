@@ -34,7 +34,6 @@ export default function Login() {
   const { user, handleLogin } = useData();
   const navigate = useNavigate();
   const [modal, setModal] = useState("none");
-  console.log(modal);
   let [Login, { data, loading, error }] = useMutation(LOGIN_MUTATION);
 
   const arrayString = [
