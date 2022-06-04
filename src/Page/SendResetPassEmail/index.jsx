@@ -1,5 +1,4 @@
 import React from "react";
-import { StyledInput, StyledSubmitInput } from "./style";
 import { SEND_EMAIL } from "../../Graphql/Mutations";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -8,7 +7,7 @@ import { SendEmailForm } from "../Login/style";
 import { NewInputForm } from "../../Components/Input";
 import { NewButton } from "../../Components/Button";
 export default function SendResetPassEmail() {
-  const { handleSubmit, handleChange, values, touched, errors, handleBlur } =
+  const { handleSubmit, handleChange, values, touched, errors } =
     useFormik({
       initialValues: {
         email: "",

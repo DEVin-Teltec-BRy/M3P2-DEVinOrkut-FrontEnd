@@ -3,8 +3,6 @@ import {
   LoginBackground,
   StyledBackground,
   StyledFormCard,
-  StyledInput,
-  StyledSubmit,
   StyledLeave,
 } from "../SendResetPassEmail/style";
 import SendResetPassEmail from "../SendResetPassEmail";
@@ -37,7 +35,7 @@ export default function Login() {
   const { user, handleLogin } = useData();
   const navigate = useNavigate();
   const [modal, setModal] = useState("none");
-  let [Login, { data, loading, error }] = useMutation(LOGIN_MUTATION);
+  let [Login, { data, loading }] = useMutation(LOGIN_MUTATION);
 
   const arrayString = [
     "Encontre seus velhos amigos!",
@@ -51,7 +49,7 @@ export default function Login() {
     }
   }, [user.token]);
 
-  const { handleSubmit, handleChange, values, touched, errors, handleBlur } =
+  const { handleSubmit, handleChange, values, touched, errors } =
     useFormik({
       initialValues: {
         email: "",
