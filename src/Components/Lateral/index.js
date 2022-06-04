@@ -4,7 +4,6 @@ import profileDefaultM from "../../Assets/images/default-m.png";
 import profileDefaultF from "../../Assets/images/default-f.png";
 
 export const Lateral = ({content, title}) => {
-  console.log(content)
     return (
       <CardMain title={title} count={content.length} toAll="friends">
         {content.map((friend, key) => (
