@@ -1,4 +1,5 @@
 import React from 'react';
+import ProgressSteps from '../../UI/ProgressSteps';
 
 import { stepTwoData } from './inputData';
 import InputForm from './InputForm';
@@ -6,6 +7,11 @@ import InputForm from './InputForm';
 const StepTwo = () => {
   return (
     <>
+      <ProgressSteps
+        activeOne={true}
+        activeTwo={true}
+        style={{ width: '33%' }}
+      />
       {stepTwoData.map((data) => (
         <InputForm
           element={data.element}

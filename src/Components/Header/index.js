@@ -1,7 +1,8 @@
 import { Dropdown, DropdownButton, ButtonGroup, Col } from "react-bootstrap";
 import { FaUserCircle, FaUserFriends, FaThLarge } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { InputSearch } from "../InputSearch";
+// import { InputSearch } from "../InputSearch";
+import {AiOutlineSearch} from 'react-icons/ai'
 import { NewButtonLink } from "./../Button";
 import Logo from "../../Assets/images/Title.svg";
 import * as S from "./style";
@@ -9,7 +10,7 @@ import { useData } from "../../Context/dataContext";
 import { useEffect, useState } from "react";
 
 const Header = () => {
-  const { user } = useData()
+  const { user, handleLogout } = useData()
   const [ totalRequest, setTotalRequest ] = useState(0)
   const navigate = useNavigate();
 
@@ -24,7 +25,7 @@ const Header = () => {
       <Col md={2}>
         <img src={Logo} alt="DEVinOrkut" width="150" />
       </Col>
-      <Col md={5}>
+      <Col md={6}>
         <NewButtonLink to="/" icon={<FaUserCircle />} name="Perfil" />
         <NewButtonLink to="/friends" icon={<FaUserFriends />} name="Amigos" />
         <NewButtonLink
@@ -32,10 +33,14 @@ const Header = () => {
           icon={<FaThLarge />}
           name="Comunidades"
         />
+         
       </Col>
-      <Col md={4} >
-        <InputSearch />
-      </Col>
+     <Col md={2}>
+     <NewButtonLink
+          to="/search"
+          icon={<AiOutlineSearch size={20} />}
+        />
+     </Col>
       <Col >
         <DropdownButton
           as={ButtonGroup}
@@ -50,7 +55,10 @@ const Header = () => {
           <Dropdown.Item onClick={() => navigate("/")}>
             Meu perfil
           </Dropdown.Item>
-          <Dropdown.Item onClick={()=> navigate("/login")}>Sair</Dropdown.Item>
+          <Dropdown.Item onClick={()=> {
+                handleLogout()
+                navigate("/")
+          }}>Sair</Dropdown.Item>
         </DropdownButton>
       </Col>
     </S.NavbarContainer>
