@@ -19,7 +19,6 @@ border:none;
   div{
     overflow: hidden;
     font-size:15px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    
   }
 `;
