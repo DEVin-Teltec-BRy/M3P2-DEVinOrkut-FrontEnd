@@ -12,7 +12,10 @@ export const VALIDATE_TOKEN = gql`
           id
           fullName
         }
-        communities
+        communities {
+          logo
+          name
+        }
         friends {
           id
           fullName
