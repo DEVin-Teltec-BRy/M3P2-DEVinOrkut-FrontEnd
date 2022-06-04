@@ -84,12 +84,22 @@ export const SendEmailModal = styled.div`
 
 `
 export const SendEmailForm = styled.form`
-padding:20px;
+
     width:100%;
-    height:85%;
+    height:auto;
     display:flex;
     flex-direction:column;
     gap:20px;
     background-color:white;
     
+`
+export const ModalStripe = styled.div`
+    padding:20px;
+    gap:20px;
+    width:100%;
+    height:85%;
+    display:flex;
+    flex-direction:column;
+   justify-content:center;
+    background-color:white;
 `

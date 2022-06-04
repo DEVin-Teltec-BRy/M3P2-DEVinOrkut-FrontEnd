@@ -41,11 +41,7 @@ export default function SendResetPassEmail() {
   return (
   
       <SendEmailForm onSubmit={handleSubmit}>
-        <h2>Resetar senha</h2>
-        <p>
-          Digite um e-mail válido associado a sua conta e nós iremos enviar um
-          e-mail com instruções de como resetar a sua senha
-        </p>
+       
         <div>
           <label htmlFor="email">E-mail</label>
           <StyledInput
@@ -59,7 +55,7 @@ export default function SendResetPassEmail() {
           {touched.email && errors.email ? <p>{errors.email}</p> : null}
         </div>
         <StyledSubmitInput value="Enviar instruções" type={"submit"} />
-        <StyledLeave>Sair</StyledLeave>
+      
       </SendEmailForm>
     
   );
