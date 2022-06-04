@@ -1,4 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { useMutation } from "@apollo/client";
+import { createContext, useContext, useEffect, useState } from "react";
+import { VALIDATE_TOKEN } from "../Graphql/Mutations/validateToken";
 
 const DataContex = createContext();
 
@@ -36,6 +38,14 @@ const initUser = {
 };
 
 const DataProvider = ({ children }) => {
+  let [ ValidateToken ] = useMutation(VALIDATE_TOKEN);
+  const [ token, setToken ] = useState(()=>{
+    const token = localStorage.getItem("Token");
+    if(token){
+      return token
+    }
+    return false
+  });
   const [user, setUser] = useState(initUser);
   const [category, setCategory] = useState("");
 
@@ -50,7 +60,25 @@ const DataProvider = ({ children }) => {
     setUser(initUser);
     localStorage.removeItem("Token");
   };
-
+  useEffect(() => {
+    if(token){
+      (async () => {
+        const response = await ValidateToken({
+          variables: {
+            token: localStorage.getItem("Token"),
+            },
+            });
+            const { data } = response;
+            const { validatedToken } = data;
+            const newUser = {
+              token: validatedToken.token,
+              ...validatedToken.user,
+              };
+              updateUser(newUser);
+              }
+      )();
+              }
+  }, [token]);
 
   const data = {
     user,
