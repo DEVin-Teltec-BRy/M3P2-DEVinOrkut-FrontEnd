@@ -9,11 +9,11 @@ export const LateralProfile = () => {
   return (
     <ContentLateral>
       <CardMain title="Amigos" count={friends.length} toAll='friends'>
-        {friends.map((_, key) => (
+        {friends.map(({fullName}, key) => (
           <CardSecondary
             key={key}
             round
-            text="Bill Gates"
+            text={fullName}
             src="https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
           />
         ))}

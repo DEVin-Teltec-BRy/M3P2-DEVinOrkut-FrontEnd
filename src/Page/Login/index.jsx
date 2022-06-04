@@ -3,14 +3,12 @@ import {
   LoginBackground,
   StyledBackground,
   StyledFormCard,
-  StyledInput,
-  StyledSubmit,
   StyledLeave,
 } from "../SendResetPassEmail/style";
 import SendResetPassEmail from "../SendResetPassEmail";
 import Logo from "../../Assets/images/Title.svg";
 import { LOGIN_MUTATION } from "../../Graphql/Mutations/index";
-import { Col } from "react-bootstrap";
+import { Col, Form } from "react-bootstrap";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useMutation } from "@apollo/client";
@@ -28,13 +26,16 @@ import {
   LastLine,
   SendEmailModal,
   ModalStripe,
+  AlignLogin,
 } from "./style";
+import { NewInputForm } from "../../Components/Input";
+import { NewButton } from "../../Components/Button";
 
 export default function Login() {
   const { user, handleLogin } = useData();
   const navigate = useNavigate();
   const [modal, setModal] = useState("none");
-  let [Login, { data, loading, error }] = useMutation(LOGIN_MUTATION);
+  let [Login, { data, loading }] = useMutation(LOGIN_MUTATION);
 
   const arrayString = [
     "Encontre seus velhos amigos!",
@@ -48,7 +49,7 @@ export default function Login() {
     }
   }, [user.token]);
 
-  const { handleSubmit, handleChange, values, touched, errors, handleBlur } =
+  const { handleSubmit, handleChange, values, touched, errors } =
     useFormik({
       initialValues: {
         email: "",
@@ -60,11 +61,11 @@ export default function Login() {
           .required("Email é obrigatório"),
         password: Yup.string().required("Senha é obrigatória"),
       }),
-      onSubmit: async ({ email, password }) => {
+      onSubmit: async (values) => {
         const response = await Login({
           variables: {
-            email: email,
-            password: password,
+            email: values.email,
+            password: values.password,
           },
         });
         const { data } = response;
@@ -113,43 +114,23 @@ export default function Login() {
           abaixo para ter acesso a rede social.
         </LoginDescription>
         <StyledFormCard onSubmit={handleSubmit}>
-          <div>
-            {error ? (
-              <p
-                style={{
-                  color: "yellow",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                }}
-              >
-                {error.message}
-              </p>
-            ) : null}
-            <label htmlFor="email">E-mail</label>
-            <StyledInput
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.email}
-              name="email"
-              placeholder="Digite seu email"
-              type="text"
-            />
-            {touched.email && errors.email ? <p>{errors.email}</p> : null}
-          </div>
-          <div>
-            <label htmlFor="password">Senha</label>
-            <StyledInput
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.password}
-              name="password"
-              placeholder="Digite sua senha"
-              type="password"
-            />
-            {touched.password && errors.password ? (
-              <p>{errors.password}</p>
-            ) : null}
-          </div>
+          <NewInputForm
+            name="email"
+            label="Email"
+            value={values.email}
+            onChange={handleChange}
+            isValid={touched.email && !errors.email}
+            error={errors.email}
+          />
+          <NewInputForm
+            name="password"
+            label="Senha"
+            type="password"
+            onChange={handleChange}
+            value={values.password}
+            isValid={touched.password && !errors.password}
+            error={errors.password}
+          />
           <ForgotPass
             onClick={() => {
               setModal("flex");
@@ -158,17 +139,16 @@ export default function Login() {
             esqueceu sua senha?
           </ForgotPass>
           <SubmitDiv>
-            <span>
-              {" "}
-              <input
-                type="radio"
-                name="remember"
-                id="remeber"
-                value="Lembre de mim"
+            <AlignLogin>
+              <Form.Check
+                type="switch"
+                id="custom-switch"
+                label="Lembre de mim"
               />
-              <label htmlFor="remember">Lembre de mim</label>
-            </span>
-            <StyledSubmit value="Entrar" type={"submit"} />
+              <NewButton type="submit" size="sm">
+                Entrar
+              </NewButton>
+            </AlignLogin>
           </SubmitDiv>
         </StyledFormCard>
         <LastLine>
@@ -195,7 +175,6 @@ export default function Login() {
       </LoginBackground>
       <PinkCard>
         <LabLogoDiv>
-          {" "}
           <LabLogo></LabLogo>
         </LabLogoDiv>
 
