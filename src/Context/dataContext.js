@@ -1,5 +1,11 @@
 import { useMutation } from "@apollo/client";
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { VALIDATE_TOKEN } from "../Graphql/Mutations/validateToken";
 
 const DataContex = createContext();
@@ -38,20 +44,16 @@ const initUser = {
 };
 
 const DataProvider = ({ children }) => {
-  let [ ValidateToken ] = useMutation(VALIDATE_TOKEN);
-  const [ token, setToken ] = useState(()=>{
+  const [ValidateToken] = useMutation(VALIDATE_TOKEN);
+  const [token, setToken] = useState(() => {
     const token = localStorage.getItem("Token");
-    if(token){
-      return token
+    if (token) {
+      return token;
     }
-    return false
+    return false;
   });
   const [user, setUser] = useState(initUser);
   const [category, setCategory] = useState("");
-
-  const updateUser = (newData) => {
-    setUser({ ...user, ...newData });
-  };
 
   const handleLogin = (newData) => {
     setUser({ ...user, ...newData });
@@ -60,29 +62,33 @@ const DataProvider = ({ children }) => {
     setUser(initUser);
     localStorage.removeItem("Token");
   };
+  const handleToken = useCallback(async () => {
+    const response = await ValidateToken({
+      variables: {
+        token: localStorage.getItem("Token"),
+      },
+    });
+    const { data } = response;
+    const { validatedToken } = data;
+    const newUser = {
+      token: validatedToken.token,
+      ...validatedToken.user,
+    };
+    setToken(validatedToken.token);
+    setUser(newUser);
+  }, [ValidateToken]);
+
   useEffect(() => {
-    if(token){
-      (async () => {
-        const response = await ValidateToken({
-          variables: {
-            token: localStorage.getItem("Token"),
-            },
-            });
-            const { data } = response;
-            const { validatedToken } = data;
-            const newUser = {
-              token: validatedToken.token,
-              ...validatedToken.user,
-              };
-              updateUser(newUser);
-              }
-      )();
-              }
-  }, [token]);
+    if (token) {
+      handleToken();
+    }
+  }, [token, handleToken]);
 
   const data = {
     user,
-    updateUser,
+    updateUser: (newData) => {
+      setUser({ ...user, ...newData });
+    },
     handleLogin,
     handleLogout,
     category,

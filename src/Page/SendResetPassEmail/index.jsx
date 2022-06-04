@@ -23,7 +23,7 @@ export default function SendResetPassEmail() {
 
 
  const [SendEmail,{data,loading, erro}] = useMutation(SEND_EMAIL)
-console.log(data)
+ 
   if(loading) return <h1>Loading</h1>
   if(data) return (
     <StyledBackground>
