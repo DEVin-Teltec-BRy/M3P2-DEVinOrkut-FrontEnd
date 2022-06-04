@@ -19,7 +19,7 @@ export const CardContainer = styled(Card)`
       background-color: var(--pink) !important;
     }
   }
- 
+
   .card-footer {
     background: var(--white);
     border-top: 0px;
@@ -39,8 +39,9 @@ export const CardContainer = styled(Card)`
 `;
 
 export const CardBody = styled(Card.Body)`
-display: flex;
-    gap: 5px;
-    justify-content:  ${({ center }) => (center ? "center" : "flex-start")};
-    flex-wrap: wrap;
-`
+  display: flex;
+  gap: 5px;
+  justify-content: ${({ center }) => (center ? "center" : "flex-start")};
+  flex-wrap: wrap;
+  flex-direction: ${({ column }) => (column ? "column" : "row")};
+`;

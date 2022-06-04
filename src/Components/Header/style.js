@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 export const NavbarContainer = styled(Row)`
   background-color: var(--blue-header);
-  
   box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px -3px,
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
   padding: 10px;
@@ -19,6 +18,14 @@ export const NavbarContainer = styled(Row)`
     a {
       flex: 1;
     }
+  }
+
+  > div:nth-child(3) {
+    display: flex;
+    a {
+      width: 50px;
+    }
+    padding: 0;
   }
   > div:nth-child(4) {
     height: 100%;
@@ -46,21 +53,21 @@ export const BadgeNoty = styled(Badge)`
   background-color: var(--pink) !important;
 
   & {
-  animation: pulse 0.8s infinite;
-  margin: 0 auto;
-  display: table;
-  animation-direction: alternate;
-  -webkit-animation-name: pulse;
-  animation-name: pulse;
-}
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    filter: brightness(100%);
+    animation: pulse 0.8s infinite;
+    margin: 0 auto;
+    display: table;
+    animation-direction: alternate;
+    -webkit-animation-name: pulse;
+    animation-name: pulse;
   }
-  100% {
-    transform: scale(1.1);
-    filter: brightness(200%);
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      filter: brightness(100%);
+    }
+    100% {
+      transform: scale(1.1);
+      filter: brightness(200%);
+    }
   }
-}
 `;
