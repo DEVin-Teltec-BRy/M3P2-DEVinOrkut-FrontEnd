@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button, Form } from "react-bootstrap";
 import { gql, useMutation } from "@apollo/client";
+import { CategoryEnum } from "./CategoryEnum";
+import { useData } from "../../Context/dataContext";
 
 export const CREATE_COMMUNITY = gql`
   mutation CreateCommunity($input: CommunityInput) {
@@ -24,6 +26,7 @@ export function ModalComponent() {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const { category } = useData();
 
   const [createCommunity, { loading, error }] = useMutation(CREATE_COMMUNITY);
 
@@ -48,7 +51,7 @@ export function ModalComponent() {
                   input: {
                     logo: "https://thumbs.dreamstime.com/b/o-homem-irado-na-camisa-vermelha-rasga-folha-de-papel-6582601.jpg",
                     name: name,
-                    category: "DIVERSOS",
+                    category: category,
                     description: description,
                   },
                 },
@@ -68,15 +71,7 @@ export function ModalComponent() {
               <Form.Label>Logo</Form.Label>
               <Form.Control type="file" />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="select">
-              <Form.Label>Categoria</Form.Label>
-              <Form.Select size="sm">
-                <option>FAMOSOS</option>
-                <option>DIVERSOS</option>
-                <option>GAMES</option>
-                <option>GASTRONOMIA</option>
-              </Form.Select>
-            </Form.Group>
+            <CategoryEnum />
             <Form.Group className="mb-3" controlId="textArea">
               <Form.Label>
                 Escreva uma descrição para a sua comunidade.
