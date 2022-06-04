@@ -36,6 +36,7 @@ export const StyledInput = styled.input`
     justify-content:center;
     align-items:center;
     border-radius:6px;
+    border:1px solid rgba(0,0,0, .2);
     background-color:white;
     :hover{
         background-color:var(--button-hover);
