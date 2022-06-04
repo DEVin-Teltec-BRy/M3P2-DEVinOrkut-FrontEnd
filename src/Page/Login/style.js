@@ -73,10 +73,10 @@ export const SendEmailModal = styled.div`
     justify-content:center;
     flex-direction:column;
     position:fixed;
-    left:5vw;
-    top:15vh;
-    width:30vw;
-    height:70vh;
+    left:3vw;
+    top:5vh;
+    width:32vw;
+    height:90vh;
     background-color:#E01989;
     border-radius:12px;
     z-index:100;
@@ -86,7 +86,7 @@ export const SendEmailModal = styled.div`
 export const SendEmailForm = styled.form`
 padding:20px;
     width:100%;
-    height:80%;
+    height:85%;
     display:flex;
     flex-direction:column;
     gap:20px;

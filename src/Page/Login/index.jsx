@@ -6,6 +6,7 @@ import {
   StyledInput,
   StyledSubmit,
 } from '../SendResetPassEmail/style';
+import SendResetPassEmail from '../SendResetPassEmail';
 import Logo from '../../Assets/images/Title.svg';
 import { LOGIN_MUTATION } from '../../Graphql/Mutations/index';
 import { Col } from 'react-bootstrap';
@@ -136,14 +137,7 @@ export default function Login() {
         
       </StyledFormCard>
           <LastLine> <p>Não possui uma conta?   </p> <ForgotPass> Criar conta</ForgotPass> </LastLine>
-      <SendEmailModal>
-        <SendEmailForm>
-            <h2>Resetar senha</h2>
-            <p>Digite um e-mail válido associado a sua conta e nós iremos enviar um e-mail com instruções de como resetar a sua senha</p>
-            <label htmlFor="email">E-mail</label>
-          
-        </SendEmailForm>
-      </SendEmailModal>
+      
     </LoginBackground>
      <PinkCard>
       <LabLogoDiv> <LabLogo></LabLogo></LabLogoDiv>

@@ -18,7 +18,7 @@ export const LoginBackground = styled.div`
     
 `
 export const StyledFormCard = styled.form`
-margin-top:30vh;
+    margin-top:30vh;
     width:40vw;
     height:40vh;
     display:flex;
@@ -39,6 +39,42 @@ export const StyledInput = styled.input`
     background-color:white;
     :hover{
         background-color:var(--button-hover);
+    }
+
+`
+export const StyledSubmitInput = styled.input`
+    width:30vw;
+    height:35px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:6px;
+    background-color:#E01989;
+    border:none;
+    color:white;
+    font-weight:bold;
+    :hover{
+        background-color:white;
+        color:#E01989;
+        border:1px solid #E01989
+    }
+
+`
+export const StyledLeave = styled.button`
+    width:30vw;
+    height:35px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:6px;
+    color:#E01989;
+    border:1px solid #E01989;
+    background-color:white;
+    
+    font-weight:bold;
+    :hover{
+        background-color:#E01989;
+        color:white;
     }
 
 `
