@@ -44,10 +44,6 @@ const AppRoutes = () => (
                     element={<PrivateRoute redirectTo='/login'>
                                 <CommunityDetailPage />
                             </PrivateRoute>} />
-            <Route path="register"
-                    element={<PrivateRoute redirectTo='/login'>
-                                <CreateUser />
-                            </PrivateRoute>} />
             <Route path="perfil"
                     element={<PrivateRoute redirectTo='/login'>
                                 <CreateUser />
@@ -56,6 +52,11 @@ const AppRoutes = () => (
                     element={<PrivateRoute redirectTo='/login'>
                                 <UserPage />
                             </PrivateRoute>} />
+            <Route path="search" 
+                    element={<PrivateRoute redirectTo='/login'>
+                                <SearchPage />
+                            </PrivateRoute>} />
+            <Route path="register" element={<CreateUser />} />
             <Route path="resetpass/:token" element={<ResetPassword />} />
             <Route path="sendresetpassemail" element={<SendResetPassEmail />} />
             <Route path="login" element={<Login />} />

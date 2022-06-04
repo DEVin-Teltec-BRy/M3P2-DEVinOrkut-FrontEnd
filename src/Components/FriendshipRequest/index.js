@@ -20,7 +20,7 @@ const FriendshipRequest = ({ requesterId, text, src }) => {
         <S.ButtonRequest variant="success" onClick={ async () => {
           try {
              const response = await ACCEPTREQUEST({ variables: { loggedUserId: user.id, acceptFriendshipId: requesterId}})
-             console.log(response)
+
           } catch(e) {
             console.log(e.message)
           }
@@ -30,7 +30,6 @@ const FriendshipRequest = ({ requesterId, text, src }) => {
         <S.ButtonRequest variant="danger" onClick={ async () => {
           try {
             const response = await REFUSEFRIENDSHIP({ variables: { loggedUserId: user.id, declineFriendshipId: requesterId}})
-            console.log(response)
           } catch(e) {
             console.log(e.message)
           }            
