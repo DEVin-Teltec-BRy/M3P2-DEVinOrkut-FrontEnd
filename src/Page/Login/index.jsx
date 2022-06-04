@@ -5,7 +5,7 @@ import {
   StyledFormCard,
   StyledInput,
   StyledSubmit,
-  StyledLeave
+  StyledLeave,
 } from "../SendResetPassEmail/style";
 import SendResetPassEmail from "../SendResetPassEmail";
 import Logo from "../../Assets/images/Title.svg";
@@ -34,7 +34,7 @@ export default function Login() {
   const { user, handleLogin } = useData();
   const navigate = useNavigate();
   const [modal, setModal] = useState("none");
-  console.log(modal)
+  console.log(modal);
   let [Login, { data, loading, error }] = useMutation(LOGIN_MUTATION);
 
   const arrayString = [
@@ -151,9 +151,13 @@ export default function Login() {
               <p>{errors.password}</p>
             ) : null}
           </div>
-          <ForgotPass onClick={()=>{
-            setModal('flex')
-          }}>esqueceu sua senha?</ForgotPass>
+          <ForgotPass
+            onClick={() => {
+              setModal("flex");
+            }}
+          >
+            esqueceu sua senha?
+          </ForgotPass>
           <SubmitDiv>
             <span>
               {" "}
@@ -172,19 +176,22 @@ export default function Login() {
           {" "}
           <p>Não possui uma conta? </p> <ForgotPass> Criar conta</ForgotPass>{" "}
         </LastLine>
-        <SendEmailModal style={{display:modal}}>
+        <SendEmailModal style={{ display: modal }}>
           <ModalStripe>
-          <h2>Resetar senha</h2>
-        <p>
-          Digite um e-mail válido associado a sua conta e nós iremos enviar um
-          e-mail com instruções de como resetar a sua senha
-        </p>
-          <SendResetPassEmail/>
-          <StyledLeave onClick={()=>{
-            setModal('none')
-          }}>Sair</StyledLeave>
+            <h2>Resetar senha</h2>
+            <p>
+              Digite um e-mail válido associado a sua conta e nós iremos enviar
+              um e-mail com instruções de como resetar a sua senha
+            </p>
+            <SendResetPassEmail />
+            <StyledLeave
+              onClick={() => {
+                setModal("none");
+              }}
+            >
+              Sair
+            </StyledLeave>
           </ModalStripe>
-     
         </SendEmailModal>
       </LoginBackground>
       <PinkCard>
