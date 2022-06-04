@@ -63,19 +63,24 @@ const DataProvider = ({ children }) => {
     localStorage.removeItem("Token");
   };
   const handleToken = useCallback(async () => {
-    const response = await ValidateToken({
-      variables: {
-        token: localStorage.getItem("Token"),
-      },
-    });
-    const { data } = response;
-    const { validatedToken } = data;
-    const newUser = {
-      token: validatedToken.token,
-      ...validatedToken.user,
-    };
-    setToken(validatedToken.token);
-    setUser(newUser);
+    try {
+      const response = await ValidateToken({
+        variables: {
+          token: localStorage.getItem("Token"),
+        },
+      });
+      const { data } = response;
+      const { validatedToken } = data;
+      const newUser = {
+        token: validatedToken.token,
+        ...validatedToken.user,
+      };
+      setToken(validatedToken.token);
+      setUser(newUser);
+    } catch (error) {
+      localStorage.removeItem("Token");
+      setToken(false);
+    }
   }, [ValidateToken]);
 
   useEffect(() => {
