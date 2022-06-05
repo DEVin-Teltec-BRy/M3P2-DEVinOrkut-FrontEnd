@@ -81,7 +81,7 @@ const DataProvider = ({ children }) => {
       setUser(newUser);
     } catch (error) {
       localStorage.removeItem("Token");
-     
+      setUser(initUser);
     }
   }, [ValidateToken]);
 
