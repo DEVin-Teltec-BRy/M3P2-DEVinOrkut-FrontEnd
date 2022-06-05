@@ -1,8 +1,14 @@
 import { Button } from "react-bootstrap";
 import styled from "styled-components";
+import { Form } from "react-bootstrap";
 
 
+export const FormContainer = styled(Form)`
+>div{
+    margin: 15px 0;
+}
 
+`
 
 export const MainSection = styled.section`
    display: flex;
@@ -86,15 +92,6 @@ export const DivForum = styled.div`
         align-items: center;
         span{
             font-weight: bold;
-        }
-        button{
-            border: none;
-            border-radius: 8px;
-            background-color: #e01989;
-            color: white;
-            font-weight: bold;
-            letter-spacing: 1px;
-            padding: 2px 15px 2px 15px;
         }
      }
 

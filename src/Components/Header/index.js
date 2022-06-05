@@ -57,7 +57,7 @@ const Header = () => {
           </Dropdown.Item>
           <Dropdown.Item onClick={()=> {
                 handleLogout()
-                navigate("/")
+                navigate("/login")
           }}>Sair</Dropdown.Item>
         </DropdownButton>
       </Col>
