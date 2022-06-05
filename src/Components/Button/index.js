@@ -1,4 +1,3 @@
-import { Button } from 'react-bootstrap';
 import * as S from './style';
 
 export const NewButtonLink = ({ to, icon, name }) => {
@@ -10,8 +9,8 @@ export const NewButtonLink = ({ to, icon, name }) => {
   );
 };
 
-export const NewButton = ({ children, bg, size, type }) => (
-  <Button variant={bg} size={size} type={type ? type : 'button'}>
+export const NewButton = ({ children, bg, size, type,onClick }) => (
+  <S.MainButton variant={bg} size={size} type={type ? type : 'button'} onClick={onClick}>
     {children}
-  </Button>
+  </S.MainButton>
 );
