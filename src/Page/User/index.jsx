@@ -19,7 +19,7 @@ import { getAge, getDateFomated } from "../../Utils";
 
 export const UserPage = () => {
   const { id } = useParams();
-  const { loading, error, data } = useQuery(GET_USER_BY_ID, {
+  const { loading, data } = useQuery(GET_USER_BY_ID, {
     variables: { userId: id },
   });
   const isConected = false;
