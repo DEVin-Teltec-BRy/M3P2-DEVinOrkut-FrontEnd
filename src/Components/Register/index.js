@@ -1,7 +1,6 @@
 import React from 'react';
-import CustomButton from '../UI/CustomButton';
-import { ButtonGroup } from '../UI/CustomButton/style';
-
+import { useSelector } from 'react-redux';
+import Final from './Forms/Final';
 import StepFour from './Forms/StepFour';
 import StepOne from './Forms/StepOne';
 import StepThree from './Forms/StepThree';
@@ -9,43 +8,23 @@ import StepTwo from './Forms/StepTwo';
 import Layout from './Layout';
 
 const Register = () => {
-  const [step, setStep] = React.useState(1);
-
-  const nextStep = () => {
-    setStep(step + 1);
-  };
-
-  const prevStep = () => {
-    setStep(step - 1);
-  };
-
-  const handleInputData = (e) => {
-    e.preventDefault();
-  };
+  const pageStep = useSelector((state) => state.FormStep);
 
   return (
     <Layout>
-      <form onSubmit={handleInputData}>
-        {step === 1 && <StepOne />}
-        {step === 2 && <StepTwo />}
-        {step === 3 && <StepThree />}
-        {step === 4 && <StepFour />}
-
-        <ButtonGroup>
-          {!(step === 1) && (
-            <CustomButton primary={false} type="submit" onClick={prevStep}>
-              Anterior
-            </CustomButton>
-          )}
-          <CustomButton
-            primary={true}
-            type="submit"
-            onClick={step === 4 ? null : nextStep}
-          >
-            {step === 4 ? 'Enviar' : 'Próximo'}
-          </CustomButton>
-        </ButtonGroup>
-      </form>
+      {pageStep === 1 && (
+        <StepOne previousButton={false} submitButtonText={'Próximo'} />
+      )}
+      {pageStep === 2 && (
+        <StepTwo previousButton={true} submitButtonText={'Próximo'} />
+      )}
+      {pageStep === 3 && (
+        <StepThree previousButton={true} submitButtonText={'Próximo'} />
+      )}
+      {pageStep === 4 && (
+        <StepFour previousButton={true} submitButtonText={'Enviar'} />
+      )}
+      {pageStep === 5 && <Final />}
     </Layout>
   );
 };
