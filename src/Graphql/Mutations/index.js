@@ -15,26 +15,44 @@ export const LOGIN_MUTATION = gql`
   mutation Login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
-      user {
-        id
+    user {
+      birthDate
+      cpf
+      email
+      fullName
+      gender
+      postal
+      city
+      state
+      address
+      number
+      complement
+      district
+      reference
+      relationship
+      humor
+      interests
+      aboutMe
+      scraps
+      testimonial
+      trusty
+      cool
+      sexy
+      fans
+      imageUrl
+      profilePicture
+      friendRequest {
         fullName
-        email
-        friendRequest {
-          id
-          fullName
-        }
-        communities {
-          id
-          name
-          category
-          logo
-        }
-        friends {
-          id
-          fullName
-          imageUrl
-        }
       }
+      communities {
+        name
+        logo
+      }
+      friends {
+        fullName
+        imageUrl
+      }
+    }
     }
   }
 `;
