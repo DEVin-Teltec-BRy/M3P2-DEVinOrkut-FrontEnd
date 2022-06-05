@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   LoginBackground,
   StyledBackground,
@@ -32,7 +32,7 @@ import { NewInputForm } from "../../Components/Input";
 import { NewButton } from "../../Components/Button";
 
 export default function Login() {
-  const { user, handleLogin } = useData();
+  const {  handleLogin } = useData();
   const navigate = useNavigate();
   const [modal, setModal] = useState("none");
   let [Login, { data, loading }] = useMutation(LOGIN_MUTATION);
@@ -43,11 +43,6 @@ export default function Login() {
     " Tudo para que você possa se conectar com os seus amigos",
   ];
 
-  useEffect(() => {
-    if (user.token) {
-      localStorage.setItem("Token", user.token);
-    }
-  }, [user.token]);
 
   const { handleSubmit, handleChange, values, touched, errors } =
     useFormik({
@@ -153,7 +148,7 @@ export default function Login() {
         </StyledFormCard>
         <LastLine>
           {" "}
-          <p>Não possui uma conta? </p> <ForgotPass> Criar conta</ForgotPass>{" "}
+          <p>Não possui uma conta? </p> <ForgotPass onClick={()=> navigate("/register")}> Criar conta</ForgotPass>{" "}
         </LastLine>
         <SendEmailModal style={{ display: modal }}>
           <ModalStripe>
