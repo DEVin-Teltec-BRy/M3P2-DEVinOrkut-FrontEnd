@@ -11,5 +11,6 @@ margin:10px 0 ;
 >div{
     display: flex;
     flex-wrap: wrap;
+    gap: 10px;
 }
 `
