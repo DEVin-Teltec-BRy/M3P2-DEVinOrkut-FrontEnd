@@ -45,10 +45,12 @@ export const LOGIN_MUTATION = gql`
         fullName
       }
       communities {
+        id
         name
         logo
       }
       friends {
+        id
         fullName
         imageUrl
       }
