@@ -16,6 +16,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_USER_BY_ID } from "../../Graphql/Querys";
 import { getAge, getDateFomated } from "../../Utils";
+import { Loading } from "../../Components/Loading";
 
 export const UserPage = () => {
   const { id } = useParams();
@@ -35,15 +36,19 @@ export const UserPage = () => {
       scraps,
       friends,
       humor,
-      communities
+      communities,
     } = user;
-    console.log();
     const formatedDate = getDateFomated(birthDate);
     const textIntereses = interests?.join(" / ");
     const textHumor = humor?.join(" / ");
     const age = getAge(birthDate);
     return (
-      <Layout nameUser={fullName} lateral={<LateralProfile  friendsUser={friends} communitiesUser={communities} />}>
+      <Layout
+        nameUser={fullName}
+        lateral={
+          <LateralProfile friendsUser={friends} communitiesUser={communities} />
+        }
+      >
         <ProfileContent>
           <h1>{fullName}</h1>
 
@@ -104,6 +109,6 @@ export const UserPage = () => {
     );
   }
   if (loading) {
-    return <h1>Carregando</h1>;
+    return <Loading />;
   }
 };
