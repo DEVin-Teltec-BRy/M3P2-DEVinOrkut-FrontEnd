@@ -3,13 +3,15 @@ import { CardSecondary } from "../../../Components/CardSecondary";
 import { useData } from "../../../Context/dataContext";
 import { ContentLateral } from "./lateral.styled";
 
-export const LateralProfile = () => {
+export const LateralProfile = ({friendsUser, communitiesUser}) => {
   const { user: { friends, communities } } = useData();
+  const selectFriends = friendsUser ? friendsUser : friends
+  const selectcommunities = communitiesUser ? communitiesUser : communities
 
   return (
     <ContentLateral>
-      <CardMain title="Amigos" count={friends.length} toAll='friends'>
-        {friends.map(({fullName}, key) => (
+      <CardMain title="Amigos" count={selectFriends.length} toAll='friends'>
+        {selectFriends.map(({fullName}, key) => (
           <CardSecondary
             key={key}
             round
@@ -18,8 +20,8 @@ export const LateralProfile = () => {
           />
         ))}
       </CardMain>
-      <CardMain title="Comunidades" count={communities.length} toAll='communities'>
-        {communities.map((_, idx) => (
+      <CardMain title="Comunidades" count={selectcommunities.length} toAll='communities'>
+        {selectcommunities.map((_, idx) => (
           <CardSecondary
             size="md"
             key={idx}

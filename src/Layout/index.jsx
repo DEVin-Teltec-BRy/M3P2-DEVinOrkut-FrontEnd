@@ -3,14 +3,14 @@ import Header from '../Components/Header';
 import Profile from '../Components/ProfileAside';
 import * as S from './style';
 
-const Layout = ({ children, lateral, centerCol = 6 }) => {
+const Layout = ({ children, lateral, centerCol = 6, nameUser }) => {
   return (
     <>
       <Header />
       <S.MainContainer>
         <S.Container>
           <Col md={2}>
-            <Profile />
+            <Profile nameUser={nameUser} />
           </Col>
           <Col md={centerCol}>{children}</Col>
           <Col>{lateral}</Col>

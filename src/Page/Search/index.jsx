@@ -50,10 +50,12 @@ export const SearchPage = () => {
           <h5>Perssoas</h5>
           <div>
             {listUser &&
-              listUser.map(({ fullName, logo }, key) => (
+              listUser.map(({ fullName, logo,id }, key) => (
                 <CardSecondary
                   key={key}
                   text={fullName}
+                  to='usuario'
+                  id={id}
                   src={
                     logo
                       ? logo
@@ -67,11 +69,13 @@ export const SearchPage = () => {
           <h5>Comunidades</h5>
           <div>
             {listComunities &&
-              listComunities.map(({ name, logo }, key) => (
+              listComunities.map(({ name, logo,id }, key) => (
                 <CardSecondary
                   key={key}
                   size="md"
                   text={name}
+                  to='comunidade'
+                  id={id}
                   src={
                     logo
                       ? logo
