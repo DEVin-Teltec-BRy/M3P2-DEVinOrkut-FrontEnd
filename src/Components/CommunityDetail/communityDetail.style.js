@@ -87,15 +87,6 @@ export const DivForum = styled.div`
         span{
             font-weight: bold;
         }
-        button{
-            border: none;
-            border-radius: 8px;
-            background-color: #e01989;
-            color: white;
-            font-weight: bold;
-            letter-spacing: 1px;
-            padding: 2px 15px 2px 15px;
-        }
      }
 
     .body-forum{
