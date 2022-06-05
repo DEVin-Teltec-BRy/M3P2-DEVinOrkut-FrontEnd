@@ -14,7 +14,7 @@ const StepTwo = ({ previousButton, submitButtonText }) => {
   const currentState = useSelector((state) => state.FormUserRegister);
 
   const currentStep = useSelector((state) => state.FormStep);
-  const userCep = useSelector((state) => state.FormUserRegister.cep);
+  const userPostal = useSelector((state) => state.FormUserRegister.postal);
   const userCity = useSelector((state) => state.FormUserRegister.city);
   const userState = useSelector((state) => state.FormUserRegister.state);
   const userAddress = useSelector((state) => state.FormUserRegister.address);
@@ -28,7 +28,7 @@ const StepTwo = ({ previousButton, submitButtonText }) => {
   );
 
   const [formData, setFormData] = useState({
-    cep: userCep || '',
+    postal: userPostal || '',
     city: userCity || '',
     state: userState || '',
     address: userAddress || '',
@@ -62,7 +62,7 @@ const StepTwo = ({ previousButton, submitButtonText }) => {
       dispatch(
         formRegister({
           ...currentState,
-          cep: formData.cep,
+          postal: formData.postal,
           city: formData.city,
           state: formData.state,
           address: formData.address,
@@ -86,13 +86,13 @@ const StepTwo = ({ previousButton, submitButtonText }) => {
         <div>
           <Label htmlFor="cep">CEP</Label>
           <InputStyled
-            id="cep"
-            name="cep"
+            id="postal"
+            name="postal"
             type="text"
-            value={formData.cep}
+            value={formData.postal}
             onChange={handleChange}
           />
-          {error && <span>{error.cep}</span>}
+          {error && <span>{error.postal}</span>}
         </div>
         <div>
           <Label htmlFor="city">Cidade</Label>

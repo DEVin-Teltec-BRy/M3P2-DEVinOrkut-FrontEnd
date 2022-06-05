@@ -47,8 +47,8 @@ export const validateStepOne = (values) => {
 export const validateStepTwo = (values) => {
   const errors = {};
 
-  if (!values.cep) {
-    errors.cep = 'Campo obrigatório';
+  if (!values.postal) {
+    errors.postal = 'Campo obrigatório';
   }
 
   if (values.city) {
