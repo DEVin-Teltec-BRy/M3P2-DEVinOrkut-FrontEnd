@@ -1,8 +1,14 @@
 import { Button } from "react-bootstrap";
 import styled from "styled-components";
+import { Form } from "react-bootstrap";
 
 
+export const FormContainer = styled(Form)`
+>div{
+    margin: 15px 0;
+}
 
+`
 
 export const MainSection = styled.section`
    display: flex;

@@ -1,9 +1,12 @@
+import { Formik } from "formik";
 import React, { useState } from "react";
-import { Form } from "react-bootstrap";
 import { NewButton } from "../Button";
+import { NewInputForm } from "../Input";
 import { MainModal } from "../MainModal";
+import { Form } from "react-bootstrap";
 
 import * as S from "./communityDetail.style";
+import { initialValues } from "./Dados";
 
 export const CommunityDetail = ({
   title,
@@ -19,6 +22,11 @@ export const CommunityDetail = ({
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handledCreateTopico = (values) => {
+    console.log(values);
+  };
+
   return (
     <>
       <S.MainSection>
@@ -55,7 +63,6 @@ export const CommunityDetail = ({
         </S.DivContent>
         <hr />
         <S.DivDescription>
-          {" "}
           <span>Descrição:</span> <p>{description}</p>
         </S.DivDescription>
         <hr />
@@ -68,13 +75,42 @@ export const CommunityDetail = ({
           </div>
           <div className="body-forum">{children}</div>
         </S.DivForum>
-        <MainModal
-          show={show}
-          close={handleClose}
-          title="Novo Topico"
-          textButton="Criar topico"
-        >
-          oii
+        <MainModal show={show} close={handleClose} title="Novo Topico">
+          <Formik initialValues={initialValues} onSubmit={handledCreateTopico}>
+            {({ handleSubmit, handleChange, values, touched, errors }) => (
+              <S.FormContainer>
+                <NewInputForm
+                  name="title"
+                  label="Titulo"
+                  value={values.title}
+                  onChange={handleChange}
+                  isValid={touched.title && !errors.title}
+                  error={errors.title}
+                />
+                <NewInputForm
+                  as="textarea"
+                  name="description"
+                  label="Descripção"
+                  value={values.description}
+                  onChange={handleChange}
+                  isValid={touched.description && !errors.description}
+                  error={errors.description}
+                />
+                <NewInputForm
+                  name="file"
+                  label="Logo"
+                  type="file"
+                  value={values.file}
+                  onChange={handleChange}
+                  isValid={touched.file && !errors.file}
+                  error={errors.file}
+                />
+                <NewButton onClick={handleSubmit} type="submit">
+                  Criar topico
+                </NewButton>
+              </S.FormContainer>
+            )}
+          </Formik>
         </MainModal>
       </S.MainSection>
     </>
