@@ -45,12 +45,17 @@ const initUser = {
 
 const DataProvider = ({ children }) => {
   const [ValidateToken] = useMutation(VALIDATE_TOKEN);
-  const tokenLs =  localStorage.getItem("Token");
+  const [tokenLs, setTokenLs] = useState(() => {
+    const token = localStorage.getItem("Token");
+    if (token) return token;
+    return false;
+  });
 
   const [user, setUser] = useState(initUser);
   const [category, setCategory] = useState("");
 
   const handleLogin = (newData) => {
+    localStorage.setItem("Token", newData.token);
     setUser({ ...user, ...newData });
   };
 
@@ -63,7 +68,7 @@ const DataProvider = ({ children }) => {
     try {
       const response = await ValidateToken({
         variables: {
-          token: tokenLs,
+          token: localStorage.getItem("Token"),
         },
       });
       const { data } = response;
@@ -72,20 +77,20 @@ const DataProvider = ({ children }) => {
         token: validatedToken.token,
         ...validatedToken.user,
       };
-      ;
+      setTokenLs(validatedToken.token);
       setUser(newUser);
     } catch (error) {
       localStorage.removeItem("Token");
      
     }
-  }, [ValidateToken,tokenLs]);
+  }, [ValidateToken]);
 
 
   useEffect(() => {
     if (tokenLs) {
       handleToken();
     }
-  }, [handleToken,tokenLs]);
+  }, [handleToken, tokenLs]);
 
   const data = {
     user,
