@@ -12,10 +12,12 @@ export const FriendPage = () => {
   return (
     <Layout lateral={<Lateral content={communities} title="Comunidades"/>}>
       <CardMain title="Amigos" count={friends.length} pagination={<Pagination />}>
-        {friends.map(({fullName}, key) => (
+        {friends.map(({fullName,id}, key) => (
           <CardSecondary
             key={key}
             round
+            to='usuario'
+            id={id}
             text={fullName}
             src="https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
           />

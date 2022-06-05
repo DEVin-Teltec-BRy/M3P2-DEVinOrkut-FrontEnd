@@ -26,6 +26,8 @@ const CommunitiesList = () => {
             <CardSecondary
               key={community.id}
               size="md"
+              to='comunidade'
+              id={community.id}
               text={community.name}
               src={community.logo}
             />
