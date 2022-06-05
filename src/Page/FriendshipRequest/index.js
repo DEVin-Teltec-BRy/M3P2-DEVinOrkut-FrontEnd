@@ -2,14 +2,14 @@ import { CardMain } from "../../Components/CardMain";
 import { Pagination } from "../../Components/Pagination";
 import FriendshipRequest  from '../../Components/FriendshipRequest';
 import Layout from "../../Layout";
-import { Lateral } from "../Communities"
 import { useData } from "../../Context/dataContext";
+import { Lateral } from "../../Components/Lateral";
 
 export const FriendshipRequestPage = () => {
   const { user } = useData()
 
   return (
-    <Layout lateral={<Lateral />}>
+    <Layout lateral={<Lateral content={user.friends} />}>
       <CardMain title="Solicitações Pendentes" count={user.friendRequest.length} pagination={<Pagination nro={user.friendRequest.length === 0 ? 1: user.friendRequest.length}/>}>
         {user.friendRequest.length > 0 ? user.friendRequest.map(({ id, fullName }, key) => (
           <FriendshipRequest

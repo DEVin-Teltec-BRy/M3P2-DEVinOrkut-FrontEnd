@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const SEND_EMAIL = gql`
   mutation SendEmailresetPassword($user: UserPassword) {
@@ -23,7 +23,12 @@ export const LOGIN_MUTATION = gql`
           id
           fullName
         }
-        communities
+        communities {
+          id
+          name
+          category
+          logo
+        }
         friends {
           id
           fullName

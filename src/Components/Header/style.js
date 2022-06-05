@@ -3,8 +3,6 @@ import styled from "styled-components";
 
 export const NavbarContainer = styled(Row)`
   background-color: var(--blue-header);
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px -3px,
-    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
   padding: 10px;
   max-width: 85rem;
   margin: auto;

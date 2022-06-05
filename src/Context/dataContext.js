@@ -1,4 +1,12 @@
-import { createContext, useContext, useState } from "react";
+import { useMutation } from "@apollo/client";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { VALIDATE_TOKEN } from "../Graphql/Mutations/validateToken";
 
 const DataContex = createContext();
 
@@ -36,23 +44,58 @@ const initUser = {
 };
 
 const DataProvider = ({ children }) => {
+  const [ValidateToken] = useMutation(VALIDATE_TOKEN);
+  const tokenLs =  localStorage.getItem("Token");
+
   const [user, setUser] = useState(initUser);
-  const updateUser = (newData) => {
-    setUser({ ...user, ...newData });
-  };
+  const [category, setCategory] = useState("");
+
   const handleLogin = (newData) => {
     setUser({ ...user, ...newData });
   };
+
   const handleLogout = () => {
     setUser(initUser);
     localStorage.removeItem("Token");
-  }
+  };
+
+  const handleToken = useCallback(async () => {
+    try {
+      const response = await ValidateToken({
+        variables: {
+          token: tokenLs,
+        },
+      });
+      const { data } = response;
+      const { validatedToken } = data;
+      const newUser = {
+        token: validatedToken.token,
+        ...validatedToken.user,
+      };
+      ;
+      setUser(newUser);
+    } catch (error) {
+      localStorage.removeItem("Token");
+     
+    }
+  }, [ValidateToken,tokenLs]);
+
+
+  useEffect(() => {
+    if (tokenLs) {
+      handleToken();
+    }
+  }, [handleToken,tokenLs]);
 
   const data = {
     user,
-    updateUser,
+    updateUser: (newData) => {
+      setUser({ ...user, ...newData });
+    },
     handleLogin,
     handleLogout,
+    category,
+    setCategory,
   };
   return <DataContex.Provider value={data}>{children}</DataContex.Provider>;
 };

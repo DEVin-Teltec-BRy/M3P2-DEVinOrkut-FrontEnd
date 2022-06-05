@@ -6,12 +6,13 @@ import { ProfilePage } from '../Page/Profile';
 import ResetPassword from '../Page/ResetPassword';
 import { SearchPage } from '../Page/Search';
 import SendResetPassEmail from '../Page/SendResetPassEmail';
-
+import Upload from '../Components/Upload';
 import { CommunityDetailPage } from '../Page/CommunityDetail';
 import Login from '../Page/Login';
 import PrivateRoute from './PrivateRoute';
 import CreateUser from '../Page/CreateUser';
 import { UserPage } from '../Page/User';
+import { PublicRoute } from './PublicRouse';
 
 const AppRoutes = () => (
   <BrowserRouter>
@@ -56,7 +57,14 @@ const AppRoutes = () => (
           </PrivateRoute>
         }
       />
-
+      <Route
+        path="upload"
+        element={
+          <PrivateRoute redirectTo="/login">
+            <Upload />
+          </PrivateRoute>
+        }
+      />
       <Route
         path="communities/:communityid"
         element={
@@ -65,7 +73,6 @@ const AppRoutes = () => (
           </PrivateRoute>
         }
       />
-      <Route path="register" element={<CreateUser />} />
       <Route
         path="perfil"
         element={
@@ -82,9 +89,32 @@ const AppRoutes = () => (
           </PrivateRoute>
         }
       />
+      <Route
+        path="search"
+        element={
+          <PrivateRoute redirectTo="/login">
+            <SearchPage />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="register"
+        element={
+          <PublicRoute redirectTo="/">
+            <CreateUser />
+          </PublicRoute>
+        }
+      />
       <Route path="resetpass/:token" element={<ResetPassword />} />
       <Route path="sendresetpassemail" element={<SendResetPassEmail />} />
-      <Route path="login" element={<Login />} />
+      <Route
+        path="login"
+        element={
+          <PublicRoute redirectTo="/">
+            <Login />
+          </PublicRoute>
+        }
+      />
     </Routes>
   </BrowserRouter>
 );

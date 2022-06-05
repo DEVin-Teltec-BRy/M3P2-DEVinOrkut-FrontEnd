@@ -1,7 +1,7 @@
 import React from "react";
 import {
+  LoginBackground,
   StyledBackground,
-  StyledErrorMessage,
   StyledFormCard,
   StyledInput,
 } from "../SendResetPassEmail/style";
@@ -12,12 +12,17 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
-
+import { LabLogo, PinkCard,LabLogoDiv } from "../Login/style";
+import { BootstrapCarousel } from "../../Components/Carousel/Carousel";
 export default function ResetPassword() {
   const [ChangePassword, { data, loading }] = useMutation(RESET_PASS);
   const match = useParams();
   const token = match.token;
-  
+  const arrayString = [
+    "Encontre seus velhos amigos!",
+    "A mais nostálgica rede social da década está de volta",
+    " Tudo para que você possa se conectar com os seus amigos",
+  ];
   const { handleSubmit, handleChange, values, touched, errors, handleBlur } =
     useFormik({
       initialValues: {
@@ -66,10 +71,9 @@ export default function ResetPassword() {
 
   return (
     <StyledBackground>
+      <LoginBackground>
       <StyledFormCard onSubmit={handleSubmit}>
-        <Col md={6}>
-          <img src={Logo} alt="DEVinOrkut" width="150" />
-        </Col>
+       
         <h3>Troca de senha</h3>
         <div>
           <label htmlFor="email">Nova senha</label>
@@ -81,8 +85,8 @@ export default function ResetPassword() {
             placeholder="Nova senha"
             type="password"
           />
+          {touched.newPass && errors.newPass ? <p style={{fontSize:12, color:'red'}}>{errors.newPass}</p> : null}
         </div>
-          {touched.newPass && errors.newPass ? <StyledErrorMessage>{errors.newPass}</StyledErrorMessage> : null}
         <div>
           <label htmlFor="email">Confirmar senha</label>
           <StyledInput
@@ -94,11 +98,28 @@ export default function ResetPassword() {
             type="password"
           />
           {touched.confirmPass && errors.confirmPass ? (
-            <StyledErrorMessage>{errors.confirmPass}</StyledErrorMessage>
+            <p style={{fontSize:12, color:'red'}}>{errors.confirmPass}</p>
           ) : null}
         </div>
         <StyledInput value="Enviar" type={"submit"} />
+        
       </StyledFormCard>
+      </LoginBackground>
+      <PinkCard>
+      <LabLogoDiv>
+          {" "}
+          <LabLogo></LabLogo>
+        </LabLogoDiv>
+
+        <img
+          src={Logo}
+          alt="DEVinOrkut"
+          width="350"
+          style={{ marginBottom: "22%" }}
+        />
+
+        <BootstrapCarousel arrayString={arrayString} />
+      </PinkCard>
     </StyledBackground>
   );
 }

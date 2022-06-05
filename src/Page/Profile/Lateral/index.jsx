@@ -1,22 +1,25 @@
 import { CardMain } from "../../../Components/CardMain";
 import { CardSecondary } from "../../../Components/CardSecondary";
+import { useData } from "../../../Context/dataContext";
 import { ContentLateral } from "./lateral.styled";
 
 export const LateralProfile = () => {
+  const { user: { friends, communities } } = useData();
+
   return (
     <ContentLateral>
-      <CardMain title="Amigos" count={9} toAll='friends'>
-        {[...Array(6)].map((_, key) => (
+      <CardMain title="Amigos" count={friends.length} toAll='friends'>
+        {friends.map(({fullName}, key) => (
           <CardSecondary
             key={key}
             round
-            text="Bill Gates"
+            text={fullName}
             src="https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
           />
         ))}
       </CardMain>
-      <CardMain title="Comunidades" count={20} toAll='communities'>
-        {[...Array(4)].map((_, idx) => (
+      <CardMain title="Comunidades" count={communities.length} toAll='communities'>
+        {communities.map((_, idx) => (
           <CardSecondary
             size="md"
             key={idx}

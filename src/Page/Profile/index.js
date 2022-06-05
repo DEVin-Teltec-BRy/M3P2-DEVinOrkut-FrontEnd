@@ -7,12 +7,15 @@ import { FiUsers } from "react-icons/fi";
 import { LateralProfile } from "./Lateral";
 import { CarrucelFotos, ItemCarrucel } from "../../Components/CarrucelFotos";
 import { GetStart } from "../../Components/Stars";
+import { useData } from "../../Context/dataContext";
 
 export const ProfilePage = () => {
+  const { user } = useData();
+
   return (
     <Layout lateral={<LateralProfile />}>
       <ProfileContent>
-        <h1>Elon Musk</h1>
+        <h1>{user.fullName}</h1>
 
         <ContentInfo border>
           <BoxContainer title="Recados">
