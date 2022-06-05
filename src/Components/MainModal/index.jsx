@@ -1,7 +1,6 @@
 import { Modal } from "react-bootstrap";
-import { NewButton } from "../Button";
 
-export const MainModal = ({ show, close, title,children,textButton }) => {
+export const MainModal = ({ show, close, title,children }) => {
 
   return (
     <Modal show={show} onHide={close}>
@@ -11,9 +10,7 @@ export const MainModal = ({ show, close, title,children,textButton }) => {
       <Modal.Body>
           {children}
       </Modal.Body>
-      <Modal.Footer>
-        <NewButton onClick={close}>{textButton}</NewButton>
-      </Modal.Footer>
+      
     </Modal>
   );
 };
