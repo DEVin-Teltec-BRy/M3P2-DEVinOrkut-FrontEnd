@@ -13,9 +13,12 @@ export const SEARCH_USER_OR_COMMUNITIES = gql`
   query GetUserOrCommunities($param: String) {
     searchParam(param: $param) {
       ... on User {
+        id
         fullName
+        imageUrl
       }
       ... on Community {
+        id
         logo
         name
       }
