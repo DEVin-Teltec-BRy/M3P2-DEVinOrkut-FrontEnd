@@ -25,3 +25,34 @@ export const SEARCH_USER_OR_COMMUNITIES = gql`
     }
   }
 `;
+export const GET_USER_BY_ID = gql`
+  query User($userId: ID!) {
+    user(id: $userId) {
+      id
+      fullName
+      email
+      birthDate
+      gender
+      address
+      relationship
+      humor
+      interests
+      aboutMe
+      scraps
+      fans
+      friends {
+        id
+        fullName
+        imageUrl
+      }
+      testimonial
+      profilePicture
+      imageUrl
+      communities {
+        id
+        logo
+        name
+      }
+    }
+  }
+`;
