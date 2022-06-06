@@ -6,6 +6,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { REMOVE_FRIEND, REQUEST_FRIENDSHIP } from "../Graphql/Mutations/FriendshipMutations";
 import { VALIDATE_TOKEN } from "../Graphql/Mutations/validateToken";
 
 const DataContex = createContext();
@@ -45,6 +46,8 @@ const initUser = {
 
 const DataProvider = ({ children }) => {
   const [ValidateToken] = useMutation(VALIDATE_TOKEN);
+  const [RermoveFriendship] = useMutation(REMOVE_FRIEND);
+  const [RequestFriendship] = useMutation(REQUEST_FRIENDSHIP);
   const [tokenLs, setTokenLs] = useState(() => {
     const token = localStorage.getItem("Token");
     if (token) return token;
@@ -86,6 +89,25 @@ const DataProvider = ({ children }) => {
   }, [ValidateToken]);
 
 
+  const handleAddFriend = (userId, friendId) => {
+    const { data } = RequestFriendship({
+      variables: {
+        senderId: userId,
+        requestedId: friendId,
+      },
+    });
+    console.log("Adicionar amigo", data)
+  }
+  const handleRemoveFriend = async (userId, friendId) => {
+    const { data } = await RermoveFriendship({
+      variables: {
+        loggedUserId: userId,
+        removeFriendshipId: friendId,
+      },
+    });
+    const { removeFriendship } = data;
+    setUser({ ...user, friends: removeFriendship });
+  }
   useEffect(() => {
     if (tokenLs) {
       handleToken();
@@ -101,6 +123,8 @@ const DataProvider = ({ children }) => {
     handleLogout,
     category,
     setCategory,
+    handleAddFriend,
+    handleRemoveFriend,
   };
   return <DataContex.Provider value={data}>{children}</DataContex.Provider>;
 };

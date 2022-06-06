@@ -45,6 +45,9 @@ export const GET_USER_BY_ID = gql`
         fullName
         imageUrl
       }
+      friendRequest{
+        id
+      }
       testimonial
       profilePicture
       imageUrl
