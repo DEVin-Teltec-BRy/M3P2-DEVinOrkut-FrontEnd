@@ -31,3 +31,7 @@ export const Label = styled.label`
   font-weight: bold;
   padding: 0.5rem;
 `;
+
+export const ErrorForm = styled.span`
+  color: red;
+`;

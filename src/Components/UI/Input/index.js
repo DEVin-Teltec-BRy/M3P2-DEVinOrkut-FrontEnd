@@ -10,7 +10,6 @@ const Input = (props) => {
         placeholder={props.placeholder}
         onChange={props.onChange}
         onBlur={props.onBlur}
-        value={props.value}
         style={props.style}
         size={props.size}
       />
@@ -22,7 +21,6 @@ const Input = (props) => {
         onChange={props.onChange}
         placeholder={props.placeholder}
         onBlur={props.onBlur}
-        value={props.value}
       />
     );
 

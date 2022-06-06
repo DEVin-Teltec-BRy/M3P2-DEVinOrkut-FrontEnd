@@ -1,18 +1,18 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { CommunityPage } from "../Page/Communities";
-import { FriendPage } from "../Page/Friends";
-import { FriendshipRequestPage } from "../Page/FriendshipRequest";
-import { ProfilePage } from "../Page/Profile";
-import ResetPassword from "../Page/ResetPassword";
-import { SearchPage } from "../Page/Search";
-import SendResetPassEmail from "../Page/SendResetPassEmail";
-import Upload from "../Components/Cloudinary";
-import { CommunityDetailPage } from "../Page/CommunityDetail";
-import Login from "../Page/Login";
-import PrivateRoute from "./PrivateRoute";
-import CreateUser from "../Page/CreateUser";
-import { UserPage } from "../Page/User";
-import { PublicRoute } from "./PublicRouse";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { CommunityPage } from '../Page/Communities';
+import { FriendPage } from '../Page/Friends';
+import { FriendshipRequestPage } from '../Page/FriendshipRequest';
+import { ProfilePage } from '../Page/Profile';
+import ResetPassword from '../Page/ResetPassword';
+import { SearchPage } from '../Page/Search';
+import SendResetPassEmail from '../Page/SendResetPassEmail';
+import Upload from '../Components/Upload';
+import { CommunityDetailPage } from '../Page/CommunityDetail';
+import Login from '../Page/Login';
+import PrivateRoute from './PrivateRoute';
+import CreateUser from '../Page/CreateUser';
+import { UserPage } from '../Page/User';
+import { PublicRoute } from './PublicRouse';
 
 const AppRoutes = () => (
   <BrowserRouter>
@@ -100,7 +100,7 @@ const AppRoutes = () => (
       <Route
         path="register"
         element={
-          <PublicRoute redirectTo='/'>
+          <PublicRoute redirectTo="/">
             <CreateUser />
           </PublicRoute>
         }
@@ -110,7 +110,7 @@ const AppRoutes = () => (
       <Route
         path="login"
         element={
-          <PublicRoute redirectTo='/'>
+          <PublicRoute redirectTo="/">
             <Login />
           </PublicRoute>
         }
