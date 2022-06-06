@@ -11,10 +11,12 @@ export const LateralProfile = ({friendsUser, communitiesUser}) => {
   return (
     <ContentLateral>
       <CardMain title="Amigos" count={selectFriends.length} toAll='friends'>
-        {selectFriends.map(({fullName}, key) => (
+        {selectFriends.map(({fullName, id}, key) => (
           <CardSecondary
             key={key}
             round
+            to="usuario"
+            id={id}
             text={fullName}
             src="https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
           />

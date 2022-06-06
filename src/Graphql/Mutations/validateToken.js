@@ -5,6 +5,7 @@ export const VALIDATE_TOKEN = gql`
     validatedToken(token: $token) {
       token
     user {
+      id
       birthDate
       cpf
       email
@@ -31,6 +32,7 @@ export const VALIDATE_TOKEN = gql`
       imageUrl
       profilePicture
       friendRequest {
+        id
         fullName
       }
       communities {
