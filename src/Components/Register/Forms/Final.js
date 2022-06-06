@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Spinner from 'react-bootstrap/Spinner';
+import { Loading } from '../../Loading';
 
 const Final = () => {
   const state = useSelector((state) => state);
@@ -39,18 +40,19 @@ const Final = () => {
         },
       });
 
-      return response;
+      if (response) {
+        setIsLoading(false);
+      }
     } catch (e) {
       setError(e.message);
     }
-  }, [state.FormUserRegister, createUser]);
+  }, [state, createUser]);
 
   useEffect(() => {
-    if (state.FormStep === 5 && isLoading) {
+    if (state.FormStep === 5) {
       addUser();
-      setIsLoading(false);
     }
-  }, [addUser, state, createUser, isLoading]);
+  }, [addUser, state, createUser]);
 
   const staleOutput = `JSON DATA Form-Completed: ${JSON.stringify(
     state,
@@ -60,16 +62,14 @@ const Final = () => {
 
   <pre>{staleOutput}</pre>;
 
-  let content = (
-    <>
-      <Spinner animation="grow" variant="success" />
-      <Spinner animation="grow" variant="danger" />
-      <Spinner animation="grow" variant="warning" />
-    </>
-  );
+  let content = <p>Processando...</p>;
 
   if (error) {
     <div>{error}</div>;
+  }
+
+  if (!isLoading) {
+    content = <Loading />;
   }
 
   if (!isLoading && !error) {
@@ -80,9 +80,8 @@ const Final = () => {
           <strong> Seu cadastro foi concluído com sucesso!</strong>
         </p>
         <p>
-          Agora você pode entrar no sistema e começar a usar o nosso serviço.
+          Agora você pode entrar no sistema e começar a usar o nosso serviço:{' '}
           <Link to="/login">
-            {' '}
             <strong>Login</strong>
           </Link>
         </p>
