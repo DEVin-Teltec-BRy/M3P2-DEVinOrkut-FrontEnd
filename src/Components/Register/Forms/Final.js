@@ -4,7 +4,6 @@ import { CREATE_USER_MUTATION } from '../../../Graphql/Mutations/CreateUserMutat
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import Spinner from 'react-bootstrap/Spinner';
 import { Loading } from '../../Loading';
 
 const Final = () => {
