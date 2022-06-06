@@ -89,14 +89,14 @@ const DataProvider = ({ children }) => {
   }, [ValidateToken]);
 
 
-  const handleAddFriend = (userId, friendId) => {
-    const { data } = RequestFriendship({
+  const handleAddFriend = async(userId, friendId) => {
+    const { data } = await RequestFriendship({
       variables: {
         senderId: userId,
         requestedId: friendId,
       },
     });
-    console.log("Adicionar amigo", data)
+    setUser({ ...user, ...data.requestFriendship });
   }
   const handleRemoveFriend = async (userId, friendId) => {
     const { data } = await RermoveFriendship({
@@ -105,8 +105,7 @@ const DataProvider = ({ children }) => {
         removeFriendshipId: friendId,
       },
     });
-    const { removeFriendship } = data;
-    setUser({ ...user, friends: removeFriendship });
+    setUser({ ...user, ...data.removeFriendship });
   }
   useEffect(() => {
     if (tokenLs) {

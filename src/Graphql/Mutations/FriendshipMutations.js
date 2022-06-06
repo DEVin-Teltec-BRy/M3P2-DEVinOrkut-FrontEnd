@@ -10,6 +10,10 @@ export const ACCEPT_FRIENDSHIP_REQUEST = gql`
       loggedUserId: $loggedUserId
       acceptFriendshipId: $acceptFriendshipId
     ) {
+      friends {
+        id
+        fullName
+      }
       friendRequest {
         id
         fullName
@@ -27,7 +31,10 @@ export const REJECT_FRIENDSHIP_REQUEST = gql`
       loggedUserId: $loggedUserId
       declineFriendshipId: $declineFriendshipId
     ) {
-      id
+      friends {
+        id
+        fullName
+      }
       friendRequest {
         id
         fullName
@@ -46,6 +53,10 @@ export const REMOVE_FRIEND = gql`
         id
         fullName
       }
+      friendRequest {
+        id
+        fullName
+      }
     }
   }
 `;
@@ -53,6 +64,10 @@ export const REMOVE_FRIEND = gql`
 export const REQUEST_FRIENDSHIP = gql`
   mutation RequestFriendship($senderId: ID!, $requestedId: ID!) {
     requestFriendship(senderId: $senderId, requestedId: $requestedId) {
+      friends {
+        id
+        fullName
+      }
       friendRequest {
         id
         fullName
