@@ -7,6 +7,9 @@ export const NavbarContainer = styled(Row)`
   max-width: 85rem;
   margin: auto;
 
+  > div img{
+    cursor: pointer;
+  }
   > div:nth-child(2) {
     padding: 0;
     display: flex;
