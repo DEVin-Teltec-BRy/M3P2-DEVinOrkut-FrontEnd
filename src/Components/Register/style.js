@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -41,4 +42,9 @@ export const ConfirmGroup = styled.div`
   align-content: center;
   justify-content: center;
   margin: 0.5rem;
+`;
+
+export const LinkStyled = styled(Link)`
+  text-decoration: none;
+  color: #000;
 `;

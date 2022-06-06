@@ -1,18 +1,21 @@
 import { useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { CREATE_USER_MUTATION } from '../../../Graphql/Mutations/CreateUserMutations';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import CustomButton from '../../UI/CustomButton';
 import { ButtonGroup } from '../../UI/CustomButton/style';
-import { ConfirmGroup } from '../style';
+import { ConfirmGroup, LinkStyled } from '../style';
+import { Spinner } from 'react-bootstrap';
 
 const Final = () => {
   const state = useSelector((state) => state);
   const [createUser] = useMutation(CREATE_USER_MUTATION);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
+
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     try {
@@ -47,13 +50,13 @@ const Final = () => {
     }
   };
 
-  const staleOutput = `JSON DATA Form-Completed: ${JSON.stringify(
-    state,
-    null,
-    2
-  )}`;
-
-  <pre>{staleOutput}</pre>;
+  useEffect(() => {
+    if (!error && isSubmitted) {
+      setTimeout(() => {
+        navigate('/');
+      }, 5000);
+    }
+  }, [navigate, error, isSubmitted]);
 
   let content = (
     <>
@@ -76,16 +79,19 @@ const Final = () => {
   if (!error && isSubmitted) {
     content = (
       <>
-        <h1>Cadastro concluído com sucesso!</h1>
+        <h2>Cadastro concluído com sucesso!</h2>
         <p>
-          <strong> Seu cadastro foi concluído com sucesso!</strong>
+          Seja bem-vindo ao DEVinOrkut. Você será redirecionando em instantes.
+          Se não for, clique{' '}
+          <LinkStyled to="/login">
+            <strong>aqui</strong>
+          </LinkStyled>
         </p>
-        <p>
-          Agora você pode entrar no sistema e começar a usar o nosso serviço:{' '}
-          <Link to="/login">
-            <strong>Login</strong>
-          </Link>
-        </p>
+        <ConfirmGroup>
+          <Spinner animation="grow" variant="dark" />
+          <Spinner animation="grow" variant="dark" />
+          <Spinner animation="grow" variant="dark" />
+        </ConfirmGroup>
       </>
     );
   }

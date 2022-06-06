@@ -133,7 +133,7 @@ const StepTwo = ({ previousButton, submitButtonText }) => {
           <InputStyled
             id="number"
             name="number"
-            type="text"
+            type="number"
             value={formData.number}
             onChange={handleChange}
           />
