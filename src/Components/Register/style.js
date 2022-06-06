@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -34,4 +35,16 @@ export const Label = styled.label`
 
 export const ErrorForm = styled.span`
   color: red;
+`;
+
+export const ConfirmGroup = styled.div`
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin: 0.5rem;
+`;
+
+export const LinkStyled = styled(Link)`
+  text-decoration: none;
+  color: #000;
 `;

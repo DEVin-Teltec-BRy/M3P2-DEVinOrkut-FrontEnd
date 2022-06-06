@@ -1,20 +1,25 @@
 import { useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { CREATE_USER_MUTATION } from '../../../Graphql/Mutations/CreateUserMutations';
-import { useCallback, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { Loading } from '../../Loading';
+import CustomButton from '../../UI/CustomButton';
+import { ButtonGroup } from '../../UI/CustomButton/style';
+import { ConfirmGroup, LinkStyled } from '../style';
+import { Spinner } from 'react-bootstrap';
 
 const Final = () => {
   const state = useSelector((state) => state);
   const [createUser] = useMutation(CREATE_USER_MUTATION);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
 
-  const addUser = useCallback(async () => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async () => {
     try {
-      const response = await createUser({
+      const { data } = await createUser({
         variables: {
           user: {
             fullName: state.FormUserRegister.fullName,
@@ -38,52 +43,55 @@ const Final = () => {
           },
         },
       });
-
-      if (response) {
-        setIsLoading(false);
-      }
-    } catch (e) {
-      setError(e.message);
+      setIsSubmitted(true);
+      console.log(data);
+    } catch (error) {
+      setError(error.message);
     }
-  }, [state, createUser]);
+  };
 
   useEffect(() => {
-    if (state.FormStep === 5) {
-      addUser();
+    if (!error && isSubmitted) {
+      setTimeout(() => {
+        navigate('/');
+      }, 5000);
     }
-  }, [addUser, state, createUser]);
+  }, [navigate, error, isSubmitted]);
 
-  const staleOutput = `JSON DATA Form-Completed: ${JSON.stringify(
-    state,
-    null,
-    2
-  )}`;
-
-  <pre>{staleOutput}</pre>;
-
-  let content = <p>Processando...</p>;
+  let content = (
+    <>
+      <ConfirmGroup>
+        <p>Confirmar envio de cadastro?</p>
+      </ConfirmGroup>
+      <ButtonGroup>
+        <CustomButton>Não</CustomButton>
+        <CustomButton type="submit" primary={true} onClick={handleSubmit}>
+          Sim
+        </CustomButton>
+      </ButtonGroup>
+    </>
+  );
 
   if (error) {
     <div>{error}</div>;
   }
 
-  if (!isLoading) {
-    content = <Loading />;
-  }
-
-  if (!isLoading && !error) {
+  if (!error && isSubmitted) {
     content = (
       <>
-        <h1>Cadastro concluído com sucesso!</h1>
+        <h2>Cadastro concluído com sucesso!</h2>
         <p>
-          <strong> Seu cadastro foi concluído com sucesso!</strong>
+          Seja bem-vindo ao DEVinOrkut. Você será redirecionando em instantes.
+          Se não for, clique{' '}
+          <LinkStyled to="/login">
+            <strong>aqui</strong>
+          </LinkStyled>
         </p>
-        <p>
-          Agora você pode entrar no sistema e começar a usar o nosso serviço:{' '}
-          <Link to="/login">
-            <strong>Login</strong>
-          </Link>
-        </p>
+        <ConfirmGroup>
+          <Spinner animation="grow" variant="dark" />
+          <Spinner animation="grow" variant="dark" />
+          <Spinner animation="grow" variant="dark" />
+        </ConfirmGroup>
       </>
     );
   }

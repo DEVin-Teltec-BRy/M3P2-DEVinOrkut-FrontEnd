@@ -22,7 +22,7 @@ const Register = () => {
         <StepThree previousButton={true} submitButtonText={'Próximo'} />
       )}
       {pageStep === 4 && (
-        <StepFour previousButton={true} submitButtonText={'Enviar'} />
+        <StepFour previousButton={true} submitButtonText={'Finalizar'} />
       )}
       {pageStep === 5 && <Final />}
     </Layout>
