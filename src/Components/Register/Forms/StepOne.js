@@ -8,7 +8,7 @@ import { ButtonGroup } from '../../UI/CustomButton/style';
 import { InputStyled } from '../../UI/Input/style';
 
 import ProgressSteps from '../../UI/ProgressSteps';
-import { Label } from '../style';
+import { Label, ErrorForm } from '../style';
 
 const StepOne = ({ previousButton, submitButtonText }) => {
   const dispatch = useDispatch();
@@ -72,7 +72,7 @@ const StepOne = ({ previousButton, submitButtonText }) => {
             value={formData.fullName}
             onChange={handleChange}
           />
-          {error && <span>{error.fullName}</span>}
+          {error && <ErrorForm>{error.fullName}</ErrorForm>}
         </div>
 
         <div>
@@ -85,7 +85,7 @@ const StepOne = ({ previousButton, submitButtonText }) => {
             defaultValue={formData.cpf}
             onChange={handleChange}
           />
-          {error && <span>{error.cpf}</span>}
+          {error && <ErrorForm>{error.cpf}</ErrorForm>}
         </div>
 
         <div>
@@ -98,7 +98,7 @@ const StepOne = ({ previousButton, submitButtonText }) => {
             value={formData.gender}
             onChange={handleChange}
           />
-          {error && <span>{error.gender}</span>}
+          {error && <ErrorForm>{error.gender}</ErrorForm>}
         </div>
 
         <div>
@@ -111,7 +111,7 @@ const StepOne = ({ previousButton, submitButtonText }) => {
             value={formData.birthDate}
             onChange={handleChange}
           />
-          {error && <span>{error.birthDate}</span>}
+          {error && <ErrorForm>{error.birthDate}</ErrorForm>}
         </div>
 
         <ButtonGroup>

@@ -7,7 +7,7 @@ import CustomButton from '../../UI/CustomButton';
 import { ButtonGroup } from '../../UI/CustomButton/style';
 import { InputStyled } from '../../UI/Input/style';
 import ProgressSteps from '../../UI/ProgressSteps';
-import { Label } from '../style';
+import { Label, ErrorForm } from '../style';
 
 const StepTwo = ({ previousButton, submitButtonText }) => {
   const dispatch = useDispatch();
@@ -92,7 +92,7 @@ const StepTwo = ({ previousButton, submitButtonText }) => {
             value={formData.postal}
             onChange={handleChange}
           />
-          {error && <span>{error.postal}</span>}
+          {error && <ErrorForm>{error.postal}</ErrorForm>}
         </div>
         <div>
           <Label htmlFor="city">Cidade</Label>
@@ -103,7 +103,7 @@ const StepTwo = ({ previousButton, submitButtonText }) => {
             value={formData.city}
             onChange={handleChange}
           />
-          {error && <span>{error.city}</span>}
+          {error && <ErrorForm>{error.city}</ErrorForm>}
         </div>
         <div>
           <Label htmlFor="state">Estado</Label>
@@ -114,7 +114,7 @@ const StepTwo = ({ previousButton, submitButtonText }) => {
             value={formData.state}
             onChange={handleChange}
           />
-          {error && <span>{error.state}</span>}
+          {error && <ErrorForm>{error.state}</ErrorForm>}
         </div>
         <div>
           <Label htmlFor="address">Endereço</Label>
@@ -126,7 +126,7 @@ const StepTwo = ({ previousButton, submitButtonText }) => {
             onChange={handleChange}
           />
 
-          {error && <span>{error.address}</span>}
+          {error && <ErrorForm>{error.address}</ErrorForm>}
         </div>
         <div>
           <Label htmlFor="number">Número</Label>
@@ -138,7 +138,7 @@ const StepTwo = ({ previousButton, submitButtonText }) => {
             onChange={handleChange}
           />
 
-          {error && <span>{error.number}</span>}
+          {error && <ErrorForm>{error.number}</ErrorForm>}
         </div>
         <div>
           <Label htmlFor="complement">Complemento</Label>
@@ -150,7 +150,7 @@ const StepTwo = ({ previousButton, submitButtonText }) => {
             onChange={handleChange}
           />
 
-          {error && <span>{error.complement}</span>}
+          {error && <ErrorForm>{error.complement}</ErrorForm>}
         </div>
         <div>
           <Label htmlFor="district">Bairro</Label>
@@ -162,7 +162,7 @@ const StepTwo = ({ previousButton, submitButtonText }) => {
             onChange={handleChange}
           />
 
-          {error && <span>{error.district}</span>}
+          {error && <ErrorForm>{error.district}</ErrorForm>}
         </div>
         <div>
           <Label htmlFor="reference">Referência</Label>
@@ -174,7 +174,7 @@ const StepTwo = ({ previousButton, submitButtonText }) => {
             onChange={handleChange}
           />
 
-          {error && <span>{error.reference}</span>}
+          {error && <ErrorForm>{error.reference}</ErrorForm>}
         </div>
 
         <ButtonGroup>

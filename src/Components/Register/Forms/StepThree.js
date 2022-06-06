@@ -7,7 +7,7 @@ import CustomButton from '../../UI/CustomButton';
 import { ButtonGroup } from '../../UI/CustomButton/style';
 import { InputStyled } from '../../UI/Input/style';
 import ProgressSteps from '../../UI/ProgressSteps';
-import { Label } from '../style';
+import { Label, ErrorForm } from '../style';
 
 const StepThree = ({ previousButton, submitButtonText }) => {
   const dispatch = useDispatch();
@@ -82,7 +82,7 @@ const StepThree = ({ previousButton, submitButtonText }) => {
             value={formData.relationship}
             onChange={handleChange}
           />
-          {error && <span>{error.relationship}</span>}
+          {error && <ErrorForm>{error.relationship}</ErrorForm>}
         </div>
 
         <div>
@@ -94,7 +94,7 @@ const StepThree = ({ previousButton, submitButtonText }) => {
             value={formData.humor}
             onChange={handleChange}
           />
-          {error && <span>{error.humor}</span>}
+          {error && <ErrorForm>{error.humor}</ErrorForm>}
         </div>
 
         <div>
@@ -107,7 +107,7 @@ const StepThree = ({ previousButton, submitButtonText }) => {
             onChange={handleChange}
           />
 
-          {error && <span>{error.interests}</span>}
+          {error && <ErrorForm>{error.interests}</ErrorForm>}
         </div>
 
         <div>
@@ -120,7 +120,7 @@ const StepThree = ({ previousButton, submitButtonText }) => {
             onChange={handleChange}
           />
 
-          {error && <span>{error.aboutMe}</span>}
+          {error && <ErrorForm>{error.aboutMe}</ErrorForm>}
         </div>
 
         <ButtonGroup>

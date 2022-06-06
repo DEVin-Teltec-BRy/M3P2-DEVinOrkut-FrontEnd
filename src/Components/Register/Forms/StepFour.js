@@ -7,7 +7,7 @@ import CustomButton from '../../UI/CustomButton';
 import { ButtonGroup } from '../../UI/CustomButton/style';
 import { InputStyled } from '../../UI/Input/style';
 import ProgressSteps from '../../UI/ProgressSteps';
-import { Label } from '../style';
+import { Label, ErrorForm } from '../style';
 
 const StepFour = ({ previousButton, submitButtonText }) => {
   const dispatch = useDispatch();
@@ -76,7 +76,7 @@ const StepFour = ({ previousButton, submitButtonText }) => {
             value={formData.password}
             onChange={handleChange}
           />
-          {error.password && <span>{error.password}</span>}
+          {error.password && <ErrorForm>{error.password}</ErrorForm>}
         </div>
 
         <div>
@@ -87,7 +87,9 @@ const StepFour = ({ previousButton, submitButtonText }) => {
             value={formData.confirmPassword}
             onChange={handleChange}
           />
-          {error.confirmPassword && <span>{error.confirmPassword}</span>}
+          {error.confirmPassword && (
+            <ErrorForm>{error.confirmPassword}</ErrorForm>
+          )}
         </div>
         <div>
           <Label htmlFor="email">Email</Label>
@@ -97,7 +99,7 @@ const StepFour = ({ previousButton, submitButtonText }) => {
             value={formData.email}
             onChange={handleChange}
           />
-          {error.email && <span>{error.email}</span>}
+          {error.email && <ErrorForm>{error.email}</ErrorForm>}
         </div>
 
         <ButtonGroup>
