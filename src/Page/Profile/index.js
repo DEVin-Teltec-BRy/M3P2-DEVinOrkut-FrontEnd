@@ -8,25 +8,31 @@ import { LateralProfile } from "./Lateral";
 import { CarrucelFotos, ItemCarrucel } from "../../Components/CarrucelFotos";
 import { GetStart } from "../../Components/Stars";
 import { useData } from "../../Context/dataContext";
+import { getAge, getDateFomated } from "../../Utils";
 
 export const ProfilePage = () => {
   const { user } = useData();
+  const { fullName, gender, aboutMe, birthDate,album,interests,scraps,friends,humor} = user;
+  const formatedDate = getDateFomated(birthDate);
+  const textIntereses = interests?.join(' / ')
+  const textHumor = humor?.join(' / ')
+  const age = getAge(birthDate)
 
   return (
     <Layout lateral={<LateralProfile />}>
       <ProfileContent>
-        <h1>{user.fullName}</h1>
+        <h1>{fullName}</h1>
 
         <ContentInfo border>
           <BoxContainer title="Recados">
-            <BsChatLeft size={20} /> 1.1 M
+            <BsChatLeft size={20} /> {scraps?.length}
           </BoxContainer>
 
           <BoxContainer title="Fotos">
-            <AiOutlineCamera size={20} /> 104
+            <AiOutlineCamera size={20} /> {album?.length}
           </BoxContainer>
           <BoxContainer title="Fãs ">
-            <FiUsers size={20} /> 201 M
+            <FiUsers size={20} /> {friends?.length}
           </BoxContainer>
           <BoxContainer title="Confiavel">
             <GetStart type="Bom" />
@@ -39,36 +45,20 @@ export const ProfilePage = () => {
           </BoxContainer>
         </ContentInfo>
         <ContentInfo>
-          <BoxContainer title="Aniversario">22 de agosto</BoxContainer>
-          <BoxContainer title="Idade">21 Anos</BoxContainer>
-          <BoxContainer title="Humor">Extrorvertido/Extravagante</BoxContainer>
+          <BoxContainer title="Aniversario">{formatedDate}</BoxContainer>
+          <BoxContainer title="Idade">{age} Anos</BoxContainer>
+          <BoxContainer title="Humor">{textHumor}</BoxContainer>
         </ContentInfo>
         <ContentInfo expand>
-          <BoxContainer title="Género">Masculino</BoxContainer>
+          <BoxContainer title="Género">{gender}</BoxContainer>
           <BoxContainer title="Intereses no DevinOrkut">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem
-            tempore quia totam delectus maxime nostrum neque reiciendis ratione,
-            assumenda aliquid?
+            {textIntereses}
           </BoxContainer>
         </ContentInfo>
         <ContentInfo>
-          <BoxContainer title="Quem sou eu">
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem
-              tempore quia totam delectus maxime nostrum neque reiciendis
-              ratione, assumenda aliquid? Lorem ipsum dolor sit,
-            </p>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem
-              tempore quia totam delectus maxime nostrum neque reiciendis
-              ratione, assumenda aliquid? Lorem ipsum dolor sit, Lorem ipsum
-              dolor sit, amet consectetur adipisicing elit. Autem tempore quia
-              totam delectus maxime nostrum neque reiciendis ratione, assumenda
-              aliquid? Lorem ipsum dolor sit,
-            </p>
-          </BoxContainer>
+          <BoxContainer title="Quem sou eu">{aboutMe}</BoxContainer>
         </ContentInfo>
-        <CarrucelFotos title='Ultimas Fotos'>
+        <CarrucelFotos title="Ultimas Fotos">
           {[...Array(9)].map((_, idx) => (
             <ItemCarrucel
               key={idx}

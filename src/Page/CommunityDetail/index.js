@@ -32,6 +32,8 @@ export const Lateral = () => {
                 {[...Array(8)].map((_, key) => (
                     <CardSecondary
                         round
+                        to='usuario'
+                        id='Colocar id de membros'
                         key={key}
                         text="Bill Gates"
                         src="https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
@@ -42,6 +44,8 @@ export const Lateral = () => {
                 {[...Array(8)].map((_, key) => (
                     <CardSecondary
                         size="md"
+                        to='comunidade'
+                        id='Colocar id de comunidades'
                         key={key}
                         text="Full Bugs"
                         src="https://thumbs.dreamstime.com/b/o-homem-irado-na-camisa-vermelha-rasga-folha-de-papel-6582601.jpg"

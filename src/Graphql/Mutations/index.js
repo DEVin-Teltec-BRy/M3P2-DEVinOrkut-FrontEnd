@@ -17,22 +17,46 @@ export const LOGIN_MUTATION = gql`
       token
       user {
         id
-        fullName
+        birthDate
+        cpf
         email
+        fullName
+        gender
+        postal
+        city
+        state
+        address
+        number
+        complement
+        district
+        reference
+        relationship
+        humor
+        interests
+        aboutMe
+        scraps
+        testimonial
+        trusty
+        cool
+        sexy
+        fans
+        imageUrl
+        profilePicture
         friendRequest {
           id
           fullName
+          profilePicture
         }
         communities {
           id
           name
-          category
           logo
         }
         friends {
           id
           fullName
           imageUrl
+          profilePicture
         }
       }
     }

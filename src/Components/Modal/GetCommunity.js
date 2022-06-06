@@ -1,18 +1,8 @@
 import React from "react";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { CardSecondary } from "../CardSecondary";
+import { GET_COMMUNITIES } from "../../Graphql/Querys/Communities";
 
-export const GET_COMMUNITIES = gql`
-  query Communities {
-    communities {
-      id
-      logo
-      name
-      description
-      category
-    }
-  }
-`;
 const CommunitiesList = () => {
   const { loading, error, data } = useQuery(GET_COMMUNITIES);
 
@@ -26,6 +16,8 @@ const CommunitiesList = () => {
             <CardSecondary
               key={community.id}
               size="md"
+              to="comunidade"
+              id={community.id}
               text={community.name}
               src={community.logo}
             />

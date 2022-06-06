@@ -2,22 +2,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button, Form } from "react-bootstrap";
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { CategoryEnum } from "./CategoryEnum";
 import { useData } from "../../Context/dataContext";
-
-export const CREATE_COMMUNITY = gql`
-  mutation CreateCommunity($input: CommunityInput) {
-    createCommunity(input: $input) {
-      id
-      logo
-      name
-      description
-      category
-      creation_date
-    }
-  }
-`;
+import { CREATE_COMMUNITY } from "../../Graphql/Querys/Communities";
 
 export function ModalComponent() {
   const [show, setShow] = useState(false);
@@ -49,7 +37,7 @@ export function ModalComponent() {
               createCommunity({
                 variables: {
                   input: {
-                    logo: "https://thumbs.dreamstime.com/b/o-homem-irado-na-camisa-vermelha-rasga-folha-de-papel-6582601.jpg",
+                    logo: "https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149271199.jpg?w=996&t=st=1654375825~exp=1654376425~hmac=7eaad2883abb5b372e581161b19d84f9b0efba1669fbb08271f8c2f6bfae1f63",
                     name: name,
                     category: category,
                     description: description,
@@ -66,10 +54,6 @@ export function ModalComponent() {
                 placeholder="Ex: Amigos de Elon Musk"
                 autoFocus
               />
-            </Form.Group>
-            <Form.Group controlId="uploadFile" className="mb-3">
-              <Form.Label>Logo</Form.Label>
-              <Form.Control type="file" />
             </Form.Group>
             <CategoryEnum />
             <Form.Group className="mb-3" controlId="textArea">

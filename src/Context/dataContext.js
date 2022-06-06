@@ -6,6 +6,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { REMOVE_FRIEND, REQUEST_FRIENDSHIP } from "../Graphql/Mutations/FriendshipMutations";
 import { VALIDATE_TOKEN } from "../Graphql/Mutations/validateToken";
 
 const DataContex = createContext();
@@ -45,12 +46,19 @@ const initUser = {
 
 const DataProvider = ({ children }) => {
   const [ValidateToken] = useMutation(VALIDATE_TOKEN);
-  const tokenLs =  localStorage.getItem("Token");
+  const [RermoveFriendship] = useMutation(REMOVE_FRIEND);
+  const [RequestFriendship] = useMutation(REQUEST_FRIENDSHIP);
+  const [tokenLs, setTokenLs] = useState(() => {
+    const token = localStorage.getItem("Token");
+    if (token) return token;
+    return false;
+  });
 
   const [user, setUser] = useState(initUser);
   const [category, setCategory] = useState("");
 
   const handleLogin = (newData) => {
+    localStorage.setItem("Token", newData.token);
     setUser({ ...user, ...newData });
   };
 
@@ -63,7 +71,7 @@ const DataProvider = ({ children }) => {
     try {
       const response = await ValidateToken({
         variables: {
-          token: tokenLs,
+          token: localStorage.getItem("Token"),
         },
       });
       const { data } = response;
@@ -72,20 +80,39 @@ const DataProvider = ({ children }) => {
         token: validatedToken.token,
         ...validatedToken.user,
       };
-      ;
+      setTokenLs(validatedToken.token);
       setUser(newUser);
     } catch (error) {
       localStorage.removeItem("Token");
-     
+      setUser(initUser);
     }
-  }, [ValidateToken,tokenLs]);
+  }, [ValidateToken]);
 
 
+  const handleAddFriend = (userId, friendId) => {
+    const { data } = RequestFriendship({
+      variables: {
+        senderId: userId,
+        requestedId: friendId,
+      },
+    });
+    console.log("Adicionar amigo", data)
+  }
+  const handleRemoveFriend = async (userId, friendId) => {
+    const { data } = await RermoveFriendship({
+      variables: {
+        loggedUserId: userId,
+        removeFriendshipId: friendId,
+      },
+    });
+    const { removeFriendship } = data;
+    setUser({ ...user, friends: removeFriendship });
+  }
   useEffect(() => {
     if (tokenLs) {
       handleToken();
     }
-  }, [handleToken,tokenLs]);
+  }, [handleToken, tokenLs]);
 
   const data = {
     user,
@@ -96,6 +123,8 @@ const DataProvider = ({ children }) => {
     handleLogout,
     category,
     setCategory,
+    handleAddFriend,
+    handleRemoveFriend,
   };
   return <DataContex.Provider value={data}>{children}</DataContex.Provider>;
 };

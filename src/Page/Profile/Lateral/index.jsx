@@ -3,23 +3,27 @@ import { CardSecondary } from "../../../Components/CardSecondary";
 import { useData } from "../../../Context/dataContext";
 import { ContentLateral } from "./lateral.styled";
 
-export const LateralProfile = () => {
+export const LateralProfile = ({friendsUser, communitiesUser}) => {
   const { user: { friends, communities } } = useData();
+  const selectFriends = friendsUser ? friendsUser : friends
+  const selectcommunities = communitiesUser ? communitiesUser : communities
 
   return (
     <ContentLateral>
-      <CardMain title="Amigos" count={friends.length} toAll='friends'>
-        {friends.map(({fullName}, key) => (
+      <CardMain title="Amigos" count={selectFriends.length} toAll='friends'>
+        {selectFriends.map(({fullName, id}, key) => (
           <CardSecondary
             key={key}
             round
+            to="usuario"
+            id={id}
             text={fullName}
             src="https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
           />
         ))}
       </CardMain>
-      <CardMain title="Comunidades" count={communities.length} toAll='communities'>
-        {communities.map((_, idx) => (
+      <CardMain title="Comunidades" count={selectcommunities.length} toAll='communities'>
+        {selectcommunities.map((_, idx) => (
           <CardSecondary
             size="md"
             key={idx}
