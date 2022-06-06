@@ -35,3 +35,10 @@ export const Label = styled.label`
 export const ErrorForm = styled.span`
   color: red;
 `;
+
+export const ConfirmGroup = styled.div`
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin: 0.5rem;
+`;

@@ -1,20 +1,22 @@
 import { useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { CREATE_USER_MUTATION } from '../../../Graphql/Mutations/CreateUserMutations';
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Loading } from '../../Loading';
+import CustomButton from '../../UI/CustomButton';
+import { ButtonGroup } from '../../UI/CustomButton/style';
+import { ConfirmGroup } from '../style';
 
 const Final = () => {
   const state = useSelector((state) => state);
   const [createUser] = useMutation(CREATE_USER_MUTATION);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState('');
 
-  const addUser = useCallback(async () => {
+  const handleSubmit = async () => {
     try {
-      const response = await createUser({
+      const { data } = await createUser({
         variables: {
           user: {
             fullName: state.FormUserRegister.fullName,
@@ -38,20 +40,12 @@ const Final = () => {
           },
         },
       });
-
-      if (response) {
-        setIsLoading(false);
-      }
-    } catch (e) {
-      setError(e.message);
+      setIsSubmitted(true);
+      console.log(data);
+    } catch (error) {
+      setError(error.message);
     }
-  }, [state, createUser]);
-
-  useEffect(() => {
-    if (state.FormStep === 5) {
-      addUser();
-    }
-  }, [addUser, state, createUser]);
+  };
 
   const staleOutput = `JSON DATA Form-Completed: ${JSON.stringify(
     state,
@@ -61,17 +55,25 @@ const Final = () => {
 
   <pre>{staleOutput}</pre>;
 
-  let content = <p>Processando...</p>;
+  let content = (
+    <>
+      <ConfirmGroup>
+        <p>Confirmar envio de cadastro?</p>
+      </ConfirmGroup>
+      <ButtonGroup>
+        <CustomButton>Não</CustomButton>
+        <CustomButton type="submit" primary={true} onClick={handleSubmit}>
+          Sim
+        </CustomButton>
+      </ButtonGroup>
+    </>
+  );
 
   if (error) {
     <div>{error}</div>;
   }
 
-  if (!isLoading) {
-    content = <Loading />;
-  }
-
-  if (!isLoading && !error) {
+  if (!error && isSubmitted) {
     content = (
       <>
         <h1>Cadastro concluído com sucesso!</h1>
