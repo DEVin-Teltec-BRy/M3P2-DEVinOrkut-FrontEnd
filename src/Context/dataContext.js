@@ -6,7 +6,10 @@ import {
   useEffect,
   useState,
 } from "react";
-import { REMOVE_FRIEND, REQUEST_FRIENDSHIP } from "../Graphql/Mutations/FriendshipMutations";
+import {
+  REMOVE_FRIEND,
+  REQUEST_FRIENDSHIP,
+} from "../Graphql/Mutations/FriendshipMutations";
 import { VALIDATE_TOKEN } from "../Graphql/Mutations/validateToken";
 
 const DataContex = createContext();
@@ -55,7 +58,7 @@ const DataProvider = ({ children }) => {
   });
 
   const [user, setUser] = useState(initUser);
-  const [category, setCategory] = useState("");
+  const [categoryEnum, setCategoryEnum] = useState("");
 
   const handleLogin = (newData) => {
     localStorage.setItem("Token", newData.token);
@@ -88,8 +91,7 @@ const DataProvider = ({ children }) => {
     }
   }, [ValidateToken]);
 
-
-  const handleAddFriend = async(userId, friendId) => {
+  const handleAddFriend = async (userId, friendId) => {
     const { data } = await RequestFriendship({
       variables: {
         senderId: userId,
@@ -97,7 +99,7 @@ const DataProvider = ({ children }) => {
       },
     });
     setUser({ ...user, ...data.requestFriendship });
-  }
+  };
   const handleRemoveFriend = async (userId, friendId) => {
     const { data } = await RermoveFriendship({
       variables: {
@@ -106,7 +108,7 @@ const DataProvider = ({ children }) => {
       },
     });
     setUser({ ...user, ...data.removeFriendship });
-  }
+  };
   useEffect(() => {
     if (tokenLs) {
       handleToken();
@@ -120,8 +122,8 @@ const DataProvider = ({ children }) => {
     },
     handleLogin,
     handleLogout,
-    category,
-    setCategory,
+    categoryEnum,
+    setCategoryEnum,
     handleAddFriend,
     handleRemoveFriend,
   };

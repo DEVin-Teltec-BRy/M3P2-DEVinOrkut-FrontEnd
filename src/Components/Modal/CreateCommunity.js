@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button, Form } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
-import { CategoryEnum } from "./CategoryEnum";
+import { SelectCategoryEnum } from "./CategoryEnum";
 import { useData } from "../../Context/dataContext";
-import { CREATE_COMMUNITY } from "../../Graphql/Querys/Communities";
+import { CREATE_COMMUNITY } from "../../Graphql/Mutations/CreateCommunityMutations";
 
 export function ModalComponent() {
   const [show, setShow] = useState(false);
@@ -14,7 +14,7 @@ export function ModalComponent() {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const { category } = useData();
+  const { categoryEnum } = useData();
 
   const [createCommunity, { loading, error }] = useMutation(CREATE_COMMUNITY);
 
@@ -39,7 +39,7 @@ export function ModalComponent() {
                   input: {
                     logo: "https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149271199.jpg?w=996&t=st=1654375825~exp=1654376425~hmac=7eaad2883abb5b372e581161b19d84f9b0efba1669fbb08271f8c2f6bfae1f63",
                     name: name,
-                    category: category,
+                    category: categoryEnum,
                     description: description,
                   },
                 },
@@ -55,7 +55,7 @@ export function ModalComponent() {
                 autoFocus
               />
             </Form.Group>
-            <CategoryEnum />
+            <SelectCategoryEnum />
             <Form.Group className="mb-3" controlId="textArea">
               <Form.Label>
                 Escreva uma descrição para a sua comunidade.
