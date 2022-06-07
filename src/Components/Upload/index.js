@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Form, Alert } from 'react-bootstrap';
 import axios from 'axios';
-import { setHeaders } from '../../api';
+import { setHeaders, url } from '../../api';
 
-const Upload = ({ url, label }) => {
+const Upload = () => {
   const [imageUpload, setImageUpload] = useState('');
   const [isSuccess, setSuccess] = useState(false);
   const [isError, setError] = useState(false);
@@ -12,6 +12,8 @@ const Upload = ({ url, label }) => {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     TransformFileData(file);
+    console.log(file);
+    console.log(url.uploadImageUser);
 
     setError(false);
     setSuccess(false);
@@ -34,7 +36,7 @@ const Upload = ({ url, label }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        url,
+        url.uploadImageUser,
         { image: imageUpload },
         setHeaders()
       );
@@ -42,15 +44,10 @@ const Upload = ({ url, label }) => {
       if (response.status === 201) {
         setSuccess(true);
       }
+
       return response.data;
     } catch (error) {
-      if (error.request.statusText === 'Payload Too Large') {
-        setErrorMessage(
-          'Image is too large. Please upload an image less than 5MB'
-        );
-      } else {
-        setErrorMessage(error.message);
-      }
+      setErrorMessage(error.message);
 
       setError(true);
     }
@@ -61,7 +58,6 @@ const Upload = ({ url, label }) => {
       {!isSuccess && (
         <Form onSubmit={handleSubmit} className="m-3">
           <Form.Group className="mb-3">
-            <Form.Label>{label}</Form.Label>
             <Form.Control
               id="upload"
               type="file"

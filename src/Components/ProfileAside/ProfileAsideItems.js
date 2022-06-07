@@ -8,6 +8,8 @@ import {
 } from 'react-icons/fa';
 import { Nav } from 'react-bootstrap';
 import { NewButtonLink } from '../Button';
+import { ProfileAsideButton } from './style';
+import ModalUpload from './ModalUpload';
 
 const ProfileAsideItems = ({
   name,
@@ -16,9 +18,13 @@ const ProfileAsideItems = ({
   relationship,
   local,
 }) => {
+  const [modalShow, setModalShow] = React.useState(false);
+
   return (
     <>
-      <img src={pictureProfile} alt={name} />
+      <ProfileAsideButton onClick={() => setModalShow(true)}>
+        <img src={pictureProfile} alt={name} />
+      </ProfileAsideButton>
       <h2>{name}</h2>
       <ul>
         <li>{genre}</li>
@@ -36,6 +42,7 @@ const ProfileAsideItems = ({
           <FaRegEdit />
         </a>
       </div>
+      <ModalUpload show={modalShow} onHide={() => setModalShow(false)} />
     </>
   );
 };

@@ -8,6 +8,7 @@ export const InputStyled = styled.input`
   border-radius: 7px;
   box-shadow: rgba(0, 0, 0, 0.26);
   padding: 1rem;
+  font-fontsize: 20px;
 `;
 
 export const TextAreaStyled = styled.textarea`

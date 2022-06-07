@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ProfileContainer = styled.section`
   display: flex;
@@ -9,7 +9,7 @@ export const ProfileContainer = styled.section`
   padding: 1rem;
   gap: 1rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  width: 14rem ;
+  width: 14rem;
   & h1 {
     font-size: 1rem;
   }
@@ -19,10 +19,10 @@ export const ProfileContainer = styled.section`
   }
 
   & img {
-   width:  160px;
-   height: 160px;
-   border-radius: 50%;
-   filter: drop-shadow(4px 4px 16px rgba(0, 0, 0, 0.25));
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    filter: drop-shadow(4px 4px 16px rgba(0, 0, 0, 0.25));
   }
 
   & .menu-links {
@@ -48,12 +48,22 @@ export const ProfileContainer = styled.section`
 `;
 
 export const MenuOptions = styled.div`
-display: flex;
-flex-direction: column;
-gap:10px;
-width: 100% ;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
 
->a{
-  background:var(--card) ;
-}
-`
+  > a {
+    background: var(--card);
+  }
+`;
+
+export const ProfileAsideButton = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+`;
