@@ -28,7 +28,7 @@ export const Logo = styled.img`
 `;
 
 export const Label = styled.label`
-  font-size: 1.5rem;
+  font-size: 20px;
   font-weight: bold;
   padding: 0.5rem;
 `;
