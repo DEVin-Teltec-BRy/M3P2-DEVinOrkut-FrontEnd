@@ -13,7 +13,7 @@ import PrivateRoute from './PrivateRoute';
 import CreateUser from '../Page/CreateUser';
 import { UserPage } from '../Page/User';
 import { PublicRoute } from './PublicRouse';
-
+import { CommunityMembersPage } from '../Page/CommunityMembers';
 const AppRoutes = () => (
   <BrowserRouter>
     <Routes>
@@ -113,6 +113,14 @@ const AppRoutes = () => (
           <PublicRoute redirectTo="/">
             <Login />
           </PublicRoute>
+        }
+      />
+      <Route
+        path="communities/:communityid/members"
+        element={
+          <PrivateRoute redirectTo="/login">
+            <CommunityMembersPage />
+          </PrivateRoute>
         }
       />
     </Routes>
