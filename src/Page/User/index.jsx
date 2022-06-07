@@ -33,6 +33,9 @@ export const UserPage = () => {
   const [ userPage, setUserPage ] = useState(null);
   
   useEffect(()=>{
+    if(id === loggedUser.id){
+      navigate("/");
+    }
     if(data) {
       const { user } = data;
       setUserPage(user);
@@ -43,7 +46,7 @@ export const UserPage = () => {
         setPendingRequest(() => userPage.friendRequest.some((friend) => friend.id === loggedUser.id));
       }
     }
-  }, [data, id, loggedUser.id, loggedUser?.friendRequest, userPage?.friendRequest])
+  }, [navigate, data, id, loggedUser.id, loggedUser?.friendRequest, userPage?.friendRequest])
 
     return (data && userPage && loggedUser) ? (
         <Layout nameUser={userPage.fullName}

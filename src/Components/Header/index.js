@@ -22,7 +22,7 @@ const Header = () => {
   return (
     <S.MainContainer>
     <S.NavbarContainer collapseonselect="true" expand="lg">
-      <Col md={2}>
+      <Col md={2} onClick={()=> navigate("/")}>
         <img src={Logo} alt="DEVinOrkut" width="150" />
       </Col>
       <Col md={6}>

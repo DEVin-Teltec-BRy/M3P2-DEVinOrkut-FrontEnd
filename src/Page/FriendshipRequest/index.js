@@ -21,15 +21,14 @@ export const FriendshipRequestPage = () => {
       variables: { loggedUserId: user.id, acceptFriendshipId },
     });
     const { data } = response;
-    updateUser({ friendRequest: data.acceptRequest });
+    updateUser({ ...data.acceptRequest });
   };
   const handleRefuseFriendship = async (declineFriendshipId) => {
     const response = await REFUSEFRIENDSHIP({
       variables: { loggedUserId: user.id, declineFriendshipId },
     });
     const { data } = response;
-    
-    updateUser({ friendRequest: data.acceptFriendship });
+    updateUser({ ...data.refuseFriendship });
   };
   return (
     <Layout lateral={<Lateral content={user.friends} />}>
