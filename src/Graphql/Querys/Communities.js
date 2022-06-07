@@ -20,23 +20,27 @@ export const COMMUNITY_DETAILS = gql`
       description
       category
       creation_date
+      members {
+        id
+        fullName
+      }
       owner {
         id
         fullName
       }
-      foruns {
-        id
-        name
-        description
-        comments {
-          id
-          creation_date
-          description
-        }
-      }
+      # foruns {
+      #   name
+      #   description
+      #   comments {
+      #     id
+      #     creation_date
+      #     description
+      #   }
+      # }
     }
   }
 `;
+
 
 export const CATEGORY_ENUM = gql`
   query enum {
@@ -47,3 +51,21 @@ export const CATEGORY_ENUM = gql`
     }
   }
 `;
+
+
+export const COMMUNITY_MEMBERS = gql`
+  query Community($communityId: ID!) {
+    community(id: $communityId) {
+      id
+      name
+      members {
+        id
+        fullName
+      }
+      owner {
+        id
+        fullName
+      }
+    }
+  }
+`
