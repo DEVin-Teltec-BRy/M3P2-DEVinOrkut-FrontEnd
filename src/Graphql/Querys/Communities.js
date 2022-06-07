@@ -7,20 +7,6 @@ export const GET_COMMUNITIES = gql`
       logo
       name
       description
-      category
-    }
-  }
-`;
-
-export const CREATE_COMMUNITY = gql`
-  mutation CreateCommunity($input: CommunityInput) {
-    createCommunity(input: $input) {
-      id
-      logo
-      name
-      description
-      category
-      creation_date
     }
   }
 `;
@@ -53,9 +39,8 @@ export const COMMUNITY_DETAILS = gql`
 `;
 
 export const CATEGORY_ENUM = gql`
-  query {
+  query enum {
     __type(name: "Category") {
-      name
       enumValues {
         name
       }
