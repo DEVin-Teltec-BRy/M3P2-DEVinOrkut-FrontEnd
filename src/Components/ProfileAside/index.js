@@ -21,14 +21,16 @@ const Profile = ({ nameUser }) => {
       <ProfileAsideItems
         key={user.id}
         name={id ? nameUser : user.fullName}
-        pictureProfile={
+        profilePicture={
           id
             ? 'https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg'
-            : user.pictureProfile || DUMMY.pictureProfile
+            : user.profilePicture[user.profilePicture.length - 1] ||
+              DUMMY.pictureProfile
         }
         relationship={user.relationship}
-        local={user.city}
-        genre={user.genre}
+        city={user.city}
+        state={user.state}
+        gender={user.gender}
       />
     </S.ProfileContainer>
   );

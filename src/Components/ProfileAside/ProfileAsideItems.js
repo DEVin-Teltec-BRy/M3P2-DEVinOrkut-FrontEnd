@@ -13,23 +13,27 @@ import ModalUpload from './ModalUpload';
 
 const ProfileAsideItems = ({
   name,
-  pictureProfile,
-  genre,
+  profilePicture,
+  gender,
   relationship,
-  local,
+  city,
+  state,
 }) => {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (
     <>
       <ProfileAsideButton onClick={() => setModalShow(true)}>
-        <img src={pictureProfile} alt={name} />
+        <img src={profilePicture} alt={name} />
       </ProfileAsideButton>
-      <h2>{name}</h2>
+      <h3>{name}</h3>
       <ul>
-        <li>{genre}</li>
-        <li>{relationship}</li>
-        <li>{local}</li>
+        <li>
+          {gender}, {relationship}
+        </li>
+        <li>
+          {city}, {state}
+        </li>
       </ul>
       <Nav className="menu-links">
         <NewButtonLink to="/" icon={<FaUserCircle />} name="Perfil" />
