@@ -20,10 +20,10 @@ export const CommunityDetailPage = () => {
     else {
         const { community } = data;
         let isOwner = community.owner.id === user.id ? true : false;
-        let isMember = isOwner && community.members.length > 0 ? true : false;
-
         return (
-            <Layout lateral={<MembersLateral isMember={isMember} members={community.members} communities={user.communities} id={communityid} />}>
+            <Layout lateral={<MembersLateral
+                isMember={isOwner || community.members.length > 0 ? true : false}
+                members={community.members} communities={user.communities} id={communityid} />}>
                 <CardMain count={1000} pagination={<Pagination />}>
                     {<CommunityDetail
                         title={community.name}
