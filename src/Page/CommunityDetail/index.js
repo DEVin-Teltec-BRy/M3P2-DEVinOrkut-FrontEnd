@@ -7,8 +7,8 @@ import { MembersLateral } from "../../Components/MembersLateral";
 import { useData } from "../../Context/dataContext";
 import { useQuery } from "@apollo/client";
 import { COMMUNITY_DETAILS } from "../../Graphql/Querys/Communities";
-import { convertDateFromMilliseconds } from "../../Utils/index";
-
+import { convertDateFromMilliseconds, timeCalculator } from "../../Utils/index";
+import { BottomForum } from "../../Components/Forum/index";
 export const CommunityDetailPage = () => {
     const { user } = useData();
     const { communityid } = useParams()
@@ -33,7 +33,17 @@ export const CommunityDetailPage = () => {
                         imgsrc={community.logo}
                         isowner={isOwner}
                         description={community.description}
-                    />}
+
+                    >{community.foruns.map((forum) => {
+                        return (<BottomForum
+                            forumid={forum.id}
+                            comunityid={communityid}
+                            key={forum.id}
+                            lastUserImg={forum.comments[0].author.profilePicture[0]}
+                            title={forum.name}
+                            replys={forum.comments.length}
+                            lastResponse={timeCalculator(forum.comments[0].creation_date)} />)
+                    })} </CommunityDetail>}
 
                 </CardMain>
             </Layout>

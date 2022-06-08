@@ -18,7 +18,7 @@ export const COMMUNITY_DETAILS = gql`
       logo
       name
       description
-      category
+      categoryEnum
       creation_date
       members {
         id
@@ -28,30 +28,33 @@ export const COMMUNITY_DETAILS = gql`
         id
         fullName
       }
-      # foruns {
-      #   name
-      #   description
-      #   comments {
-      #     id
-      #     creation_date
-      #     description
-      #   }
-      # }
+       foruns {
+         id
+         name
+         description
+         comments {
+           id
+           creation_date
+           description
+           author{
+             id
+             fullName
+             profilePicture
+           }
+         }
+       }
     }
   }
 `;
-
 
 export const CATEGORY_ENUM = gql`
-  query enum {
-    __type(name: "Category") {
-      enumValues {
-        name
-      }
+  query Categories {
+    categories {
+      id
+      name
     }
   }
 `;
-
 
 export const COMMUNITY_MEMBERS = gql`
   query Community($communityId: ID!) {
@@ -68,4 +71,33 @@ export const COMMUNITY_MEMBERS = gql`
       }
     }
   }
-`
+  `;
+
+export const COMMUNITY_AND_FORUM = gql`
+query CommunityAndForum($communityId: ID!, $forumId: ID!) {
+  community(id: $communityId) {
+    id
+    owner {
+      id
+    }
+    members {
+      id
+      fullName
+      profilePicture
+    }
+  }
+  forum(id: $forumId) {
+    name
+    comments {
+      id
+      description
+      creation_date
+      author {
+        id
+        fullName
+        profilePicture
+      }
+    }
+  }
+}
+`;

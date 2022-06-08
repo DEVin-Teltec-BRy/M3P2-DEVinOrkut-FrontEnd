@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ResetPassword from "../Page/ResetPassword";
 import SendResetPassEmail from "../Page/SendResetPassEmail";
@@ -5,7 +6,6 @@ import PrivateRoute from "./PrivateRoute";
 import { PublicRoute } from "./PublicRouse";
 import { NotFoundPage } from "../Page/NotFound404";
 import { privateRoutes, publicRoutes } from "./Routes";
-
 const AppRoutes = () => (
   <BrowserRouter>
     <Routes>

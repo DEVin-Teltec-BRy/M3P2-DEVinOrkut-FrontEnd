@@ -12,7 +12,7 @@ export const SelectCategoryEnum = () => {
   return (
     <Form.Select onChange={(e) => setCategoryEnum(e.target.value)}>
       <option>Escolha a categoria</option>
-      {data.__type.enumValues.map(({ name }) => (
+      {data.categories.map(({ name }) => (
         <option key={name} value={name}>
           {name}
         </option>
