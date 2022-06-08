@@ -14,6 +14,11 @@ export const ProfileContainer = styled.section`
     font-size: 1rem;
   }
 
+  & h2 {
+    font-size: 1.75rem;
+    padding-left: 25px;
+  }
+
   & ul {
     padding: 0;
   }

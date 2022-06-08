@@ -24,8 +24,7 @@ const Profile = ({ nameUser }) => {
         profilePicture={
           id
             ? 'https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg'
-            : user.profilePicture[user.profilePicture.length - 1] ||
-              DUMMY.pictureProfile
+            : user.profilePicture[0] || DUMMY.pictureProfile
         }
         relationship={user.relationship}
         city={user.city}

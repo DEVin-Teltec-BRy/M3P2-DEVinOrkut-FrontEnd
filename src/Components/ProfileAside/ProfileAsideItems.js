@@ -6,7 +6,7 @@ import {
   FaComment,
   FaRegEdit,
 } from 'react-icons/fa';
-import { Nav } from 'react-bootstrap';
+import { Nav, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { NewButtonLink } from '../Button';
 import { ProfileAsideButton } from './style';
 import ModalUpload from './ModalUpload';
@@ -23,10 +23,14 @@ const ProfileAsideItems = ({
 
   return (
     <>
-      <ProfileAsideButton onClick={() => setModalShow(true)}>
-        <img src={profilePicture} alt={name} />
-      </ProfileAsideButton>
-      <h3>{name}</h3>
+      <OverlayTrigger
+        overlay={<Tooltip id="edit">Clique para adicionar</Tooltip>}
+      >
+        <ProfileAsideButton onClick={() => setModalShow(true)}>
+          <img src={profilePicture} alt={name} />
+        </ProfileAsideButton>
+      </OverlayTrigger>
+      <h2>{name}</h2>
       <ul>
         <li>
           {gender}, {relationship}
