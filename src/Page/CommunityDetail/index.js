@@ -43,6 +43,7 @@ export const CommunityDetailPage = () => {
               imgsrc={community.logo}
               isowner={isOwner}
               description={community.description}
+              members={community.members}
             >
               {community.foruns.map((forum) => {
                 return (

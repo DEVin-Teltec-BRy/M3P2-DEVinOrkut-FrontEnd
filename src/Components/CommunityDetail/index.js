@@ -4,6 +4,7 @@ import { NewButton } from "../Button";
 import { NewInputForm } from "../Input";
 import { MainModal } from "../MainModal";
 import { Form } from "react-bootstrap";
+import { useData } from "../../Context/dataContext";
 import { useMutation } from "@apollo/client";
 import { JOIN_COMMUNITY } from "../../Graphql/Mutations/JoinCommunityMutations";
 
@@ -19,6 +20,7 @@ export const CommunityDetail = ({
   owner,
   isowner,
   description,
+  members,
   children,
 }) => {
   const [show, setShow] = useState(true);
@@ -30,18 +32,19 @@ export const CommunityDetail = ({
     console.log(values);
   };
 
+  const { user } = useData();
+
   const [joinCommunity, { loading, error }] = useMutation(JOIN_COMMUNITY);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error.message}</p>;
 
-  const handleJoin = async () => {
+  const handleJoin = async (e) => {
     try {
+      e.preventDefault();
       await joinCommunity({
         variables: {
-          input: {
-            category_id: { id },
-          },
+          communityId: id,
         },
       });
     } catch (error) {
@@ -49,13 +52,13 @@ export const CommunityDetail = ({
     }
   };
 
+  const isMember = members.map((u) => u.id === user.id);
+
   return (
     <>
       <S.MainSection>
         <S.DivTitle>
-          <h1>
-            {title} {id}
-          </h1>
+          <h1>{title}</h1>
         </S.DivTitle>
         <hr />
         <S.DivContent>
@@ -89,20 +92,25 @@ export const CommunityDetail = ({
         <S.DivDescription>
           <span>Descrição:</span>
           <p>{description}</p>
-          <NewButton size="sm" onClick={handleJoin}>
-            Juntar-se a Comunidade
-          </NewButton>
-        </S.DivDescription>
-        <hr />
-        <S.DivForum>
-          <div className="top-forum">
-            <span>Fórum</span>
-            <NewButton size="sm" onClick={handleShow}>
-              Criar Tópico
+          <div>
+            <NewButton size="sm" onClick={handleJoin}>
+              Juntar-se a Comunidade
             </NewButton>
           </div>
-          <div className="body-forum">{children}</div>
-        </S.DivForum>
+        </S.DivDescription>
+
+        <hr />
+        {isMember.length > 0 && (
+          <S.DivForum>
+            <div className="top-forum">
+              <span>Fórum</span>
+              <NewButton size="sm" onClick={handleShow}>
+                Criar Tópico
+              </NewButton>
+            </div>
+            <div className="body-forum">{children}</div>
+          </S.DivForum>
+        )}
         <MainModal show={show} close={handleClose} title="Novo Topico">
           <Formik initialValues={initialValues} onSubmit={handledCreateTopico}>
             {({ handleSubmit, handleChange, values, touched, errors }) => (
