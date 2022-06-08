@@ -19,7 +19,6 @@ export const CommunityDetailPage = () => {
     else if (error) return <p>Error :</p>;
     else {
         const { community } = data;
-        console.log(community)
         let isOwner = community.owner.id === user.id ? true : false;
         return (
             <Layout lateral={<MembersLateral
