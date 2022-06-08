@@ -7,6 +7,7 @@ export const Pagination = ({ nro = 5, pageChange, index }) => {
   const activeItem = (value) => {
     setActive(value);
   };
+
   for (let i = 1; i < nro + 1; i++) {
     items.push(
       <Pag.Item
@@ -21,7 +22,7 @@ export const Pagination = ({ nro = 5, pageChange, index }) => {
       </Pag.Item>
     );
   }
-  console.log("items", items);
+
   return (
     <Pag size="sm">
       {index - 1 > 0 ? (
@@ -45,13 +46,12 @@ export const Pagination = ({ nro = 5, pageChange, index }) => {
           <Pag.Prev disabled />
         </>
       )}
-      {
-        items.map((item) => 
-        (item.key >= index && item.key < index + 5) || (item.key > (nro-5) && (index+5) > nro) ?
-        (item) :
-        null
-        )
-      }
+      {items.map((item) =>
+        (item.key >= index && item.key < index + 5) ||
+        (item.key > nro - 5 && index + 5 > nro)
+          ? item
+          : null
+      )}
       {index + 1 <= nro ? (
         <>
           <Pag.Next
