@@ -120,3 +120,8 @@ export const AlignLogin = styled.div`
     }
   }
 `;
+
+export const ContentModal = styled.div`
+color: #E72318;
+text-align:center ;
+`
