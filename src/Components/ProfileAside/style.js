@@ -6,12 +6,17 @@ export const ProfileContainer = styled.section`
   align-items: center;
   background-color: var(--white);
   border-radius: 0.5rem;
-  padding: 1rem;
+  padding: 0.5rem;
   gap: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1);
   width: 14rem;
   & h1 {
     font-size: 1rem;
+  }
+
+  & h2 {
+    font-size: 1.75rem;
+    padding-left: 25px;
   }
 
   & ul {
@@ -19,8 +24,8 @@ export const ProfileContainer = styled.section`
   }
 
   & img {
-    width: 160px;
-    height: 160px;
+    width: 190px;
+    height: 190px;
     border-radius: 50%;
     filter: drop-shadow(4px 4px 16px rgba(0, 0, 0, 0.25));
   }

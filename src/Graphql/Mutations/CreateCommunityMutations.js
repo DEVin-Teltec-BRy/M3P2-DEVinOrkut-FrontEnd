@@ -7,7 +7,7 @@ export const CREATE_COMMUNITY = gql`
       logo
       name
       description
-      category
+      categoryEnum
       creation_date
     }
   }
