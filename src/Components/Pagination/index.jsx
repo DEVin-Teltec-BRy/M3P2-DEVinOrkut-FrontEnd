@@ -45,10 +45,13 @@ export const Pagination = ({ nro = 5, pageChange, index }) => {
           <Pag.Prev disabled />
         </>
       )}
-      {items.filter((item) => {
-        if (item.key >= index && item.key < index + 5) return item;
-        if (item.key > (nro-5) && (index+5) > nro) return item;
-      })}
+      {
+        items.map((item) => 
+        (item.key >= index && item.key < index + 5) || (item.key > (nro-5) && (index+5) > nro) ?
+        (item) :
+        null
+        )
+      }
       {index + 1 <= nro ? (
         <>
           <Pag.Next
