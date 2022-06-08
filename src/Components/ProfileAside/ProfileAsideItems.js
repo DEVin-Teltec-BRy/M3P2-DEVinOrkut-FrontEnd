@@ -23,7 +23,9 @@ const ProfileAsideItems = ({
 
   return (
     <>
-      <OverlayTrigger overlay={<Tooltip id="edit">Adicione uma foto</Tooltip>}>
+      <OverlayTrigger
+        overlay={<Tooltip id="edit">Clique para adicionar</Tooltip>}
+      >
         <ProfileAsideButton onClick={() => setModalShow(true)}>
           <img src={profilePicture} alt={name} />
         </ProfileAsideButton>
