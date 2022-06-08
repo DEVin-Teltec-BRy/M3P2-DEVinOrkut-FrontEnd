@@ -1,15 +1,14 @@
-import React from 'react';
+import React from "react";
 import {
   FaUserCircle,
   FaArchive,
   FaCamera,
   FaComment,
   FaRegEdit,
-} from 'react-icons/fa';
-import { Nav } from 'react-bootstrap';
-import { NewButtonLink } from '../Button';
-import { ProfileAsideButton } from './style';
-import ModalUpload from './ModalUpload';
+} from "react-icons/fa";
+import { NewButtonLink } from "../Button";
+import { ProfileAsideButton, MenuOptions } from "./style";
+import ModalUpload from "./ModalUpload";
 
 const ProfileAsideItems = ({
   name,
@@ -31,12 +30,12 @@ const ProfileAsideItems = ({
         <li>{relationship}</li>
         <li>{local}</li>
       </ul>
-      <Nav className="menu-links">
+      <MenuOptions>
         <NewButtonLink to="/" icon={<FaUserCircle />} name="Perfil" />
-        <NewButtonLink to="/friends" icon={<FaComment />} name="Recados" />
-        <NewButtonLink to="/communities" icon={<FaCamera />} name="Fotos" />
+        <NewButtonLink to="/" icon={<FaComment />} name="Recados" />
+        <NewButtonLink to="/" icon={<FaCamera />} name="Fotos" />
         <NewButtonLink to="/" icon={<FaArchive />} name="Depoimentos" />
-      </Nav>
+      </MenuOptions>
       <div className="edit-profile">
         <a href="/">
           <FaRegEdit />

@@ -30,6 +30,7 @@ import {
 } from "./style";
 import { NewInputForm } from "../../Components/Input";
 import { NewButton } from "../../Components/Button";
+import { Loading } from "../../Components/Loading";
 
 export default function Login() {
   const {  handleLogin } = useData();
@@ -72,14 +73,7 @@ export default function Login() {
 
   if (loading)
     return (
-      <StyledBackground>
-        <StyledFormCard>
-          <Col md={6}>
-            <img src={Logo} alt="DEVinOrkut" width="150" />
-          </Col>
-          <h3>Verificando</h3>
-        </StyledFormCard>
-      </StyledBackground>
+      <Loading/>
     );
   if (data)
     return (
