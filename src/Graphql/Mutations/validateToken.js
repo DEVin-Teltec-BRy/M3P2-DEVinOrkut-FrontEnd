@@ -44,6 +44,7 @@ export const VALIDATE_TOKEN = gql`
         id
         fullName
         imageUrl
+        profilePicture
       }
     }
     }

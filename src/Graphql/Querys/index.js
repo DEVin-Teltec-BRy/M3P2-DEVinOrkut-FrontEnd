@@ -16,6 +16,7 @@ export const SEARCH_USER_OR_COMMUNITIES = gql`
         id
         fullName
         imageUrl
+        profilePicture
       }
       ... on Community {
         id
@@ -44,6 +45,7 @@ export const GET_USER_BY_ID = gql`
         id
         fullName
         imageUrl
+        profilePicture
       }
       friendRequest{
         id
