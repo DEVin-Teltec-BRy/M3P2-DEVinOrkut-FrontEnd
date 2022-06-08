@@ -39,7 +39,7 @@ export const FriendPage = () => {
                 src={
                   profilePicture.length > 0
                     ? profilePicture[0]
-                    : "https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
+                    : "https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg"
                 }
               />
             ) : null
