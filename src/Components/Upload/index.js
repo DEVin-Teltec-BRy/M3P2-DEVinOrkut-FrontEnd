@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import { setHeaders, url } from '../../api';
+import styled from 'styled-components';
 
 const Upload = () => {
   const [imageUpload, setImageUpload] = useState('');
@@ -64,6 +65,7 @@ const Upload = () => {
               accept="image/*"
               onChange={handleImageUpload}
             />
+            <Text>* O formato da imagem deve ser 190x190 pixels.</Text>
           </Form.Group>
           {isError && (
             <Alert variant="danger" className="mb-3 mt-2">
@@ -86,3 +88,7 @@ const Upload = () => {
 };
 
 export default Upload;
+
+const Text = styled.span`
+  font-size: 12px;
+`;
