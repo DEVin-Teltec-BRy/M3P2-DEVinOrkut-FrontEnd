@@ -93,9 +93,11 @@ export const CommunityDetail = ({
           <span>Descrição:</span>
           <p>{description}</p>
           <div>
-            <NewButton size="sm" onClick={handleJoin}>
-              Juntar-se a Comunidade
-            </NewButton>
+            {isMember.length === 0 && (
+              <NewButton size="sm" onClick={handleJoin}>
+                Juntar-se a Comunidade
+              </NewButton>
+            )}
           </div>
         </S.DivDescription>
 
