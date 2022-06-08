@@ -4,10 +4,11 @@ import { Lateral } from "../../Components/Lateral";
 import { Pagination } from "../../Components/Pagination";
 import { useData } from "../../Context/dataContext";
 import Layout from "../../Layout";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Loading } from "../../Components/Loading";
 
 export const FriendPage = () => {
+  const [testArr, setTestArr] = useState([]);
   const [index, setIndex] = useState(1);
 
   const {
@@ -15,20 +16,32 @@ export const FriendPage = () => {
   } = useData();
   console.log(friends);
 
+  useEffect(() => {
+    if (friends.length > 0) {
+      const testArrEffect = Array(39).fill(friends[0]);
+      testArrEffect.push(friends[1]);
+      setTestArr(testArrEffect);
+    }
+    console.log(index);
+  }, [friends, index]);
+
+  console.log(testArr);
+
   return (
     <Layout lateral={<Lateral content={communities} title="Comunidades" />}>
       <CardMain
         title="Amigos"
-        count={friends.length}
+        count={testArr.length}
         pagination={
           <Pagination
             pageChange={setIndex} // Atualiza o índice da páginação
-            nro={friends.length / 20} // Limita o número de usuários por página em 20
+            nro={testArr.length / 20} // Limita o número de usuários por página em 20
+            index={index}
           />
         }
       >
-        {friends.length > 0 ? (
-          friends.map(({ fullName, id, profilePicture }, key) =>
+        {testArr.length > 0 ? (
+          testArr.map(({ fullName, id, profilePicture }, key) =>
             key < index * 20 && key >= (index - 1) * 20 ? ( // Mapeia os usuários a serem mostrados de acordo com o índice da página
               <CardSecondary
                 key={key}
