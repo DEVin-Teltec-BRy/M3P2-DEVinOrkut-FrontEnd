@@ -16,7 +16,7 @@ export const ProfileContainer = styled.section`
 
   & h2 {
     font-size: 1.75rem;
-    padding-left: 25px;
+    padding-left: 15px;
   }
 
   & ul {
@@ -76,6 +76,7 @@ export const ProfileAsideButton = styled.button`
 `;
 
 export const ProfileAsideImage = styled.div`
+  position: relative;
   padding-top: 1.25rem;
 `;
 
@@ -88,4 +89,33 @@ export const EditButton = styled.button`
   outline: none;
   text-decoration: none;
   font-size: 14px;
+`;
+
+export const Image = styled.img`
+  &:hover {
+    opacity: 0.2;
+  }
+`;
+
+export const AddImageButton = styled.button`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: ${(props) => (props.addButtonShow ? 'visible' : 'hidden')};
+  color: var(--pink);
+  font-weight: bold;
+  background: none;
+  border: none;
+  padding: 5px;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  font-size: 14px;
+`;
+
+export const ContainerImage = styled.div`
+  position: relative;
+  text-align: center;
 `;

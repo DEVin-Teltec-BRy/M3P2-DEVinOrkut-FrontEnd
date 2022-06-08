@@ -5,10 +5,18 @@ import {
   IoChatboxOutline,
   IoToggleOutline,
   IoFileTrayOutline,
+  IoAddCircle,
 } from 'react-icons/io5';
-import { Nav, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 import { NewButtonLink } from '../Button';
-import { EditButton, ProfileAsideButton, ProfileAsideImage } from './style';
+import {
+  AddImageButton,
+  ContainerImage,
+  EditButton,
+  Image,
+  ProfileAsideButton,
+  ProfileAsideImage,
+} from './style';
 import ModalUpload from './ModalUpload';
 import { useParams } from 'react-router-dom';
 
@@ -22,18 +30,25 @@ const ProfileAsideItems = ({
   buttonText,
 }) => {
   const [modalShow, setModalShow] = React.useState(false);
+  const [addButtonShow, setAddButtonShow] = React.useState(false);
   const { id } = useParams();
 
   return (
     <>
       {!id && (
-        <OverlayTrigger
-          overlay={<Tooltip id="edit">Clique para adicionar</Tooltip>}
-        >
+        <ContainerImage>
           <ProfileAsideButton onClick={() => setModalShow(true)}>
-            <img src={profilePicture} alt={name} />
+            <Image
+              src={profilePicture}
+              alt={name}
+              onMouseEnter={() => setAddButtonShow((prev) => !prev)}
+              onMouseLeave={() => setAddButtonShow((prev) => !prev)}
+            />
+            <AddImageButton addButtonShow={addButtonShow}>
+              <IoAddCircle size={50} />
+            </AddImageButton>
           </ProfileAsideButton>
-        </OverlayTrigger>
+        </ContainerImage>
       )}
       {id && (
         <ProfileAsideImage>
