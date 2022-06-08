@@ -14,6 +14,7 @@ import {
   ContainerImage,
   EditButton,
   Image,
+  MenuOptions,
   ProfileAsideButton,
   ProfileAsideImage,
 } from './style';
@@ -64,7 +65,7 @@ const ProfileAsideItems = ({
           {city}, {state}
         </li>
       </ul>
-      <Nav className="menu-links">
+      <MenuOptions>
         <NewButtonLink
           to="/"
           icon={<IoPersonCircleOutline size={25} />}
@@ -86,7 +87,7 @@ const ProfileAsideItems = ({
           icon={<IoFileTrayOutline size={24} />}
           name="Depoimentos"
         />
-      </Nav>
+      </MenuOptions>
       <div className="edit-profile">
         <EditButton onClick={() => {}}>
           <IoToggleOutline size={25} /> Editar Perfil
