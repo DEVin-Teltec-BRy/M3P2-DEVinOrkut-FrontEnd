@@ -24,6 +24,7 @@ export const FriendPage = () => {
           <Pagination
             pageChange={setIndex} // Atualiza o índice da páginação
             nro={friends.length / 20} // Limita o número de usuários por página em 20
+            index={index}
           />
         }
       >
