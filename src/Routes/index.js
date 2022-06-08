@@ -14,6 +14,7 @@ import CreateUser from '../Page/CreateUser';
 import { UserPage } from '../Page/User';
 import { PublicRoute } from './PublicRouse';
 import { CommunityMembersPage } from '../Page/CommunityMembers';
+import { NotFoundPage } from '../Page/NotFound404';
 const AppRoutes = () => (
   <BrowserRouter>
     <Routes>
@@ -121,6 +122,12 @@ const AppRoutes = () => (
           <PrivateRoute redirectTo="/login">
             <CommunityMembersPage />
           </PrivateRoute>
+        }
+      />
+       <Route
+        path="*"
+        element={
+          <NotFoundPage/>
         }
       />
     </Routes>
