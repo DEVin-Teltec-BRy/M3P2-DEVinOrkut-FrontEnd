@@ -18,7 +18,7 @@ export const COMMUNITY_DETAILS = gql`
       logo
       name
       description
-      category
+      categoryEnum
       creation_date
       members {
         id
@@ -41,17 +41,14 @@ export const COMMUNITY_DETAILS = gql`
   }
 `;
 
-
 export const CATEGORY_ENUM = gql`
-  query enum {
-    __type(name: "Category") {
-      enumValues {
-        name
-      }
+  query Categories {
+    categories {
+      id
+      name
     }
   }
 `;
-
 
 export const COMMUNITY_MEMBERS = gql`
   query Community($communityId: ID!) {
@@ -68,4 +65,4 @@ export const COMMUNITY_MEMBERS = gql`
       }
     }
   }
-`
+`;

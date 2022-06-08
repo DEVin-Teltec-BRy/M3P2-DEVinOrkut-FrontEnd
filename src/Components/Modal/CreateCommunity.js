@@ -39,7 +39,7 @@ export function ModalComponent() {
                   input: {
                     logo: "https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149271199.jpg?w=996&t=st=1654375825~exp=1654376425~hmac=7eaad2883abb5b372e581161b19d84f9b0efba1669fbb08271f8c2f6bfae1f63",
                     name: name,
-                    category: categoryEnum,
+                    categoryEnum: categoryEnum,
                     description: description,
                   },
                 },
