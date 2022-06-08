@@ -28,15 +28,21 @@ export const COMMUNITY_DETAILS = gql`
         id
         fullName
       }
-      # foruns {
-      #   name
-      #   description
-      #   comments {
-      #     id
-      #     creation_date
-      #     description
-      #   }
-      # }
+       foruns {
+         id
+         name
+         description
+         comments {
+           id
+           creation_date
+           description
+           author{
+             id
+             fullName
+             profilePicture
+           }
+         }
+       }
     }
   }
 `;
@@ -68,4 +74,33 @@ export const COMMUNITY_MEMBERS = gql`
       }
     }
   }
+`
+
+export const COMMUNITY_AND_FORUM = gql`
+query CommunityAndForum($communityId: ID!, $forumId: ID!) {
+  community(id: $communityId) {
+    id
+    owner {
+      id
+    }
+    members {
+      id
+      fullName
+      profilePicture
+    }
+  }
+  forum(id: $forumId) {
+    name
+    comments {
+      id
+      description
+      creation_date
+      author {
+        id
+        fullName
+        profilePicture
+      }
+    }
+  }
+}
 `
