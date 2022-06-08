@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 export const GET_ALL_USERS = gql`
   query GetUsers {
@@ -35,6 +35,8 @@ export const GET_USER_BY_ID = gql`
       birthDate
       gender
       address
+      city
+      state
       relationship
       humor
       interests
@@ -47,7 +49,7 @@ export const GET_USER_BY_ID = gql`
         imageUrl
         profilePicture
       }
-      friendRequest{
+      friendRequest {
         id
       }
       testimonial

@@ -3,33 +3,23 @@ import * as S from './style';
 import { useData } from '../../Context/dataContext';
 import { useParams } from 'react-router-dom';
 
-const Profile = ({ nameUser }) => {
+const Profile = ({ visitedData }) => {
   const { user } = useData();
   const { id } = useParams();
-
-  const DUMMY = {
-    id: 'A1',
-    name: 'Elon Musk',
-    pictureProfile: '/assets/images/elon-musk.webp',
-    genre: 'Masculino',
-    relationship: 'Ex da Grimer',
-    local: 'Starbase, TX',
-  };
 
   return (
     <S.ProfileContainer>
       <ProfileAsideItems
         key={user.id}
-        name={id ? nameUser : user.fullName}
+        name={id ? visitedData.fullName : user.fullName}
         profilePicture={
-          id
-            ? 'https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg'
-            : user.profilePicture[0] || DUMMY.pictureProfile
+          id ? visitedData.profilePicture[0] : user.profilePicture[0]
         }
-        relationship={user.relationship}
-        city={user.city}
-        state={user.state}
-        gender={user.gender}
+        relationship={id ? visitedData.relationship : user.relationship}
+        city={id ? visitedData.city : user.city}
+        state={id ? visitedData.state : user.state}
+        gender={id ? visitedData.gender : user.gender}
+        buttonText={user.fullName}
       />
     </S.ProfileContainer>
   );
