@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import {
   LoginBackground,
   StyledBackground,
@@ -27,15 +27,22 @@ import {
   SendEmailModal,
   ModalStripe,
   AlignLogin,
+  ContentModal,
 } from "./style";
 import { NewInputForm } from "../../Components/Input";
 import { NewButton } from "../../Components/Button";
-
+import { Loading } from "../../Components/Loading";
+import { MainModal } from "../../Components/MainModal";
+import { BiError } from "react-icons/bi";
 export default function Login() {
-  const {  handleLogin } = useData();
+  const { handleLogin } = useData();
   const navigate = useNavigate();
   const [modal, setModal] = useState("none");
-  let [Login, { data, loading }] = useMutation(LOGIN_MUTATION);
+  const [show, setShow] = useState(true);
+  let [Login, { data, loading, error }] = useMutation(LOGIN_MUTATION);
+
+  const handleClose = () => setShow(false);
+  const handleOpen = () => setShow(true);
 
   const arrayString = [
     "Encontre seus velhos amigos!",
@@ -43,20 +50,19 @@ export default function Login() {
     " Tudo para que você possa se conectar com os seus amigos",
   ];
 
-
-  const { handleSubmit, handleChange, values, touched, errors } =
-    useFormik({
-      initialValues: {
-        email: "",
-        password: "",
-      },
-      validationSchema: Yup.object({
-        email: Yup.string()
-          .email("Formato de email inválido")
-          .required("Email é obrigatório"),
-        password: Yup.string().required("Senha é obrigatória"),
-      }),
-      onSubmit: async (values) => {
+  const { handleSubmit, handleChange, values, touched, errors } = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .email("Formato de email inválido")
+        .required("Email é obrigatório"),
+      password: Yup.string().required("Senha é obrigatória"),
+    }),
+    onSubmit: async (values) => {
+      try {
         const response = await Login({
           variables: {
             email: values.email,
@@ -67,21 +73,14 @@ export default function Login() {
         const { token, user } = data.login;
         user.token = token;
         handleLogin(user);
-      },
-    });
+      } catch (error) {
+        handleOpen();
+      }
+    },
+  });
 
-  if (loading)
-    return (
-      <StyledBackground>
-        <StyledFormCard>
-          <Col md={6}>
-            <img src={Logo} alt="DEVinOrkut" width="150" />
-          </Col>
-          <h3>Verificando</h3>
-        </StyledFormCard>
-      </StyledBackground>
-    );
-  if (data)
+  if (loading) return <Loading />;
+  if (data) {
     return (
       localStorage.setItem("Token", data.login.token),
       setTimeout(() => {
@@ -99,89 +98,108 @@ export default function Login() {
         </StyledBackground>
       )
     );
+  }
 
   return (
-    <StyledBackground>
-      <LoginBackground>
-        <LoginText>Login</LoginText>
-        <LoginDescription>
-          Bem-Vindo ao Orkut, por favor forneça suas credenciais nos campos
-          abaixo para ter acesso a rede social.
-        </LoginDescription>
-        <StyledFormCard onSubmit={handleSubmit}>
-          <NewInputForm
-            name="email"
-            label="Email"
-            value={values.email}
-            onChange={handleChange}
-            isValid={touched.email && !errors.email}
-            error={errors.email}
-          />
-          <NewInputForm
-            name="password"
-            label="Senha"
-            type="password"
-            onChange={handleChange}
-            value={values.password}
-            isValid={touched.password && !errors.password}
-            error={errors.password}
-          />
-          <ForgotPass
-            onClick={() => {
-              setModal("flex");
-            }}
-          >
-            esqueceu sua senha?
-          </ForgotPass>
-          <SubmitDiv>
-            <AlignLogin>
-              <Form.Check
-                type="switch"
-                id="custom-switch"
-                label="Lembre de mim"
-              />
-              <NewButton type="submit" size="sm">
-                Entrar
-              </NewButton>
-            </AlignLogin>
-          </SubmitDiv>
-        </StyledFormCard>
-        <LastLine>
-          {" "}
-          <p>Não possui uma conta? </p> <ForgotPass onClick={()=> navigate("/register")}> Criar conta</ForgotPass>{" "}
-        </LastLine>
-        <SendEmailModal style={{ display: modal }}>
-          <ModalStripe>
-            <h2>Resetar senha</h2>
-            <p>
-              Digite um e-mail válido associado a sua conta e nós iremos enviar
-              um e-mail com instruções de como resetar a sua senha
-            </p>
-            <SendResetPassEmail />
-            <StyledLeave
+    <>
+      <StyledBackground>
+        <LoginBackground>
+          <LoginText>Login</LoginText>
+          <LoginDescription>
+            Bem-Vindo ao Orkut, por favor forneça suas credenciais nos campos
+            abaixo para ter acesso a rede social.
+          </LoginDescription>
+          <StyledFormCard onSubmit={handleSubmit}>
+            <NewInputForm
+              name="email"
+              label="Email"
+              value={values.email}
+              onChange={handleChange}
+              isValid={touched.email && !errors.email}
+              error={errors.email}
+            />
+            <NewInputForm
+              name="password"
+              label="Senha"
+              type="password"
+              onChange={handleChange}
+              value={values.password}
+              isValid={touched.password && !errors.password}
+              error={errors.password}
+            />
+            <ForgotPass
               onClick={() => {
-                setModal("none");
+                setModal("flex");
               }}
             >
-              Sair
-            </StyledLeave>
-          </ModalStripe>
-        </SendEmailModal>
-      </LoginBackground>
-      <PinkCard>
-        <LabLogoDiv>
-          <LabLogo></LabLogo>
-        </LabLogoDiv>
+              esqueceu sua senha?
+            </ForgotPass>
+            <SubmitDiv>
+              <AlignLogin>
+                <Form.Check
+                  type="switch"
+                  id="custom-switch"
+                  label="Lembre de mim"
+                />
+                <NewButton type="submit" size="sm">
+                  Entrar
+                </NewButton>
+              </AlignLogin>
+            </SubmitDiv>
+          </StyledFormCard>
+          <LastLine>
+            {" "}
+            <p>Não possui uma conta? </p>{" "}
+            <ForgotPass onClick={() => navigate("/register")}>
+              {" "}
+              Criar conta
+            </ForgotPass>{" "}
+          </LastLine>
+          <SendEmailModal style={{ display: modal }}>
+            <ModalStripe>
+              <h2>Resetar senha</h2>
+              <p>
+                Digite um e-mail válido associado a sua conta e nós iremos
+                enviar um e-mail com instruções de como resetar a sua senha
+              </p>
+              <SendResetPassEmail />
+              <StyledLeave
+                onClick={() => {
+                  setModal("none");
+                }}
+              >
+                Sair
+              </StyledLeave>
+            </ModalStripe>
+          </SendEmailModal>
+        </LoginBackground>
+        <PinkCard>
+          <LabLogoDiv>
+            <LabLogo></LabLogo>
+          </LabLogoDiv>
 
-        <img
-          src={Logo}
-          alt="DEVinOrkut"
-          width="350"
-          style={{ marginBottom: "22%" }}
-        />
+          <img
+            src={Logo}
+            alt="DEVinOrkut"
+            width="350"
+            style={{ marginBottom: "22%" }}
+          />
 
-        <BootstrapCarousel arrayString={arrayString} />
-      </PinkCard>
-    </StyledBackground>
+          <BootstrapCarousel arrayString={arrayString} />
+        </PinkCard>
+      </StyledBackground>
+      {error?.message && (
+        <MainModal
+          title="Error de autenticação "
+          show={show}
+          close={handleClose}
+        >
+          <ContentModal>
+            <BiError size={65} /> <br />
+            {error?.message}
+          </ContentModal>
+        </MainModal>
+      )}
+    </>
   );
 }
