@@ -7,7 +7,6 @@ import {
   IoFileTrayOutline,
   IoAddCircle,
 } from 'react-icons/io5';
-import { Nav } from 'react-bootstrap';
 import { NewButtonLink } from '../Button';
 import {
   AddImageButton,
