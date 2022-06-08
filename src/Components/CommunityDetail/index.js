@@ -4,11 +4,14 @@ import { NewButton } from "../Button";
 import { NewInputForm } from "../Input";
 import { MainModal } from "../MainModal";
 import { Form } from "react-bootstrap";
+import { useMutation } from "@apollo/client";
+import { JOIN_COMMUNITY } from "../../Graphql/Mutations/JoinCommunityMutations";
 
 import * as S from "./communityDetail.style";
 import { initialValues } from "./Dados";
 
 export const CommunityDetail = ({
+  id,
   title,
   imgsrc,
   category,
@@ -27,11 +30,32 @@ export const CommunityDetail = ({
     console.log(values);
   };
 
+  const [joinCommunity, { loading, error }] = useMutation(JOIN_COMMUNITY);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error.message}</p>;
+
+  const handleJoin = async () => {
+    try {
+      await joinCommunity({
+        variables: {
+          input: {
+            category_id: { id },
+          },
+        },
+      });
+    } catch (error) {
+      return error.message;
+    }
+  };
+
   return (
     <>
       <S.MainSection>
         <S.DivTitle>
-          <h1>{title}</h1>
+          <h1>
+            {title} {id}
+          </h1>
         </S.DivTitle>
         <hr />
         <S.DivContent>
@@ -63,12 +87,16 @@ export const CommunityDetail = ({
         </S.DivContent>
         <hr />
         <S.DivDescription>
-          <span>Descrição:</span> <p>{description}</p>
+          <span>Descrição:</span>
+          <p>{description}</p>
+          <NewButton size="sm" onClick={handleJoin}>
+            Juntar-se a Comunidade
+          </NewButton>
         </S.DivDescription>
         <hr />
         <S.DivForum>
           <div className="top-forum">
-            <span>Fórum</span>{" "}
+            <span>Fórum</span>
             <NewButton size="sm" onClick={handleShow}>
               Criar Tópico
             </NewButton>
