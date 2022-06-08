@@ -96,7 +96,7 @@ export const DivForum = styled.div`
      }
 
     .body-forum{
-        margin-top: 20px;
+        margin-top: 35px;
      }
     
 `;
