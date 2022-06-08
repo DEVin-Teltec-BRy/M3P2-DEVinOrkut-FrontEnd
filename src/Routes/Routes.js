@@ -40,10 +40,6 @@ export const privateRoutes = [
     element: <CommunityDetailPage />,
   },
   {
-    path: "perfil",
-    element: <CreateUser />,
-  },
-  {
     path: "user/:id",
     element: <UserPage />,
   },
