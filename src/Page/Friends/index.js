@@ -13,7 +13,6 @@ export const FriendPage = () => {
   const {
     user: { friends, communities },
   } = useData();
-  console.log(friends);
 
   return (
     <Layout lateral={<Lateral content={communities} title="Comunidades" />}>
