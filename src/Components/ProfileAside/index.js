@@ -13,7 +13,10 @@ const Profile = ({ visitedData }) => {
         key={user.id}
         name={id ? visitedData.fullName : user.fullName}
         profilePicture={
-          id ? visitedData.profilePicture[0] : user.profilePicture[0]
+          id
+            ? visitedData.profilePicture[0]
+            : user.profilePicture[0] ||
+              'https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg'
         }
         relationship={id ? visitedData.relationship : user.relationship}
         city={id ? visitedData.city : user.city}
