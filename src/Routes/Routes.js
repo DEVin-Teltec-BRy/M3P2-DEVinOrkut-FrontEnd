@@ -44,6 +44,14 @@ export const privateRoutes = [
     element: <UserPage />,
   },
   {
+    path: "user/:id/friends",
+    element: <FriendPage />,
+  },  
+  {
+    path: "user/:id/communities",
+    element: <CommunityPage />,
+  },
+  {
     path: "search",
     element: <SearchPage />,
   },
