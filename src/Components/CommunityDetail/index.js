@@ -4,21 +4,26 @@ import { NewButton } from "../Button";
 import { NewInputForm } from "../Input";
 import { MainModal } from "../MainModal";
 import { Form } from "react-bootstrap";
+import { useData } from "../../Context/dataContext";
+import { useMutation } from "@apollo/client";
+import { JOIN_COMMUNITY } from "../../Graphql/Mutations/JoinCommunityMutations";
 
 import * as S from "./communityDetail.style";
 import { initialValues } from "./Dados";
 
 export const CommunityDetail = ({
+  id,
   title,
   imgsrc,
-  category,
+  categoryEnum,
   creatAt,
   owner,
   isowner,
   description,
+  members,
   children,
 }) => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -26,6 +31,28 @@ export const CommunityDetail = ({
   const handledCreateTopico = (values) => {
     console.log(values);
   };
+
+  const { user } = useData();
+
+  const [joinCommunity, { loading, error }] = useMutation(JOIN_COMMUNITY);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error.message}</p>;
+
+  const handleJoin = async (e) => {
+    try {
+      e.preventDefault();
+      await joinCommunity({
+        variables: {
+          communityId: id,
+        },
+      });
+    } catch (error) {
+      return error.message;
+    }
+  };
+
+  const isMember = members.map((u) => u.id === user.id);
 
   return (
     <>
@@ -41,7 +68,7 @@ export const CommunityDetail = ({
           <div className="infos">
             <ul>
               <li>
-                <span>Categoria:</span> {category}
+                <span>Categoria:</span> {categoryEnum}
               </li>
               <li>
                 <span>Criada em:</span> {creatAt}
@@ -63,25 +90,35 @@ export const CommunityDetail = ({
         </S.DivContent>
         <hr />
         <S.DivDescription>
-          <span>Descrição:</span> <p>{description}</p>
-        </S.DivDescription>
-        <hr />
-        <S.DivForum>
-          <div className="top-forum">
-            <span>Fórum</span>{" "}
-            <NewButton size="sm" onClick={handleShow}>
-              Criar Tópico
+          <span>Descrição:</span>
+          <p>{description}</p>
+          <div>
+            <NewButton size="sm" onClick={handleJoin}>
+              Juntar-se a Comunidade
             </NewButton>
           </div>
-          <div className="body-forum">{children}</div>
-        </S.DivForum>
-        <MainModal show={show} close={handleClose} title="Novo Topico">
+        </S.DivDescription>
+
+        <hr />
+        {isMember.length > 0 && (
+          <S.DivForum>
+            <div className="top-forum">
+              <span>Fórum</span>
+              <NewButton size="sm" onClick={handleShow}>
+                Criar Tópico
+              </NewButton>
+            </div>
+            <div className="body-forum">{children}</div>
+          </S.DivForum>
+        )}
+
+        <MainModal show={show} close={handleClose} title="Novo Tópico">
           <Formik initialValues={initialValues} onSubmit={handledCreateTopico}>
             {({ handleSubmit, handleChange, values, touched, errors }) => (
               <S.FormContainer>
                 <NewInputForm
                   name="title"
-                  label="Titulo"
+                  label="Título"
                   value={values.title}
                   onChange={handleChange}
                   isValid={touched.title && !errors.title}
@@ -90,7 +127,7 @@ export const CommunityDetail = ({
                 <NewInputForm
                   as="textarea"
                   name="description"
-                  label="Descripção"
+                  label="Descrição"
                   value={values.description}
                   onChange={handleChange}
                   isValid={touched.description && !errors.description}
@@ -106,7 +143,7 @@ export const CommunityDetail = ({
                   error={errors.file}
                 />
                 <NewButton onClick={handleSubmit} type="submit">
-                  Criar topico
+                  Criar tópico
                 </NewButton>
               </S.FormContainer>
             )}
