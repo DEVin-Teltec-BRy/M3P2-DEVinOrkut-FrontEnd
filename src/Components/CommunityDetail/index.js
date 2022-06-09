@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NewButton } from "../Button";
 import { NewInputForm } from "../Input";
 import { MainModal } from "../MainModal";
@@ -24,7 +24,16 @@ export const CommunityDetail = ({
   children,
 }) => {
   const [show, setShow] = useState(false);
-  const [isMember, setIsMember] = useState(false);
+  const [memberList, setMemberList] = useState([]);
+  const [isMember, setIsMember] = useState([]);
+
+  const { user } = useData();
+  const checkIsMember = memberList.find((u) => u.id === user.id);
+
+  useEffect(() => {
+    setMemberList(members);
+    setIsMember(checkIsMember);
+  }, [memberList, members, checkIsMember]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -33,19 +42,15 @@ export const CommunityDetail = ({
     console.log(values);
   };
 
-  const { user } = useData();
-
   const [joinCommunity, { loading, error }] = useMutation(JOIN_COMMUNITY);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error.message}</p>;
 
-  const checkIsMember = members.map((u) => u.id === user.id);
-
   const handleJoin = async (e) => {
     try {
       e.preventDefault();
-      if (checkIsMember.length === 0) {
+      if (checkIsMember === undefined) {
         await joinCommunity({
           variables: {
             communityId: id,
