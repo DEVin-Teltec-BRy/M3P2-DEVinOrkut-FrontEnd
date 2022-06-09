@@ -8,12 +8,9 @@ export const Lateral = ({ content, title }) => {
   if (id) {
     toAllUri = title === "Amigos" ? `/user/${id}/friends` : `/user/${id}/communities`;
   } else {
-    toAllUri = title === "Amigos" ? `friends` : `communities`;
+    toAllUri = title === "Amigos" ? `/friends` : `/communities`;
   }
 
-  console.log("id ", id);
-
-  console.log(content, toAllUri);
   return (
     <CardMain title={title} count={content.length} toAll={toAllUri}>
       {content.map((data, key) => (
@@ -25,7 +22,7 @@ export const Lateral = ({ content, title }) => {
           key={key}
           text={title === "Amigos" ? data.fullName : data.name}
           // text={fullName}
-          src={title === "Amigos" ? data.profilePicture: data.logo}
+          src={title === "Amigos" ? data.profilePicture : data.logo}
         />
       ))}
     </CardMain>
