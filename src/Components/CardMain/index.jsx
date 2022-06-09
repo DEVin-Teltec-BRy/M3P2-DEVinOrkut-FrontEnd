@@ -22,7 +22,7 @@ export const CardMain = ({
       <CardBody column={column ? 'true':''} center={center ? "true" : ""}>{children}</CardBody>
       {toAll && (
         <Card.Footer>
-          <Link to={`/${toAll}`}>Ver todos</Link>
+          <Link to={`${toAll}`}>Ver todos</Link>
         </Card.Footer>
       )}
       {pagination && (
