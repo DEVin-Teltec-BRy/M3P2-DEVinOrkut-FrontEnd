@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NewButton } from "../Button";
 import { NewInputForm } from "../Input";
 import { MainModal } from "../MainModal";
@@ -24,6 +24,16 @@ export const CommunityDetail = ({
   children,
 }) => {
   const [show, setShow] = useState(false);
+  const [memberList, setMemberList] = useState([]);
+  const [isMember, setIsMember] = useState([]);
+
+  const { user } = useData();
+  const checkIsMember = memberList.find((u) => u.id === user.id);
+
+  useEffect(() => {
+    setMemberList(members);
+    setIsMember(checkIsMember);
+  }, [memberList, members, checkIsMember]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -31,8 +41,6 @@ export const CommunityDetail = ({
   const handledCreateTopico = (values) => {
     console.log(values);
   };
-
-  const { user } = useData();
 
   const [joinCommunity, { loading, error }] = useMutation(JOIN_COMMUNITY);
 
@@ -42,17 +50,18 @@ export const CommunityDetail = ({
   const handleJoin = async (e) => {
     try {
       e.preventDefault();
-      await joinCommunity({
-        variables: {
-          communityId: id,
-        },
-      });
+      if (checkIsMember === undefined) {
+        await joinCommunity({
+          variables: {
+            communityId: id,
+          },
+        });
+        setIsMember(true);
+      }
     } catch (error) {
       return error.message;
     }
   };
-
-  const isMember = members.map((u) => u.id === user.id);
 
   return (
     <>
@@ -93,14 +102,16 @@ export const CommunityDetail = ({
           <span>Descrição:</span>
           <p>{description}</p>
           <div>
-            <NewButton size="sm" onClick={handleJoin}>
-              Juntar-se a Comunidade
-            </NewButton>
+            {!isMember && (
+              <NewButton size="sm" onClick={handleJoin}>
+                Juntar-se a Comunidade
+              </NewButton>
+            )}
           </div>
         </S.DivDescription>
 
         <hr />
-        {isMember.length > 0 && (
+        {isMember && (
           <S.DivForum>
             <div className="top-forum">
               <span>Fórum</span>
