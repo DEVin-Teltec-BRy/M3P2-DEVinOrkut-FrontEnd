@@ -51,7 +51,7 @@ export const CommunityPage = () => {
               <CardSecondary
                 key={key}
                 round
-                to="usuario"
+                to="comunidade"
                 id={id}
                 text={name}
                 src={logo ? logo : ""}
