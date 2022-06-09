@@ -3,32 +3,41 @@ import { CardSecondary } from "../../../Components/CardSecondary";
 import { useData } from "../../../Context/dataContext";
 import { ContentLateral } from "./lateral.styled";
 
-export const LateralProfile = ({friendsUser, communitiesUser}) => {
-  const { user: { friends, communities } } = useData();
-  const selectFriends = friendsUser ? friendsUser : friends
-  const selectcommunities = communitiesUser ? communitiesUser : communities
+export const LateralProfile = ({ friendsUser, communitiesUser }) => {
+  const {
+    user: { friends, communities },
+  } = useData();
+  const selectFriends = friendsUser ? friendsUser : friends;
+  const selectcommunities = communitiesUser ? communitiesUser : communities;
 
   return (
     <ContentLateral>
-      <CardMain title="Amigos" count={selectFriends.length} toAll='friends'>
-        {selectFriends.map(({fullName, id}, key) => (
+      <CardMain title="Amigos" count={selectFriends.length} toAll="friends">
+        {selectFriends.map(({ fullName, id, profilePicture }, key) => (
           <CardSecondary
             key={key}
             round
             to="usuario"
             id={id}
             text={fullName}
-            src="https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
+            src={profilePicture.length > 0 ? profilePicture[0] : ""}
           />
         ))}
       </CardMain>
-      <CardMain title="Comunidades" count={selectcommunities.length} toAll='communities'>
-        {selectcommunities.map((_, idx) => (
+      <CardMain
+        title="Comunidades"
+        count={selectcommunities.length}
+        toAll="communities"
+      >
+        {selectcommunities.map(({ name, id, logo }, key) => (
           <CardSecondary
             size="md"
-            key={idx}
-            text="Full Bugs"
-            src="https://thumbs.dreamstime.com/b/o-homem-irado-na-camisa-vermelha-rasga-folha-de-papel-6582601.jpg"
+            to="comunidade"
+            key={key}
+            round
+            id={id}
+            text={name}
+            src={logo ? logo : ""}
           />
         ))}
       </CardMain>
