@@ -23,7 +23,8 @@ export const CommunityDetail = ({
   members,
   children,
 }) => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
+  const [isMember, setIsMember] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -39,20 +40,23 @@ export const CommunityDetail = ({
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error.message}</p>;
 
+  const checkIsMember = members.map((u) => u.id === user.id);
+
   const handleJoin = async (e) => {
     try {
       e.preventDefault();
-      await joinCommunity({
-        variables: {
-          communityId: id,
-        },
-      });
+      if (checkIsMember.length === 0) {
+        await joinCommunity({
+          variables: {
+            communityId: id,
+          },
+        });
+        setIsMember(true);
+      }
     } catch (error) {
       return error.message;
     }
   };
-
-  const isMember = members.map((u) => u.id === user.id);
 
   return (
     <>
@@ -93,7 +97,7 @@ export const CommunityDetail = ({
           <span>Descrição:</span>
           <p>{description}</p>
           <div>
-            {isMember.length === 0 && (
+            {!isMember && (
               <NewButton size="sm" onClick={handleJoin}>
                 Juntar-se a Comunidade
               </NewButton>
@@ -102,7 +106,7 @@ export const CommunityDetail = ({
         </S.DivDescription>
 
         <hr />
-        {isMember.length > 0 && (
+        {isMember && (
           <S.DivForum>
             <div className="top-forum">
               <span>Fórum</span>
