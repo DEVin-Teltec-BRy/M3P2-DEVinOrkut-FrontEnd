@@ -11,45 +11,44 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { CardSecondary } from "../../Components/CardSecondary";
 import { GET_USER_BY_ID } from "../../Graphql/Querys";
+import { Link } from "react-router-dom";
 
 export const CommunityPage = () => {
   const [index, setIndex] = useState(1);
+  const { user } = useData();
   const { id } = useParams();
 
   const { loading, error, data } = useQuery(GET_USER_BY_ID, {
     variables: { userId: id },
   });
 
-  const {
-    user: { friends, communities },
-  } = useData();
+  let userData = null;
 
-  let friendList = [];
-  let communitiesList = [];
-
-  if(id) {
-    friendList = data.user.friends;
-    communitiesList = data.user.communities
+  if (id && data) {
+    userData = data.user;
   } else {
-    friendList = friends;
-    communitiesList = communities;
+    userData = user;
   }
 
-  return (
-    <Layout lateral={<Lateral content={friendList} title="Amigos" />}>
+  return id && loading ? (
+    <Loading />
+  ) : id && error ? (
+    <Link to="/" />
+  ) : (
+    <Layout lateral={<Lateral content={userData.friends} title="Amigos" />}>
       <CardMain
         title="Comunidades"
-        count={communitiesList.length}
+        count={userData.communities.length}
         pagination={
           <Pagination
             pageChange={setIndex} // Atualiza o índice da páginação
-            nro={communitiesList.length / 20} // Limita o número de usuários por página em 20
+            nro={userData.communities.length / 20} // Limita o número de usuários por página em 20
             index={index}
           />
         }
       >
-        {communitiesList.length > 0 ? (
-          communitiesList.map(({ name, id, logo }, key) =>
+        {userData.communities.length > 0 ? (
+          userData.communities.map(({ name, id, logo }, key) =>
             key < index * 20 && key >= (index - 1) * 20 ? ( // Mapeia os usuários a serem mostrados de acordo com o índice da página
               <CardSecondary
                 key={key}
@@ -57,11 +56,7 @@ export const CommunityPage = () => {
                 to="usuario"
                 id={id}
                 text={name}
-                src={
-                  logo.length > 0
-                    ? logo[0]
-                    : "https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg"
-                }
+                src={logo ? logo : ""}
               />
             ) : null
           )
@@ -72,19 +67,3 @@ export const CommunityPage = () => {
     </Layout>
   );
 };
-
-// export const CommunityPage = () => {
-//   const { user } = useData();
-//   return (
-//     <Layout lateral={<Lateral content={user.friends} title="Amigos" />}>
-//       <CardMain
-//         title="Comunidades"
-//         count={user.communities.length}
-//         pagination={<Pagination />}
-//       >
-//         <CommunitiesList />
-//         <ModalComponent />
-//       </CardMain>
-//     </Layout>
-//   );
-// };
