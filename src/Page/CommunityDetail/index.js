@@ -37,7 +37,7 @@ export const CommunityDetailPage = () => {
             <CommunityDetail
               id={communityid}
               title={community.name}
-              category={community.category}
+              categoryEnum={community.categoryEnum}
               creatAt={convertDateFromMilliseconds(community.creation_date)}
               owner={community.owner.fullName}
               imgsrc={community.logo}
