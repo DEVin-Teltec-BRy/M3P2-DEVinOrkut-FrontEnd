@@ -15,7 +15,7 @@ export const CommunityDetail = ({
   id,
   title,
   imgsrc,
-  category,
+  categoryEnum,
   creatAt,
   owner,
   isowner,
@@ -77,7 +77,7 @@ export const CommunityDetail = ({
           <div className="infos">
             <ul>
               <li>
-                <span>Categoria:</span> {category}
+                <span>Categoria:</span> {categoryEnum}
               </li>
               <li>
                 <span>Criada em:</span> {creatAt}
@@ -122,13 +122,14 @@ export const CommunityDetail = ({
             <div className="body-forum">{children}</div>
           </S.DivForum>
         )}
-        <MainModal show={show} close={handleClose} title="Novo Topico">
+
+        <MainModal show={show} close={handleClose} title="Novo Tópico">
           <Formik initialValues={initialValues} onSubmit={handledCreateTopico}>
             {({ handleSubmit, handleChange, values, touched, errors }) => (
               <S.FormContainer>
                 <NewInputForm
                   name="title"
-                  label="Titulo"
+                  label="Título"
                   value={values.title}
                   onChange={handleChange}
                   isValid={touched.title && !errors.title}
@@ -137,7 +138,7 @@ export const CommunityDetail = ({
                 <NewInputForm
                   as="textarea"
                   name="description"
-                  label="Descripção"
+                  label="Descrição"
                   value={values.description}
                   onChange={handleChange}
                   isValid={touched.description && !errors.description}
@@ -153,7 +154,7 @@ export const CommunityDetail = ({
                   error={errors.file}
                 />
                 <NewButton onClick={handleSubmit} type="submit">
-                  Criar topico
+                  Criar tópico
                 </NewButton>
               </S.FormContainer>
             )}

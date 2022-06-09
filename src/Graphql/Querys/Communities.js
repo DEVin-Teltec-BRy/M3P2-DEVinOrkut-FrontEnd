@@ -7,6 +7,7 @@ export const GET_COMMUNITIES = gql`
       logo
       name
       description
+      categoryEnum
     }
   }
 `;
@@ -28,21 +29,21 @@ export const COMMUNITY_DETAILS = gql`
         id
         fullName
       }
-       foruns {
-         id
-         name
-         description
-         comments {
-           id
-           creation_date
-           description
-           author{
-             id
-             fullName
-             profilePicture
-           }
-         }
-       }
+      foruns {
+        id
+        name
+        description
+        comments {
+          id
+          creation_date
+          description
+          author {
+            id
+            fullName
+            profilePicture
+          }
+        }
+      }
     }
   }
 `;
@@ -71,33 +72,33 @@ export const COMMUNITY_MEMBERS = gql`
       }
     }
   }
-  `;
+`;
 
 export const COMMUNITY_AND_FORUM = gql`
-query CommunityAndForum($communityId: ID!, $forumId: ID!) {
-  community(id: $communityId) {
-    id
-    owner {
+  query CommunityAndForum($communityId: ID!, $forumId: ID!) {
+    community(id: $communityId) {
       id
-    }
-    members {
-      id
-      fullName
-      profilePicture
-    }
-  }
-  forum(id: $forumId) {
-    name
-    comments {
-      id
-      description
-      creation_date
-      author {
+      owner {
+        id
+      }
+      members {
         id
         fullName
         profilePicture
       }
     }
+    forum(id: $forumId) {
+      name
+      comments {
+        id
+        description
+        creation_date
+        author {
+          id
+          fullName
+          profilePicture
+        }
+      }
+    }
   }
-}
 `;

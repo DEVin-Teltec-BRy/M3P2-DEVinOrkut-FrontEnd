@@ -6,6 +6,7 @@ import { useMutation } from "@apollo/client";
 import { SelectCategoryEnum } from "./CategoryEnum";
 import { useData } from "../../Context/dataContext";
 import { CREATE_COMMUNITY } from "../../Graphql/Mutations/CreateCommunityMutations";
+import { NewButton } from "../Button";
 
 export function ModalComponent() {
   const [show, setShow] = useState(false);
@@ -70,9 +71,9 @@ export function ModalComponent() {
               <Button variant="secondary" onClick={handleClose}>
                 Close
               </Button>
-              <Button variant="primary" type="submit" onClick={handleClose}>
+              <NewButton type="submit" onClick={handleClose}>
                 Save Changes
-              </Button>
+              </NewButton>
             </Modal.Footer>
           </Form>
         </Modal.Body>
