@@ -6,29 +6,49 @@ import { useData } from "../../Context/dataContext";
 import Layout from "../../Layout";
 import { useState } from "react";
 import { Loading } from "../../Components/Loading";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { GET_USER_BY_ID } from "../../Graphql/Querys";
+import { Link } from "react-router-dom";
 
 export const FriendPage = () => {
   const [index, setIndex] = useState(1);
+  const { user } = useData();
+  const { id } = useParams();
 
-  const {
-    user: { friends, communities },
-  } = useData();
+  const { loading, error, data } = useQuery(GET_USER_BY_ID, {
+    variables: { userId: id },
+  });
 
-  return (
-    <Layout lateral={<Lateral content={communities} title="Comunidades" />}>
+  let userData = null;
+
+  if (id && data) {
+    userData = data.user;
+  } else {
+    userData = user;
+  }
+
+  return id && loading ? (
+    <Loading />
+  ) : id && error ? (
+    <Link to="/" />
+  ) : (
+    <Layout
+      lateral={<Lateral content={userData.communities} title="Comunidades" />}
+    >
       <CardMain
         title="Amigos"
-        count={friends.length}
+        count={userData.friends.length}
         pagination={
           <Pagination
             pageChange={setIndex} // Atualiza o índice da páginação
-            nro={friends.length / 20} // Limita o número de usuários por página em 20
+            nro={userData.friends.length / 20} // Limita o número de usuários por página em 20
             index={index}
           />
         }
       >
-        {friends.length > 0 ? (
-          friends.map(({ fullName, id, profilePicture }, key) =>
+        {userData.friends.length > 0 ? (
+          userData.friends.map(({ fullName, id, profilePicture }, key) =>
             key < index * 20 && key >= (index - 1) * 20 ? ( // Mapeia os usuários a serem mostrados de acordo com o índice da página
               <CardSecondary
                 key={key}
@@ -45,7 +65,7 @@ export const FriendPage = () => {
             ) : null
           )
         ) : (
-          <Loading></Loading>
+          <span>O usuário não possui nenhum amigo!</span>
         )}
       </CardMain>
     </Layout>
