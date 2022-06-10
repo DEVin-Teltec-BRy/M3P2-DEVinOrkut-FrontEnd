@@ -63,3 +63,22 @@ export const GET_USER_BY_ID = gql`
     }
   }
 `;
+
+export const GET_FRIENDS = gql`
+query Results($pagination: PaginationInput) {
+  getFriends(pagination: $pagination) {
+    results {
+      id
+      fullName
+      profilePicture
+    }
+    pagination {
+      currentPage
+      nextPage
+      prevPage
+      count
+      totalPages
+    }
+  }
+}
+`
