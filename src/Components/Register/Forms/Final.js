@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { CREATE_USER_MUTATION } from '../../../Graphql/Mutations/CreateUserMutations';
 import { useEffect, useState } from 'react';
@@ -7,13 +7,20 @@ import { useNavigate } from 'react-router-dom';
 import CustomButton from '../../UI/CustomButton';
 import { ButtonGroup } from '../../UI/CustomButton/style';
 import { ConfirmGroup, LinkStyled } from '../style';
-import { Spinner } from 'react-bootstrap';
+import { Alert, Spinner } from 'react-bootstrap';
+import cleanError from '../../../Utils/trataError';
+import { formStep } from '../../../Store/rootSlice';
 
 const Final = () => {
   const state = useSelector((state) => state);
+  const currentStep = useSelector((state) => state.FormStep);
+
   const [createUser] = useMutation(CREATE_USER_MUTATION);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [disabled, setDisabled] = useState(false);
   const [error, setError] = useState('');
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -45,8 +52,9 @@ const Final = () => {
       });
       setIsSubmitted(true);
       console.log(data);
-    } catch (error) {
-      setError(error.message);
+    } catch (e) {
+      setError(e.graphQLErrors[0].message);
+      setDisabled(true);
     }
   };
 
@@ -64,11 +72,26 @@ const Final = () => {
         <p>Confirmar envio de cadastro?</p>
       </ConfirmGroup>
       <ButtonGroup>
-        <CustomButton>Não</CustomButton>
-        <CustomButton type="submit" primary={true} onClick={handleSubmit}>
+        {error && (
+          <CustomButton onClick={() => dispatch(formStep(currentStep - 1))}>
+            Voltar
+          </CustomButton>
+        )}
+        {!error && (
+          <CustomButton onClick={() => navigate('/')}>Sair</CustomButton>
+        )}
+        <CustomButton
+          type="submit"
+          primary={true}
+          disabled={disabled}
+          onClick={handleSubmit}
+        >
           Sim
         </CustomButton>
       </ButtonGroup>
+      <ConfirmGroup>
+        {error && <Alert variant="danger">{cleanError(error, 'Erro:')}</Alert>}
+      </ConfirmGroup>
     </>
   );
 
