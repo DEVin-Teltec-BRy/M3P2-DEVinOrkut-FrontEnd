@@ -162,7 +162,7 @@ export const CommunityDetail = ({
                   label="Título"
                   value={values.title}
                   onChange={handleChange}
-                  isValid={touched.description && !errors.description}
+                  isValid={touched.title && !errors.title}
                   error={nameValidate ? !errors.title : errors.title}
                 />
                 {nameValidate && (<p >Deve possuir mais do que 5 carecteres...</p>)}
