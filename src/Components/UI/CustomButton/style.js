@@ -10,6 +10,12 @@ export const ButtonStyled = styled.button`
   border: 1px solid ${(props) => (props.primary ? '#C8157A' : '#DDD92A')};
   background: ${(props) => (props.primary ? '#e01989' : '#DDD92A')};
 
+  :disabled {
+    background: #ccc;
+    border: 1px solid #ccc;
+    cursor: not-allowed;
+  }
+  ,
   :hover,
   :active {
     background-color: ${(props) => (props.primary ? '#fa1495' : '#ede91f')};
