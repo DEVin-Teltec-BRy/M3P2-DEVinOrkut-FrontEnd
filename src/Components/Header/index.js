@@ -27,7 +27,7 @@ const Header = () => {
       </Col>
       <Col md={6}>
         <NewButtonLink to="/" icon={<FaUserCircle />} name="Perfil" />
-        <NewButtonLink to="/friends" icon={<FaUserFriends />} name="Amigos" />
+        <NewButtonLink to="/friends" icon={<FaUserFriends />} name="Amigos" friends={user.friends} communities={user.communities}/>
         <NewButtonLink
           to="/communities"
           icon={<FaThLarge />}
