@@ -12,7 +12,7 @@ export const LateralProfile = ({ friendsUser, communitiesUser }) => {
 
   return (
     <ContentLateral>
-      <CardMain title="Amigos" count={selectFriends.length} toAll="friends">
+      <CardMain title="Amigos" count={selectFriends.length} toAll="friends" friends={friendsUser} communities={communitiesUser}>
         {selectFriends.map(({ fullName, id, profilePicture }, key) => (
           <CardSecondary
             key={key}
@@ -28,6 +28,8 @@ export const LateralProfile = ({ friendsUser, communitiesUser }) => {
         title="Comunidades"
         count={selectcommunities.length}
         toAll="communities"
+        communities={communitiesUser}
+        friends={friendsUser}
       >
         {selectcommunities.map(({ name, id, logo }, key) => (
           <CardSecondary
