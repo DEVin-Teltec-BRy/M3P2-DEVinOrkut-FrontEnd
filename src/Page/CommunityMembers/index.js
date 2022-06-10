@@ -28,14 +28,16 @@ export const CommunityMembersPage = () => {
             return (
                 <Layout lateral={<LateralProfile />}>
                     <CardMain title={`Membros da ${community.name}`} count={community.members.length} pagination={<Pagination />}>
-                        {community.members.map(({ fullName, id }, key) => (
+                        {community.members.map(({ fullName, id, profilePicture }, key) => (
                             <CardSecondary
                                 key={key}
                                 round
                                 to='usuario'
                                 id={id}
                                 text={fullName}
-                                src="https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
+                                src={profilePicture.length > 0
+                                    ? profilePicture[0]
+                                    : "https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg"}
                             />
                         ))}
                     </CardMain>

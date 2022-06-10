@@ -24,6 +24,7 @@ export const COMMUNITY_DETAILS = gql`
       members {
         id
         fullName
+        profilePicture
       }
       owner {
         id
@@ -33,6 +34,11 @@ export const COMMUNITY_DETAILS = gql`
         id
         name
         description
+        owner {
+          id
+          fullName
+          profilePicture
+        }
         comments {
           id
           creation_date
@@ -65,6 +71,7 @@ export const COMMUNITY_MEMBERS = gql`
       members {
         id
         fullName
+        profilePicture
       }
       owner {
         id
@@ -80,6 +87,8 @@ export const COMMUNITY_AND_FORUM = gql`
       id
       owner {
         id
+        fullName
+        profilePicture
       }
       members {
         id
@@ -89,6 +98,7 @@ export const COMMUNITY_AND_FORUM = gql`
     }
     forum(id: $forumId) {
       name
+      creation_date
       comments {
         id
         description
@@ -98,6 +108,11 @@ export const COMMUNITY_AND_FORUM = gql`
           fullName
           profilePicture
         }
+      }
+      owner {
+        id
+        fullName
+        profilePicture
       }
     }
   }
