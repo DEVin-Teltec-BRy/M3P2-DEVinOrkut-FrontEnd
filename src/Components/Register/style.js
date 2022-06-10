@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 `;
 
 export const WrapperForm = styled.div`
-  height: 1200px;
+  height: 1250px;
   background: #f9f9fb;
   padding: 5rem;
 `;
@@ -19,7 +19,7 @@ export const WrapperForm = styled.div`
 export const WrapperLogo = styled.div`
 display: 'flex',
 flex-direction: 'column', 
-height: 1200px;
+height: 1250px;
 background: linear-gradient(180deg, rgba(224, 25, 137, 0.6) 0%, #e01989 100%);
 `;
 

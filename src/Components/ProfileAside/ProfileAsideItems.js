@@ -87,11 +87,11 @@ const ProfileAsideItems = ({
               alt={name}
               onMouseEnter={() => setAddButtonShow((prev) => !prev)}
               onMouseLeave={() => setAddButtonShow((prev) => !prev)}
-            />
-            <AddImageButton addButtonShow={addButtonShow}>
+            />            
+          </ProfileAsideButton>
+          <AddImageButton addButtonShow={addButtonShow}>
               <IoAddCircle size={50} />
             </AddImageButton>
-          </ProfileAsideButton>
         </ContainerImage>
       )}
       {id && (

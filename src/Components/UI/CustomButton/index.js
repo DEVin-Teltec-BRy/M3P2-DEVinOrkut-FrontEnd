@@ -8,6 +8,7 @@ const CustomButton = ({
   onClick,
   type,
   primary,
+  disabled,
 }) => {
   return (
     <ButtonStyled
@@ -16,6 +17,7 @@ const CustomButton = ({
       onClick={onClick}
       type={type}
       primary={primary}
+      disabled={disabled}
     >
       {children}
     </ButtonStyled>
