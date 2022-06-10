@@ -20,7 +20,7 @@ export const ForumPage = () => {
         return (
             <Layout lateral={<MembersLateral
                 isMember={true}
-                members={community.members} communities={user.communities} id={'communityid'} />}>
+                members={community.members} communities={user.communities} id={community.id} />}>
                 <CardMain
                     title={forum.name}
                     count={forum.comments.length}
@@ -32,7 +32,9 @@ export const ForumPage = () => {
                                 key={comment.id}
                                 content={comment.description}
                                 userName={comment.author.fullName}
-                                userImg={comment.author.profilePicture[0]}
+                                userImg={comment.author.profilePicture.length > 0
+                                    ? comment.author.profilePicture[0]
+                                    : "https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg"}
                                 creatAt={timeCalculator(comment.creation_date)}
                                 userid={comment.author.id}
                                 canEditOrDel={comment.author.id === user.id || community.owner.id === user.id ? true : false}

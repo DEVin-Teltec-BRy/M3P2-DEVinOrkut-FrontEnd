@@ -9,7 +9,7 @@ import Login from "../Page/Login";
 import { ProfilePage } from "../Page/Profile";
 import { SearchPage } from "../Page/Search";
 import { UserPage } from "../Page/User";
-
+import { ForumPage } from "../Page/Forum";
 export const privateRoutes = [
   {
     path: "/",
@@ -46,7 +46,7 @@ export const privateRoutes = [
   {
     path: "user/:id/friends",
     element: <FriendPage />,
-  },  
+  },
   {
     path: "user/:id/communities",
     element: <CommunityPage />,
@@ -58,6 +58,10 @@ export const privateRoutes = [
   {
     path: "communities/:communityid/members",
     element: <CommunityMembersPage />,
+  },
+  {
+    path: "communities/:communityid/forum/:forumid",
+    element: <ForumPage />
   },
 ];
 export const publicRoutes = [
