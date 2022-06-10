@@ -1,8 +1,8 @@
 import * as S from './style';
 
-export const NewButtonLink = ({ to, icon, name }) => {
+export const NewButtonLink = ({ to, icon, name, friends, communities }) => {
   return (
-    <S.Navlink to={`${to}`}>
+    <S.Navlink to={`${to}`} state={{friends, communities}}>
       <span>{icon}</span>
       {name}
     </S.Navlink>
