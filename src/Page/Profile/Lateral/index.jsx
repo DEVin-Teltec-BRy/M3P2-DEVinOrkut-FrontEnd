@@ -12,7 +12,13 @@ export const LateralProfile = ({ friendsUser, communitiesUser }) => {
 
   return (
     <ContentLateral>
-      <CardMain title="Amigos" count={selectFriends.length} toAll="friends" friends={friendsUser} communities={communitiesUser}>
+      <CardMain
+        title="Amigos"
+        count={selectFriends.length}
+        toAll="friends"
+        friends={friendsUser}
+        communities={communitiesUser}
+      >
         {selectFriends.map(({ fullName, id, profilePicture }, key) => (
           <CardSecondary
             key={key}
@@ -26,22 +32,26 @@ export const LateralProfile = ({ friendsUser, communitiesUser }) => {
       </CardMain>
       <CardMain
         title="Comunidades"
-        count={selectcommunities.length}
+        count={communities.length}
         toAll="communities"
         communities={communitiesUser}
         friends={friendsUser}
       >
-        {selectcommunities.map(({ name, id, logo }, key) => (
-          <CardSecondary
-            size="md"
-            to="comunidade"
-            key={key}
-            round
-            id={id}
-            text={name}
-            src={logo ? logo : ""}
-          />
-        ))}
+        {selectcommunities > 0 ? (
+          selectcommunities.map(({ name, id, logo }, key) => (
+            <CardSecondary
+              size="md"
+              to="comunidade"
+              key={key}
+              round
+              id={id}
+              text={name}
+              src={logo ? logo : ""}
+            />
+          ))
+        ) : (
+          <span>O usuário não possui nenhuma comunidade!</span>
+        )}
       </CardMain>
     </ContentLateral>
   );
