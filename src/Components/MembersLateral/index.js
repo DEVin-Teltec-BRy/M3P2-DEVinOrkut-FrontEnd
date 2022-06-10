@@ -56,3 +56,4 @@ export const MembersLateral = ({ isMember, id, communities, members }) => {
         )
     };
 };
+
