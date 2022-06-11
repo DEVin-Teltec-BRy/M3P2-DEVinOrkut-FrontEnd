@@ -3,7 +3,7 @@ import Placeholder from "react-bootstrap/Placeholder";
 import ImgPlaceHolder from '../../Assets/placeholderImg.webp'
 export const PlaceholderUser = () => {
   return (
-    <CardContainerSecondary bg="grey" round>
+    <CardContainerSecondary bg="grey" round='true'>
         <img src={ ImgPlaceHolder } alt="" />
       <Placeholder animation="glow">
         <Placeholder xs={8} /> 

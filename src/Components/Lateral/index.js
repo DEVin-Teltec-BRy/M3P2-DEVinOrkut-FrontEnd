@@ -12,17 +12,17 @@ export const Lateral = ({ content, title }) => {
   }
 
   return (
-    <CardMain title={title} count={content.length} toAll={toAllUri}>
-      {content.map((data, key) => (
+    <CardMain title={title} count={content?.length} toAll={toAllUri}>
+      {content?.map((data, key) => (
         <CardSecondary
           round
           // to='usuario'
           to={title === "Amigos" ? "usuario" : "comunidade"}
           id={data.id}
           key={key}
-          text={title === "Amigos" ? data.fullName : data.name}
+          text={title === "Amigos" ? data?.fullName : data.name}
           // text={fullName}
-          src={title === "Amigos" ? data.profilePicture : data.logo}
+          src={title === "Amigos" ? data?.profilePicture : data.logo}
         />
       ))}
     </CardMain>
