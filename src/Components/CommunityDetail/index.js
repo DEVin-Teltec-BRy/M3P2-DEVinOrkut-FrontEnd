@@ -3,11 +3,10 @@ import React, { useState, useEffect } from "react";
 import { NewButton } from "../Button";
 import { NewInputForm } from "../Input";
 import { MainModal } from "../MainModal";
-import { Form } from "react-bootstrap";
 import { useData } from "../../Context/dataContext";
 import { useMutation } from "@apollo/client";
 import { JOIN_COMMUNITY } from "../../Graphql/Mutations/JoinCommunityMutations";
-
+import { EditCommunity } from "../EditCommunity";
 import * as S from "./communityDetail.style";
 import { initialValues } from "./Dados";
 
@@ -86,15 +85,7 @@ export const CommunityDetail = ({
                 <span>Proprietário:</span> {owner}
               </li>
             </ul>
-            {isowner && (
-              <Form>
-                <Form.Check
-                  type="switch"
-                  id="custom-switch"
-                  label="Editar Comunidade"
-                />
-              </Form>
-            )}
+            {isowner && <EditCommunity />}
           </div>
         </S.DivContent>
         <hr />
