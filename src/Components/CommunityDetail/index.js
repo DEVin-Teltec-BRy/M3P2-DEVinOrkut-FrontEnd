@@ -33,7 +33,6 @@ export const CommunityDetail = ({
   const checkIsMember = memberList.find((u) => u.id === user.id);
   const [createForum,] = useMutation(CREATE_FORUM);
   useEffect(() => {
-    console.log('atualizou')
     setMemberList(members);
     setIsMember(checkIsMember);
   }, [memberList, members, checkIsMember]);

@@ -51,7 +51,6 @@ const Final = () => {
         },
       });
       setIsSubmitted(true);
-      console.log(data);
     } catch (e) {
       setError(e.graphQLErrors[0].message);
       setDisabled(true);

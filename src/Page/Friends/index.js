@@ -50,7 +50,7 @@ import { useData } from "../../Context/dataContext";
   };
   const { communities } = location.state;
   return (
-     <Layout lateral={<Lateral content={communities} title="Comunidades" />} visitedData={user}>
+     <Layout lateral={<Lateral content={communities ? communities : []} title="Comunidades" />} visitedData={user}>
       <CardMain
         title="Amigos"
         count={paginating?.count}

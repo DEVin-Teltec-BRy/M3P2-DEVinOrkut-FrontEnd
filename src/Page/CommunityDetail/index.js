@@ -9,24 +9,25 @@ import { useQuery } from "@apollo/client";
 import { COMMUNITY_DETAILS } from "../../Graphql/Querys/Communities";
 import { convertDateFromMilliseconds, timeCalculator } from "../../Utils/index";
 import { BottomForum } from "../../Components/Forum/index";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
 const CommunityDetailPage = () => {
   const { user } = useData();
+  const [ communityPage, setCommunityPage ] = useState(null);
   const { communityid } = useParams();
   const { loading, error, data } = useQuery(COMMUNITY_DETAILS, {
     variables: { communityId: communityid },
   });
-
   useEffect(()=>{
     if(data){
-      console.log(data)
+      setCommunityPage(data.community);
     }
-  },[data])
+  }, [data])
   if (loading) return <p>Loading...</p>;
+  console.log(error)
   if (error) return <p>Error :</p>;
-  const { community } = data;
+  const community  = communityPage;
   let isOwner = community?.owner.id === user.id ? true : false;
   return (
     <Layout
