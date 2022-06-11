@@ -9,7 +9,7 @@ import { useData } from "../../Context/dataContext";
 const CommunityPage = () => {
   const { user } = useData();
   return (
-    <Layout lateral={<Lateral content={user.friends} title="Amigos" />}>
+    <Layout lateral={<Lateral content={user.friends} title="Amigos" />} visitedData={user}>
       <CardMain
         title="Comunidades"
         count={user.communities.length}

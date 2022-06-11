@@ -31,7 +31,7 @@ const FriendshipRequestPage = () => {
     updateUser({ ...data.refuseFriendship });
   };
   return (
-    <Layout lateral={<Lateral content={user.friends} />}>
+    <Layout lateral={<Lateral content={user.friends} />} visitedData={user}>
       <CardMain
         title="Solicitações Pendentes"
         count={user.friendRequest?.length}

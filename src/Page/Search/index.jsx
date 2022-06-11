@@ -9,8 +9,10 @@ import { Pagination } from "../../Components/Pagination";
 import { InputSearch } from "../../Components/InputSearch";
 import { LateralProfile } from "../Profile/Lateral";
 import { BoxSearch, Search } from "./search.styled";
+import { useData } from "../../Context/dataContext";
 
 const SearchPage = () => {
+  const { user } = useData();
   const [listResult, setListResult] = useState({
     listUser: [],
     listComunities: [],
@@ -40,7 +42,7 @@ const SearchPage = () => {
   }, [data]);
 
   return (
-    <Layout lateral={<LateralProfile />}>
+    <Layout lateral={<LateralProfile user={user} />} visitedData={user}>
       <Search count={listResult?.length} pagination={<Pagination />} column>
         <div>
           <h4>Buscar</h4>

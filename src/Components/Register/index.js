@@ -9,7 +9,6 @@ import Layout from './Layout';
 
 const Register = () => {
   const pageStep = useSelector((state) => state.FormStep);
-
   return (
     <Layout>
       {pageStep === 1 && (

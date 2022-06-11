@@ -10,7 +10,7 @@ const Profile = ({visitedData}) => {
   const handleModalOpen = () => {
     dispatch(openModal());
   };
-  console.log(visitedData);
+
   return (
     <S.ProfileContainer>
       <ProfileAsideItems

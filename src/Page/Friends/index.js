@@ -8,8 +8,10 @@ import { Loading } from "../../Components/Loading";
 import { useLocation } from "react-router-dom";
 import { GET_FRIENDS } from "../../Graphql/Querys";
 import { useQuery } from "@apollo/client";
+import { useData } from "../../Context/dataContext";
 
  const FriendPage = () => {
+  const { user } = useData();
   const location = useLocation();
   const [listFriend, setList] = useState(false);
   const nPerPage = 4;
@@ -48,7 +50,7 @@ import { useQuery } from "@apollo/client";
   };
   const { communities } = location.state;
   return (
-     <Layout lateral={<Lateral content={communities} title="Comunidades" />}>
+     <Layout lateral={<Lateral content={communities} title="Comunidades" />} visitedData={user}>
       <CardMain
         title="Amigos"
         count={paginating?.count}

@@ -20,14 +20,15 @@ const ForumPage = () => {
     else {
         const { community, forum } = data;
         return (
-            <Layout lateral={<MembersLateral
+            <Layout 
+                lateral={<MembersLateral
                 isMember={true}
-                members={community.members} communities={user.communities} id={community.id} />}>
+                members={community.members} communities={user.communities} id={community.id} />}
+                visitedData={user}>
                 <CardMain
                     title={forum.name}
                     count={forum.comments.length}
-                    pagination={<Pagination />}
-                >
+                    pagination={<Pagination />}>
                     {forum.comments.length === 0 ? (<p>Nenhum comentário ainda, seja o primeiro a comentar &#129299;</p>)
                         : forum.comments.map((comment) => {
                             return (

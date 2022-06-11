@@ -30,6 +30,7 @@ const CommunityDetailPage = () => {
   let isOwner = community?.owner.id === user.id ? true : false;
   return (
     <Layout
+      visitedData={user}
       lateral={
         <MembersLateral
           isMember={isOwner || community.members.length > 0 ? true : false}

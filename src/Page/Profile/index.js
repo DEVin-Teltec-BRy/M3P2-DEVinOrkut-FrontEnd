@@ -21,14 +21,9 @@ const ProfilePage = () => {
   const age = getAge(birthDate)
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!user.id) {
-      navigate('/login')
-    }
-  }, [user]);
 
   return (
-    <Layout lateral={<LateralProfile user={user} />}>
+    <Layout lateral={<LateralProfile user={user} />} visitedData={user}>
       <ProfileContent>
         <h1>{fullName}</h1>
         <ContentInfo border>
