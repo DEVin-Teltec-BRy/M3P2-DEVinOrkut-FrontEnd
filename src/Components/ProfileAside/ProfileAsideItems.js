@@ -88,10 +88,13 @@ const ProfileAsideItems = ({
         />
       </MenuOptions>
       <div className="edit-profile">
-        <EditButton onClick={() => {}}>
-          <IoToggleOutline size={25} /> Editar Perfil
-        </EditButton>
-      </div>
+        {!id && (
+          <EditButton onClick={() => {}}>
+            <IoToggleOutline size={25} /> Editar Perfil
+          </EditButton>
+        )}
+        </div>
+
       <ModalUpload show={modalShow} onHide={() => setModalShow(false)} />
     </>
   );
