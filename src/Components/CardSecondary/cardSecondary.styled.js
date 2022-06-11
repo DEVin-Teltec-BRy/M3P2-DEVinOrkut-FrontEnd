@@ -5,7 +5,7 @@ export const CardContainerSecondary = styled(CardContainer)`
 width: ${({size})=> size === 'md'?'clamp(7rem,8.5rem,10rem);':'clamp(7rem,7.5rem,10rem);'};
  
   max-width: ${({size})=> size === 'md'?'7.7rem;':'10rem;'};
-  max-height: ${({size})=> size === 'md'?'8.5rem;':'8.5rem;'};
+  max-height: ${({size})=> size === 'md'?'8.9rem;':'8.5rem;'};
 border:none;
   padding: 10px ;
   text-align:center;
