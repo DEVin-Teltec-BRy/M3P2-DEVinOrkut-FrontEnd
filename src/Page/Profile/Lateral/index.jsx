@@ -15,7 +15,7 @@ export const LateralProfile = ({ friendsUser, communitiesUser }) => {
       <CardMain
         title="Amigos"
         count={selectFriends.length}
-        toAll="friends"
+        toAll="/friends"
         friends={friendsUser}
         communities={communitiesUser}
       >
@@ -33,7 +33,7 @@ export const LateralProfile = ({ friendsUser, communitiesUser }) => {
       <CardMain
         title="Comunidades"
         count={communities.length}
-        toAll="communities"
+        toAll="/communities"
         communities={communitiesUser}
         friends={friendsUser}
       >
