@@ -9,16 +9,14 @@ import {
 } from 'react-icons/io5';
 import { NewButtonLink } from '../Button';
 import {
-  AddImageButton,
-  ContainerImage,
   EditButton,
-  Image,
   MenuOptions,
   ProfileAsideButton,
   ProfileAsideImage,
 } from './style';
-import ModalUpload from './ModalUpload';
+
 import { useParams } from 'react-router-dom';
+import classes from './style.module.css';
 
 const ProfileAsideItems = ({
   name,
@@ -28,27 +26,25 @@ const ProfileAsideItems = ({
   city,
   state,
   buttonText,
+  onClick,
 }) => {
-  const [modalShow, setModalShow] = React.useState(false);
-  const [addButtonShow, setAddButtonShow] = React.useState(false);
   const { id } = useParams();
 
   return (
     <>
       {!id && (
-        <ContainerImage>
-          <ProfileAsideButton onClick={() => setModalShow(true)}>
-            <Image
-              src={profilePicture}
-              alt={name}
-              onMouseEnter={() => setAddButtonShow((prev) => !prev)}
-              onMouseLeave={() => setAddButtonShow((prev) => !prev)}
-            />            
+        <div className={classes.container}>
+          <ProfileAsideButton>
+            <img className={classes.image} src={profilePicture} alt={name} />
           </ProfileAsideButton>
-          <AddImageButton addButtonShow={addButtonShow}>
-              <IoAddCircle size={50} />
-            </AddImageButton>
-        </ContainerImage>
+          <div className={classes.middle}>
+            <div>
+              <button className={classes.buttonIcon} onClick={onClick}>
+                <IoAddCircle size={50} />
+              </button>
+            </div>
+          </div>
+        </div>
       )}
       {id && (
         <ProfileAsideImage>
@@ -93,9 +89,7 @@ const ProfileAsideItems = ({
             <IoToggleOutline size={25} /> Editar Perfil
           </EditButton>
         )}
-        </div>
-
-      <ModalUpload show={modalShow} onHide={() => setModalShow(false)} />
+      </div>
     </>
   );
 };

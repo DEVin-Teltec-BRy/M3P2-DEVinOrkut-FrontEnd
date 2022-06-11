@@ -6,6 +6,8 @@ const rootSlice = createSlice({
   initialState: {
     FormStep: 1,
     FormUserRegister: '',
+    IsOpen: false,
+    IsSubmitted: false,
   },
   reducers: {
     formStep: (state, action) => {
@@ -14,9 +16,28 @@ const rootSlice = createSlice({
     formRegister: (state, action) => {
       state.FormUserRegister = action.payload;
     },
+    openModal: (state, action) => {
+      state.IsOpen = true;
+    },
+    closeModal: (state, action) => {
+      state.IsOpen = false;
+    },
+    submitted: (state, action) => {
+      state.IsSubmitted = true;
+    },
+    isNotSubmitted: (state, action) => {
+      state.IsSubmitted = false;
+    },
   },
 });
 
 // Actions
-export const { formStep, formRegister } = rootSlice.actions;
+export const {
+  formStep,
+  formRegister,
+  openModal,
+  closeModal,
+  submitted,
+  isNotSubmitted,
+} = rootSlice.actions;
 export const reducer = rootSlice.reducer;
