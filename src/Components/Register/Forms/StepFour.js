@@ -43,6 +43,14 @@ const StepFour = ({ previousButton, submitButtonText }) => {
     setIsSubmitted(true);
   };
 
+  const handleResetForm = () => {
+    setFormData({
+      password: '',
+      confirmPassword: '',
+      email: '',
+    });
+  };
+
   useEffect(() => {
     if (Object.keys(error).length === 0 && isSubmitted) {
       dispatch(
@@ -103,6 +111,9 @@ const StepFour = ({ previousButton, submitButtonText }) => {
         </div>
 
         <ButtonGroup>
+          <CustomButton type="button" primary={false} onClick={handleResetForm}>
+            Limpar
+          </CustomButton>
           {previousButton && (
             <CustomButton
               primary={false}

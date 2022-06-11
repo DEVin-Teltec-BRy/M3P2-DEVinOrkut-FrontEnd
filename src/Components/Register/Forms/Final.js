@@ -58,13 +58,20 @@ const Final = () => {
     }
   };
 
+  const handleOutForm = () => {
+    dispatch(formStep(1));
+    navigate('/');
+    setIsSubmitted(false);
+  };
+
   useEffect(() => {
     if (!error && isSubmitted) {
       setTimeout(() => {
         navigate('/');
+        dispatch(formStep(1));
       }, 5000);
     }
-  }, [navigate, error, isSubmitted]);
+  }, [navigate, error, isSubmitted, dispatch]);
 
   let content = (
     <>
@@ -77,9 +84,7 @@ const Final = () => {
             Voltar
           </CustomButton>
         )}
-        {!error && (
-          <CustomButton onClick={() => navigate('/')}>Sair</CustomButton>
-        )}
+        {!error && <CustomButton onClick={handleOutForm}>Sair</CustomButton>}
         <CustomButton
           type="submit"
           primary={true}
