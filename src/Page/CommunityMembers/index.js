@@ -8,7 +8,8 @@ import { LateralProfile } from "../Profile/Lateral"
 import { useQuery } from "@apollo/client";
 import { COMMUNITY_MEMBERS } from "../../Graphql/Querys/Communities";
 
-export const CommunityMembersPage = () => {
+
+const CommunityMembersPage = () => {
     const { user } = useData();
     const { communityid } = useParams()
     const { loading, error, data } = useQuery(COMMUNITY_MEMBERS, { variables: { communityId: communityid } });
@@ -46,3 +47,5 @@ export const CommunityMembersPage = () => {
         }
     }
 };
+
+export default CommunityMembersPage;

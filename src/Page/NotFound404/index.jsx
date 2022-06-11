@@ -1,6 +1,6 @@
 import notFound from '../../Assets/404 Error.svg'
 import { MainNootFound } from './notfound.styled'
-export const NotFoundPage = ()=>{
+const NotFoundPage = ()=>{
 
     return (
         <MainNootFound>
@@ -8,3 +8,5 @@ export const NotFoundPage = ()=>{
         </MainNootFound>
     )
 }
+
+export default NotFoundPage;

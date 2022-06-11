@@ -8,7 +8,9 @@ import { useData } from "../../Context/dataContext";
 import { COMMUNITY_AND_FORUM } from "../../Graphql/Querys/Communities";
 import { ForumCard } from "../../Components/Forum/index";
 import { timeCalculator } from "../../Utils/index";
-export const ForumPage = () => {
+
+
+const ForumPage = () => {
     const { user } = useData();
     const { communityid, forumid } = useParams()
     const { loading, error, data } = useQuery(COMMUNITY_AND_FORUM, { variables: { communityId: communityid, forumId: forumid } });
@@ -47,3 +49,5 @@ export const ForumPage = () => {
         );
     }
 };
+
+export default ForumPage;

@@ -20,20 +20,22 @@ import { Loading } from '../../Components/Loading';
 import { useData } from '../../Context/dataContext';
 import { useEffect, useState } from 'react';
 
-export const UserPage = () => {
+const UserPage = () => {
   const { user: loggedUser, handleAddFriend, handleRemoveFriend } = useData();
   const { id } = useParams();
-  const [isConected, setIsConected] = useState(() =>
-    loggedUser.friends.some((friend) => friend.id === id)
-  );
+  const [isConected, setIsConected] = useState(() => loggedUser.friends.some((friend) => friend.id === id));
   const [loggerUserSendRequest, setLoggerUserSendRequest] = useState(false);
+
   const [pendingRequest, setPendingRequest] = useState(false);
   const navigate = useNavigate();
   const { data } = useQuery(GET_USER_BY_ID, {
     variables: { userId: id },
   });
-  const [userPage, setUserPage] = useState(null);
-
+  const [userPage, setUserPage] = useState(()=>{
+    if(data){
+      return data.user
+    } 
+  });
   useEffect(() => {
     if (id === loggedUser.id) {
       navigate('/');
@@ -66,8 +68,7 @@ export const UserPage = () => {
       visitedData={userPage}
       lateral={
         <LateralProfile
-          friendsUser={userPage.friends}
-          communitiesUser={userPage.communities}
+          user={userPage}
         />
       }
     >
@@ -171,3 +172,6 @@ export const UserPage = () => {
     <Loading />
   );
 };
+
+
+export default UserPage;

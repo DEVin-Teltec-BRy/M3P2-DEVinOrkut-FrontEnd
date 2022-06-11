@@ -6,7 +6,7 @@ import Layout from "../../Layout";
 import { Lateral } from "../../Components/Lateral";
 import { useData } from "../../Context/dataContext";
 
-export const CommunityPage = () => {
+const CommunityPage = () => {
   const { user } = useData();
   return (
     <Layout lateral={<Lateral content={user.friends} title="Amigos" />}>
@@ -21,3 +21,4 @@ export const CommunityPage = () => {
     </Layout>
   );
 };
+export default CommunityPage

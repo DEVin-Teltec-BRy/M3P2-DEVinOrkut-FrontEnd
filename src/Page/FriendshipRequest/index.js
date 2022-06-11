@@ -7,7 +7,7 @@ import { Lateral } from "../../Components/Lateral";
 import { useMutation } from "@apollo/client";
 import { ACCEPT_FRIENDSHIP_REQUEST, REJECT_FRIENDSHIP_REQUEST } from "../../Graphql/Mutations/FriendshipMutations";
 
-export const FriendshipRequestPage = () => {
+const FriendshipRequestPage = () => {
   const { user, updateUser } = useData();
   const [ACCEPTREQUEST, {error: errAccept}] = useMutation(
     ACCEPT_FRIENDSHIP_REQUEST
@@ -65,3 +65,5 @@ export const FriendshipRequestPage = () => {
     </Layout>
   );
 };
+
+export default FriendshipRequestPage;

@@ -10,7 +10,7 @@ import { InputSearch } from "../../Components/InputSearch";
 import { LateralProfile } from "../Profile/Lateral";
 import { BoxSearch, Search } from "./search.styled";
 
-export const SearchPage = () => {
+const SearchPage = () => {
   const [listResult, setListResult] = useState({
     listUser: [],
     listComunities: [],
@@ -89,3 +89,6 @@ export const SearchPage = () => {
     </Layout>
   );
 };
+
+
+export default SearchPage;
