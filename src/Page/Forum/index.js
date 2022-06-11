@@ -26,20 +26,21 @@ export const ForumPage = () => {
                     count={forum.comments.length}
                     pagination={<Pagination />}
                 >
-                    {forum.comments.map((comment) => {
-                        return (
-                            <ForumCard
-                                key={comment.id}
-                                content={comment.description}
-                                userName={comment.author.fullName}
-                                userImg={comment.author.profilePicture.length > 0
-                                    ? comment.author.profilePicture[0]
-                                    : "https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg"}
-                                creatAt={timeCalculator(comment.creation_date)}
-                                userid={comment.author.id}
-                                canEditOrDel={comment.author.id === user.id || community.owner.id === user.id ? true : false}
-                            />)
-                    })}
+                    {forum.comments.length === 0 ? (<p>Nenhum comentário ainda, seja o primeiro a comentar &#129299;</p>)
+                        : forum.comments.map((comment) => {
+                            return (
+                                <ForumCard
+                                    key={comment.id}
+                                    content={comment.description}
+                                    userName={comment.author.fullName}
+                                    userImg={comment.author.profilePicture.length > 0
+                                        ? comment.author.profilePicture[0]
+                                        : "https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg"}
+                                    creatAt={timeCalculator(comment.creation_date)}
+                                    userid={comment.author.id}
+                                    canEditOrDel={comment.author.id === user.id || community.owner.id === user.id ? true : false}
+                                />)
+                        })}
 
                 </CardMain>
             </Layout>
