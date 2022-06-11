@@ -17,6 +17,7 @@ const ProfilePage = () => {
   const textIntereses = interests?.join(' / ')
   const textHumor = humor?.join(' / ')
   const age = getAge(birthDate)
+  
   return (
     <Layout lateral={<LateralProfile user={user} />} visitedData={user}>
       <ProfileContent>

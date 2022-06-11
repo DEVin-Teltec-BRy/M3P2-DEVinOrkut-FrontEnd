@@ -26,7 +26,7 @@ const Final = () => {
 
   const handleSubmit = async () => {
     try {
-      const { data } = await createUser({
+      await createUser({
         variables: {
           user: {
             fullName: state.FormUserRegister.fullName,
