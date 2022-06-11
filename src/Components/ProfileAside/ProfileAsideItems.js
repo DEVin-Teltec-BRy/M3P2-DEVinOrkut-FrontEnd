@@ -73,7 +73,7 @@ const ProfileAsideItems = ({
           name="Recados"
         />
         <NewButtonLink
-          to="/communities"
+          to="/upload/community"
           icon={<IoCameraOutline size={24} />}
           name="Fotos"
         />

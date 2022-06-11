@@ -10,6 +10,7 @@ import { ProfilePage } from "../Page/Profile";
 import { SearchPage } from "../Page/Search";
 import { UserPage } from "../Page/User";
 import { ForumPage } from "../Page/Forum";
+import UploadImageCommunity from "../Components/uploadCommunity";
 export const privateRoutes = [
   {
     path: "/",
@@ -62,6 +63,10 @@ export const privateRoutes = [
   {
     path: "communities/:communityid/forum/:forumid",
     element: <ForumPage />
+  },
+  {
+    path: "/upload/community",
+    element: <UploadImageCommunity/>,
   },
 ];
 export const publicRoutes = [
