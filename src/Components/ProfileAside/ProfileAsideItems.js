@@ -88,9 +88,11 @@ const ProfileAsideItems = ({
         />
       </MenuOptions>
       <div className="edit-profile">
-        <EditButton onClick={() => {}}>
-          <IoToggleOutline size={25} /> Editar Perfil
-        </EditButton>
+        {!id && (
+          <EditButton onClick={() => {}}>
+            <IoToggleOutline size={25} /> Editar Perfil
+          </EditButton>
+        )}
       </div>
     </>
   );

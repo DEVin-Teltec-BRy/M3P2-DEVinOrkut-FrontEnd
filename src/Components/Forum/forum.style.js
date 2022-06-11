@@ -9,7 +9,7 @@ export const MainDivCard = styled.div`
     align-items: center;
     .img {
         img {
-          max-width: 5.45rem;  
+          width: 5.45rem;  
           border-radius: 50%;
           height:5.45rem;
           margin-bottom: 10px ;
@@ -41,6 +41,11 @@ export const MainDivCard = styled.div`
     }
 `;
 
+export const ForumSection = styled.section`
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+     `
 
 export const ForumDivCard = styled.div`
     display: flex;
@@ -50,11 +55,13 @@ export const ForumDivCard = styled.div`
     align-items: center;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: rgb(224 25 137 / 15%) 0px 0px 5px 0px;
-    width: 100%;
+    width: 99%;
     border-radius: 12px;
+    box-sizing: border-box;
+    height: auto;
     .img {
         img {
-          max-width: 5.45rem;  
+          width: 5.45rem;  
           border-radius: 50%;
           height:5.45rem;
           margin-bottom: 10px;
@@ -65,12 +72,13 @@ export const ForumDivCard = styled.div`
         display: flex;
         flex-direction: column;
         margin-left: 2rem;
-        width: 100%;
+        width: 81%;
         .title{
             display: flex;
             align-content: center;
             justify-content: space-between;
             align-items: flex-start;
+            width: 100%;
             span{
                 font-size: 0.9rem;
                 font-weight: bold;
@@ -87,6 +95,17 @@ export const ForumDivCard = styled.div`
                 font-weight: bold;
                 text-align: center;
             }
+        }
+        .postcontent{
+            text-align: justify;
+            word-wrap: break-word;
+            white-space: normal;
+            box-sizing: border-box;
+            width: 80%;
+            p {
+              width: 100%;
+              word-wrap: break-word;
+             }
         }
         .infos{
             margin-top: 20px;

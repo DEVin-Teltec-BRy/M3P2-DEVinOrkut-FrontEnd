@@ -46,16 +46,19 @@ export const CommunityDetailPage = () => {
               members={community.members}
             >
               {community.foruns.map((forum) => {
+
                 return (
                   <BottomForum
                     forumid={forum.id}
                     comunityid={communityid}
                     key={forum.id}
-                    lastUserImg={forum.comments[0].author.profilePicture[0]}
+                    lastUserImg={forum.comments.length > 0 ? forum.comments[0].author.profilePicture.length > 0
+                      ? forum.comments[0].author.profilePicture[0] : "https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg"
+                      : "https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg"}
                     title={forum.name}
                     replys={forum.comments.length}
                     lastResponse={timeCalculator(
-                      forum.comments[0].creation_date
+                      forum.comments.length > 0 ? forum.comments[0].creation_date : forum.creation_date
                     )}
                   />
                 );
@@ -67,3 +70,8 @@ export const CommunityDetailPage = () => {
     );
   }
 };
+
+
+// profilePicture.length > 0
+// ? profilePicture[0]
+// : "https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg"
