@@ -1,17 +1,11 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
 import { CardSecondary } from "../CardSecondary";
-import { GET_COMMUNITIES } from "../../Graphql/Querys/Communities";
 
-const CommunitiesList = () => {
-  const { loading, error, data } = useQuery(GET_COMMUNITIES);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+const CommunitiesList = ({communities}) => {
   return (
     <>
-      {data?.communities &&
-        data.communities.map((community) => {
+      {communities &&
+        communities.map((community) => {
           return (
             <CardSecondary
               key={community.id}

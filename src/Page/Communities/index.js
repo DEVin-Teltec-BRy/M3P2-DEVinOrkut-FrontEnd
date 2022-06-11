@@ -5,17 +5,30 @@ import CommunitiesList from "../../Components/CommunitiesList";
 import Layout from "../../Layout";
 import { Lateral } from "../../Components/Lateral";
 import { useData } from "../../Context/dataContext";
+import { GET_COMMUNITIES } from "../../Graphql/Querys/Communities";
+import { useQuery } from "@apollo/client";
+import { useEffect, useState } from "react";
 
 const CommunityPage = () => {
   const { user } = useData();
+  const [ communities, setCommunities ] = useState([]);
+  const { data } = useQuery(GET_COMMUNITIES);
+
+  useEffect(()=>{
+    if(data) {
+      setCommunities(data.communities);
+    }
+  })
+  console.log(user)
   return (
     <Layout lateral={<Lateral content={user.friends} title="Amigos" />} visitedData={user}>
       <CardMain
         title="Comunidades"
-        count={user.communities.length}
+        count={communities.length}
+
         pagination={<Pagination />}
       >
-        <CommunitiesList />
+        <CommunitiesList communities={communities}/>
         <ModalComponent />
       </CardMain>
     </Layout>

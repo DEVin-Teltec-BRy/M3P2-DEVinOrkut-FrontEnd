@@ -40,7 +40,7 @@ const SearchPage = () => {
       setListResult({ listUser, listComunities });
     }
   }, [data]);
-
+  console.log(listUser)
   return (
     <Layout lateral={<LateralProfile user={user} />} visitedData={user}>
       <Search count={listResult?.length} pagination={<Pagination />} column>
@@ -52,17 +52,13 @@ const SearchPage = () => {
           <h5>Perssoas</h5>
           <div>
             {listUser &&
-              listUser.map(({ fullName, logo,id }, key) => (
+              listUser.map(({ fullName, profilePicture,id }, key) => (
                 <CardSecondary
                   key={key}
                   text={fullName}
                   to='usuario'
                   id={id}
-                  src={
-                    logo
-                      ? logo
-                      : "https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
-                  }
+                  src={profilePicture[0] ||  "https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"}
                 />
               ))}
           </div>
