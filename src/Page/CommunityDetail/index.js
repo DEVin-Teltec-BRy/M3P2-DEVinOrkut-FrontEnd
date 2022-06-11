@@ -45,24 +45,25 @@ export const CommunityDetailPage = () => {
               description={community.description}
               members={community.members}
             >
-              {community.foruns.map((forum) => {
-
-                return (
-                  <BottomForum
-                    forumid={forum.id}
-                    comunityid={communityid}
-                    key={forum.id}
-                    lastUserImg={forum.comments.length > 0 ? forum.comments[0].author.profilePicture.length > 0
-                      ? forum.comments[0].author.profilePicture[0] : "https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg"
-                      : "https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg"}
-                    title={forum.name}
-                    replys={forum.comments.length}
-                    lastResponse={timeCalculator(
-                      forum.comments.length > 0 ? forum.comments[0].creation_date : forum.creation_date
-                    )}
-                  />
-                );
-              })}{" "}
+              {community.foruns.length === 0 ? (<p>Nenhum tópico para exibir aqui, experimente criar um &#129299;</p>)
+                : community.foruns.map((forum) => {
+                  return (
+                    <BottomForum
+                      forumid={forum.id}
+                      comunityid={communityid}
+                      key={forum.id}
+                      lastUserImg={forum.comments.length > 0 ? forum.comments[0].author.profilePicture.length > 0
+                        ? forum.comments[0].author.profilePicture[0] : "https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg"
+                        : forum.owner.profilePicture.length > 0 ? forum.owner.profilePicture[0]
+                          : "https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg"}
+                      title={forum.name}
+                      replys={forum.comments.length}
+                      lastResponse={timeCalculator(
+                        forum.comments.length > 0 ? forum.comments[0].creation_date : forum.creation_date
+                      )}
+                    />
+                  );
+                }).reverse()}
             </CommunityDetail>
           }
         </CardMain>
@@ -70,8 +71,3 @@ export const CommunityDetailPage = () => {
     );
   }
 };
-
-
-// profilePicture.length > 0
-// ? profilePicture[0]
-// : "https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg"

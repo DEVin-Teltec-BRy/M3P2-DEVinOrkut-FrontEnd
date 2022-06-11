@@ -3,11 +3,11 @@ import React, { useState, useEffect } from "react";
 import { NewButton } from "../Button";
 import { NewInputForm } from "../Input";
 import { MainModal } from "../MainModal";
-import { Form } from "react-bootstrap";
 import { useData } from "../../Context/dataContext";
 import { useMutation } from "@apollo/client";
 import { JOIN_COMMUNITY } from "../../Graphql/Mutations/JoinCommunityMutations";
-
+import { CREATE_FORUM } from "../../Graphql/Mutations/CreateForumMutations";
+import { EditCommunity } from "../EditCommunity";
 import * as S from "./communityDetail.style";
 import { initialValues } from "./Dados";
 
@@ -26,11 +26,14 @@ export const CommunityDetail = ({
   const [show, setShow] = useState(false);
   const [memberList, setMemberList] = useState([]);
   const [isMember, setIsMember] = useState([]);
+  const [nameValidate, setNameVal] = useState(false);
+  const [descValidate, setDescVal] = useState(false);
 
   const { user } = useData();
   const checkIsMember = memberList.find((u) => u.id === user.id);
-
+  const [createForum,] = useMutation(CREATE_FORUM);
   useEffect(() => {
+    console.log('atualizou')
     setMemberList(members);
     setIsMember(checkIsMember);
   }, [memberList, members, checkIsMember]);
@@ -38,8 +41,34 @@ export const CommunityDetail = ({
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handledCreateTopico = (values) => {
-    console.log(values);
+  const handledCreateTopico = (values, e) => {
+    try {
+      if (values.title.trim().split('').length < 5) {
+        setNameVal(true);
+        return
+      };
+      setNameVal(false);
+      if (values.description.trim().split('') < 2) {
+        setDescVal(true);
+        return
+      };
+      setDescVal(false);
+      createForum({
+        variables: {
+          input: {
+            name: values.title,
+            description: values.description,
+            community: id,
+            category: 'DIVERSOS',
+            logo: 'https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149271199.jpg?w=996&t=st=1654375825~exp=1654376425~hmac=7eaad2883abb5b372e581161b19d84f9b0efba1669fbb08271f8c2f6bfae1f63',
+          },
+        },
+      });
+
+      window.location.reload(false);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const [joinCommunity, { loading, error }] = useMutation(JOIN_COMMUNITY);
@@ -86,15 +115,7 @@ export const CommunityDetail = ({
                 <span>Proprietário:</span> {owner}
               </li>
             </ul>
-            {isowner && (
-              <Form>
-                <Form.Check
-                  type="switch"
-                  id="custom-switch"
-                  label="Editar Comunidade"
-                />
-              </Form>
-            )}
+            {isowner && <EditCommunity />}
           </div>
         </S.DivContent>
         <hr />
@@ -126,6 +147,7 @@ export const CommunityDetail = ({
         <MainModal show={show} close={handleClose} title="Novo Tópico">
           <Formik initialValues={initialValues} onSubmit={handledCreateTopico}>
             {({ handleSubmit, handleChange, values, touched, errors }) => (
+
               <S.FormContainer>
                 <NewInputForm
                   name="title"
@@ -133,8 +155,9 @@ export const CommunityDetail = ({
                   value={values.title}
                   onChange={handleChange}
                   isValid={touched.title && !errors.title}
-                  error={errors.title}
+                  error={nameValidate ? !errors.title : errors.title}
                 />
+                {nameValidate && (<p >Deve possuir mais do que 5 carecteres...</p>)}
                 <NewInputForm
                   as="textarea"
                   name="description"
@@ -142,8 +165,9 @@ export const CommunityDetail = ({
                   value={values.description}
                   onChange={handleChange}
                   isValid={touched.description && !errors.description}
-                  error={errors.description}
+                  error={descValidate ? !errors.description : errors.description}
                 />
+                {descValidate && (<p>Deve possuir mais do que 2 carecteres...</p>)}
                 <NewInputForm
                   name="file"
                   label="Logo"

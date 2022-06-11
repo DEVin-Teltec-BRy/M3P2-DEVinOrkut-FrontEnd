@@ -3,18 +3,19 @@ import { Button, Form, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import { setHeaders, url } from '../../api';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { closeModal, submitted } from '../../Store/rootSlice';
 
 const Upload = () => {
   const [imageUpload, setImageUpload] = useState('');
   const [isSuccess, setSuccess] = useState(false);
   const [isError, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const dispatch = useDispatch();
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     TransformFileData(file);
-    console.log(file);
-    console.log(url.uploadImageUser);
 
     setError(false);
     setSuccess(false);
@@ -44,6 +45,11 @@ const Upload = () => {
 
       if (response.status === 201) {
         setSuccess(true);
+
+        setTimeout(() => {
+          dispatch(submitted());
+          dispatch(closeModal());
+        }, 1000);
       }
 
       return response.data;

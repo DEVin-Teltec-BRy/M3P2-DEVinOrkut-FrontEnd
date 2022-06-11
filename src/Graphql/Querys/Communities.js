@@ -34,6 +34,7 @@ export const COMMUNITY_DETAILS = gql`
         id
         name
         description
+        creation_date
         owner {
           id
           fullName
