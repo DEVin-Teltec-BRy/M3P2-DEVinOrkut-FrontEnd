@@ -49,6 +49,15 @@ const StepThree = ({ previousButton, submitButtonText }) => {
     setIsSubmitted(true);
   };
 
+  const handleResetForm = () => {
+    setFormData({
+      relationship: '',
+      humor: '',
+      interests: '',
+      aboutMe: '',
+    });
+  };
+
   useEffect(() => {
     if (Object.keys(error).length === 0 && isSubmitted) {
       dispatch(
@@ -124,6 +133,9 @@ const StepThree = ({ previousButton, submitButtonText }) => {
         </div>
 
         <ButtonGroup>
+          <CustomButton type="button" primary={false} onClick={handleResetForm}>
+            Limpar
+          </CustomButton>
           {previousButton && (
             <CustomButton
               primary={false}
