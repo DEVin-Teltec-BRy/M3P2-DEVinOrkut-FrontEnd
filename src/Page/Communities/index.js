@@ -18,7 +18,7 @@ const CommunityPage = () => {
     if(data) {
       setCommunities(data.communities);
     }
-  })
+  }, [data])
   console.log(user)
   return (
     <Layout lateral={<Lateral content={user.friends} title="Amigos" />} visitedData={user}>
