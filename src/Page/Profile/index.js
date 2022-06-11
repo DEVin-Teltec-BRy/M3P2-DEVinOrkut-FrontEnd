@@ -9,7 +9,6 @@ import { CarrucelFotos, ItemCarrucel } from "../../Components/CarrucelFotos";
 import { GetStart } from "../../Components/Stars";
 import { useData } from "../../Context/dataContext";
 import { getAge, getDateFomated } from "../../Utils";
-import { useEffect } from "react";
 import {  useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
@@ -19,7 +18,6 @@ const ProfilePage = () => {
   const textIntereses = interests?.join(' / ')
   const textHumor = humor?.join(' / ')
   const age = getAge(birthDate)
-  const navigate = useNavigate();
 
 
   return (
