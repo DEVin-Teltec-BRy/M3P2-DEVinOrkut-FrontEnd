@@ -26,7 +26,7 @@ const Final = () => {
 
   const handleSubmit = async () => {
     try {
-      const { data } = await createUser({
+      await createUser({
         variables: {
           user: {
             fullName: state.FormUserRegister.fullName,
@@ -51,7 +51,6 @@ const Final = () => {
         },
       });
       setIsSubmitted(true);
-      console.log(data);
     } catch (e) {
       setError(e.graphQLErrors[0].message);
       setDisabled(true);

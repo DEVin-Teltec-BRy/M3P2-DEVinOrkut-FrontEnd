@@ -1,15 +1,16 @@
 import Upload from "../Components/Upload";
-import { CommunityPage } from "../Page/Communities";
-import { CommunityDetailPage } from "../Page/CommunityDetail";
-import { CommunityMembersPage } from "../Page/CommunityMembers";
+import CommunityPage from "../Page/Communities";
+import CommunityDetailPage from "../Page/CommunityDetail";
+import CommunityMembersPage from "../Page/CommunityMembers";
 import CreateUser from "../Page/CreateUser";
-import { FriendPage } from "../Page/Friends";
-import { FriendshipRequestPage } from "../Page/FriendshipRequest";
+import FriendPage from "../Page/Friends";
+import FriendshipRequestPage from "../Page/FriendshipRequest";
 import Login from "../Page/Login";
-import { ProfilePage } from "../Page/Profile";
-import { SearchPage } from "../Page/Search";
-import { UserPage } from "../Page/User";
-import { ForumPage } from "../Page/Forum";
+import ProfilePage from "../Page/Profile";
+import SearchPage from "../Page/Search";
+import UserPage from "../Page/User";
+import ForumPage from "../Page/Forum";
+
 export const privateRoutes = [
   {
     path: "/",

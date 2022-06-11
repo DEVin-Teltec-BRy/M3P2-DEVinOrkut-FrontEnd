@@ -10,19 +10,18 @@ import { GetStart } from "../../Components/Stars";
 import { useData } from "../../Context/dataContext";
 import { getAge, getDateFomated } from "../../Utils";
 
-export const ProfilePage = () => {
+const ProfilePage = () => {
   const { user } = useData();
-  const { fullName, gender, aboutMe, birthDate, album, interests, scraps, friends, humor, communities} = user;
+  const { fullName, gender, aboutMe, birthDate, album, interests, scraps, friends, humor} = user;
   const formatedDate = getDateFomated(birthDate);
   const textIntereses = interests?.join(' / ')
   const textHumor = humor?.join(' / ')
   const age = getAge(birthDate)
-
+  
   return (
-    <Layout lateral={<LateralProfile friendsUser={friends} communitiesUser={communities} />}>
+    <Layout lateral={<LateralProfile user={user} />} visitedData={user}>
       <ProfileContent>
         <h1>{fullName}</h1>
-
         <ContentInfo border>
           <BoxContainer title="Recados">
             <BsChatLeft size={20} /> {scraps?.length}
@@ -70,3 +69,4 @@ export const ProfilePage = () => {
     </Layout>
   );
 };
+export default ProfilePage;
