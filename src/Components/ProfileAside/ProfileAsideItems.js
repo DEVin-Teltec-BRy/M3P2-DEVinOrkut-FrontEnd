@@ -17,7 +17,7 @@ import {
   ProfileAsideButton,
   ProfileAsideImage,
 } from './style';
-import ModalUpload from './ModalUpload';
+
 import { useParams } from 'react-router-dom';
 
 const ProfileAsideItems = ({
@@ -28,8 +28,8 @@ const ProfileAsideItems = ({
   city,
   state,
   buttonText,
+  onClick,
 }) => {
-  const [modalShow, setModalShow] = React.useState(false);
   const [addButtonShow, setAddButtonShow] = React.useState(false);
   const { id } = useParams();
 
@@ -37,17 +37,17 @@ const ProfileAsideItems = ({
     <>
       {!id && (
         <ContainerImage>
-          <ProfileAsideButton onClick={() => setModalShow(true)}>
+          <ProfileAsideButton onClick={onClick}>
             <Image
               src={profilePicture}
               alt={name}
               onMouseEnter={() => setAddButtonShow((prev) => !prev)}
               onMouseLeave={() => setAddButtonShow((prev) => !prev)}
-            />            
+            />
           </ProfileAsideButton>
           <AddImageButton addButtonShow={addButtonShow}>
-              <IoAddCircle size={50} />
-            </AddImageButton>
+            <IoAddCircle size={50} />
+          </AddImageButton>
         </ContainerImage>
       )}
       {id && (
@@ -92,7 +92,6 @@ const ProfileAsideItems = ({
           <IoToggleOutline size={25} /> Editar Perfil
         </EditButton>
       </div>
-      <ModalUpload show={modalShow} onHide={() => setModalShow(false)} />
     </>
   );
 };

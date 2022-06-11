@@ -1,19 +1,31 @@
-import ProfileAsideItems from "./ProfileAsideItems";
-import * as S from "./style";
-import { useData } from "../../Context/dataContext";
-import { useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { GET_USER_BY_ID } from "../../Graphql/Querys";
-import { Loading } from "../Loading";
-import { Link } from "react-router-dom";
+import ProfileAsideItems from './ProfileAsideItems';
+import * as S from './style';
+import { useData } from '../../Context/dataContext';
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { GET_USER_BY_ID } from '../../Graphql/Querys';
+import { Loading } from '../Loading';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { closeModal, openModal } from '../../Store/rootSlice';
+import ModalUpload from './ModalUpload';
 
 const Profile = () => {
   const { user } = useData();
   const { id } = useParams();
 
+  const isOpen = useSelector((state) => state.IsOpen);
+
+  const dispatch = useDispatch();
+
   const { loading, error, data } = useQuery(GET_USER_BY_ID, {
     variables: { userId: id },
   });
+
+  const handleModalOpen = () => {
+    dispatch(openModal());
+  };
 
   let userData = null;
 
@@ -35,13 +47,20 @@ const Profile = () => {
         profilePicture={
           userData.profilePicture.length > 0
             ? userData.profilePicture[0]
-            : "https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg"
+            : 'https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg'
         }
         relationship={userData.relationship}
         city={userData.city}
         state={userData.state}
         gender={userData.gender}
         buttonText={userData.fullName}
+        onClick={handleModalOpen}
+      />
+      <ModalUpload
+        show={isOpen}
+        onHide={() => {
+          dispatch(closeModal());
+        }}
       />
     </S.ProfileContainer>
   );
