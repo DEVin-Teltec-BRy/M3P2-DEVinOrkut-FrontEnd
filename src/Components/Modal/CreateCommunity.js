@@ -7,6 +7,8 @@ import { SelectCategoryEnum } from "./CategoryEnum";
 import { useData } from "../../Context/dataContext";
 import { CREATE_COMMUNITY } from "../../Graphql/Mutations/CreateCommunityMutations";
 import { NewButton } from "../Button";
+import {AiOutlineUsergroupAdd} from 'react-icons/ai'
+import { NewCommunities } from "./createComunities.style";
 
 export function ModalComponent() {
   const [show, setShow] = useState(false);
@@ -24,9 +26,10 @@ export function ModalComponent() {
 
   return (
     <>
-      <Button variant="link" onClick={handleShow}>
+      <NewCommunities onClick={handleShow}>
+        <AiOutlineUsergroupAdd size={35}/> <br/>
         Criar Comunidade
-      </Button>
+      </NewCommunities>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Criar Comunidade</Modal.Title>
