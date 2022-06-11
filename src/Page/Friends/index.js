@@ -8,11 +8,12 @@ import { Loading } from "../../Components/Loading";
 import { useLocation } from "react-router-dom";
 import { GET_FRIENDS } from "../../Graphql/Querys";
 import { useQuery } from "@apollo/client";
-import { PlaceholderUser } from "../../Components/PlaceHolder";
+import { useData } from "../../Context/dataContext";
 
-export const FriendPage = ({ visitedData }) => {
+ const FriendPage = () => {
+  const { user } = useData();
   const location = useLocation();
-  const [listFriend, setList] = useState([]);
+  const [listFriend, setList] = useState(false);
   const nPerPage = 4;
   const [paginating, setPaginations] = useState({
     count: 0,
@@ -30,14 +31,11 @@ export const FriendPage = ({ visitedData }) => {
       },
     },
   });
-  useEffect(() => {
-    
+  useEffect(() => {    
     if (data) {
       const { getFriends } = data;
       const { pagination, results,  } = getFriends;
-      setTimeout(() => {
-        setList(results);
-      }, 2000);
+      setList(results);
       setPaginations((_) => pagination);
     }
   }, [data]);
@@ -50,11 +48,9 @@ export const FriendPage = ({ visitedData }) => {
       },
     });
   };
-
   const { communities } = location.state;
-
-  return listFriend ? (
-    <Layout lateral={<Lateral content={communities} title="Comunidades" />}>
+  return (
+     <Layout lateral={<Lateral content={communities ? communities : []} title="Comunidades" />} visitedData={user}>
       <CardMain
         title="Amigos"
         count={paginating?.count}
@@ -64,10 +60,8 @@ export const FriendPage = ({ visitedData }) => {
             nro={paginating?.count / nPerPage}
             index={paginating?.currentPage}
           />
-        }
-      >
-        {loading &&
-          [...Array(4)].map((_, idx) => <PlaceholderUser key={idx} />)}
+        }>
+        {loading && <Loading />}
         {listFriend?.length > 0 &&
           listFriend.map(({ fullName, id, profilePicture }, key) => (
             <CardSecondary
@@ -83,12 +77,12 @@ export const FriendPage = ({ visitedData }) => {
               }
             />
           ))}
-        {listFriend?.length === 0 && !loading && (
+        {!listFriend && (
           <span>O usuário não possui nenhum amigo!</span>
-        )}
+        )}        
       </CardMain>
     </Layout>
-  ) : (
-    <Loading />
   );
 };
+
+export default FriendPage;

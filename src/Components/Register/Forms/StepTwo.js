@@ -55,6 +55,19 @@ const StepTwo = ({ previousButton, submitButtonText }) => {
     setIsSubmitted(true);
   };
 
+  const handleResetForm = () => {
+    setFormData({
+      postal: '',
+      city: '',
+      state: '',
+      address: '',
+      number: '',
+      complement: '',
+      district: '',
+      reference: '',
+    });
+  };
+
   useEffect(() => {
     if (Object.keys(error).length === 0 && isSubmitted) {
       dispatch(formStep(3));
@@ -178,6 +191,9 @@ const StepTwo = ({ previousButton, submitButtonText }) => {
         </div>
 
         <ButtonGroup>
+          <CustomButton type="button" primary={false} onClick={handleResetForm}>
+            Limpar
+          </CustomButton>
           {previousButton && (
             <CustomButton
               primary={false}

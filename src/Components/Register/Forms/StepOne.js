@@ -45,6 +45,19 @@ const StepOne = ({ previousButton, submitButtonText }) => {
     setIsSubmitted(true);
   };
 
+  const handleResetForm = () => {
+    setFormData({
+      fullName: '',
+      cpf: '',
+      gender: '',
+      birthDate: '',
+    });
+  };
+
+  useEffect(() => {
+    handleResetForm();
+  }, []);
+
   useEffect(() => {
     if (Object.keys(error).length === 0 && isSubmitted) {
       dispatch(
@@ -82,7 +95,7 @@ const StepOne = ({ previousButton, submitButtonText }) => {
             id="cpf"
             name="cpf"
             type="text"
-            defaultValue={formData.cpf}
+            value={formData.cpf}
             onChange={handleChange}
           />
           {error && <ErrorForm>{error.cpf}</ErrorForm>}
@@ -115,6 +128,9 @@ const StepOne = ({ previousButton, submitButtonText }) => {
         </div>
 
         <ButtonGroup>
+          <CustomButton type="button" primary={false} onClick={handleResetForm}>
+            Limpar
+          </CustomButton>
           {previousButton && (
             <CustomButton
               primary={false}
