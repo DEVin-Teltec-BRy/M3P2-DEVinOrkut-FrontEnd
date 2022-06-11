@@ -2,11 +2,12 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { CardSecondary } from "../CardSecondary";
 import { GET_COMMUNITIES } from "../../Graphql/Querys/Communities";
+import {PlaceholderUser} from  '../PlaceHolder'
 
 const CommunitiesList = () => {
   const { loading, error, data } = useQuery(GET_COMMUNITIES);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <PlaceholderUser/>;
   if (error) return <p>Error :(</p>;
   return (
     <>
