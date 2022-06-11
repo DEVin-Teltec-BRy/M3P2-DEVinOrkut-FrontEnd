@@ -9,7 +9,6 @@ import { CarrucelFotos, ItemCarrucel } from "../../Components/CarrucelFotos";
 import { GetStart } from "../../Components/Stars";
 import { useData } from "../../Context/dataContext";
 import { getAge, getDateFomated } from "../../Utils";
-import {  useNavigate } from "react-router-dom";
 
 const ProfilePage = () => {
   const { user } = useData();
@@ -18,8 +17,6 @@ const ProfilePage = () => {
   const textIntereses = interests?.join(' / ')
   const textHumor = humor?.join(' / ')
   const age = getAge(birthDate)
-
-
   return (
     <Layout lateral={<LateralProfile user={user} />} visitedData={user}>
       <ProfileContent>
