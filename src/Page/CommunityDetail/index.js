@@ -25,7 +25,6 @@ const CommunityDetailPage = () => {
     }
   }, [data])
   if (loading) return <p>Loading...</p>;
-  console.log(error)
   if (error) return <p>Error :</p>;
   const community  = communityPage;
   let isOwner = community?.owner.id === user.id ? true : false;

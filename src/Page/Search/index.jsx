@@ -40,7 +40,7 @@ const SearchPage = () => {
       setListResult({ listUser, listComunities });
     }
   }, [data]);
-  console.log(listUser)
+
   return (
     <Layout lateral={<LateralProfile user={user} />} visitedData={user}>
       <Search count={listResult?.length} pagination={<Pagination />} column>
