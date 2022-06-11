@@ -26,40 +26,38 @@ const CommunityDetailPage = () => {
   }, [data])
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :</p>;
-  const community  = communityPage;
-  let isOwner = community?.owner.id === user.id ? true : false;
-  return (
+  return communityPage && (
     <Layout
       visitedData={user}
       lateral={
         <MembersLateral
-          isMember={isOwner || community.members.length > 0 ? true : false}
-          members={community.members}
-          communities={user.communities}
-          id={communityid}
+          isMember={(communityPage.owner && communityPage.owner.id === user.id) ? true : false}
+          members={communityPage?.members}
+          community={communityPage}
+          id={communityPage?.id}
         />
       }
     >
       <CardMain count={1000} pagination={<Pagination />}>
         {
           <CommunityDetail
-            id={communityid}
-            title={community.name}
-            categoryEnum={community.categoryEnum}
-            creatAt={convertDateFromMilliseconds(community.creation_date)}
-            owner={community.owner.fullName}
-            imgsrc={community.logo}
-            isowner={isOwner}
-            description={community.description}
-            members={community.members}
+            id={communityPage.id}
+            title={communityPage?.name}
+            categoryEnum={communityPage?.categoryEnum}
+            creatAt={convertDateFromMilliseconds(communityPage?.creation_date)}
+            owner={(communityPage.owner && communityPage.owner.fullName ) && communityPage.owner.fullName}
+            imgsrc={communityPage?.logo}
+            isowner={communityPage?.owner === user.id}
+            description={communityPage?.description}
+            members={communityPage?.members}
           >
-            {community.foruns.length === 0 ? (
+            {communityPage?.foruns.length === 0 ? (
               <p>
                 Nenhum tópico para exibir aqui, experimente criar um &#129299;
               </p>
             ) : (
-              community.foruns
-                .map((forum) => {
+              communityPage?.foruns.length ? (
+                communityPage.foruns.map((forum) => {
                   return (
                     <BottomForum
                       forumid={forum.id}
@@ -85,12 +83,12 @@ const CommunityDetailPage = () => {
                   );
                 })
                 .reverse()
-            )}
+            ) : (<p>Nenhum tópico para exibir aqui, experimente criar um &#129299;</p>))}
           </CommunityDetail>
         }
       </CardMain>
     </Layout>
-  );
+  )
 };
 
 export default CommunityDetailPage;
