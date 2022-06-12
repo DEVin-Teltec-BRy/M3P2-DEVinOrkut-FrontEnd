@@ -13,10 +13,12 @@ export const ACCEPT_FRIENDSHIP_REQUEST = gql`
       friends {
         id
         fullName
+        profilePicture
       }
       friendRequest {
         id
         fullName
+        profilePicture
       }
     }
   }
