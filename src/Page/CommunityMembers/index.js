@@ -8,7 +8,8 @@ import { LateralProfile } from "../Profile/Lateral"
 import { useQuery } from "@apollo/client";
 import { COMMUNITY_MEMBERS } from "../../Graphql/Querys/Communities";
 
-export const CommunityMembersPage = () => {
+
+const CommunityMembersPage = () => {
     const { user } = useData();
     const { communityid } = useParams()
     const { loading, error, data } = useQuery(COMMUNITY_MEMBERS, { variables: { communityId: communityid } });
@@ -18,15 +19,15 @@ export const CommunityMembersPage = () => {
         const { community } = data;
         if (community.members.length === 0 && user.id === data.community.owner.id) {
             return (
-                <Layout lateral={<LateralProfile />}>
+                <Layout lateral={<LateralProfile user={user}/>} visitedData={user}>
                     <CardMain title={`Membros da ${community.name}`}><p>Sem Membros Ainda...</p> </CardMain></Layout>)
         }
         else if (community.members.length === 0 && user.id !== data.community.owner.id) {
-            return (<Layout lateral={<LateralProfile />}>
+            return (<Layout lateral={<LateralProfile user={user} />} visitedData={user}>
                 <CardMain title={`Membros da ${community.name}`}> <p>Você deve ser membro para visualizar isto...</p></CardMain > </Layout>)
         } else {
             return (
-                <Layout lateral={<LateralProfile />}>
+                <Layout lateral={<LateralProfile  user={user}/>} visitedData={user}>
                     <CardMain title={`Membros da ${community.name}`} count={community.members.length} pagination={<Pagination />}>
                         {community.members.map(({ fullName, id, profilePicture }, key) => (
                             <CardSecondary
@@ -46,3 +47,5 @@ export const CommunityMembersPage = () => {
         }
     }
 };
+
+export default CommunityMembersPage;

@@ -1,15 +1,8 @@
 import ProfileAsideItems from './ProfileAsideItems';
 import * as S from './style';
-import { useData } from '../../Context/dataContext';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Loading } from '../Loading';
-import { useState, useEffect } from 'react';
-import { useQuery } from '@apollo/client';
-import { GET_USER_BY_ID } from '../../Graphql/Querys';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal, openModal } from '../../Store/rootSlice';
 import ModalUpload from './ModalUpload';
-
 
 const Profile = () => {
   const { user: loggedUser } = useData();
@@ -44,28 +37,28 @@ const Profile = () => {
     userPage?.friendRequest,
   ]);
 
+const Profile = ({visitedData}) => {
   const isOpen = useSelector((state) => state.IsOpen);
   const dispatch = useDispatch();
-
   const handleModalOpen = () => {
     dispatch(openModal());
   };
 
-  return (data && userPage) || (userPage && loggedUser) ? (
+  return (
     <S.ProfileContainer>
       <ProfileAsideItems
-        key={userPage.id}
-        name={userPage.fullName}
+        key={visitedData.id}
+        name={visitedData.fullName}
         profilePicture={
-          userPage.profilePicture.length > 0
-            ? userPage.profilePicture[0]
+          visitedData.profilePicture.length > 0
+            ? visitedData.profilePicture[0]
             : 'https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg'
         }
-        relationship={userPage.relationship}
-        city={userPage.city}
-        state={userPage.state}
-        gender={userPage.gender}
-        buttonText={userPage.fullName}
+        relationship={visitedData.relationship}
+        city={visitedData.city}
+        state={visitedData.state}
+        gender={visitedData.gender}
+        buttonText={visitedData.fullName}
         onClick={handleModalOpen}
       />
       <ModalUpload
@@ -76,9 +69,7 @@ const Profile = () => {
       />
       
     </S.ProfileContainer>
-  ) : (
-    <Loading />
-  );
+  )
 };
 
 export default Profile;

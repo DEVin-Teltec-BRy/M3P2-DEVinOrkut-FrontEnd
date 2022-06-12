@@ -9,8 +9,10 @@ import { Pagination } from "../../Components/Pagination";
 import { InputSearch } from "../../Components/InputSearch";
 import { LateralProfile } from "../Profile/Lateral";
 import { BoxSearch, Search } from "./search.styled";
+import { useData } from "../../Context/dataContext";
 
-export const SearchPage = () => {
+const SearchPage = () => {
+  const { user } = useData();
   const [listResult, setListResult] = useState({
     listUser: [],
     listComunities: [],
@@ -40,7 +42,7 @@ export const SearchPage = () => {
   }, [data]);
 
   return (
-    <Layout lateral={<LateralProfile />}>
+    <Layout lateral={<LateralProfile user={user} />} visitedData={user}>
       <Search count={listResult?.length} pagination={<Pagination />} column>
         <div>
           <h4>Buscar</h4>
@@ -50,17 +52,13 @@ export const SearchPage = () => {
           <h5>Perssoas</h5>
           <div>
             {listUser &&
-              listUser.map(({ fullName, logo,id }, key) => (
+              listUser.map(({ fullName, profilePicture,id }, key) => (
                 <CardSecondary
                   key={key}
                   text={fullName}
                   to='usuario'
                   id={id}
-                  src={
-                    logo
-                      ? logo
-                      : "https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
-                  }
+                  src={profilePicture[0] ||  "https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"}
                 />
               ))}
           </div>
@@ -89,3 +87,6 @@ export const SearchPage = () => {
     </Layout>
   );
 };
+
+
+export default SearchPage;

@@ -6,7 +6,9 @@ import { useMutation } from "@apollo/client";
 import { SendEmailForm } from "../Login/style";
 import { NewInputForm } from "../../Components/Input";
 import { NewButton } from "../../Components/Button";
-export default function SendResetPassEmail() {
+
+
+function SendResetPassEmail() {
   const { handleSubmit, handleChange, values, touched, errors } =
     useFormik({
       initialValues: {
@@ -54,3 +56,5 @@ export default function SendResetPassEmail() {
     </SendEmailForm>
   );
 }
+
+export default SendResetPassEmail;

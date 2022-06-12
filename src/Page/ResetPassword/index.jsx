@@ -14,7 +14,9 @@ import { useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { LabLogo, PinkCard,LabLogoDiv } from "../Login/style";
 import { BootstrapCarousel } from "../../Components/Carousel/Carousel";
-export default function ResetPassword() {
+
+
+function ResetPassword() {
   const [ChangePassword, { data, loading }] = useMutation(RESET_PASS);
   const match = useParams();
   const token = match.token;
@@ -123,3 +125,5 @@ export default function ResetPassword() {
     </StyledBackground>
   );
 }
+
+export default ResetPassword;

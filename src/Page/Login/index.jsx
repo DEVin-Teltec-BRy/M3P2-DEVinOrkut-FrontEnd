@@ -34,7 +34,9 @@ import { NewButton } from "../../Components/Button";
 import { Loading } from "../../Components/Loading";
 import { MainModal } from "../../Components/MainModal";
 import { BiError } from "react-icons/bi";
-export default function Login() {
+
+
+function Login() {
   const { handleLogin } = useData();
   const navigate = useNavigate();
   const [modal, setModal] = useState("none");
@@ -203,3 +205,5 @@ export default function Login() {
     </>
   );
 }
+
+export default Login;

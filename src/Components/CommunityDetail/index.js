@@ -33,7 +33,6 @@ export const CommunityDetail = ({
   const checkIsMember = memberList.find((u) => u.id === user.id);
   const [createForum,] = useMutation(CREATE_FORUM);
   useEffect(() => {
-    console.log('atualizou')
     setMemberList(members);
     setIsMember(checkIsMember);
   }, [memberList, members, checkIsMember]);
@@ -42,7 +41,6 @@ export const CommunityDetail = ({
   const handleShow = () => setShow(true);
 
   const handledCreateTopico = (values, e) => {
-    try {
       if (values.title.trim().split('').length < 5) {
         setNameVal(true);
         return
@@ -66,9 +64,6 @@ export const CommunityDetail = ({
       });
 
       window.location.reload(false);
-    } catch (error) {
-      console.log(error.message);
-    }
   };
 
   const [joinCommunity, { loading, error }] = useMutation(JOIN_COMMUNITY);

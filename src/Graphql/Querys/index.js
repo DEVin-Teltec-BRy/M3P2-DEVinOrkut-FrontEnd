@@ -51,6 +51,8 @@ export const GET_USER_BY_ID = gql`
       }
       friendRequest {
         id
+        fullName
+        profilePicture
       }
       testimonial
       profilePicture

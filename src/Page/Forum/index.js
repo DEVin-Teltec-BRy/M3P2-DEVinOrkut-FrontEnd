@@ -8,7 +8,9 @@ import { useData } from "../../Context/dataContext";
 import { COMMUNITY_AND_FORUM } from "../../Graphql/Querys/Communities";
 import { ForumCard } from "../../Components/Forum/index";
 import { timeCalculator } from "../../Utils/index";
-export const ForumPage = () => {
+
+
+const ForumPage = () => {
     const { user } = useData();
     const { communityid, forumid } = useParams()
     const { loading, error, data } = useQuery(COMMUNITY_AND_FORUM, { variables: { communityId: communityid, forumId: forumid } });
@@ -18,14 +20,15 @@ export const ForumPage = () => {
     else {
         const { community, forum } = data;
         return (
-            <Layout lateral={<MembersLateral
+            <Layout 
+                lateral={<MembersLateral
                 isMember={true}
-                members={community.members} communities={user.communities} id={community.id} />}>
+                members={community.members} communities={user.communities} id={community.id} />}
+                visitedData={user}>
                 <CardMain
                     title={forum.name}
                     count={forum.comments.length}
-                    pagination={<Pagination />}
-                >
+                    pagination={<Pagination />}>
                     {forum.comments.length === 0 ? (<p>Nenhum comentário ainda, seja o primeiro a comentar &#129299;</p>)
                         : forum.comments.map((comment) => {
                             return (
@@ -47,3 +50,5 @@ export const ForumPage = () => {
         );
     }
 };
+
+export default ForumPage;

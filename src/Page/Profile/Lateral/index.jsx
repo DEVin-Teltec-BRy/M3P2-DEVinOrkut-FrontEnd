@@ -1,44 +1,38 @@
 import { CardMain } from "../../../Components/CardMain";
 import { CardSecondary } from "../../../Components/CardSecondary";
-import { useData } from "../../../Context/dataContext";
 import { ContentLateral } from "./lateral.styled";
 
-export const LateralProfile = ({ friendsUser, communitiesUser }) => {
-  const {
-    user: { friends, communities },
-  } = useData();
-  const selectFriends = friendsUser ? friendsUser : friends;
-  const selectcommunities = communitiesUser ? communitiesUser : communities;
-
+export const LateralProfile = ({user}) => {
   return (
     <ContentLateral>
       <CardMain
         title="Amigos"
-        count={selectFriends.length}
+        count={user.friends.length}
         toAll="friends"
-        friends={friendsUser}
-        communities={communitiesUser}
+        friends={user.friends}
+        communities={user.communities}
       >
-        {selectFriends.map(({ fullName, id, profilePicture }, key) => (
+        {user.friends.length && (user.friends.map(({ fullName, id, profilePicture }, key) => (
           <CardSecondary
             key={key}
             round
             to="usuario"
             id={id}
             text={fullName}
-            src={profilePicture.length > 0 ? profilePicture[0] : ""}
+            src={user.profilePicture.length > 0 ? profilePicture[0] : ""}
           />
-        ))}
+        )))}
+        {user.friends.length === 0 && <span>O usuário não possui nenhum amigo!</span>}
       </CardMain>
       <CardMain
         title="Comunidades"
-        count={communities.length}
+        count={user.communities.length}
         toAll="communities"
-        communities={communitiesUser}
-        friends={friendsUser}
+        communities={user.communities}
+        friends={user.friends}
       >
-        {selectcommunities > 0 ? (
-          selectcommunities.map(({ name, id, logo }, key) => (
+        {user.communities.length > 0 ? (
+          user.communities.map(({ name, id, logo }, key) => (
             <CardSecondary
               size="md"
               to="comunidade"
