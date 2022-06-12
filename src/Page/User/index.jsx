@@ -93,7 +93,7 @@ const UserPage = () => {
             }
           >
             <AiOutlineCheckSquare size={20} />
-            Adicionar amigo
+            Conectar
           </NewButton>
         )}
         <ContentInfo border>
