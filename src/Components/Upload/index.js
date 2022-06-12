@@ -5,8 +5,10 @@ import { setHeaders, url } from '../../api';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { closeModal, submitted } from '../../Store/rootSlice';
+import { useData } from '../../Context/dataContext';
 
 const Upload = () => {
+  const { user, updateUser} = useData();
   const [imageUpload, setImageUpload] = useState('');
   const [isSuccess, setSuccess] = useState(false);
   const [isError, setError] = useState(false);
@@ -45,7 +47,7 @@ const Upload = () => {
 
       if (response.status === 201) {
         setSuccess(true);
-
+        updateUser({ profilePicture: [ response.data.profilePicture, ...user.profilePicture] });
         setTimeout(() => {
           dispatch(submitted());
           dispatch(closeModal());
