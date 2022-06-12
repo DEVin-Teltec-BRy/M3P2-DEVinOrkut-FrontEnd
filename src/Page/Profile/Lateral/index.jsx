@@ -12,7 +12,7 @@ export const LateralProfile = ({user}) => {
         friends={user.friends}
         communities={user.communities}
       >
-        {user.friends.length && (user.friends.map(({ fullName, id, profilePicture }, key) => (
+        {user.friends.length > 0 && (user.friends.map(({ fullName, id, profilePicture }, key) => (
           <CardSecondary
             key={key}
             round
