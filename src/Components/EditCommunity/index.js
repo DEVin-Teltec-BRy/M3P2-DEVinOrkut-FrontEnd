@@ -6,13 +6,15 @@ import { EDIT_COMMUNITY } from "../../Graphql/Mutations/EditCommunityMutations";
 import camera from '../../Assets/camera.svg';
 import './styles.css';
 
-import { UploadImageCommunity } from "../UploadCommunity";
+import {useParams} from "react-router";
 
 
 export const EditCommunity = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [logo, setLogo] = useState("");
+  const { communityid } = useParams();
+
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -20,7 +22,9 @@ export const EditCommunity = () => {
   const preview = useMemo(() => {
     return logo ? URL.createObjectURL(logo) : null;
   }, [logo])
-  const [editCommunity, { loading, error }] = useMutation(EDIT_COMMUNITY);
+  const [editCommunity, { loading, error }] = useMutation(EDIT_COMMUNITY, {
+    variables: { communityId: communityid },
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
