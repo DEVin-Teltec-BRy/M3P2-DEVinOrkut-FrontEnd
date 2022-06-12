@@ -2,8 +2,7 @@ import React, {useState, useMemo} from 'react';
 import { Alert } from 'react-bootstrap';
 import axios from 'axios';
 import { setHeaders, url } from '../../api';
-import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router'
+
 import camera from '../../Assets/camera.svg';
 import './styles.css';
 
