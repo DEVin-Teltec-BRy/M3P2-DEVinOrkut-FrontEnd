@@ -1,0 +1,28 @@
+const label#logo{
+    margin-bottom:20px;
+    border: 1px dashed #ddd;
+    background-size:cover;
+    cursor: pointer;
+    height: 160px;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  label#logo input {
+    display: none;
+  }
+  
+  label#logo.has-logo{
+    border: 0;
+  }
+  
+  label#logo.has-logo img {
+    display: none;
+   height: 50px;
+  }
+label {
+    display: block;
+}

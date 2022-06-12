@@ -12,29 +12,29 @@ const Profile = ({visitedData}) => {
   };
 
   return (
-    <S.ProfileContainer>
-      <ProfileAsideItems
-        key={visitedData.id}
-        name={visitedData.fullName}
-        profilePicture={
-          visitedData.profilePicture.length > 0
-            ? visitedData.profilePicture[0]
-            : 'https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg'
-        }
-        relationship={visitedData.relationship}
-        city={visitedData.city}
-        state={visitedData.state}
-        gender={visitedData.gender}
-        buttonText={visitedData.fullName}
-        onClick={handleModalOpen}
-      />
-      <ModalUpload
-        show={isOpen}
-        onHide={() => {
-          dispatch(closeModal());
-        }}
-      />
-    </S.ProfileContainer>
+      <S.ProfileContainer>
+        <ProfileAsideItems
+            key={visitedData.id}
+            name={visitedData.fullName}
+            profilePicture={
+              visitedData.profilePicture.length > 0
+                  ? visitedData.profilePicture[0]
+                  : 'https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg'
+            }
+            relationship={visitedData.relationship}
+            city={visitedData.city}
+            state={visitedData.state}
+            gender={visitedData.gender}
+            buttonText={visitedData.fullName}
+            onClick={handleModalOpen}
+        />
+        <ModalUpload
+            show={isOpen}
+            onHide={() => {
+              dispatch(closeModal());
+            }}
+        />
+      </S.ProfileContainer>
   )
 };
 

@@ -1,18 +1,30 @@
 import { useMutation } from "@apollo/client";
-import { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Form, Modal, ModalBody } from "react-bootstrap";
 import { NewButton } from "../Button";
 import { EDIT_COMMUNITY } from "../../Graphql/Mutations/EditCommunityMutations";
+import camera from '../../Assets/camera.svg';
+import './styles.css';
+
+import {useParams} from "react-router";
+
 
 export const EditCommunity = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [logo, setLogo] = useState("");
+  const { communityid } = useParams();
+
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const [editCommunity, { loading, error }] = useMutation(EDIT_COMMUNITY);
+  const preview = useMemo(() => {
+    return logo ? URL.createObjectURL(logo) : null;
+  }, [logo])
+  const [editCommunity, { loading, error }] = useMutation(EDIT_COMMUNITY, {
+    variables: { communityId: communityid },
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
@@ -34,7 +46,7 @@ export const EditCommunity = () => {
               editCommunity({
                 variables: {
                   input: {
-                    // logo: colocar aqui o upload image,
+                    logo: logo,
                     name: name,
                     description: description,
                   },
@@ -60,6 +72,21 @@ export const EditCommunity = () => {
                 placeholder="Alterar Descrição"
               />
             </Form.Group>
+
+            <Form.Group className="mb-3" controlId="textArea">
+            <label>Adicionar nova Logo</label>
+
+              <label id="logo"
+                style={{ backgroundImage: `url(${preview})` }}
+                className={logo ? 'has-logo' : ''}>
+                <input type="file" onChange={event => setLogo(event.target.files[0])}></input>
+                <img src={camera} alt="Select img"></img>
+
+              </label>
+            </Form.Group>
+
+
+
           </Form>
         </ModalBody>
         <Modal.Footer>

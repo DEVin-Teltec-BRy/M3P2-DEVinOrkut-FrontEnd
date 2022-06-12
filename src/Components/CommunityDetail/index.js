@@ -111,6 +111,7 @@ export const CommunityDetail = ({
               </li>
             </ul>
             {isowner && <EditCommunity />}
+
           </div>
         </S.DivContent>
         <hr />
