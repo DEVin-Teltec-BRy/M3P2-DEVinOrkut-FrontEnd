@@ -109,7 +109,7 @@ export const validateStepFour = (values) => {
   if (!values.password) {
     errors.password = 'Campo obrigatório';
   } else if (!passwordValidator(values.password)) {
-    errors.password = 'Senha inválida';
+    errors.password = 'Senha inválida. Deve possuir pelo menos 8 caracteres com maiúsculas, minúsculas, números e símbolos.';
   }
 
   if (!values.confirmPassword) {
