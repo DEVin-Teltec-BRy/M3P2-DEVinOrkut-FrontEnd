@@ -56,7 +56,7 @@ const FriendshipRequestPage = () => {
               size="md"
               text={fullName}
               requesterId={id}
-              src={profilePicture ? profilePicture[0] : imgPlaceholder}
+              src={profilePicture.length ? profilePicture[0] : imgPlaceholder}
             />
           ))
         ) : (
