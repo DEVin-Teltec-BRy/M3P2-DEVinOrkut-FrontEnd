@@ -67,10 +67,12 @@ export const REQUEST_FRIENDSHIP = gql`
       friends {
         id
         fullName
+        profilePicture
       }
       friendRequest {
         id
         fullName
+        profilePicture
       }
     }
   }

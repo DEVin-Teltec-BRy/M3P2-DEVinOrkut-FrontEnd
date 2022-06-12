@@ -98,7 +98,7 @@ const DataProvider = ({ children }) => {
         requestedId: friendId,
       },
     });
-    setUser({ ...user, ...data.requestFriendship });
+    return data.requestFriendship
   };
   const handleRemoveFriend = async (userId, friendId) => {
     const { data } = await RermoveFriendship({

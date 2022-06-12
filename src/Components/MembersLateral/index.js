@@ -1,6 +1,8 @@
 import { CardMain } from "../CardMain";
 import { CardSecondary } from "../CardSecondary";
 import AsideContent from "./asideContent.styled.js";
+import imgPlaceholder from '../../Assets/placeholderImg.webp';
+
 export const MembersLateral = ({ isMember, id, community, members }) => {
   let toAllUri = `/community/${id}/members`;
 
@@ -18,7 +20,7 @@ export const MembersLateral = ({ isMember, id, community, members }) => {
               src={
                 profilePicture.length > 0
                   ? profilePicture[0]
-                  : "https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg"
+                  : imgPlaceholder
               }
             />
           ))}

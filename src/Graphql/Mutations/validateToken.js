@@ -34,6 +34,7 @@ export const VALIDATE_TOKEN = gql`
       friendRequest {
         id
         fullName
+        profilePicture
       }
       communities {
         id

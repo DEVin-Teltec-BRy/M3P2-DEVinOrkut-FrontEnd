@@ -107,8 +107,9 @@ const UserPage = () => {
           <NewButton
             bg="secondary"
             size="sm"
-            onClick={() => {
-              handleAddFriend(loggedUser.id, userPage.id);
+            onClick={ async () => {
+              const { friendRequest } = await handleAddFriend(loggedUser.id, userPage.id);
+              setUserPage((prev) => ({ ...prev, friendRequest }));
               setPendingRequest(true);
             }}
             icon={AiOutlineUserAdd}
