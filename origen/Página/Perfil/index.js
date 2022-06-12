@@ -49,7 +49,7 @@ const ProfilePage = () => {
           <BoxContainer title="Humor">{textHumor}</BoxContainer>
         </ContentInfo>
         <ContentInfo expand>
-          <BoxContainer title="Género">{gender}</BoxContainer>
+          <BoxContainer title="Gênero">{gender}</BoxContainer>
           <BoxContainer title="Intereses no DevinOrkut">
             {textIntereses}
           </BoxContainer>
