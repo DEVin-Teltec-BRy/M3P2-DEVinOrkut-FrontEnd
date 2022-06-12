@@ -41,7 +41,6 @@ const ProfileAsideItems = ({
     dispatch(openModal());
   };
 
-
   return (
     <>
       {!id && (
@@ -80,13 +79,13 @@ const ProfileAsideItems = ({
           bg="#EBEBED"
         />
         <NewButtonLink
-          to="/friends"
+          to="/"
           icon={<IoChatboxOutline size={24} />}
           name="Recados"
         />
         <NewButtonLink
-        to="/"
-           onClick={handleModalOpen}
+          to="/"
+          onClick={handleModalOpen}
           icon={<IoCameraOutline size={24} />}
           name="Fotos"
         />
@@ -95,13 +94,12 @@ const ProfileAsideItems = ({
           icon={<IoFileTrayOutline size={24} />}
           name="Depoimentos"
         />
-         <ModalUploadCommunity
-        show={isOpen}
-        onHide={() => {
-          dispatch(closeModal());
-        }}
-      />
-         
+        <ModalUploadCommunity
+          show={isOpen}
+          onHide={() => {
+            dispatch(closeModal());
+          }}
+        />
       </MenuOptions>
       <div className="edit-profile">
         {!id && (
