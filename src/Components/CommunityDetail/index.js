@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {ModalUploadCommunity} from "../ProfileAside/ModalUploadCommunity";
 import Modal from "react-modal";
 import {UploadImageCommunity} from "../UploadCommunity";
-
+import './styles.css';
 export const CommunityDetail = ({
   id,
   title,
@@ -115,9 +115,32 @@ export const CommunityDetail = ({
 
 
               </div>
-              <Modal isOpen={modalIsOpen} onRequestClose={() => setIsOpen(false)}>
+              <Modal
+               style={{
+                overlay: {
+                  position: 'fixed',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  backgroundColor: 'rgba(255, 255, 255, 0.75)'
+                },
+                content: {
+                  bottom: '40px',
+                  border: '1px solid #ccc',
+                  background: '#fff',
+                  overflow: 'auto',
+                  WebkitOverflowScrolling: 'touch',
+                  borderRadius: '4px',
+                  outline: 'none',
+                  padding: '20px'
+
+                },
+              }}
+
+                  isOpen={modalIsOpen} onRequestClose={() => setIsOpen(false)}>
                 <UploadImageCommunity/>
-                <button onClick={() => setIsOpen(false)}>Close Modal</button>
+                <button onClick={() => setIsOpen(false)}>x</button>
               </Modal>
 
               <div className="infos">

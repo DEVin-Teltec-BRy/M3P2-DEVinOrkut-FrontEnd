@@ -58,9 +58,10 @@ export const UploadImageCommunity = () =>{
             <input type="file" onChange={handleImageUpload}></input>
             <img src={camera} alt="Select img"></img>
         </label>
+        <label id="mensage">Adicionar uma Foto</label>
 
-
-<button type="submit" className="btn">Publicar</button>
+<div><button id="botao" type="submit" className="btn">Publicar</button>
+</div>
 
 </form>)}
 {isSuccess && (

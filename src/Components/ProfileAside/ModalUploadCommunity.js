@@ -59,7 +59,7 @@ export function ModalUploadCommunity({ isOpen, onRequestClose }) {
                        value={amount}
                        onChange={event => setamount(Number(event.target.value))} />
 
-              <UploadImageCommunity></UploadImageCommunity>
+              {/*<UploadImageCommunity></UploadImageCommunity>*/}
 
                 <input placeholder="Categoria"
                        value={category}
