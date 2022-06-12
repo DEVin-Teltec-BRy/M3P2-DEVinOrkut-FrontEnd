@@ -1,70 +1,189 @@
-# Getting Started with Create React App
+<h1 align="center">
+   <p>M3P2-DEVinOrkut-FrontEnd</p>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+Este projeto tem como objetivo avaliar os conhecimentos adquiridos no final do curso DevInHouse o conteúdo está listado abaixo.
 
-In the project directory, you can run:
+1. ReactJS
+2. Consumo de API em GraphQL
 
-### `npm start`
+<p align="center">
+  <img alt="Repository size" src="https://img.shields.io/github/languages/code-size/DEVin-Teltec-BRy/M3P2-DEVinOrkut-FrontEnd?color=0080000label=repo%20size">
+  <a href="https://github.com/DEVin-Teltec-BRy/M3P2-DEVinOrkut-FrontEnd/commits/main">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/DEVin-Teltec-BRy/M3P2-DEVinOrkut-FrontEnd?color=0080000">
+</p>
+# :pushpin: Índice
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-   [Tecnologias](#tech)
+-   [Como Utilizar](#settings)
+-   [Equipe de desenvolvedores](#equipes)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<a id="tech"></a>
 
-### `npm test`
+## Ambientes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+E o ambiente de deploy utilizado está hospedado em uma hospedagem do Netlify.
 
-### `npm run build`
+E o deploy é feito automaticamente sempre que a branch development do repositório recebe um push.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-   [Link para acessar o Front-end](https://m3p2-devinorkut-frontend.netlify.app)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠 Tecnologias
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+O projeto desenvolvido utiliza as seguintes tecnologias:
 
-### `npm run eject`
+-   [Apollo Client](https://www.apollographql.com/)
+-   [ReactJS](https://pt-br.reactjs.org/)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<a id="settings"></a>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Como Utilizar
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### **Pré-requisitos**
 
-## Learn More
+-   Possuir o NodeJS instalado na sua máquina.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+# Clone o Repositório
+$ git clone https://github.com/DEVin-Teltec-BRy/M3P2-DEVinOrkut-FrontEnd.git
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+# Entre na pasta projeto
+$ cd M3P2-DEVinOrkut-FrontEnd
+```
 
-### Code Splitting
+```bash
+# Já dentro da pasta do projeto.
+# Instale as bibliotecas utilizadas no projeto.
+$ yarn ou npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+# Criar um arquivo .env a partir do arquivo .env-exemple
+# As variáveis utilizadas no sistema devem ser preenchidas conforme suas configurações locais
+```
 
-### Analyzing the Bundle Size
+```bash
+# Executar o programa.
+$ yarn start
+# ou
+$ npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 👨‍💻 Equipes de desenvolvimento
 
-### Making a Progressive Web App
+<a id="equipes"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+💜 Todos os membros da equipe estão de parabéns, desempenharam um papel indispensável durante todo o desenvolvimento da aplicação 👏
 
-### Advanced Configuration
+<h2 style="color:#E01C8B">Squad 01</h2>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<table>
+    <tr>
+        <td colspan="4" align="center" style="background-color: #779DCD; color: white;">
+         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/meirelesdev" width="80px;" alt="avatar Daniel Meireles Do Nascimento"/><br />
+         <sub><b>Product Owner</b></sub>
+         <br/>
+         <sub><b>Daniel Meireles</b></sub>
+      </td>
+    </tr>
+   <tr style="background-color: #779DCD; color: white;">
+      <td align="center">
+         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/VictorD19" width="80px;" alt="avatar Gabriel de Oliveira Hoffmann"/><br />
+         <sub><b>Victor Daniel Betram Guzman</b></sub>
+         <br/>
+      </td>
+      <td align="center">
+         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/Hoffmann16" width="80px;" alt="avatar Laci"/><br />
+         <sub><b>Gabriel de Oliveira Hoffmann</b></sub>
+         <br/>
+      </td>
+      <td align="center">
+         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/icarofilho" width="80px;" alt="avatar Ícaro Ferreira de Araújo Filho"/><br />
+         <sub><b>Ícaro Ferreira de Araújo Filho</b></sub>
+         <br/>
+      </td>
+      <td align="center">
+         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/mgzamboni" width="80px;" alt="avatar Matheus Guilherme Zamboni"/><br />
+         <sub><b>Matheus Guilherme Zamboni</b></sub>
+         <br/>
+      </td>
+   </tr>
+</table>
+<h2 style="color:#E01C8B">Squad 02</h2>
+<table>
+    <tr>
+     <td colspan="3"align="center" style="background-color: #779DCD; color: white;">
+         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/chicodevbr" width="80px;" alt="avatar Francisco José da Silva Sousa Junior"/><br />
+         <sub><b>Product Owner</b></sub>
+         <br/>
+         <sub><b>Francisco José da Silva Sousa Junior</b></sub>
+         <br/>
+      </td>
+    </tr>
+   <tr style="background-color: #779DCD; color: white;">
+      <td align="center">
+         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/Marcos-Mendess" width="80px;" alt="avatar Marcos Vinícius Farias Mendes"/><br />
+         <sub><b>Marcos Vinícius Farias Mendes</b></sub>
+         <br/>
+      </td>
+      <td align="center">
+         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/RicardoAugusto1986" width="80px;" alt="Ricardo Augusto Lima"/><br />
+         <sub><b>Ricardo Augusto Lima</b></sub>
+         <br/>
+      </td>
+      <td align="center">
+         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/DevVitorPedra" width="80px;" alt="Vitor dos Santos Pedra"/><br />
+         <sub><b>Vitor dos Santos Pedra</b></sub>
+         <br/>
+      </td>
+   </tr>
+</table>
+<h2 style="color:#E01C8B">Squad 03</h2>
+<table>
+    <tr  style="background-color: #779DCD; color: white;">
+        <td colspan="5" align="center">
+         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/sabrinamaral" width="80px;" alt="avatar Bruno"/><br />
+         <sub><b>Product Owner</b></sub>
+         <br/>
+         <sub><b>Sabrina Bastos Amaral</b></sub>
+         <br/>
+      </td>
+    </tr>
+   <tr style="background-color: #779DCD; color: white;">
+      <td align="center">
+         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/amandaamabili" width="80px;" alt="avatar Amanda Amabili Beirão Honorio"/><br />
+         <sub><b>Amanda Amabili Beirão Honorio</b></sub>
+         <br/>
+      </td>
+      <td align="center">
+         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/guicollab" width="80px;" alt="avatar Guilherme Serrer Ferreira"/><br />
+         <sub><b>Guilherme Serrer Ferreira</b></sub>
+         <br/>
+      </td>
+      <td align="center">
+         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/Lmsilvano" width="80px;" alt="avatar Leandro de Melo Silvano"/><br />
+         <sub><b>Leandro de Melo Silvano</b></sub>
+         <br/>
+      </td>
+      <td align="center">
+         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/raulvictorvieira" width="80px;" alt="avatar Camila"/><br />
+         <sub><b>Raul Victor Soares Vieira</b></sub>
+         <br/>
+      </td>
+      <td align="center">
+         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/rmyght" width="80px;" alt="avatar Ramon"/><br />
+         <sub><b>Ramon Telles</b></sub>
+         <br/>
+      </td>	
+       <td align="center">
+         <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/claudiorhenns" width="80px;" alt="avatar Claudio"/><br />
+         <sub><b>Claudio Rhenns</b></sub>
+         <br/>
+      </td>	
+   </tr>
+</table>
