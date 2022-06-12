@@ -12,10 +12,6 @@ export const UploadImageCommunity = ({history}) =>{
   const [imageUpload, setImageUpload] = useState(null);
   const [isSuccess, setSuccess] = useState(false);
 
-  const dispatch = useDispatch();
-
-  const { communityid } = useParams()
-
     const preview = useMemo(()=>{
         return imageUpload ? URL.createObjectURL(imageUpload):null;
     }, [imageUpload])
