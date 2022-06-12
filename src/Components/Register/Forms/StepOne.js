@@ -36,7 +36,6 @@ const StepOne = ({ previousButton, submitButtonText }) => {
       ...formData,
       [name]: value,
     });
-    console.log(formData.birthDate);
   };
 
   const [isSubmitted, setIsSubmitted] = useState(false);
