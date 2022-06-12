@@ -1,5 +1,5 @@
-import React, {useState, useMemo} from 'react';
-import {Alert, Button} from 'react-bootstrap';
+import React, {useState} from 'react';
+import { Alert } from 'react-bootstrap';
 import axios from 'axios';
 import { setHeaders, url } from '../../api';
 
@@ -8,52 +8,59 @@ import './styles.css';
 import {useParams} from "react-router";
 
 
-export const UploadImageCommunity = ({history}) =>{
+export const UploadImageCommunity = () =>{
   const [imageUpload, setImageUpload] = useState(null);
   const [isSuccess, setSuccess] = useState(false);
+    const [isError, setError] = useState(false);
     const { communityid } = useParams();
 
-    const preview = useMemo(()=>{
-        return imageUpload ? URL.createObjectURL(imageUpload):null;
-    }, [imageUpload])
+    const handleImageUpload = (e) => {
+        const file = e.target.files[0];
+        TransformFileData(file);
+
+        setError(false);
+        setSuccess(false);
+    };
+
+    const TransformFileData = (file) => {
+        const reader = new FileReader();
+
+        if (file) {
+            reader.readAsDataURL(file);
+            reader.onloadend = () => {
+                setImageUpload(reader.result);
+            };
+        } else {
+            setImageUpload('');
+        }
+    };
 
     async function handleSubmit(event){
         event.preventDefault();
         setSuccess(false);
 
-        const data = new FormData();
-
-
-
-        data.append('imageUpload', imageUpload);
-
       const result = await axios.post(
-        url.uploadImageCommunity,
-       data,
-         communityid
+        `${url.uploadImageCommunity}/${communityid}`,
+           { image: imageUpload },
+           setHeaders()
       );
-      history.push('/community');
 
        return result.data;
 
     }
-  
 
   return(
     <>
     {!isSuccess &&(
     <form onSubmit={handleSubmit}>
         <label id="imageUpload" 
-        style= {{backgroundImage: `url(${preview})`}}
         className={imageUpload ? 'has-imageUpload': ''}>
-            <input type="file" onChange={event =>setImageUpload(event.target.files[0])}></input>
+            <input type="file" onChange={handleImageUpload}></input>
             <img src={camera} alt="Select img"></img>
         </label>
 
 
-        <Button variant="primary" type="submit" className="mb-3 mt-2">
-            Enviar
-        </Button>
+<button type="submit" className="btn">Publicar</button>
 
 </form>)}
 {isSuccess && (
