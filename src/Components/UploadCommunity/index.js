@@ -10,9 +10,13 @@ import camera from '../../Assets/camera.svg';
 import './styles.css';
 
 
-export default function UploadImageCommunity({history}) {
+export const UploadImageCommunity = ({history}) =>{
     // const [thumbnail,setThumbnail]= useState(null);
   const [imageUpload, setImageUpload] = useState(null);
+  const [isSuccess, setSuccess] = useState(false);
+
+  const dispatch = useDispatch();
+
   const { communityid } = useParams()
 
     const preview = useMemo(()=>{
@@ -21,6 +25,7 @@ export default function UploadImageCommunity({history}) {
 
     async function handleSubmit(event){
         event.preventDefault();
+        setSuccess(false);
 
         const data = new FormData();
 
@@ -28,18 +33,28 @@ export default function UploadImageCommunity({history}) {
 
         data.append('imageUpload', imageUpload);
 
-       await axios.post(
+      const result = await axios.post(
         url.uploadImageCommunity,
        data,
         setHeaders()
       );
       history.push('/community');
-       return
+      if (result.status === 201) {
+        setSuccess(true);
+
+        setTimeout(() => {
+          dispatch(submitted());
+          dispatch(closeModal());
+        }, 1000);
+      }
+       return result.data;
 
     }
   
 
   return(
+    <>
+    {!isSuccess &&(
     <form onSubmit={handleSubmit}>
         <label id="imageUpload" 
         style= {{backgroundImage: `url(${preview})`}}
@@ -52,5 +67,12 @@ export default function UploadImageCommunity({history}) {
 <button type="submit" className="btn">Publicar</button>
 
 </form>)}
+{isSuccess && (
+  <Alert variant="success" className="m-3">
+    Upload feito com sucesso
+  </Alert>
+)}
 
-
+</>
+);
+};

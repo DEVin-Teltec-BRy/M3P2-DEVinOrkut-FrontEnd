@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeModal, openModal } from '../../Store/rootSlice';
 import ModalUpload from './ModalUpload';
 
+
 const Profile = () => {
   const { user: loggedUser } = useData();
   const { id } = useParams();
@@ -73,6 +74,7 @@ const Profile = () => {
           dispatch(closeModal());
         }}
       />
+      
     </S.ProfileContainer>
   ) : (
     <Loading />
