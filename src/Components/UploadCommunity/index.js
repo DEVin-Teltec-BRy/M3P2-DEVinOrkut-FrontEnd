@@ -1,15 +1,17 @@
 import React, {useState, useMemo} from 'react';
-import { Alert } from 'react-bootstrap';
+import {Alert, Button} from 'react-bootstrap';
 import axios from 'axios';
 import { setHeaders, url } from '../../api';
 
 import camera from '../../Assets/camera.svg';
 import './styles.css';
+import {useParams} from "react-router";
 
 
 export const UploadImageCommunity = ({history}) =>{
   const [imageUpload, setImageUpload] = useState(null);
   const [isSuccess, setSuccess] = useState(false);
+    const { communityid } = useParams();
 
     const preview = useMemo(()=>{
         return imageUpload ? URL.createObjectURL(imageUpload):null;
@@ -28,7 +30,7 @@ export const UploadImageCommunity = ({history}) =>{
       const result = await axios.post(
         url.uploadImageCommunity,
        data,
-        setHeaders()
+         communityid
       );
       history.push('/community');
 
@@ -49,7 +51,9 @@ export const UploadImageCommunity = ({history}) =>{
         </label>
 
 
-<button type="submit" className="btn">Publicar</button>
+        <Button variant="primary" type="submit" className="mb-3 mt-2">
+            Enviar
+        </Button>
 
 </form>)}
 {isSuccess && (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { closeModal, openModal } from '../../Store/rootSlice';
-import ModalUploadCommunity from './ModalUploadCommunity';
+import {ModalUploadCommunity} from './ModalUploadCommunity';
 
 import {
   IoPersonCircleOutline,

@@ -3,7 +3,7 @@ const baseUrl = process.env.REACT_APP_URI_EXPRESS || 'http://localhost:4000';
 
 export const url = {
   uploadImageUser: `${baseUrl}/api/upload/profile`,
-  uploadImageCommunity: `${baseUrl}/api/upload/community/`,
+  uploadImageCommunity: `${baseUrl}/api/upload/community/:communityId'`,
 };
 
 export const setHeaders = () => {
