@@ -77,9 +77,7 @@ import { useData } from "../../Context/dataContext";
               }
             />
           ))}
-        {listFriend?.length === 0&& (
-          <span>O usuário não possui nenhum amigo!</span>
-        )}        
+        {listFriend?.length === 0 && <span>O usuário não possui nenhum amigo!</span>}        
       </CardMain>
     </Layout>
   );
