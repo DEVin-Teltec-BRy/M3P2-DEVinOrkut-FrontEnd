@@ -1,6 +1,6 @@
 const getAge = (birthDate) => {
   const today = new Date();
-  const birthDateString = birthDate.split('/');
+  const birthDateString = birthDate.split('-');
   const birthDateObject = new Date(
     birthDateString[2],
     birthDateString[1] - 1,

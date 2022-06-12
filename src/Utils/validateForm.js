@@ -1,5 +1,4 @@
 import cpfValidator from './validateCpf';
-import getAge from './getAge';
 
 const passwordValidator = (password) => {
   return password.match(
@@ -16,11 +15,6 @@ const isEmail = (value) => {
 };
 
 const cpf = new cpfValidator();
-
-const validatorAge = (birthDate) => {
-  const age = getAge(birthDate);
-  return age >= 18;
-};
 
 // function to validate form
 
@@ -45,9 +39,6 @@ export const validateStepOne = (values) => {
 
   if (!values.birthDate) {
     errors.birthDate = 'Escolha uma data';
-  } else if (!validatorAge(values.birthDate)) {
-    errors.birthDate =
-      'Sorry! Mas você deve ter mais do que 18 anos para se cadastrar. Volte daqui alguns anos.';
   }
 
   return errors;

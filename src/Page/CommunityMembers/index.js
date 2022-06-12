@@ -7,6 +7,7 @@ import Layout from "../../Layout";
 import { LateralProfile } from "../Profile/Lateral"
 import { useQuery } from "@apollo/client";
 import { COMMUNITY_MEMBERS } from "../../Graphql/Querys/Communities";
+import imgPlaceholder from '../../Assets/placeholderImg.webp';
 
 
 const CommunityMembersPage = () => {
@@ -38,7 +39,7 @@ const CommunityMembersPage = () => {
                                 text={fullName}
                                 src={profilePicture.length > 0
                                     ? profilePicture[0]
-                                    : "https://365psd.com/images/istock/previews/1009/100996291-male-avatar-profile-picture-vector.jpg"}
+                                    : imgPlaceholder}
                             />
                         ))}
                     </CardMain>

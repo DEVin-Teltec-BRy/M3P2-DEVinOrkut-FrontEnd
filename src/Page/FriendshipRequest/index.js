@@ -6,6 +6,7 @@ import { useData } from "../../Context/dataContext";
 import { Lateral } from "../../Components/Lateral";
 import { useMutation } from "@apollo/client";
 import { ACCEPT_FRIENDSHIP_REQUEST, REJECT_FRIENDSHIP_REQUEST } from "../../Graphql/Mutations/FriendshipMutations";
+import imgPlaceholder from '../../Assets/placeholderImg.webp';
 
 const FriendshipRequestPage = () => {
   const { user, updateUser } = useData();
@@ -44,7 +45,7 @@ const FriendshipRequestPage = () => {
         }
       >
         {user.friendRequest.length > 0 ? (
-          user.friendRequest.map(({ id, fullName }, key) => (
+          user.friendRequest.map(({ id, fullName, profilePicture }, key) => (
             <FriendshipRequest
               acceptFriendShip={handleAcceptFriendship}
               refuseFriendShip={handleRefuseFriendship}
@@ -55,7 +56,7 @@ const FriendshipRequestPage = () => {
               size="md"
               text={fullName}
               requesterId={id}
-              src="https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
+              src={profilePicture ? profilePicture[0] : imgPlaceholder}
             />
           ))
         ) : (

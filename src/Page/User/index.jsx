@@ -15,7 +15,7 @@ import { GetStart } from '../../Components/Stars';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { GET_USER_BY_ID } from '../../Graphql/Querys';
-import { getAge, getDateFomated } from '../../Utils';
+import { getDateFomated, getAge } from '../../Utils';
 import { Loading } from '../../Components/Loading';
 import { useData } from '../../Context/dataContext';
 import { useEffect, useState } from 'react';
@@ -63,7 +63,9 @@ const UserPage = () => {
     userPage?.friendRequest,
   ]);
 
-  return data && userPage && loggedUser ? (
+  return !userPage ? (
+    <Loading />
+  ) : (
     <Layout
       visitedData={userPage}
       lateral={
@@ -74,7 +76,7 @@ const UserPage = () => {
     >
       <ProfileContent>
         <h1>{userPage.fullName}</h1>
-        {isConected ? (
+        {isConected && (
           <NewButton
             bg="secondary"
             size="sm"
@@ -88,12 +90,14 @@ const UserPage = () => {
             <AiOutlineCheckSquare size={20} />
             Conectados
           </NewButton>
-        ) : pendingRequest ? (
+        )}
+        {pendingRequest && (
           <NewButton bg="warning" size="sm" icon={AiOutlineUserAdd}>
             <AiOutlineCheckSquare size={20} />
             Aguardando, solicitação enviada.
           </NewButton>
-        ) : loggerUserSendRequest ? (
+        )}
+        {loggerUserSendRequest && (
           <NewButton
             bg="info"
             size="sm"
@@ -103,12 +107,14 @@ const UserPage = () => {
             <AiOutlineCheckSquare size={20} />A uma solicitação pendente de{' '}
             {userPage.fullName.split(' ')[0]}.
           </NewButton>
-        ) : (
+        )}
+        {!isConected && !pendingRequest && !loggerUserSendRequest && (
           <NewButton
             bg="secondary"
             size="sm"
-            onClick={() => {
-              handleAddFriend(loggedUser.id, userPage.id);
+            onClick={ async () => {
+              const { friendRequest } = await handleAddFriend(loggedUser.id, userPage.id);
+              setUserPage((prev) => ({ ...prev, friendRequest }));
               setPendingRequest(true);
             }}
             icon={AiOutlineUserAdd}
@@ -143,7 +149,7 @@ const UserPage = () => {
             {getDateFomated(userPage?.birthDate)}
           </BoxContainer>
           <BoxContainer title="Idade">
-            {getAge(userPage.birthDate)}
+            {getAge(userPage.birthDate).toString()}
           </BoxContainer>
           <BoxContainer title="Humor">
             {userPage.humor?.join(' / ')}
@@ -168,8 +174,6 @@ const UserPage = () => {
         </CarrucelFotos>
       </ProfileContent>
     </Layout>
-  ) : (
-    <Loading />
   );
 };
 

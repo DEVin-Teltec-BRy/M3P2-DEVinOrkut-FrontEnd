@@ -10,6 +10,7 @@ import { InputSearch } from "../../Components/InputSearch";
 import { LateralProfile } from "../Profile/Lateral";
 import { BoxSearch, Search } from "./search.styled";
 import { useData } from "../../Context/dataContext";
+import imgPlaceholder from '../../Assets/placeholderImg.webp';
 
 const SearchPage = () => {
   const { user } = useData();
@@ -58,7 +59,7 @@ const SearchPage = () => {
                   text={fullName}
                   to='usuario'
                   id={id}
-                  src={profilePicture[0] ||  "https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"}
+                  src={profilePicture[0] ||  imgPlaceholder}
                 />
               ))}
           </div>
@@ -77,7 +78,7 @@ const SearchPage = () => {
                   src={
                     logo
                       ? logo
-                      : "https://cdn.allfamous.org/people/avatars/bill-gates-zdrr-allfamous.org.jpg"
+                      : imgPlaceholder
                   }
                 />
               ))}
