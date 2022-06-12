@@ -38,15 +38,15 @@ export const UploadImageCommunity = ({history}) =>{
        data,
         setHeaders()
       );
-      history.push('/community');
-      if (result.status === 201) {
-        setSuccess(true);
+      // history.push('/community');
+      // if (result.status === 201) {
+      //   setSuccess(true);
 
-        setTimeout(() => {
-          dispatch(submitted());
-          dispatch(closeModal());
-        }, 1000);
-      }
+      //   setTimeout(() => {
+      //     dispatch(submitted());
+      //     dispatch(closeModal());
+      //   }, 1000);
+      // }
        return result.data;
 
     }
