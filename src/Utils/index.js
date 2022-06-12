@@ -1,8 +1,7 @@
 
 export const getDateFomated = (data) => {
-  const [dayB, monthB, yearB] = data?.split("/");
-
-  const date = new Date(`${monthB}/${dayB}/${yearB}`);
+  const [yearB, dayB, monthB] = data?.split("-");
+  const date = new Date(yearB, monthB - 1, dayB);
   const month = date.getMonth();
   const day = date.getDate();
   const months = [
@@ -22,7 +21,7 @@ export const getDateFomated = (data) => {
   return `${day} de ${months[month]}`;
 };
 export const getAge = (data) => {
-  const [dayB, monthB, yearB] = data?.split("/");
+  const [yearB, dayB, monthB] = data?.split("-");
   const dateB = new Date();
   let age = dateB.getFullYear() - yearB;
   if (dateB.getMonth() < monthB) {
