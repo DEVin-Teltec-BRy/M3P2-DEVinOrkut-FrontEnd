@@ -12,7 +12,7 @@ import { getAge, getDateFomated } from "../../Utils";
 
 const ProfilePage = () => {
   const { user } = useData();
-  const { fullName, gender, aboutMe, birthDate, album, interests, scraps, friends, humor} = user;
+  const { fullName, gender, aboutMe, birthDate, imageUrl , interests, scraps, friends, humor} = user;
   const formatedDate = getDateFomated(birthDate);
   const textIntereses = interests?.join(' / ')
   const textHumor = humor?.join(' / ')
@@ -28,7 +28,7 @@ const ProfilePage = () => {
           </BoxContainer>
 
           <BoxContainer title="Fotos">
-            <AiOutlineCamera size={20} /> {album?.length}
+            <AiOutlineCamera size={20} /> {imageUrl?.length}
           </BoxContainer>
           <BoxContainer title="Fãs ">
             <FiUsers size={20} /> {friends?.length}
