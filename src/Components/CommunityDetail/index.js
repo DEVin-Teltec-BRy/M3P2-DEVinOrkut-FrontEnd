@@ -110,8 +110,7 @@ export const CommunityDetail = ({
                 <span>Proprietário:</span> {owner}
               </li>
             </ul>
-            {/*{isowner && <EditCommunity />}*/}
-            {<EditCommunity />}
+            {isowner && <EditCommunity />}
 
           </div>
         </S.DivContent>
