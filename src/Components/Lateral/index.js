@@ -22,7 +22,7 @@ export const Lateral = ({ content, title }) => {
           key={key}
           text={title === "Amigos" ? data?.fullName : data.name}
           // text={fullName}
-          src={title === "Amigos" ? data?.profilePicture : data.logo}
+          src={title === "Amigos" ? data?.profilePicture[0] : data.logo}
         />
       ))}
     </CardMain>
