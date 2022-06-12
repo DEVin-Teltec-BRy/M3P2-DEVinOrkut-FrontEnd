@@ -36,6 +36,7 @@ const StepOne = ({ previousButton, submitButtonText }) => {
       ...formData,
       [name]: value,
     });
+    console.log(formData.birthDate);
   };
 
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -117,7 +118,6 @@ const StepOne = ({ previousButton, submitButtonText }) => {
         <div>
           <Label htmlFor="birthDate">Data de Aniversário</Label>
           <InputStyled
-            element="input"
             id="birthDate"
             name="birthDate"
             type="date"
