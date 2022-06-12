@@ -6,13 +6,16 @@ export const Lateral = ({ content, title }) => {
   const { id } = useParams();
   let toAllUri = "";
   if (id) {
-    toAllUri = title === "Amigos" ? `/user/${id}/friends` : `/user/${id}/communities`;
+    toAllUri =
+      title === "Amigos" ? `/user/${id}/friends` : `/user/${id}/communities`;
   } else {
     toAllUri = title === "Amigos" ? `/friends` : `/communities`;
   }
+  const text  = title === "Amigos" ? 'O usuário não possui nenhum amigo!': 'O usuário não esta em nenhuma comunidade'
 
   return (
     <CardMain title={title} count={content?.length} toAll={toAllUri}>
+      {content?.length === 0 && <span>{text}</span>}
       {content?.map((data, key) => (
         <CardSecondary
           round
