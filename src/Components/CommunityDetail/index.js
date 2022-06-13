@@ -134,7 +134,8 @@ export const CommunityDetail = ({
                     </NewButton>
                   </div>
 
-                // Retirei o isowner porque não estava conseguindo editar a comunidade mesmo sendo a owner
+                {//TODO Retirei o isowner porque não estava conseguindo editar a comunidade mesmo sendo a owner
+                }
                 {/*{isowner && <EditCommunity />}*/}
                 {<EditCommunity/>}
 

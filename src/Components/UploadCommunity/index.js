@@ -11,14 +11,12 @@ import {useParams} from "react-router";
 export const UploadImageCommunity = () =>{
   const [imageUpload, setImageUpload] = useState(null);
   const [isSuccess, setSuccess] = useState(false);
-    const [ setError] = useState(false);
     const { communityid } = useParams();
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
         TransformFileData(file);
 
-        setError(false);
         setSuccess(false);
     };
 
