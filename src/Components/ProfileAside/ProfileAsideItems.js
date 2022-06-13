@@ -18,7 +18,7 @@ import {
 
 import { useParams } from 'react-router-dom';
 import classes from './style.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const ProfileAsideItems = ({
   name,
@@ -32,7 +32,6 @@ const ProfileAsideItems = ({
 }) => {
   const { id } = useParams();
 
-  const isOpen = useSelector((state) => state.IsOpen);
   const dispatch = useDispatch();
 
   const handleModalOpen = () => {

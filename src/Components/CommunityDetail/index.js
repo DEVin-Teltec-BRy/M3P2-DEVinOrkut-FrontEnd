@@ -10,8 +10,6 @@ import { CREATE_FORUM } from "../../Graphql/Mutations/CreateForumMutations";
 import { EditCommunity } from "../EditCommunity";
 import * as S from "./communityDetail.style";
 import { initialValues } from "./Dados";
-import { openModal} from "../../Store/rootSlice";
-import { useDispatch, useSelector } from 'react-redux';
 import Modal from "react-modal";
 import {UploadImageCommunity} from "../UploadCommunity";
 import './styles.css';
@@ -136,6 +134,7 @@ export const CommunityDetail = ({
                     </NewButton>
                   </div>
 
+                //TODO Retirei o isowner porque não estava conseguindo editar a comunidade mesmo sendo a owner
                 {/*{isowner && <EditCommunity />}*/}
                 {<EditCommunity/>}
 
