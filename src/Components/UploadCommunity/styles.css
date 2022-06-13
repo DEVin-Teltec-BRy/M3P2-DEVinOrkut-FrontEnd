@@ -1,25 +1,65 @@
-const label#imageUpload{
-    margin-bottom:20px;
+#imageUpload{
+    /*margin-bottom:20px;*/
     border: 1px dashed #ddd;
     background-size:cover;
     cursor: pointer;
-    height: 160px;
-  
     display: flex;
     justify-content: center;
     align-items: center;
-  
+    width: 100%;
+    margin-top: 1rem;
   }
   
-  label#imageUpload input {
+#imageUpload input {
     display: none;
   }
   
-  label#imageUpload.has-imageUpload{
+ #imageUpload.has-imageUpload{
     border: 0;
   }
   
-  label#imageUpload.has-imageUpload img {
+#imageUpload.has-imageUpload img {
     display: none;
+    border: #0c63e4;
   }
-  
+
+form img{
+    width: 10%;
+}
+form{
+    width: 80%;
+    height: 90%;
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+#mensage{
+    margin-top: 2rem;
+    justify-content: center;
+    color: #779DCD ;
+    text-align: center;
+    /*font-family: 'Inter';*/
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 53px;
+}
+
+form div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+form #botao{
+
+    background: #E01989;
+    border: 1px solid #C8157A;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 2rem;
+    display: inline-block;
+    color: #FFFFFF;
+}

@@ -1,7 +1,5 @@
 import React from 'react';
-import { closeModal, openModal } from '../../Store/rootSlice';
-import ModalUploadCommunity from './ModalUploadCommunity';
-
+import { openModal } from '../../Store/rootSlice';
 import {
   IoPersonCircleOutline,
   IoCameraOutline,
@@ -20,7 +18,7 @@ import {
 
 import { useParams } from 'react-router-dom';
 import classes from './style.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const ProfileAsideItems = ({
   name,
@@ -34,7 +32,6 @@ const ProfileAsideItems = ({
 }) => {
   const { id } = useParams();
 
-  const isOpen = useSelector((state) => state.IsOpen);
   const dispatch = useDispatch();
 
   const handleModalOpen = () => {
@@ -93,12 +90,6 @@ const ProfileAsideItems = ({
           to="/"
           icon={<IoFileTrayOutline size={24} />}
           name="Depoimentos"
-        />
-        <ModalUploadCommunity
-          show={isOpen}
-          onHide={() => {
-            dispatch(closeModal());
-          }}
         />
       </MenuOptions>
       <div className="edit-profile">
