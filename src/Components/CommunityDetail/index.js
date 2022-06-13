@@ -10,9 +10,8 @@ import { CREATE_FORUM } from "../../Graphql/Mutations/CreateForumMutations";
 import { EditCommunity } from "../EditCommunity";
 import * as S from "./communityDetail.style";
 import { initialValues } from "./Dados";
-import {closeModal, openModal} from "../../Store/rootSlice";
+import { openModal} from "../../Store/rootSlice";
 import { useDispatch, useSelector } from 'react-redux';
-import {ModalUploadCommunity} from "../ProfileAside/ModalUploadCommunity";
 import Modal from "react-modal";
 import {UploadImageCommunity} from "../UploadCommunity";
 import './styles.css';
@@ -43,11 +42,6 @@ export const CommunityDetail = ({
     setIsMember(checkIsMember);
   }, [memberList, members, checkIsMember]);
 
-  const isOpen = useSelector((state) => state.IsOpen);
-  const dispatch = useDispatch();
-  const handleModalOpen = () => {
-    dispatch(openModal());
-  };
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -65,7 +59,8 @@ export const CommunityDetail = ({
       ;
 
 
-        setDescVal(false);
+      setDescVal(false);
+
       createForum({
         variables: {
           input: {
@@ -116,8 +111,6 @@ export const CommunityDetail = ({
               <Modal id="modal"
                   isOpen={modalIsOpen} onRequestClose={() => setIsOpen(false)}>
                   <UploadImageCommunity/>
-
-
                   <button id= "btn" onClick={() => setIsOpen(false)}>X</button>
 
               </Modal>

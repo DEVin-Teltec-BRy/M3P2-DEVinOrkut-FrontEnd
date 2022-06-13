@@ -1,7 +1,5 @@
 import React from 'react';
-import { closeModal, openModal } from '../../Store/rootSlice';
-import {ModalUploadCommunity} from './ModalUploadCommunity';
-
+import { openModal } from '../../Store/rootSlice';
 import {
   IoPersonCircleOutline,
   IoCameraOutline,
@@ -95,12 +93,6 @@ const ProfileAsideItems = ({
           icon={<IoFileTrayOutline size={24} />}
           name="Depoimentos"
         />
-         <ModalUploadCommunity
-        show={isOpen}
-        onHide={() => {
-          dispatch(closeModal());
-        }}
-      />
          
       </MenuOptions>
       <div className="edit-profile">
