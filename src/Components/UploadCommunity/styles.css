@@ -1,11 +1,13 @@
 #imageUpload{
-    margin-bottom:20px;
+    /*margin-bottom:20px;*/
     border: 1px dashed #ddd;
     background-size:cover;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    margin-top: 1rem;
   }
   
 #imageUpload input {
@@ -18,18 +20,21 @@
   
 #imageUpload.has-imageUpload img {
     display: none;
+    border: #0c63e4;
   }
 
 form img{
     width: 10%;
 }
 form{
-    width: 50%;
+    width: 80%;
+    height: 90%;
     display: block;
     justify-content: center;
     align-items: center;
 }
 #mensage{
+    margin-top: 2rem;
     justify-content: center;
     color: #779DCD ;
     text-align: center;
@@ -53,7 +58,8 @@ form #botao{
     border: 1px solid #C8157A;
     border-radius: 8px;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    margin-top: 2rem;
     display: inline-block;
     color: #FFFFFF;
 }

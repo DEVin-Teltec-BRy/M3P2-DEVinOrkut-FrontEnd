@@ -1,1 +1,34 @@
-Modal {width:48% !important; top:20%;}
+#btn{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+    border: none;
+    position: absolute;
+    width: 30px;
+    height: 28px;
+    left: 400px;
+    top: 22px;
+    color: #FFFFFF;
+    background: #E01989;
+    border-radius: 16px;
+}
+#modal{
+    width: 36%  !important;
+    height: 30%;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+    margin-left: 20%;
+}
+#button{
+    margin-bottom: 5px;
+    background: #E01989;
+    border-radius: 0.2rem;
+
+
+}
+

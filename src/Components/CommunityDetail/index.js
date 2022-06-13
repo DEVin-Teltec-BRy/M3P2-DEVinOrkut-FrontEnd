@@ -112,35 +112,14 @@ export const CommunityDetail = ({
             <S.DivContent>
               <div className="img-container">
                 <img src={imgsrc} alt="" onClick={() => setIsOpen(true)}/>
-
-
               </div>
-              <Modal
-               style={{
-                overlay: {
-                  position: 'fixed',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  backgroundColor: 'rgba(255, 255, 255, 0.75)'
-                },
-                content: {
-                  bottom: '40px',
-                  border: '1px solid #ccc',
-                  background: '#fff',
-                  overflow: 'auto',
-                  WebkitOverflowScrolling: 'touch',
-                  borderRadius: '4px',
-                  outline: 'none',
-                  padding: '20px'
-
-                },
-              }}
-
+              <Modal id="modal"
                   isOpen={modalIsOpen} onRequestClose={() => setIsOpen(false)}>
-                <UploadImageCommunity/>
-                <button onClick={() => setIsOpen(false)}>x</button>
+                  <UploadImageCommunity/>
+
+
+                  <button id= "btn" onClick={() => setIsOpen(false)}>X</button>
+
               </Modal>
 
               <div className="infos">
@@ -154,7 +133,16 @@ export const CommunityDetail = ({
                   <li>
                     <span>Proprietário:</span> {owner}
                   </li>
+                  <li>
+
+                  </li>
                 </ul>
+                  <div id= "button">
+                    <NewButton size="sm"  onClick={() => setIsOpen(true)}>
+                        Adicionar Nova Foto
+                    </NewButton>
+                  </div>
+
                 {/*{isowner && <EditCommunity />}*/}
                 {<EditCommunity/>}
 
