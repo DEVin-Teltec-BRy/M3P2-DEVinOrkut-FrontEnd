@@ -23,57 +23,30 @@ import { useEffect, useState } from 'react';
 const UserPage = () => {
   const { user: loggedUser, handleAddFriend, handleRemoveFriend } = useData();
   const { id } = useParams();
-  const [isConected, setIsConected] = useState(() => loggedUser.friends.some((friend) => friend.id === id));
-  const [loggerUserSendRequest, setLoggerUserSendRequest] = useState(false);
-
+  const isLoggedUser = loggedUser.id === id;
+  const [isConected, setIsConected] = useState(loggedUser.friends.some((friend) => friend.id === id));
+  const [ loggedUserHasFriendRequest, setLoggedUserHasFriendRequest ] = useState(loggedUser.friendRequest.some((friend) => friend.id === id));
   const [pendingRequest, setPendingRequest] = useState(false);
   const navigate = useNavigate();
   const { data } = useQuery(GET_USER_BY_ID, {
     variables: { userId: id },
   });
-  const [userPage, setUserPage] = useState(()=>{
-    if(data){
-      return data.user
-    } 
-  });
+  const [userPage, setUserPage] = useState(false);
   useEffect(() => {
-    if (id === loggedUser.id) {
-      navigate('/');
+    if (isLoggedUser) {
+      navigate("/");
     }
     if (data) {
       const { user } = data;
+      setIsConected(loggedUser.friends.some((friend) => friend.id === id));
+      setLoggedUserHasFriendRequest(loggedUser.friendRequest.some((friend) => friend.id === id));
       setUserPage(user);
-      if (loggedUser?.friendRequest) {
-        setLoggerUserSendRequest(() =>
-          loggedUser.friendRequest.some((friend) => friend.id === id)
-        );
-      }
-      if (userPage?.friendRequest) {
-        setPendingRequest(() =>
-          userPage.friendRequest.some((friend) => friend.id === loggedUser.id)
-        );
-      }
     }
-  }, [
-    navigate,
-    data,
-    id,
-    loggedUser.id,
-    loggedUser?.friendRequest,
-    userPage?.friendRequest,
-  ]);
-
+  }, [data, id, isLoggedUser, navigate, loggedUser]);
   return !userPage ? (
     <Loading />
   ) : (
-    <Layout
-      visitedData={userPage}
-      lateral={
-        <LateralProfile
-          user={userPage}
-        />
-      }
-    >
+    <Layout visitedData={userPage} lateral={<LateralProfile user={userPage} />}>
       <ProfileContent>
         <h1>{userPage.fullName}</h1>
         {isConected && (
@@ -86,7 +59,7 @@ const UserPage = () => {
             }}
             icon={AiOutlineUserAdd}
           >
-            {' '}
+            {" "}
             <AiOutlineCheckSquare size={20} />
             Conectados
           </NewButton>
@@ -97,27 +70,27 @@ const UserPage = () => {
             Aguardando, solicitação enviada.
           </NewButton>
         )}
-        {loggerUserSendRequest && (
+        {loggedUserHasFriendRequest && (
           <NewButton
             bg="info"
             size="sm"
             icon={AiOutlineUserAdd}
-            onClick={() => navigate('/solicitacoes')}
+            onClick={() => navigate("/solicitacoes")}
           >
-            <AiOutlineCheckSquare size={20} />A uma solicitação pendente de{' '}
-            {userPage.fullName.split(' ')[0]}.
+            <AiOutlineCheckSquare size={20} />A uma solicitação pendente de{" "}
+            {userPage.fullName.split(" ")[0]}.
           </NewButton>
         )}
-        {!isConected && !pendingRequest && !loggerUserSendRequest && (
+        {!isConected && !loggedUserHasFriendRequest && !pendingRequest && (
           <NewButton
-            bg="secondary"
+            bg="success"
             size="sm"
-            onClick={ async () => {
-              const { friendRequest } = await handleAddFriend(loggedUser.id, userPage.id);
-              setUserPage((prev) => ({ ...prev, friendRequest }));
-              setPendingRequest(true);
-            }}
             icon={AiOutlineUserAdd}
+            onClick={() => {
+              handleAddFriend(loggedUser.id, userPage.id);
+              setPendingRequest(true);
+            }
+            }
           >
             <AiOutlineCheckSquare size={20} />
             Conectar
@@ -152,13 +125,13 @@ const UserPage = () => {
             {getAge(userPage.birthDate).toString()}
           </BoxContainer>
           <BoxContainer title="Humor">
-            {userPage.humor?.join(' / ')}
+            {userPage.humor?.join(" / ")}
           </BoxContainer>
         </ContentInfo>
         <ContentInfo expand>
           <BoxContainer title="Género">{userPage.gender}</BoxContainer>
           <BoxContainer title="Intereses no DevinOrkut">
-            {userPage.interests?.join(' / ')}
+            {userPage.interests?.join(" / ")}
           </BoxContainer>
         </ContentInfo>
         <ContentInfo>
@@ -176,6 +149,5 @@ const UserPage = () => {
     </Layout>
   );
 };
-
 
 export default UserPage;

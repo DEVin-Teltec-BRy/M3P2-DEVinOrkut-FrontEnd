@@ -62,7 +62,7 @@ import { useData } from "../../Context/dataContext";
           />
         }>
         {loading && <Loading />}
-        {listFriend?.length > 0 &&
+        {listFriend?.length > 0&&
           listFriend.map(({ fullName, id, profilePicture }, key) => (
             <CardSecondary
               key={key}
@@ -77,9 +77,7 @@ import { useData } from "../../Context/dataContext";
               }
             />
           ))}
-        {!listFriend && (
-          <span>O usuário não possui nenhum amigo!</span>
-        )}        
+        {listFriend?.length === 0 && <span>O usuário não possui nenhum amigo!</span>}        
       </CardMain>
     </Layout>
   );
