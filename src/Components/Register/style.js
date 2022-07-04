@@ -47,3 +47,60 @@ export const LinkStyled = styled(Link)`
   text-decoration: none;
   color: #000;
 `;
+
+export const CepCityAdressSpan = styled.span`
+  display: flex;
+`;
+
+export const CepSpan = styled.span`
+  input {
+    width: 300px;
+    margin-right: 32px;
+  }
+`;
+
+export const CitySpan = styled.span`
+  input {
+    width: 542px;
+    margin-right: 32px;
+  }
+`;
+export const StateSpan = styled.span`
+  input {
+    width: 150px;
+  }
+`;
+
+export const AdressSpan = styled.span`
+  input {
+    width: 874px;
+    margin-right: 32px;
+  }
+`;
+export const NumberSpan = styled.span`
+  input {
+    width: 150px;
+  }
+`;
+export const ComplementSpan = styled.span`
+  input {
+    width: 238px;
+    margin-right: 32px;
+  }
+`;
+export const DistrictSpan = styled.span`
+  input {
+    width: 242px;
+    margin-right: 32px;
+  }
+`;
+export const ReferencePointSpan = styled.span`
+  margin-bottom: 64px;
+  input {
+    width: 512px;
+  }
+`;
+
+export const FlexContainer = styled.span`
+  display: flex;
+`;

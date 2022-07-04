@@ -8,6 +8,13 @@ export const FormatStyles = styled.div`
   }
   label {
     text-align: start;
+    font-family: "Tahoma";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #171719;
   }
 `;
 
