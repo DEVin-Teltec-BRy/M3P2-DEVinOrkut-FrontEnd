@@ -31,6 +31,7 @@ import {
   StyledInputLogin,
   LoginHeader,
   CreateAccountStyle,
+  ModalForm,
 } from "./style";
 import { NewInputForm } from "../../Components/Input";
 import { NewButton } from "../../Components/Button";
@@ -172,19 +173,21 @@ function Login() {
           </LastLine>
           <SendEmailModal style={{ display: modal }}>
             <ModalStripe>
-              <h2>Resetar senha</h2>
-              <p>
-                Digite um e-mail válido associado a sua conta e nós iremos
-                enviar um e-mail com instruções de como resetar a sua senha
-              </p>
-              <SendResetPassEmail />
-              <StyledLeave
-                onClick={() => {
-                  setModal("none");
-                }}
-              >
-                Sair
-              </StyledLeave>
+              <ModalForm>
+                <h2>Resetar senha</h2>
+                <p>
+                  Digite um e-mail válido associado a sua conta e nós iremos
+                  enviar um e-mail com instruções de como resetar a sua senha
+                </p>
+                <SendResetPassEmail />
+                <StyledLeave
+                  onClick={() => {
+                    setModal("none");
+                  }}
+                >
+                  Sair
+                </StyledLeave>
+              </ModalForm>
             </ModalStripe>
           </SendEmailModal>
         </LoginBackground>

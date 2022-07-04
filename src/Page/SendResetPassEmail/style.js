@@ -79,16 +79,15 @@ export const StyledLeave = styled.button`
   }
 `;
 export const StyledSubmit = styled.input`
-  width: 150px;
-  height: 25px;
-  background-color: #e01989;
+  font-family: "Tahoma";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
   display: flex;
-  outline: none;
-  border: none;
-  color: white;
-  justify-content: center;
   align-items: center;
-  border-radius: 6px;
+  text-align: center;
+  color: #e01a89;
   :hover {
     background-color: var(--button-hover);
   }
@@ -99,4 +98,43 @@ export const StyledErrorMessage = styled.p`
   padding-left: 15px;
   padding-right: 15px;
   font-size: 12px;
+`;
+
+export const StyledPasswordReset = styled.div`
+  width: 98%;
+  display: flex;
+  justify-content: start;
+  label {
+    margin-left: 12px;
+    text-align: start;
+    font-family: "Tahoma";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #171719;
+  }
+  input {
+    border: 2px solid #ebebed;
+    border-radius: 16px;
+    margin-bottom: 34px;
+    color: #ffffff;
+  }
+  button {
+    margin-bottom: 33px;
+    background: #e01989;
+    border: 2px solid #c8157a;
+    border-radius: 8px;
+    font-family: "Tahoma";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    align-items: center;
+    text-align: center;
+  }
+  button:hover {
+    border: 2px solid #c8157a;
+    border-radius: 8px;
+  }
 `;

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  overflow-y: auto;
+  overflow: hidden;
 `;
 
 export const Wrapper = styled.div`
@@ -22,6 +22,8 @@ export const WrapperLogo = styled.div`
 
 export const Logo = styled.img`
   margin: 15rem 12rem;
+  width: 128px;
+  height: 567px;
 `;
 
 export const Label = styled.label`
