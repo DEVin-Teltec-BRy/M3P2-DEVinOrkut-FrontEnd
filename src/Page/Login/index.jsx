@@ -48,10 +48,19 @@ function Login() {
   const handleClose = () => setShow(false);
   const handleOpen = () => setShow(true);
 
-  const arrayString = [
-    "Encontre seus velhos amigos!",
-    "A mais nostálgica rede social da década está de volta",
-    " Tudo para que você possa se conectar com os seus amigos",
+  const CarouselMessage = [
+    {
+      title: "Encontre seus velhos amigos!",
+      text: "A mais nostálgica rede social da década está de volta. Tudo para que você possa se conectar com os seus velhos amigos, além de fazer novas amizades.",
+    },
+    {
+      title: "A mais nostálgica rede social da década está de volta",
+      text: "Todos os entretenimentos mais utilizados pelos usuários do orkut estão de volta",
+    },
+    {
+      title: " Tudo para que você possa se conectar com os seus amigos",
+      text: "Temos os melhores grupos ja criados na história da internet, se divirta!",
+    },
   ];
 
   const { handleSubmit, handleChange, values, touched, errors } = useFormik({
@@ -191,7 +200,7 @@ function Login() {
             style={{ marginBottom: "22%" }}
           />
 
-          <BootstrapCarousel arrayString={arrayString} />
+          <BootstrapCarousel CarouselMessage={CarouselMessage} />
         </PinkCard>
       </StyledBackground>
       {error?.message && (

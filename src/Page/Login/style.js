@@ -13,9 +13,9 @@ export const PinkCard = styled.div`
 
 export const LoginHeader = styled.div`
   margin-left: 40px;
+  color: #171719;
   h1 {
     margin-top: 64px;
-    color: black;
   }
   p {
     font-weight: 400;
