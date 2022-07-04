@@ -16,6 +16,16 @@ export const FormatStyles = styled.div`
 
     color: #171719;
   }
+  textarea {
+    resize: none;
+    background: #ffffff;
+    border: 2px solid #ebebed;
+    border-radius: 16px;
+    width: 1056px;
+    height: 20vh;
+    margin-bottom: 64px;
+    padding: 1rem;
+  }
 `;
 
 export const InputStyled = styled.input`
@@ -95,5 +105,26 @@ export const GenderSpan = styled.span`
     border-radius: 16px;
     box-shadow: rgba(0, 0, 0, 0.26);
     font-size: 20px;
+  }
+`;
+
+export const PasswordAndConfirmSpan = styled.span`
+  display: flex;
+  margin-bottom: 64px;
+  input {
+    width: 28vw;
+  }
+`;
+
+export const PasswordSpan = styled.span`
+  input {
+    margin-right: 34px;
+  }
+`;
+
+export const EmailSpan = styled.span`
+  input {
+    margin-right: 34px;
+    margin-bottom: 64px;
   }
 `;

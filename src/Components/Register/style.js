@@ -104,3 +104,23 @@ export const ReferencePointSpan = styled.span`
 export const FlexContainer = styled.span`
   display: flex;
 `;
+export const RelationshipAndHumorSpan = styled.span`
+  display: flex;
+`;
+
+export const RelationshipSpan = styled.span`
+  select {
+    width: 512px;
+    margin-right: 32px;
+    border: 2px solid #ebebed;
+    border-radius: 16px;
+  }
+`;
+
+export const HumorSpan = styled.span`
+  select {
+    width: 512px;
+    border: 2px solid #ebebed;
+    border-radius: 16px;
+  }
+`;

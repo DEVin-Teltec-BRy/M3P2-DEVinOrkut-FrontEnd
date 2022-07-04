@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { formStep, formRegister } from '../../../Store/rootSlice';
-import { validateStepFour } from '../../../Utils/validateForm';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { formStep, formRegister } from "../../../Store/rootSlice";
+import { validateStepFour } from "../../../Utils/validateForm";
 
-import CustomButton from '../../UI/CustomButton';
-import { ButtonGroup } from '../../UI/CustomButton/style';
-import { InputStyled } from '../../UI/Input/style';
-import ProgressSteps from '../../UI/ProgressSteps';
-import { Label, ErrorForm } from '../style';
+import CustomButton from "../../UI/CustomButton";
+import { ButtonGroup } from "../../UI/CustomButton/style";
+import {
+  EmailSpan,
+  FormatStyles,
+  InputStyled,
+  PasswordAndConfirmSpan,
+  PasswordSpan,
+} from "../../UI/Input/style";
+import ProgressSteps from "../../UI/ProgressSteps";
+import { Label, ErrorForm } from "../style";
 
 const StepFour = ({ previousButton, submitButtonText }) => {
   const dispatch = useDispatch();
@@ -21,9 +27,9 @@ const StepFour = ({ previousButton, submitButtonText }) => {
   const userEmail = useSelector((state) => state.FormUserRegister.email);
 
   const [formData, setFormData] = useState({
-    password: userPassword || '',
-    confirmPassword: userConfirmPassword || '',
-    email: userEmail || '',
+    password: userPassword || "",
+    confirmPassword: userConfirmPassword || "",
+    email: userEmail || "",
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -45,9 +51,9 @@ const StepFour = ({ previousButton, submitButtonText }) => {
 
   const handleResetForm = () => {
     setFormData({
-      password: '',
-      confirmPassword: '',
-      email: '',
+      password: "",
+      confirmPassword: "",
+      email: "",
     });
   };
 
@@ -73,61 +79,70 @@ const StepFour = ({ previousButton, submitButtonText }) => {
         activeTwo={true}
         activeThree={true}
         activeFour={true}
-        style={{ width: '99%' }}
+        style={{ width: "99%" }}
       />
       <form name="stepFormFour" id="stepFormFour" onSubmit={handleSubmit}>
-        <div>
-          <Label htmlFor="password">Password</Label>
-          <InputStyled
-            name="password"
-            type="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-          {error.password && <ErrorForm>{error.password}</ErrorForm>}
-        </div>
+        <FormatStyles>
+          <PasswordAndConfirmSpan>
+            <PasswordSpan>
+              <Label htmlFor="password">Senha</Label>
+              <InputStyled
+                name="password"
+                type="password"
+                value={formData.password}
+                onChange={handleChange}
+              />
+              {error.password && <ErrorForm>{error.password}</ErrorForm>}
+            </PasswordSpan>
 
-        <div>
-          <Label htmlFor="confirmPassword">Confirmar Password</Label>
-          <InputStyled
-            name="confirmPassword"
-            type="password"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-          />
-          {error.confirmPassword && (
-            <ErrorForm>{error.confirmPassword}</ErrorForm>
-          )}
-        </div>
-        <div>
-          <Label htmlFor="email">Email</Label>
-          <InputStyled
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          {error.email && <ErrorForm>{error.email}</ErrorForm>}
-        </div>
+            <div>
+              <Label htmlFor="confirmPassword">Confirmação de Senha</Label>
+              <InputStyled
+                name="confirmPassword"
+                type="password"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+              />
+              {error.confirmPassword && (
+                <ErrorForm>{error.confirmPassword}</ErrorForm>
+              )}
+            </div>
+          </PasswordAndConfirmSpan>
 
-        <ButtonGroup>
-          <CustomButton type="button" primary={false} onClick={handleResetForm}>
-            Limpar
-          </CustomButton>
-          {previousButton && (
+          <EmailSpan>
+            <Label htmlFor="email">E-Mail</Label>
+            <InputStyled
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            {error.email && <ErrorForm>{error.email}</ErrorForm>}
+          </EmailSpan>
+
+          <ButtonGroup>
             <CustomButton
+              type="button"
               primary={false}
-              type="submit"
-              onClick={() => dispatch(formStep(currentStep - 1))}
+              onClick={handleResetForm}
             >
-              Anterior
+              Limpar
             </CustomButton>
-          )}
+            {previousButton && (
+              <CustomButton
+                primary={false}
+                type="submit"
+                onClick={() => dispatch(formStep(currentStep - 1))}
+              >
+                Anterior
+              </CustomButton>
+            )}
 
-          <CustomButton primary={true} type="submit">
-            {submitButtonText}
-          </CustomButton>
-        </ButtonGroup>
+            <CustomButton primary={true} type="submit">
+              {submitButtonText}
+            </CustomButton>
+          </ButtonGroup>
+        </FormatStyles>
       </form>
     </>
   );
