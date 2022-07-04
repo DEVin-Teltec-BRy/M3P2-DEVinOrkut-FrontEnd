@@ -1,26 +1,23 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 1100px;
+  overflow-y: auto;
 `;
 
 export const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 9fr 3fr;
+  overflow-y: auto;
 `;
 
 export const WrapperForm = styled.div`
-  height: 1250px;
   background: #f9f9fb;
   padding: 5rem;
 `;
 
 export const WrapperLogo = styled.div`
-display: 'flex',
-flex-direction: 'column', 
-height: 1250px;
-background: linear-gradient(180deg, rgba(224, 25, 137, 0.6) 0%, #e01989 100%);
+  background: linear-gradient(180deg, rgba(224, 25, 137, 0.6) 0%, #e01989 100%);
 `;
 
 export const Logo = styled.img`

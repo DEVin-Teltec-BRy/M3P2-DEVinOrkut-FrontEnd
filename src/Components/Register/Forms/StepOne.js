@@ -1,14 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { formStep, formRegister } from '../../../Store/rootSlice';
-import { validateStepOne } from '../../../Utils/validateForm';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
+import { formStep, formRegister } from "../../../Store/rootSlice";
+import { validateStepOne } from "../../../Utils/validateForm";
 
-import CustomButton from '../../UI/CustomButton';
-import { ButtonGroup } from '../../UI/CustomButton/style';
-import { InputStyled } from '../../UI/Input/style';
+import CustomButton from "../../UI/CustomButton";
+import { ButtonGroup } from "../../UI/CustomButton/style";
+import {
+  BirthDateAndGender,
+  BirthDateSpan,
+  CpfSpan,
+  FormatStyles,
+  FullNameAndCpfSpan,
+  FullNameSpan,
+  GenderSpan,
+  InputStyled,
+} from "../../UI/Input/style";
 
-import ProgressSteps from '../../UI/ProgressSteps';
-import { Label, ErrorForm } from '../style';
+import ProgressSteps from "../../UI/ProgressSteps";
+import { Label, ErrorForm } from "../style";
 
 const StepOne = ({ previousButton, submitButtonText }) => {
   const dispatch = useDispatch();
@@ -21,11 +31,13 @@ const StepOne = ({ previousButton, submitButtonText }) => {
     (state) => state.FormUserRegister.birthDate
   );
 
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
-    fullName: userFullName || '',
-    cpf: userCpf || '',
-    gender: userGender || '',
-    birthDate: userBirthDate || '',
+    fullName: userFullName || "",
+    cpf: userCpf || "",
+    gender: userGender || "",
+    birthDate: userBirthDate || "",
   });
 
   const [error, setError] = useState({});
@@ -38,6 +50,10 @@ const StepOne = ({ previousButton, submitButtonText }) => {
     });
   };
 
+  const goToLogin = () => {
+    navigate("/login");
+  };
+
   const [isSubmitted, setIsSubmitted] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,10 +63,10 @@ const StepOne = ({ previousButton, submitButtonText }) => {
 
   const handleResetForm = () => {
     setFormData({
-      fullName: '',
-      cpf: '',
-      gender: '',
-      birthDate: '',
+      fullName: "",
+      cpf: "",
+      gender: "",
+      birthDate: "",
     });
   };
 
@@ -76,74 +92,88 @@ const StepOne = ({ previousButton, submitButtonText }) => {
     <>
       <ProgressSteps activeOne={true} />
       <form name="formStepOne" id="formStepOne" onSubmit={handleSubmit}>
-        <div>
-          <Label htmlFor="fullName">Nome Completo</Label>
-          <InputStyled
-            id="fullName"
-            name="fullName"
-            type="text"
-            value={formData.fullName}
-            onChange={handleChange}
-          />
-          {error && <ErrorForm>{error.fullName}</ErrorForm>}
-        </div>
+        <FormatStyles>
+          <FullNameAndCpfSpan>
+            <FullNameSpan>
+              <Label htmlFor="fullName">Nome Completo</Label>
+              <InputStyled
+                id="fullName"
+                name="fullName"
+                type="text"
+                value={formData.fullName}
+                onChange={handleChange}
+              />
+              {error && <ErrorForm>{error.fullName}</ErrorForm>}
+            </FullNameSpan>
+            <CpfSpan>
+              <Label htmlFor="cpf">CPF</Label>
+              <InputStyled
+                element="input"
+                id="cpf"
+                name="cpf"
+                type="text"
+                value={formData.cpf}
+                onChange={handleChange}
+                placeholder="999.999.999-99"
+              />
+              {error && <ErrorForm>{error.cpf}</ErrorForm>}
+            </CpfSpan>
+          </FullNameAndCpfSpan>
+          <BirthDateAndGender>
+            <BirthDateSpan>
+              <Label htmlFor="birthDate">Data de Nascimento</Label>
+              <InputStyled
+                id="birthDate"
+                name="birthDate"
+                type="date"
+                value={formData.birthDate}
+                onChange={handleChange}
+              />
+              {error && <ErrorForm>{error.birthDate}</ErrorForm>}
+            </BirthDateSpan>
+            <GenderSpan>
+              <Label htmlFor="genero">Gênero</Label>
+              <select
+                className="form-select"
+                value={formData.gender}
+                onChange={handleChange}
+                name="gender"
+                id="gender"
+              >
+                <option default value="masculino">
+                  Masculino
+                </option>
+                <option value="feminino">Feminino</option>
+              </select>
+            </GenderSpan>
+          </BirthDateAndGender>
 
-        <div>
-          <Label htmlFor="cpf">CPF</Label>
-          <InputStyled
-            element="input"
-            id="cpf"
-            name="cpf"
-            type="text"
-            value={formData.cpf}
-            onChange={handleChange}
-          />
-          {error && <ErrorForm>{error.cpf}</ErrorForm>}
-        </div>
-
-        <div>
-          <Label htmlFor="cpf">Gender</Label>
-          <InputStyled
-            element="input"
-            id="gender"
-            name="gender"
-            type="text"
-            value={formData.gender}
-            onChange={handleChange}
-          />
-          {error && <ErrorForm>{error.gender}</ErrorForm>}
-        </div>
-
-        <div>
-          <Label htmlFor="birthDate">Data de Aniversário</Label>
-          <InputStyled
-            id="birthDate"
-            name="birthDate"
-            type="date"
-            value={formData.birthDate}
-            onChange={handleChange}
-          />
-          {error && <ErrorForm>{error.birthDate}</ErrorForm>}
-        </div>
-
-        <ButtonGroup>
-          <CustomButton type="button" primary={false} onClick={handleResetForm}>
-            Limpar
-          </CustomButton>
-          {previousButton && (
-            <CustomButton
-              primary={false}
-              type="submit"
-              onClick={() => dispatch(formStep(currentStep - 1))}
-            >
-              Anterior
+          <ButtonGroup>
+            <CustomButton type="button" primary={false} onClick={goToLogin}>
+              Voltar
             </CustomButton>
-          )}
+            <CustomButton
+              type="button"
+              primary={false}
+              onClick={handleResetForm}
+            >
+              Limpar
+            </CustomButton>
+            {previousButton && (
+              <CustomButton
+                primary={false}
+                type="submit"
+                onClick={() => dispatch(formStep(currentStep - 1))}
+              >
+                Anterior
+              </CustomButton>
+            )}
 
-          <CustomButton primary={true} type="submit">
-            {submitButtonText}
-          </CustomButton>
-        </ButtonGroup>
+            <CustomButton primary={true} type="submit">
+              {submitButtonText}
+            </CustomButton>
+          </ButtonGroup>
+        </FormatStyles>
       </form>
     </>
   );
