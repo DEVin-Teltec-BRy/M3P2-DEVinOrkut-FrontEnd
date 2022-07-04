@@ -10,22 +10,28 @@ export const PinkCard = styled.div`
   height: 100vh;
   width: 60vw;
 `;
-export const LoginText = styled.h1`
-  position: fixed;
-  left: 40px;
-  top: 20px;
-  color: black;
+
+export const LoginHeader = styled.div`
+  margin-left: 40px;
+  h1 {
+    margin-top: 64px;
+    color: black;
+  }
+  p {
+    font-weight: 400;
+    width: 35vw;
+    margin-top: 16px;
+  }
 `;
-export const LoginDescription = styled.p`
-  width: 35vw;
-  position: fixed;
-  left: 40px;
-  top: 70px;
-`;
+
 export const ForgotPass = styled.p`
+  margin-right: 4px;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
   color: #e01989;
   align-self: flex-end;
-  margin-right: 5vw;
   text-decoration: underline;
   :hover {
     transform: scale(1.05);
@@ -33,16 +39,25 @@ export const ForgotPass = styled.p`
   }
 `;
 
-export const SubmitDiv = styled.div`
-  width: 25rem;
-  display: flex;
-  justify-content: space-between;
+export const CreateAccountStyle = styled.span`
+  margin-left: 16px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  color: #e01989;
+  text-decoration: underline;
+  :hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
 `;
+
 export const LastLine = styled.div`
-  display: flex;
-  gap: 20px;
-  margin-top: 20vh;
-  align-self: flex-end;
+  margin-right: 6vw;
+  margin-bottom: 64px;
+  text-align: end;
+  display: inline-block;
 `;
 export const LabLogo = styled.div`
   width: 150px;
@@ -85,7 +100,7 @@ export const SendEmailForm = styled.form`
   flex-direction: column;
   gap: 20px;
   background-color: white;
-  >button {
+  > button {
     background: var(--pink);
     border: 1px solid var(--pink);
     min-width: 5rem;
@@ -106,10 +121,18 @@ export const ModalStripe = styled.div`
   justify-content: center;
   background-color: white;
 `;
-export const AlignLogin = styled.div`
+export const AlignLogin = styled.span`
+  width: 25rem;
+
   display: flex;
-  justify-content: space-between;
+  justify-items: center;
+  label {
+    width: 40%;
+    margin: 0;
+    padding: 0;
+  }
   button {
+    margin: 0;
     background: var(--pink);
     border: 1px solid var(--pink);
     min-width: 5rem;
@@ -122,6 +145,27 @@ export const AlignLogin = styled.div`
 `;
 
 export const ContentModal = styled.div`
-color: #E72318;
-text-align:center ;
-`
+  color: #e72318;
+  text-align: center;
+`;
+
+export const StyledInputLogin = styled.div`
+  margin-top: -253px;
+  display: flex;
+  width: 100%;
+  label {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: start;
+    margin-left: 8px;
+  }
+
+  label:last-of-type {
+    margin-top: 32px;
+  }
+  input {
+    border: 2px solid #ebebed;
+    border-radius: 16px;
+  }
+`;

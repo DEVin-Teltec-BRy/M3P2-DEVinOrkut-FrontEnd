@@ -31,23 +31,22 @@ export const StyledFormCard = styled.form`
   background-color: white;
   .form-check-input:checked {
     background-color: var(--pink);
-    border-color:var(--pink);
-}
+    border-color: var(--pink);
+  }
 `;
 export const StyledInput = styled.input`
-    width:30vw;
-    height:35px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:6px;
-    border:1px solid rgba(0,0,0, .2);
-    background-color:white;
-    :hover{
-        background-color:var(--button-hover);
-    }
-
-`
+  width: 30vw;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: white;
+  :hover {
+    background-color: var(--button-hover);
+  }
+`;
 export const StyledSubmitInput = styled.input`
   width: 30vw;
   height: 35px;
