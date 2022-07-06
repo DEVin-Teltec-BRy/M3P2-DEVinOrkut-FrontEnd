@@ -4,12 +4,11 @@ import styled from "styled-components";
 export const FormSearch = styled(Form)`
   display: flex;
   position: relative;
-  :focus{
-      border:none;
+  :focus {
+    border: none;
   }
-  input{
-  padding-right: 50px;
-
+  input {
+    padding-right: 50px;
   }
   > button {
     position: absolute;

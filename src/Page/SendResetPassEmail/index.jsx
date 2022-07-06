@@ -6,23 +6,22 @@ import { useMutation } from "@apollo/client";
 import { SendEmailForm } from "../Login/style";
 import { NewInputForm } from "../../Components/Input";
 import { NewButton } from "../../Components/Button";
-
+import { StyledPasswordReset } from "./style";
 
 function SendResetPassEmail() {
-  const { handleSubmit, handleChange, values, touched, errors } =
-    useFormik({
-      initialValues: {
-        email: "",
-      },
-      validationSchema: Yup.object({
-        email: Yup.string()
-          .email("Formato de email inválido")
-          .required("Email é obrigatório"),
-      }),
-      onSubmit: async ({ email }) => {
-        SendEmail({ variables: { user: { email: email } } });
-      },
-    });
+  const { handleSubmit, handleChange, values, touched, errors } = useFormik({
+    initialValues: {
+      email: "",
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .email("Formato de email inválido")
+        .required("Email é obrigatório"),
+    }),
+    onSubmit: async ({ email }) => {
+      SendEmail({ variables: { user: { email: email } } });
+    },
+  });
 
   const [SendEmail, { data, loading, erro }] = useMutation(SEND_EMAIL);
 
@@ -42,17 +41,17 @@ function SendResetPassEmail() {
 
   return (
     <SendEmailForm onSubmit={handleSubmit}>
-      <NewInputForm
-        name="email"
-        label="Email"
-        value={values.email}
-        onChange={handleChange}
-        isValid={touched.email && !errors.email}
-        error={errors.email}
-      />
-      <NewButton type="submit">
-      Enviar instruções
-      </NewButton>
+      <StyledPasswordReset>
+        <NewInputForm
+          name="email"
+          label="E-Mail"
+          value={values.email}
+          onChange={handleChange}
+          isValid={touched.email && !errors.email}
+          error={errors.email}
+        />
+        <NewButton type="submit">Enviar instruções</NewButton>
+      </StyledPasswordReset>
     </SendEmailForm>
   );
 }

@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import {
   LoginBackground,
   StyledBackground,
@@ -28,13 +28,16 @@ import {
   ModalStripe,
   AlignLogin,
   ContentModal,
+  StyledInputLogin,
+  LoginHeader,
+  CreateAccountStyle,
+  ModalForm,
 } from "./style";
 import { NewInputForm } from "../../Components/Input";
 import { NewButton } from "../../Components/Button";
 import { Loading } from "../../Components/Loading";
 import { MainModal } from "../../Components/MainModal";
 import { BiError } from "react-icons/bi";
-
 
 function Login() {
   const { handleLogin } = useData();
@@ -46,10 +49,19 @@ function Login() {
   const handleClose = () => setShow(false);
   const handleOpen = () => setShow(true);
 
-  const arrayString = [
-    "Encontre seus velhos amigos!",
-    "A mais nostálgica rede social da década está de volta",
-    " Tudo para que você possa se conectar com os seus amigos",
+  const CarouselMessage = [
+    {
+      title: "Encontre seus velhos amigos!",
+      text: "A mais nostálgica rede social da década está de volta. Tudo para que você possa se conectar com os seus velhos amigos, além de fazer novas amizades.",
+    },
+    {
+      title: "A mais nostálgica rede social da década está de volta",
+      text: "Todos os entretenimentos mais utilizados pelos usuários do orkut estão de volta",
+    },
+    {
+      title: " Tudo para que você possa se conectar com os seus amigos",
+      text: "Temos os melhores grupos ja criados na história da internet, se divirta!",
+    },
   ];
 
   const { handleSubmit, handleChange, values, touched, errors } = useFormik({
@@ -106,72 +118,76 @@ function Login() {
     <>
       <StyledBackground>
         <LoginBackground>
-          <LoginText>Login</LoginText>
-          <LoginDescription>
-            Bem-Vindo ao Orkut, por favor forneça suas credenciais nos campos
-            abaixo para ter acesso a rede social.
-          </LoginDescription>
+          <LoginHeader>
+            <h1>Login</h1>
+            <p>
+              Bem-Vindo ao Orkut, por favor forneça suas credenciais nos campos
+              abaixo para ter acesso a rede social.
+            </p>
+          </LoginHeader>
           <StyledFormCard onSubmit={handleSubmit}>
-            <NewInputForm
-              name="email"
-              label="Email"
-              value={values.email}
-              onChange={handleChange}
-              isValid={touched.email && !errors.email}
-              error={errors.email}
-            />
-            <NewInputForm
-              name="password"
-              label="Senha"
-              type="password"
-              onChange={handleChange}
-              value={values.password}
-              isValid={touched.password && !errors.password}
-              error={errors.password}
-            />
-            <ForgotPass
-              onClick={() => {
-                setModal("flex");
-              }}
-            >
-              esqueceu sua senha?
-            </ForgotPass>
-            <SubmitDiv>
-              <AlignLogin>
-                <Form.Check
-                  type="switch"
-                  id="custom-switch"
-                  label="Lembre de mim"
-                />
-                <NewButton type="submit" size="sm">
-                  Entrar
-                </NewButton>
-              </AlignLogin>
-            </SubmitDiv>
+            <StyledInputLogin>
+              <NewInputForm
+                name="email"
+                label="E-Mail"
+                value={values.email}
+                onChange={handleChange}
+                isValid={touched.email && !errors.email}
+                error={errors.email}
+              />
+              <NewInputForm
+                name="password"
+                label="Senha"
+                type="password"
+                onChange={handleChange}
+                value={values.password}
+                isValid={touched.password && !errors.password}
+                error={errors.password}
+              />
+              <ForgotPass
+                onClick={() => {
+                  setModal("flex");
+                }}
+              >
+                Esqueceu a senha?
+              </ForgotPass>
+              <hr></hr>
+            </StyledInputLogin>
+            <AlignLogin>
+              <Form.Check
+                type="switch"
+                id="custom-switch"
+                label="Lembre de mim"
+              />
+              <NewButton type="submit" size="sm">
+                Entrar
+              </NewButton>
+            </AlignLogin>
           </StyledFormCard>
           <LastLine>
-            {" "}
-            <p>Não possui uma conta? </p>{" "}
-            <ForgotPass onClick={() => navigate("/register")}>
+            <span>Não possui uma conta? </span>{" "}
+            <CreateAccountStyle onClick={() => navigate("/register")}>
               {" "}
               Criar conta
-            </ForgotPass>{" "}
+            </CreateAccountStyle>{" "}
           </LastLine>
           <SendEmailModal style={{ display: modal }}>
             <ModalStripe>
-              <h2>Resetar senha</h2>
-              <p>
-                Digite um e-mail válido associado a sua conta e nós iremos
-                enviar um e-mail com instruções de como resetar a sua senha
-              </p>
-              <SendResetPassEmail />
-              <StyledLeave
-                onClick={() => {
-                  setModal("none");
-                }}
-              >
-                Sair
-              </StyledLeave>
+              <ModalForm>
+                <h2>Resetar senha</h2>
+                <p>
+                  Digite um e-mail válido associado a sua conta e nós iremos
+                  enviar um e-mail com instruções de como resetar a sua senha
+                </p>
+                <SendResetPassEmail />
+                <StyledLeave
+                  onClick={() => {
+                    setModal("none");
+                  }}
+                >
+                  Sair
+                </StyledLeave>
+              </ModalForm>
             </ModalStripe>
           </SendEmailModal>
         </LoginBackground>
@@ -187,7 +203,7 @@ function Login() {
             style={{ marginBottom: "22%" }}
           />
 
-          <BootstrapCarousel arrayString={arrayString} />
+          <BootstrapCarousel CarouselMessage={CarouselMessage} />
         </PinkCard>
       </StyledBackground>
       {error?.message && (

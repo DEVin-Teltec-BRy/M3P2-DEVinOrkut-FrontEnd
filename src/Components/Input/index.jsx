@@ -16,7 +16,6 @@ export const NewInputForm = ({
   return (
     <Form.Group>
       <Form.Label>{label}</Form.Label>
-
       <Form.Control
         type={type ? type : "text"}
         name={name}

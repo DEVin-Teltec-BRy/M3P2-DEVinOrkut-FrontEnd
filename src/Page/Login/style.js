@@ -10,22 +10,28 @@ export const PinkCard = styled.div`
   height: 100vh;
   width: 60vw;
 `;
-export const LoginText = styled.h1`
-  position: fixed;
-  left: 40px;
-  top: 20px;
-  color: black;
+
+export const LoginHeader = styled.div`
+  margin-left: 40px;
+  color: #171719;
+  h1 {
+    margin-top: 64px;
+  }
+  p {
+    font-weight: 400;
+    width: 35vw;
+    margin-top: 16px;
+  }
 `;
-export const LoginDescription = styled.p`
-  width: 35vw;
-  position: fixed;
-  left: 40px;
-  top: 70px;
-`;
+
 export const ForgotPass = styled.p`
+  margin-right: 4px;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
   color: #e01989;
   align-self: flex-end;
-  margin-right: 5vw;
   text-decoration: underline;
   :hover {
     transform: scale(1.05);
@@ -33,16 +39,25 @@ export const ForgotPass = styled.p`
   }
 `;
 
-export const SubmitDiv = styled.div`
-  width: 25rem;
-  display: flex;
-  justify-content: space-between;
+export const CreateAccountStyle = styled.span`
+  margin-left: 16px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  color: #e01989;
+  text-decoration: underline;
+  :hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
 `;
+
 export const LastLine = styled.div`
-  display: flex;
-  gap: 20px;
-  margin-top: 20vh;
-  align-self: flex-end;
+  margin-right: 6vw;
+  margin-bottom: 64px;
+  text-align: end;
+  display: inline-block;
 `;
 export const LabLogo = styled.div`
   width: 150px;
@@ -73,10 +88,10 @@ export const SendEmailModal = styled.div`
   top: 5vh;
   width: 32vw;
   height: 90vh;
-  background-color: #e01989;
   border-radius: 12px;
   z-index: 100;
-  box-shadow: 0px 0px 135px 10px black;
+  background: linear-gradient(0deg, #e01a89, #e01a89), #e01a89;
+  box-shadow: 0px 0px 135px 10px;
 `;
 export const SendEmailForm = styled.form`
   width: 100%;
@@ -85,7 +100,7 @@ export const SendEmailForm = styled.form`
   flex-direction: column;
   gap: 20px;
   background-color: white;
-  >button {
+  > button {
     background: var(--pink);
     border: 1px solid var(--pink);
     min-width: 5rem;
@@ -98,18 +113,33 @@ export const SendEmailForm = styled.form`
 `;
 export const ModalStripe = styled.div`
   padding: 20px;
-  gap: 20px;
   width: 100%;
   height: 85%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color: white;
+  h2 {
+    font-size: 36px;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 43px;
+    display: flex;
+    align-items: center;
+  }
 `;
-export const AlignLogin = styled.div`
+export const AlignLogin = styled.span`
+  width: 25rem;
+
   display: flex;
-  justify-content: space-between;
+  justify-items: center;
+  label {
+    width: 40%;
+    margin: 0;
+    padding: 0;
+  }
   button {
+    margin: 0;
     background: var(--pink);
     border: 1px solid var(--pink);
     min-width: 5rem;
@@ -122,6 +152,57 @@ export const AlignLogin = styled.div`
 `;
 
 export const ContentModal = styled.div`
-color: #E72318;
-text-align:center ;
-`
+  color: #e72318;
+  text-align: center;
+`;
+
+export const StyledInputLogin = styled.div`
+  margin-top: -253px;
+  display: flex;
+  width: 100%;
+  label {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: start;
+    margin-left: 8px;
+  }
+
+  label:last-of-type {
+    margin-top: 32px;
+  }
+  input {
+    border: 2px solid #ebebed;
+    border-radius: 16px;
+  }
+`;
+
+export const ModalForm = styled.div`
+  width: 100%;
+  margin-top: -244px;
+  h2,
+  p {
+    margin-left: 13px;
+  }
+
+  h2 {
+    font-family: "Tahoma";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 43px;
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+  }
+  p {
+    font-family: "Tahoma";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+
+    color: #000000;
+  }
+`;

@@ -1,30 +1,29 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 1100px;
+  overflow: hidden;
 `;
 
 export const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 9fr 3fr;
+  overflow-y: auto;
 `;
 
 export const WrapperForm = styled.div`
-  height: 1250px;
   background: #f9f9fb;
   padding: 5rem;
 `;
 
 export const WrapperLogo = styled.div`
-display: 'flex',
-flex-direction: 'column', 
-height: 1250px;
-background: linear-gradient(180deg, rgba(224, 25, 137, 0.6) 0%, #e01989 100%);
+  background: linear-gradient(180deg, rgba(224, 25, 137, 0.6) 0%, #e01989 100%);
 `;
 
 export const Logo = styled.img`
   margin: 15rem 12rem;
+  width: 128px;
+  height: 567px;
 `;
 
 export const Label = styled.label`
@@ -47,4 +46,81 @@ export const ConfirmGroup = styled.div`
 export const LinkStyled = styled(Link)`
   text-decoration: none;
   color: #000;
+`;
+
+export const CepCityAdressSpan = styled.span`
+  display: flex;
+`;
+
+export const CepSpan = styled.span`
+  input {
+    width: 300px;
+    margin-right: 32px;
+  }
+`;
+
+export const CitySpan = styled.span`
+  input {
+    width: 542px;
+    margin-right: 32px;
+  }
+`;
+export const StateSpan = styled.span`
+  input {
+    width: 150px;
+  }
+`;
+
+export const AdressSpan = styled.span`
+  input {
+    width: 874px;
+    margin-right: 32px;
+  }
+`;
+export const NumberSpan = styled.span`
+  input {
+    width: 150px;
+  }
+`;
+export const ComplementSpan = styled.span`
+  input {
+    width: 238px;
+    margin-right: 32px;
+  }
+`;
+export const DistrictSpan = styled.span`
+  input {
+    width: 242px;
+    margin-right: 32px;
+  }
+`;
+export const ReferencePointSpan = styled.span`
+  margin-bottom: 64px;
+  input {
+    width: 512px;
+  }
+`;
+
+export const FlexContainer = styled.span`
+  display: flex;
+`;
+export const RelationshipAndHumorSpan = styled.span`
+  display: flex;
+`;
+
+export const RelationshipSpan = styled.span`
+  select {
+    width: 512px;
+    margin-right: 32px;
+    border: 2px solid #ebebed;
+    border-radius: 16px;
+  }
+`;
+
+export const HumorSpan = styled.span`
+  select {
+    width: 512px;
+    border: 2px solid #ebebed;
+    border-radius: 16px;
+  }
 `;
