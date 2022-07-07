@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { formStep, formRegister } from "../../../Store/rootSlice";
 import { validateStepOne } from "../../../Utils/validateForm";
 
