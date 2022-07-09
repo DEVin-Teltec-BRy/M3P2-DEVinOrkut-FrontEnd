@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import lab365 from "../../Assets/images/LAB365.png";
 
 export const Container = styled.div`
   overflow: hidden;
@@ -123,4 +124,24 @@ export const HumorSpan = styled.span`
     border: 2px solid #ebebed;
     border-radius: 16px;
   }
+`;
+
+export const LabLogo = styled.div`
+  width: 150px;
+  height: 25px;
+  background-image: url(${lab365});
+  background-position: contain;
+`;
+
+export const LabLogoDiv = styled.div`
+  background-color: white;
+  justify-content: center;
+  width: 100vw;
+  margin-left: 46vw;
+  padding-left: 4px;
+  padding-top: 4px;
+  display: flex;
+  border-radius: 8px;
+  width: 170px;
+  height: 35px;
 `;

@@ -23,7 +23,7 @@ export const FormatStyles = styled.div`
     border-radius: 16px;
     width: 1056px;
     height: 20vh;
-    margin-bottom: 64px;
+    margin-bottom: 10px;
     padding: 1rem;
   }
 `;
@@ -122,9 +122,19 @@ export const PasswordSpan = styled.span`
   }
 `;
 
-export const EmailSpan = styled.span`
+export const EmailSpan = styled.div`
+  margin-bottom: 64px;
+
   input {
     margin-right: 34px;
-    margin-bottom: 64px;
   }
+`;
+
+export const TextAreaErrorContainer = styled.div`
+  margin-bottom: 64px;
+  color: red;
+`;
+
+export const EmailErrorContainer = styled.div`
+  color: red;
 `;

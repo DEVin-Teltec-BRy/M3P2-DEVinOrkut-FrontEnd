@@ -13,7 +13,7 @@ import {
   PasswordSpan,
 } from "../../UI/Input/style";
 import ProgressSteps from "../../UI/ProgressSteps";
-import { Label, ErrorForm } from "../style";
+import { Label, ErrorForm, LabLogoDiv, LabLogo } from "../style";
 
 const StepFour = ({ previousButton, submitButtonText }) => {
   const dispatch = useDispatch();
@@ -119,7 +119,6 @@ const StepFour = ({ previousButton, submitButtonText }) => {
             />
             {error.email && <ErrorForm>{error.email}</ErrorForm>}
           </EmailSpan>
-
           <ButtonGroup>
             <CustomButton
               type="button"
@@ -144,6 +143,9 @@ const StepFour = ({ previousButton, submitButtonText }) => {
           </ButtonGroup>
         </FormatStyles>
       </form>
+      <LabLogoDiv>
+        <LabLogo></LabLogo>
+      </LabLogoDiv>
     </>
   );
 };
