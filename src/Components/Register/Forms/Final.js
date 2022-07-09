@@ -1,15 +1,15 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useMutation } from '@apollo/client';
-import { CREATE_USER_MUTATION } from '../../../Graphql/Mutations/CreateUserMutations';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { useMutation } from "@apollo/client";
+import { CREATE_USER_MUTATION } from "../../../Graphql/Mutations/CreateUserMutations";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import CustomButton from '../../UI/CustomButton';
-import { ButtonGroup } from '../../UI/CustomButton/style';
-import { ConfirmGroup, LinkStyled } from '../style';
-import { Alert, Spinner } from 'react-bootstrap';
-import cleanError from '../../../Utils/trataError';
-import { formStep } from '../../../Store/rootSlice';
+import CustomButton from "../../UI/CustomButton";
+import { ButtonGroup } from "../../UI/CustomButton/style";
+import { ConfirmGroup, LinkStyled } from "../style";
+import { Alert, Spinner } from "react-bootstrap";
+import cleanError from "../../../Utils/trataError";
+import { formStep } from "../../../Store/rootSlice";
 
 const Final = () => {
   const state = useSelector((state) => state);
@@ -18,7 +18,7 @@ const Final = () => {
   const [createUser] = useMutation(CREATE_USER_MUTATION);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [disabled, setDisabled] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const dispatch = useDispatch();
 
@@ -59,14 +59,14 @@ const Final = () => {
 
   const handleOutForm = () => {
     dispatch(formStep(1));
-    navigate('/');
+    navigate("/");
     setIsSubmitted(false);
   };
 
   useEffect(() => {
     if (!error && isSubmitted) {
       setTimeout(() => {
-        navigate('/');
+        navigate("/");
         dispatch(formStep(1));
       }, 5000);
     }
@@ -94,7 +94,7 @@ const Final = () => {
         </CustomButton>
       </ButtonGroup>
       <ConfirmGroup>
-        {error && <Alert variant="danger">{cleanError(error, 'Erro:')}</Alert>}
+        {error && <Alert variant="danger">{cleanError(error, "Erro:")}</Alert>}
       </ConfirmGroup>
     </>
   );
@@ -109,7 +109,7 @@ const Final = () => {
         <h2>Cadastro concluído com sucesso!</h2>
         <p>
           Seja bem-vindo ao DEVinOrkut. Você será redirecionando em instantes.
-          Se não for, clique{' '}
+          Se não for, clique{" "}
           <LinkStyled to="/login">
             <strong>aqui</strong>
           </LinkStyled>

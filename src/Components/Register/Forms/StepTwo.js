@@ -19,6 +19,8 @@ import {
   DistrictSpan,
   ReferencePointSpan,
   FlexContainer,
+  LabLogoDiv,
+  LabLogo,
 } from "../style";
 
 const StepTwo = ({ previousButton, submitButtonText }) => {
@@ -232,6 +234,9 @@ const StepTwo = ({ previousButton, submitButtonText }) => {
           </ButtonGroup>
         </FormatStyles>
       </form>
+      <LabLogoDiv>
+        <LabLogo></LabLogo>
+      </LabLogoDiv>
     </>
   );
 };

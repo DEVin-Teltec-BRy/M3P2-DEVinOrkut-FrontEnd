@@ -18,7 +18,7 @@ import {
 } from "../../UI/Input/style";
 
 import ProgressSteps from "../../UI/ProgressSteps";
-import { Label, ErrorForm } from "../style";
+import { Label, ErrorForm, LabLogo, LabLogoDiv } from "../style";
 
 const StepOne = ({ previousButton, submitButtonText }) => {
   const dispatch = useDispatch();
@@ -175,6 +175,9 @@ const StepOne = ({ previousButton, submitButtonText }) => {
           </ButtonGroup>
         </FormatStyles>
       </form>
+      <LabLogoDiv>
+        <LabLogo></LabLogo>
+      </LabLogoDiv>
     </>
   );
 };

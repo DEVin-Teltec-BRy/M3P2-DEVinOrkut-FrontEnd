@@ -5,7 +5,12 @@ import { validateStepThree } from "../../../Utils/validateForm";
 
 import CustomButton from "../../UI/CustomButton";
 import { ButtonGroup } from "../../UI/CustomButton/style";
-import { FormatStyles, InputStyled } from "../../UI/Input/style";
+import {
+  FormatStyles,
+  InputStyled,
+  TextAreaErrorContainer,
+  TextAreaStyled,
+} from "../../UI/Input/style";
 import ProgressSteps from "../../UI/ProgressSteps";
 import {
   Label,
@@ -13,6 +18,8 @@ import {
   FlexContainer,
   HumorSpan,
   RelationshipSpan,
+  LabLogoDiv,
+  LabLogo,
 } from "../style";
 
 const StepThree = ({ previousButton, submitButtonText }) => {
@@ -151,15 +158,16 @@ const StepThree = ({ previousButton, submitButtonText }) => {
 
           <div>
             <Label htmlFor="aboutMe">Quem sou eu</Label>
-            <textarea
+            <TextAreaStyled
               id="aboutMe"
               name="aboutMe"
               type="text"
               value={formData.aboutMe}
               onChange={handleChange}
             />
-
-            {error && <ErrorForm>{error.aboutMe}</ErrorForm>}
+            {error && (
+              <TextAreaErrorContainer>{error.aboutMe}</TextAreaErrorContainer>
+            )}
           </div>
 
           <ButtonGroup>
@@ -186,6 +194,9 @@ const StepThree = ({ previousButton, submitButtonText }) => {
           </ButtonGroup>
         </FormatStyles>
       </form>
+      <LabLogoDiv>
+        <LabLogo></LabLogo>
+      </LabLogoDiv>
     </>
   );
 };
